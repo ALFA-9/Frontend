@@ -5,9 +5,9 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from 'react-router-dom'
-import ErrorPage from '../ErrorPage/ErrorPage'
+import NotFound from '../../pages/not-found/not-found'
 
-import classes from './App.module.scss'
+import classes from './app.module.scss'
 
 interface obj {
   name?: string
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    errorElement: <ErrorPage />,
+    errorElement: <NotFound />,
     children: [],
   },
 ])
