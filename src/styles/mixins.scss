@@ -1,0 +1,49 @@
+// reset mixins
+@mixin reset-list {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+// reset h1-h6, p
+@mixin reset-text {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@mixin reset-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+// typography mixins
+@mixin headline {
+  font-family: $styrene;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: -.06em;
+}
+
+@mixin headline_xlarge {
+  @include headline;
+  font-size: 40px;
+}
+
+@mixin headline_large {
+  @include headline;
+  font-size: 24px;
+}
+
+@mixin logo-text {
+  font-family: $styrene;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: -0.025em;
+}
+
+@mixin tiny-text {
+  font-family: $roboto;
+  font-size: 12px;
+  line-height: 15.6px;
+  letter-spacing: -0.24px;
+}

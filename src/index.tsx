@@ -1,17 +1,16 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
-import { store } from './services/store'
-import { Provider } from 'react-redux'
-import './index.scss'
-import App from './components/app/app'
+import './index.scss';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { store } from './services/store';
+import { Provider } from 'react-redux';
+import App from './components/app/app';
 
-console.log('1231323')
-const root = document.getElementById('root')
+const root = document.getElementById('root');
 
 if (!root) {
-  throw new Error('root not found')
+  throw new Error('root not found');
 }
-const container = createRoot(root)
+const container = createRoot(root);
 
 container.render(
   <React.StrictMode>
@@ -19,4 +18,4 @@ container.render(
       <App />
     </Provider>
   </React.StrictMode>
-)
+);

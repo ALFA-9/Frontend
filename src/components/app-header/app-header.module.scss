@@ -1,0 +1,94 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  box-sizing: border-box;
+  padding: 24px calc((100vw - 1224px) / 2);
+  margin: 0 auto;
+  color: $black;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.logoText {
+  @include reset-text;
+  @include logo-text;
+}
+
+.menu {
+  @include reset-list;
+  display: flex;
+  gap: 40px;
+}
+
+.link {
+  @include reset-link;
+  font-family: $roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: 0;
+}
+
+.trayMenu {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.search {
+  width: 176px;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 8px 12px 8px 48px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: $light-gray url('../../images/icons/search.svg') center left 12px no-repeat;
+  font-family: $roboto;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.notification {
+  width: 40px;
+  height: 40px;
+  background-color: $light-gray;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notificationIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  display: block;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  cursor: pointer;
+}

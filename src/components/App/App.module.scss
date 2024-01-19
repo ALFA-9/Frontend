@@ -1,20 +1,2 @@
-@import '../../styles/Const.scss';
-@import '../../styles/Fonts.scss';
-
-.button {
-  @include silly-links;
-}
-
-.text {
-  color: rgba(94, 255, 0, 0.952);
-  font-weight: 300;
-  font-size: 100px;
-  font-family: $font;
-}
-
-.tits-img {
-  max-width: 500px;
-  max-height: 500px;
-  object-fit: contain;
-  object-position: center;
-}
+@import '../../styles/const.scss';
+@import '../../styles/fonts.scss';

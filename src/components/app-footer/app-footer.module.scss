@@ -1,0 +1,117 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+.footer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 312px);
+  grid-template-areas:
+  'logo phone phoneMsk email'
+  'address menuLeft menuRight socials'
+  'schedule menuLeft menuRight .'
+  'copyright copyright copyright copyright';
+  row-gap: 74px;
+  align-items: flex-start;
+  @include tiny-text;
+  padding: 40px calc((100vw - 1224px) / 2) 28px;
+  box-sizing: border-box;
+  background: $gray url('../../images/decor/footer-decor.svg') right bottom no-repeat;
+}
+
+.logo {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.logoText {
+  @include reset-text;
+  @include logo-text;
+}
+
+.text {
+  @include reset-text;
+
+  &:not(:last-child) {
+    color: $dark-gray;
+    margin-bottom: 16px;
+  }
+}
+
+.addressText {
+  @include reset-text;
+  max-width: 160px;
+  font-style: normal;
+}
+
+.phone {
+  grid-area: phone;
+}
+
+.phoneMsk {
+  grid-area: phoneMsk;
+}
+
+.email {
+  grid-area: email;
+}
+
+.address {
+  grid-area: address;
+}
+
+.schedule {
+  grid-area: schedule;
+  margin-top: -52px;
+}
+
+.menuLeft {
+  grid-area: menuLeft;
+}
+
+.menuRight {
+  grid-area: menuRight;
+}
+
+.menu {
+  @include reset-list;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.link {
+  @include reset-link;
+}
+
+.socials {
+  grid-area: socials;
+  @include reset-list;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.socialsIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.copyright {
+  grid-area: copyright;
+  display: flex;
+  gap: 118px;
+  padding-top: 8px;
+}
+
+.copyrightText {
+  @include reset-text;
+  color: $dark-gray;
+}

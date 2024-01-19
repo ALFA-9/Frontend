@@ -1,13 +1,13 @@
-import { useState } from 'react'
+import styles from './app.module.scss';
+import { useState, FC } from 'react';
 import {
   Link,
-  Outlet,
   RouterProvider,
   createBrowserRouter,
-} from 'react-router-dom'
-import NotFound from '../../pages/not-found/not-found'
+} from 'react-router-dom';
+import Layout from '../layout/layout';
+import NotFound from '../../pages/not-found/not-found';
 
-import classes from './app.module.scss'
 
 interface obj {
   name?: string
@@ -17,47 +17,14 @@ interface obj {
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
+    element: <Layout />,
     errorElement: <NotFound />,
-    children: [],
-  },
-])
+    children: []
+  }
+]);
 
-export default function App() {
+const App: FC = () => {
   return <RouterProvider router={router} />
 }
 
-function Root() {
-  const [count, setCount] = useState<number>(0)
-  const [objI, setObjI] = useState<obj>({})
-
-  function incrementCounter(): void {
-    setCount((state) => state + 1)
-  }
-
-  function decrementCounter(): void {
-    setCount((state) => state - 1)
-  }
-
-  function changeObj(): void {
-    setObjI({
-      age: 12,
-      name: '12',
-    })
-  }
-
-  return (
-    <>
-      <div>
-        <button className={classes.button} onClick={incrementCounter}>
-          +1
-        </button>
-        <div className={classes.text}>{count}</div>
-        <button className={classes.button} onClick={decrementCounter}>
-          -1
-        </button>
-        <Outlet />
-      </div>
-    </>
-  )
-}
+export default App;
