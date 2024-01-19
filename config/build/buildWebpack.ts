@@ -20,6 +20,7 @@ export function buildWebpack(options: BuildOptions): webpack.Configuration {
       filename: 'js/[name].[contenthash].js',
       path: paths.output,
       clean: true,
+      publicPath: '/',
     },
     plugins: buildPlugins(options).filter(Boolean),
     module: {
