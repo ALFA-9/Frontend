@@ -1,3 +1,5 @@
+@import "../../const.scss";
+
 .check_input {
   position: absolute;
   width: 1px;
@@ -17,22 +19,21 @@
 .checkbox {
   position: absolute;
   box-sizing: border-box;
-  width: 1em;
-  height: 1em;
+  width: 24px;
+  height: 24px;
   margin-left: -1.2em;
-  border: 1px solid #c2c2c2;
+  border: 1px solid $dark-gray;
   background-image: none;
-  background-position: 0.2em 0.1em;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: 0.65em;
-  border-radius: 20%;
+  border-radius: 4px;
   padding-top: 6px;
 }
 
 .check_input:checked + .checkbox {
-  background-image: url(./Check.svg);
-  background-color: #19be6f;
-  border-color: #19be6f;
+  background-image: url(./checked.svg);
+  background-color: $status-green-100;
+  border-color: $status-green-100;
 }
 
 .check_input:focus + .checkbox {
@@ -40,9 +41,10 @@
 }
 
 .check_input:disabled + .checkbox {
-  background-color: #c2c2c2;
+  background-color: $medium-gray;
 }
 
 .check_input:disabled:checked + .checkbox {
-  border-color: #c2c2c2;
+  border-color: $status-green-10;
+  border-color: $dark-gray;
 }
