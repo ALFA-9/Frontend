@@ -1,0 +1,65 @@
+.check_input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.check {
+  display: block;
+  position: relative;
+  width: fit-content;
+  font-size: 25px;
+  padding-left: 2.2em;
+}
+
+.swith {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  width: 2em;
+  height: 1em;
+  margin-left: -2.2em;
+  border: 1px solid #c2c2c2;
+  border-radius: 0.5em;
+  padding: 0 0.05em;
+  background-color: #e4e4e4;
+  transition: 'justify-content' 5s;
+}
+
+.toogle {
+  box-sizing: border-box;
+  width: 0.8em;
+  height: 0.8em;
+  border: 1px solid #c2c2c2;
+  background-color: #ffffff;
+  border-radius: 0.5em;
+}
+
+.check_input:checked + .swith {
+  background-color: #19be6f;
+  border-color: #19be6f;
+
+  justify-content: flex-end;
+  .toogle {
+    border: none;
+  }
+}
+
+.check_input:focus + .swith {
+  outline: 1px solid #4b4b4b;
+}
+
+.check_input:disabled + .swith {
+  background-color: #c2c2c2;
+}
+
+.check_input:disabled:checked + .swith {
+  border-color: #c2c2c2;
+  .toogle {
+    border: none;
+  }
+}
