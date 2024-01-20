@@ -1,0 +1,13 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+.page {
+  @include reset-text;
+  @include tiny-text;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 7px
+}

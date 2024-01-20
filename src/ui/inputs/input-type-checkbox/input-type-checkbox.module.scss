@@ -1,0 +1,48 @@
+.check_input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.check {
+  display: block;
+  position: relative;
+  width: fit-content;
+  font-size: 25px;
+  padding-left: 1.2em;
+}
+
+.checkbox {
+  position: absolute;
+  box-sizing: border-box;
+  width: 1em;
+  height: 1em;
+  margin-left: -1.2em;
+  border: 1px solid #c2c2c2;
+  background-image: none;
+  background-position: 0.2em 0.1em;
+  background-repeat: no-repeat;
+  background-size: 0.65em;
+  border-radius: 20%;
+  padding-top: 6px;
+}
+
+.check_input:checked + .checkbox {
+  background-image: url(./Check.svg);
+  background-color: #19be6f;
+  border-color: #19be6f;
+}
+
+.check_input:focus + .checkbox {
+  outline: 1px solid #4b4b4b;
+}
+
+.check_input:disabled + .checkbox {
+  background-color: #c2c2c2;
+}
+
+.check_input:disabled:checked + .checkbox {
+  border-color: #c2c2c2;
+}

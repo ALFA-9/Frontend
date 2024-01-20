@@ -1,0 +1,133 @@
+.select {
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.input {
+  box-sizing: border-box;
+  position: relative;
+  background-color: white;
+  width: 100%;
+  height: 56px;
+  border: 1px solid #c2c2c2;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: var(--main-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.input:after {
+  content: '';
+  position: absolute;
+  border-color: #4b4b4b;
+  border-style: solid;
+  border-width: 0 3px 3px 0;
+  height: 8.84px;
+  width: 8.84px;
+  right: 24px;
+  top: 50%;
+  transform: translate(0%, -50%) rotate(45deg);
+}
+
+.input_open:after {
+  transform: translate(0%, -50%) rotate(-135deg);
+}
+
+.wraper {
+  width: 100%;
+  position: relative;
+}
+
+.dropDown {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #c2c2c2;
+  padding: 12px;
+  background-color: white;
+  top: calc(100% + 2px);
+  z-index: 1000;
+}
+
+.optionWraper {
+  max-height: calc(56px * 8);
+  overflow: auto;
+  scrollbar-color: grey white;
+  scrollbar-width: thin;
+}
+
+.optionWraper::-webkit-scrollbar {
+  height: 3px;
+  width: 3px;
+}
+
+.optionWraper::-webkit-scrollbar-track {
+  background: white;
+}
+
+.optionWraper::-webkit-scrollbar-thumb {
+  background: grey;
+  width: 30%;
+  border-radius: 10px;
+}
+
+.dropDownItem {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  border-radius: 12px;
+  padding-left: 12px;
+  cursor: pointer;
+}
+
+.dropDownItem:hover {
+  color: #19be6f;
+}
+
+.dropDownItem_select {
+  background-color: #e8f9f1;
+}
+
+.dropDownItem_disabled {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  border-radius: 12px;
+  padding-left: 12px;
+  color: #c6c6c6;
+
+  :hover {
+    background-color: white;
+  }
+
+  :after {
+    content: ' (недоступно недоступно для выбора)';
+  }
+}
+
+.select:focus + .wraper .input {
+  border-color: #4b4b4b;
+}
+
+.placeholder {
+  color: #c2c2c2;
+  letter-spacing: 0.08px;
+}
+
+.overlay {
+  position: absolute;
+  /* background-color: red; */
+  opacity: 0.2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
