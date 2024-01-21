@@ -85,10 +85,8 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
       {isDropdownOpen && (
         <div onClick={handleOverlayClick} className={styles.overlay} />
       )}
-      <div className={styles.container}>
-        <label htmlFor={SelectHTMLAttributes.id} className={styles.label}>
-          {label}
-        </label>
+      <label htmlFor={SelectHTMLAttributes.id} className={styles.label}>
+        <p className={styles.label_text}>{label}</p>
         <select
           {...SelectHTMLAttributes}
           value={inputValue}
@@ -113,8 +111,8 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
                 style={{
                   maxHeight: `${
                     SelectHTMLAttributes.size
-                      ? `${56 * SelectHTMLAttributes.size}px`
-                      : `calc(56px * 8 )`
+                      ? `${48 * SelectHTMLAttributes.size}px`
+                      : `calc(48px * 5 )`
                   }`,
                 }}
               >
@@ -131,7 +129,7 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
                         value === inputValue ? styles.dropDownItem_select : ""
                       }`}
                     >
-                      <p>{value}</p>
+                      <p className={styles.dropDownItem_text}>{value}</p>
                     </div>
                   );
                 })}
@@ -139,7 +137,7 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
             </div>
           )}
         </div>
-      </div>
+      </label>
     </>
   );
 };
