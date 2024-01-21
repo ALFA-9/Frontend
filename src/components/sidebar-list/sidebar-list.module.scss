@@ -1,0 +1,9 @@
+@import '../../styles/mixins.scss';
+
+.list {
+  @include reset-list;
+}
+
+.list_red {
+  background-color: red;
+}

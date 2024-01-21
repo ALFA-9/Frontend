@@ -17,7 +17,7 @@ export function buildPlugins({
   const plugins: Configuration['plugins'] = [
     new HtmlWebpackPlugin({
       template: paths.html,
-      favicon: path.resolve(paths.public, 'Alfabank_logo.png'),
+      favicon: path.resolve(paths.public, 'logo.svg'),
     }),
   ]
 

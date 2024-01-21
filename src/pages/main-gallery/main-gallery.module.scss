@@ -1,0 +1,33 @@
+@import '../../styles/const.scss';
+@import '../../styles/mixins.scss';
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.title {
+  @include reset-text;
+  color: $black;
+  font-family: $styrene;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  letter-spacing: -2.4px;
+}
+
+.header_wrapper {
+  width: 100%;
+  display: flex;
+  column-gap: 27px;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.links_container {
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+}

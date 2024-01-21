@@ -26,5 +26,10 @@ export function buildWebpack(options: BuildOptions): webpack.Configuration {
     module: {
       rules: buildLoaders(options),
     },
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+      },
+    },
   }
 }
