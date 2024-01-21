@@ -78,6 +78,10 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
       e.preventDefault();
       setIsDropdownOpen(false);
     }
+
+    if (code === "Tab") {
+      setIsDropdownOpen(false);
+    }
   };
 
   return (

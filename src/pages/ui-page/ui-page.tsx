@@ -87,6 +87,21 @@ export const UiPage = () => {
           <option>Денисов Денис Денисович</option>
           <option>Егоров Егор Егорович</option>
         </InputTypeSelect>
+
+        <InputTypeSelect
+          onChange={handleOnChange}
+          name="supervisor"
+          label="Руководитель"
+          value={inputData.supervisor}
+          size={5}
+        >
+          <option>Александров Александр Александрович</option>
+          <option>Борисов Борис Борисович</option>
+          <option>Васильев Василий Васильевич</option>
+          <option disabled>Георгиев Георгий Георгиевич</option>
+          <option>Денисов Денис Денисович</option>
+          <option>Егоров Егор Егорович</option>
+        </InputTypeSelect>
         <hr />
         <InputTypeCheckbox
           onChange={handleOnChange}
