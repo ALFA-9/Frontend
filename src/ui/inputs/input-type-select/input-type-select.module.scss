@@ -143,7 +143,7 @@
 }
 
 .select:focus + .wraper .input {
-  border-color: $dark-gray;
+  border: 1px solid $dark-gray;
 }
 
 .placeholder {
