@@ -1,2 +1,20 @@
-@import '../../styles/const.scss';
-@import '../../styles/fonts.scss';
+.main {
+  min-height: 450px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.main__wrapper {
+  display: flex;
+  padding: 80px 28px 160px 18px;
+  max-width: 1280px;
+  width: 100%;
+  column-gap: 24px;
+  box-sizing: border-box;
+}
+
+.main_wrapper_main_gallery{
+  column-gap: 34px;
+}

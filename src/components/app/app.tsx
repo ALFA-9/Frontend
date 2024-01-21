@@ -1,30 +1,25 @@
-import styles from './app.module.scss';
-import { useState, FC } from 'react';
-import {
-  Link,
-  RouterProvider,
-  createBrowserRouter,
-} from 'react-router-dom';
-import Layout from '../layout/layout';
-import NotFound from '../../pages/not-found/not-found';
+import styles from './app.module.scss'
+import AppHeader from '../app-header/app-header'
+import AppFooter from '../app-footer/app-footer'
+import Sidebar from '../sidebar/sidebar'
+import Content from '../content/content'
+import { useLocation } from 'react-router-dom'
 
-
-interface obj {
-  name?: string
-  age?: number
+export default function App() {
+  const location = useLocation()
+  return (
+    <>
+      <AppHeader />
+      <main className={styles.main}>
+        <div
+          className={`${styles.main__wrapper} ${
+            location.pathname === '/' && styles.main_wrapper_main_gallery
+          }`}>
+          <Sidebar />
+          <Content />
+        </div>
+      </main>
+      <AppFooter />
+    </>
+  )
 }
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    errorElement: <NotFound />,
-    children: []
-  }
-]);
-
-const App: FC = () => {
-  return <RouterProvider router={router} />
-}
-
-export default App;

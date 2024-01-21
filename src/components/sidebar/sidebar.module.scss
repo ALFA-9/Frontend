@@ -1,0 +1,21 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+.content {
+  max-width: 194px;
+  width: 100%;
+}
+
+.content_main_gallery {
+  max-width: 288px;
+}
+
+.title {
+  @include reset-text;
+  @include tiny-text;
+  text-transform: uppercase;
+  color: $dark-gray;
+  letter-spacing: normal;
+  font-weight: 400;
+  margin: 0 0 12px 12px;
+}

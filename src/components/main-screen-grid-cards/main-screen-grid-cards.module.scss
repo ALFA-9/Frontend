@@ -1,0 +1,120 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+@mixin card-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+}
+
+.container {
+  max-width: 288px;
+  width: 100%;
+}
+
+.container_big {
+  max-width: 600px;
+  width: 100%;
+  grid-column: span 2;
+}
+
+.container_big_wrapper {
+  position: relative;
+}
+
+.img {
+  aspect-ratio: 288/200;
+  @include card-img;
+}
+
+.img_big {
+  aspect-ratio: 600/254;
+  @include card-img;
+}
+
+.info_wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 16px;
+  margin-top: 12px;
+}
+
+.info_wrapper_big {
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.buttons_wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.button_like {
+  @include reset-button;
+  display: flex;
+  align-items: center;
+  height: 16px;
+  column-gap: 4px;
+}
+
+.button_comment {
+  @include reset-button;
+  height: 16px;
+}
+
+@mixin text {
+  @include tiny-text;
+  line-height: 16px;
+  margin: 0;
+}
+
+.text {
+  @include text;
+  color: $dark-gray;
+}
+
+.text_big {
+  @include text;
+  color: $white;
+}
+
+@mixin svg {
+  width: 12px;
+  height: 12px;
+}
+
+.svg {
+  @include svg;
+  stroke: $dark-gray;
+}
+
+.svg_big {
+  @include svg;
+  stroke: $white;
+}
+
+.title {
+  @include reset-text;
+  @include menu-card-title;
+  color: $black;
+  margin-top: 10px;
+}
+
+.title_big {
+  @include reset-text;
+  @include headline_large;
+  color: $white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

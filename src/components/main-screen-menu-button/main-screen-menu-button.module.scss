@@ -1,0 +1,17 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+.link {
+  @include reset-link;
+  @include menu-sidebar-text;
+  line-height: 18px;
+  padding: 12px 20px;
+  border-radius: 32px;
+  background-color: $gray;
+  color: $black;
+}
+
+.link_black {
+  background-color: $black;
+  color: #fff;
+}
