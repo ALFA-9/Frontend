@@ -13,4 +13,9 @@ export const idpSidebarItems: MenuNavItemType[] = [
     Svg: Competencies,
     nav: '/idp/competencies',
   },
+  {
+    name: 'Тестирование UI',
+    Svg: Competencies,
+    nav: '/idp/ui',
+  },
 ]

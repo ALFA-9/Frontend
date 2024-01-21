@@ -6,6 +6,7 @@ import inProgress from '../../images/_temp/in-progress.jpg'
 import idpImg from '../../images/_temp/idp.jpg'
 import competenciesImg from '../../images/_temp/competencies.jpg'
 import completeImg from '../../images/_temp/complete.jpg'
+import { UiPage } from '../../pages/ui-page/ui-page'
 const Content: FC = () => {
   const location = useLocation()
 
@@ -16,6 +17,7 @@ const Content: FC = () => {
       }`}>
       <Routes>
         <Route path='/' element={<MainGallery />} />
+        <Route path='/idp/ui' element={<UiPage />} />
         <Route
           path='/idp/idp'
           element={
@@ -42,5 +44,5 @@ const Content: FC = () => {
     </section>
   )
 }
-
+UiPage
 export default Content

@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Link, Route, Routes, useLocation } from 'react-router-dom'
 import styles from './sidebar.module.scss'
 import SidebarList from '../sidebar-list/sidebar-list'
 import { mainSidebarItems } from '../../utils/const-side-main-sidebar-items'
@@ -13,6 +13,7 @@ const Sidebar: FC = () => {
       className={`${styles.content} ${
         location.pathname === '/' && styles.content_main_gallery
       }`}>
+      {location.pathname !== '/' && <Link to='/'>Назад</Link>}
       {location.pathname === '/' && <h2 className={styles.title}>Сервисы</h2>}
       <Routes>
         <Route
