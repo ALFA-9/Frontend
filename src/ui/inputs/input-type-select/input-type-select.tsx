@@ -1,5 +1,5 @@
-import { FC, useEffect, useRef, useState } from 'react';
-import styles from './input-type-select.module.scss';
+import { FC, useEffect, useRef, useState } from "react";
+import styles from "./input-type-select.module.scss";
 
 // TODO Корректно обработать состояние disabled
 
@@ -10,12 +10,12 @@ interface IInputTypeSelect
 }
 
 const InputTypeSelect: FC<IInputTypeSelect> = ({
-  extraClass = '',
-  label = '',
+  extraClass = "",
+  label = "",
   onChange = () => {},
   ...SelectHTMLAttributes
 }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [optionItems, setOptionItems] = useState<
     Array<{
       value: string;
@@ -45,7 +45,7 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
       target: {
         name: SelectHTMLAttributes.name,
         value: inputValue,
-        type: 'select',
+        type: "select",
       },
     } as React.ChangeEvent<HTMLSelectElement>);
   }, [inputValue]);
@@ -69,12 +69,12 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
   const handleSelectKeyDown = (e: React.KeyboardEvent<HTMLSelectElement>) => {
     const { code } = e;
 
-    if (code === 'Enter' || code === 'Space') {
+    if (code === "Enter" || code === "Space") {
       e.preventDefault();
       setIsDropdownOpen(!isDropdownOpen);
     }
 
-    if (code === 'Escape') {
+    if (code === "Escape") {
       e.preventDefault();
       setIsDropdownOpen(false);
     }
@@ -85,8 +85,10 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
       {isDropdownOpen && (
         <div onClick={handleOverlayClick} className={styles.overlay} />
       )}
-      <label htmlFor={SelectHTMLAttributes.id} className={styles.label}>
-        {label}
+      <div className={styles.container}>
+        <label htmlFor={SelectHTMLAttributes.id} className={styles.label}>
+          {label}
+        </label>
         <select
           {...SelectHTMLAttributes}
           value={inputValue}
@@ -98,7 +100,7 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
         <div className={styles.wraper}>
           <div
             className={`${styles.input} ${
-              isDropdownOpen ? styles.input_open : ''
+              isDropdownOpen ? styles.input_open : ""
             }`}
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
@@ -126,7 +128,7 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
                           ? styles.dropDownItem_disabled
                           : styles.dropDownItem
                       } ${
-                        value === inputValue ? styles.dropDownItem_select : ''
+                        value === inputValue ? styles.dropDownItem_select : ""
                       }`}
                     >
                       <p>{value}</p>
@@ -137,7 +139,7 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
             </div>
           )}
         </div>
-      </label>
+      </div>
     </>
   );
 };
