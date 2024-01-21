@@ -18,7 +18,7 @@ export const UiPage = () => {
     switch2: true,
     switch3: false,
     switch4: true,
-    speciality: "",
+    supervisor: "",
     datetime: "",
   });
 
@@ -130,15 +130,15 @@ export const UiPage = () => {
         {/* TODO  обработать для <select> атрибуты disabled, multiple, required */}
         <InputTypeSelect
           onChange={handleOnChange}
-          name="speciality"
-          label="Специальность"
-          value={inputData.speciality}
+          name="supervisor"
+          label="Руководитель"
+          value={inputData.supervisor}
         >
-          <option>--не выбрана--</option>
-          <option>Оториноларинголог</option>
-          <option>Терапевт</option>
-          <option>Хирург</option>
-          <option>Офтальмолог</option>
+          <option>Александров Александр Александрович</option>
+          <option>Борисов Борис Борисович</option>
+          <option>Васильев Василий Васильевич</option>
+          <option>Денисов Денис Денисович</option>
+          <option>Георгиев Георгий Георгиевич</option>
         </InputTypeSelect>
         <hr />
         {/* <InputTypeDate
