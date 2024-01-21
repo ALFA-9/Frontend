@@ -13,11 +13,11 @@ const InputTypeSwitcher: FC<IInputTypeSwitcher> = ({
   ...InputHTMLAttributes
 }) => {
   return (
-    <label htmlFor={InputHTMLAttributes.id} className={styles.check}>
+    <label htmlFor={InputHTMLAttributes.id} className={styles.label_container}>
       <input
         type="checkbox"
         {...InputHTMLAttributes}
-        className={`${styles.check_input} ${extraClass}`}
+        className={`${styles.original_input} ${extraClass}`}
       />
       <div className={styles.swith}>
         <div className={styles.toogle} />

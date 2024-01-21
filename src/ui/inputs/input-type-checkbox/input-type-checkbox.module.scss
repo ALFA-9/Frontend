@@ -49,9 +49,6 @@
 
 .original_input:disabled + .visible_input {
   background-color: $medium-gray;
-}
-
-.original_input:disabled:checked + .visible_input {
-  border-color: $status-green-10;
   border-color: $dark-gray;
 }
+

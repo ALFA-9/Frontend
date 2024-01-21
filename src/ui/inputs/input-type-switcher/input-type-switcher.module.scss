@@ -1,17 +1,26 @@
-.check_input {
+@import "../../const.scss";
+
+.label_container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 24px;
+  width: fit-content;
+  padding-left: 55px;
+  font-family: $roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.original_input {
   position: absolute;
   width: 1px;
   height: 1px;
   overflow: hidden;
   clip: rect(0 0 0 0);
-}
-
-.check {
-  display: block;
-  position: relative;
-  width: fit-content;
-  font-size: 25px;
-  padding-left: 2.2em;
 }
 
 .swith {
@@ -20,46 +29,36 @@
   align-items: center;
   justify-content: flex-start;
   box-sizing: border-box;
-  width: 2em;
-  height: 1em;
-  margin-left: -2.2em;
-  border: 1px solid #c2c2c2;
-  border-radius: 0.5em;
-  padding: 0 0.05em;
-  background-color: #e4e4e4;
-  transition: 'justify-content' 5s;
+  width: 48px;
+  height: 24px;
+  margin-left: -55px;
+  border: 1px solid $gray;
+  border-radius: 12px;
+  padding: 0 2px;
+  background-color: $status-green-10;
+  border-color: $dark-gray;
 }
 
 .toogle {
   box-sizing: border-box;
-  width: 0.8em;
-  height: 0.8em;
-  border: 1px solid #c2c2c2;
-  background-color: #ffffff;
-  border-radius: 0.5em;
+  width: 19px;
+  height: 19px;
+  border: 1px solid $gray;
+  background-color: $white;
+  border-radius: 50%;
 }
 
-.check_input:checked + .swith {
-  background-color: #19be6f;
-  border-color: #19be6f;
-
+.original_input:checked + .swith {
+  background-color: $status-green-100;
+  border-color: $status-green-100;
   justify-content: flex-end;
-  .toogle {
-    border: none;
-  }
 }
 
-.check_input:focus + .swith {
-  outline: 1px solid #4b4b4b;
+.original_input:focus + .swith {
+  outline: 1px solid $dark-gray;
 }
 
-.check_input:disabled + .swith {
-  background-color: #c2c2c2;
-}
-
-.check_input:disabled:checked + .swith {
-  border-color: #c2c2c2;
-  .toogle {
-    border: none;
-  }
+.original_input:disabled + .swith {
+  background-color: $medium-gray;
+  border-color: $dark-gray;
 }
