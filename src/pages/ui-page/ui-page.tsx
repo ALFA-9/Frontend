@@ -71,6 +71,22 @@ export const UiPage = () => {
           placeholder="Должность"
           label="Должность"
         />
+
+        {/* TODO  обработать для <select> атрибуты disabled, multiple, required */}
+        <InputTypeSelect
+          onChange={handleOnChange}
+          name="supervisor"
+          label="Руководитель"
+          value={inputData.supervisor}
+          size={5}
+        >
+          <option>Александров Александр Александрович</option>
+          <option>Борисов Борис Борисович</option>
+          <option>Васильев Василий Васильевич</option>
+          <option disabled>Георгиев Георгий Георгиевич</option>
+          <option>Денисов Денис Денисович</option>
+          <option>Егоров Егор Егорович</option>
+        </InputTypeSelect>
         <hr />
         <InputTypeCheckbox
           onChange={handleOnChange}
@@ -126,20 +142,7 @@ export const UiPage = () => {
           label="Четвертый"
           disabled
         />
-        <hr />
-        {/* TODO  обработать для <select> атрибуты disabled, multiple, required */}
-        <InputTypeSelect
-          onChange={handleOnChange}
-          name="supervisor"
-          label="Руководитель"
-          value={inputData.supervisor}
-        >
-          <option>Александров Александр Александрович</option>
-          <option>Борисов Борис Борисович</option>
-          <option>Васильев Василий Васильевич</option>
-          <option>Денисов Денис Денисович</option>
-          <option>Георгиев Георгий Георгиевич</option>
-        </InputTypeSelect>
+
         <hr />
         {/* <InputTypeDate
           onChange={handleOnChange}
