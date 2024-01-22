@@ -4,8 +4,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: max-width 0.4s;
 }
 
-.content_main_gallery{
+.content_main_gallery {
   max-width: 912px;
 }

@@ -1,0 +1,44 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/const.scss';
+
+.button {
+  @include reset-button;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  &:hover .svg_wrapper {
+    background-color: $button-secondary-hover;
+  }
+  &:hover .text {
+    color: $light-black;
+  }
+  &:active .svg_wrapper {
+    background-color: $button-secondary-pressed;
+  }
+  &:active .text {
+    color: $light-black;
+  }
+
+  margin: 12px 0px 40px 10px;
+}
+
+.svg_wrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: $button-secondary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg {
+  width: 24px;
+  height: 24px;
+}
+
+.text {
+  @include reset-text;
+  @include text-menu-header-16-500;
+  color: $black;
+}

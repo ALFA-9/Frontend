@@ -1,4 +1,8 @@
 // reset mixins
+$font-regular: 400;
+$font-medium: 500;
+$font-bold: 700;
+
 @mixin reset-list {
   padding-left: 0;
   margin: 0;
@@ -22,57 +26,138 @@
 }
 
 // typography mixins
-@mixin headline {
-  font-family: $styrene;
-  font-weight: 700;
-  letter-spacing: -2.4px;
-}
 
-@mixin headline_xlarge {
-  @include headline;
-  font-size: 40px;
-  line-height: 52px;
-}
-
-@mixin headline_large {
-  @include headline;
-  font-size: 24px;
-  line-height: 31.2px;
-}
-
-@mixin logo-text {
-  font-family: $styrene;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 26px;
-  letter-spacing: -0.025em;
-}
-
-@mixin tiny-text {
+//headline_large in past
+@mixin text-headline-large-24-700 {
+  $f-size: 24px;
   font-family: $roboto;
-  font-size: 12px;
-  line-height: 15.6px;
-  letter-spacing: -0.24px;
+  font-weight: $font-bold;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 130);
+  letter-spacing: calc($f-size / 100 * 2);
 }
 
-@mixin menu-sidebar-text {
+//headline_xlarge in past
+@mixin text-headline-xlarge-40-700 {
+  $f-size: 40px;
   font-family: $roboto;
-  font-size: 14px;
-  line-height: 130%;
-  font-weight: 500;
-  letter-spacing: 0%;
+  font-weight: $font-bold;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 130);
+  letter-spacing: calc($f-size / 100 * 0);
 }
 
-@mixin menu-card-title {
-  @include menu-sidebar-text;
-  line-height: 18.2px;
+@mixin text-search-14-400 {
+  $f-size: 14px;
+  font-family: $roboto;
+  font-weight: $font-regular;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 130);
+  letter-spacing: calc($f-size / 100 * 0);
 }
+
+@mixin text-button-16-400 {
+  $f-size: 16px;
+  font-family: $roboto;
+  font-weight: $font-regular;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 130);
+  letter-spacing: calc($f-size / 100 * 0);
+}
+
+@mixin text-capslock-12-500 {
+  $f-size: 12px;
+  font-family: $roboto;
+  font-weight: $font-medium;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 130);
+  letter-spacing: calc($f-size / 100 * 2);
+}
+
+//tiny-text in past
+@mixin text-tiny-12-400 {
+  $f-size: 12px;
+  font-family: $roboto;
+  font-weight: $font-regular;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 130);
+  letter-spacing: calc($f-size / 100 * -2);
+}
+
+@mixin text-menu-header-16-500 {
+  $f-size: 16px;
+  font-family: $roboto;
+  font-weight: $font-medium;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 130);
+  letter-spacing: calc($f-size / 100 * 0);
+}
+
+@mixin text-menu-tabbar-18-400 {
+  $f-size: 18px;
+  font-family: $roboto;
+  font-weight: $font-regular;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 130);
+  letter-spacing: calc($f-size / 100 * 0);
+}
+
+//menu-sidebar-text in past
+@mixin text-menu-sidebar-14-500 {
+  $f-size: 14px;
+  font-family: $roboto;
+  font-weight: $font-medium;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 130);
+  letter-spacing: calc($f-size / 100 * 0);
+}
+
+@mixin text-big-24-400 {
+  $f-size: 24px;
+  font-family: $roboto;
+  font-weight: $font-regular;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 150);
+  letter-spacing: calc($f-size / 100 * 0);
+}
+
+@mixin text-medium-16-500 {
+  $f-size: 16px;
+  font-family: $roboto;
+  font-weight: $font-medium;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 130);
+  letter-spacing: calc($f-size / 100 * 0);
+}
+
+@mixin text-regular-16-400 {
+  $f-size: 16px;
+  font-family: $roboto;
+  font-weight: $font-regular;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 130);
+  letter-spacing: calc($f-size / 100 * 0);
+}
+
+//other
 
 @mixin button_default {
+  @include text-button-16-400;
   display: inline-block;
   padding: 15px 20px;
   border-radius: 8px;
+}
+
+@mixin page-title-default {
+  @include reset-text;
+  @include text-headline-xlarge-40-700;
+  margin-bottom: 40px;
+}
+
+@mixin logo-text {
   font-family: $roboto;
-  font-size: 16px;
-  line-height: 20.8px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: -0.6px;
 }

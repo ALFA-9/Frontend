@@ -3,7 +3,8 @@
 
 .footer {
   width: 100%;
-  background: $gray url('../../images/decor/footer-decor.svg') right bottom no-repeat;
+  background: $gray url('../../images/decor/footer-decor.svg') right bottom
+    no-repeat;
 }
 
 .container {
@@ -11,15 +12,15 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, 312px);
   grid-template-areas:
-  'logo phone phoneMsk email'
-  'address menuLeft menuRight socials'
-  'schedule menuLeft menuRight .'
-  'copyright copyright copyright copyright';
+    'logo phone phoneMsk email'
+    'address menuLeft menuRight socials'
+    'schedule menuLeft menuRight .'
+    'copyright copyright copyright copyright';
   row-gap: 74px;
   align-items: flex-start;
   padding: 40px 28px 28px;
   margin: 0 auto;
-  @include tiny-text;
+  @include text-tiny-12-400;
   box-sizing: border-box;
 }
 

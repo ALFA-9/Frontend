@@ -3,7 +3,7 @@ export interface MenuNavItemType {
   src?: string
   Svg?: React.VFC<React.SVGProps<SVGSVGElement>>
   nav: string
-  colorGray?: boolean
+  textColorGray?: boolean
 }
 
 export interface MainGalleryItemType {

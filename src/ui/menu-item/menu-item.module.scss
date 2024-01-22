@@ -4,7 +4,7 @@
 .link {
   @include reset-link;
   width: 100%;
-  height: 48px;
+  height: 44px;
   box-sizing: border-box;
   padding: 12px;
   display: flex;
@@ -14,6 +14,13 @@
   &:hover {
     background-color: $light-gray;
   }
+  &:active {
+    background-color: $gray;
+  }
+}
+
+.link_active {
+  background-color: $gray;
 }
 
 .link_gray {
@@ -28,7 +35,7 @@
 }
 
 .text {
-  @include menu-sidebar-text;
+  @include text-menu-sidebar-14-500;
   margin: 0;
   line-height: 24px;
   max-width: 100%;

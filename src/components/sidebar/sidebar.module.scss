@@ -4,6 +4,7 @@
 .content {
   max-width: 194px;
   width: 100%;
+  transition: max-width 0.4s;
 }
 
 .content_main_gallery {
@@ -12,10 +13,13 @@
 
 .title {
   @include reset-text;
-  @include tiny-text;
+  @include text-tiny-12-400;
   text-transform: uppercase;
   color: $dark-gray;
-  letter-spacing: normal;
   font-weight: 400;
   margin: 0 0 12px 12px;
+}
+
+.button {
+  @include reset-button;
 }

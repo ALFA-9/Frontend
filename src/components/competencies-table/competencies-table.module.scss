@@ -1,0 +1,32 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+.container {
+  max-width: 496px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 28px;
+  background-color: $light-gray;
+  border-radius: 16px;
+}
+
+@mixin wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.title_wrapper {
+  @include wrapper;
+  justify-content: space-between;
+  height: 37px;
+}
+
+.average_score_wrapper {
+  @include wrapper;
+  column-gap: 12px;
+}
+
+.title {
+  @include reset-text;
+  @include text-headline-large-24-700;
+}
