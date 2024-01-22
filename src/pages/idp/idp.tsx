@@ -12,6 +12,8 @@ const Idp: FC = () => {
         <TabPane title='В работе'>
           <p className={styles.message}>
             У вас сейчас нет назначенного индивидуального плана развития.
+          </p>
+          <p className={styles.message}>
             Подайте заявку вашему руководителю.
           </p>
         </TabPane>
