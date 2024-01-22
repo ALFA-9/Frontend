@@ -1,0 +1,17 @@
+@import '../../../styles/const.scss';
+@import '../../../styles/mixins.scss';
+
+.tab {
+  @include reset-button;
+  font-family: $styrene;
+  font-size: 18px;
+  line-height: 23.4px;
+  letter-spacing: -.36px;
+  padding-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.active {
+  border-bottom: 2px solid $primary-color;
+}
