@@ -14,11 +14,12 @@ import team from '../images/icons/sidebar-main/team.png'
 import wallet from '../images/icons/sidebar-main/wallet.png'
 
 import apps from '../images/icons/sidebar-main/apps.png'
+import { routes } from './const-routes'
 
 export const mainSidebarMoreButton: MenuNavItemType = {
   name: 'ещё 23',
   src: apps,
-  nav: '#'
+  nav: '#',
 }
 
 export const mainSidebarItems: MenuNavItemType[] = [
@@ -45,7 +46,7 @@ export const mainSidebarItems: MenuNavItemType[] = [
   {
     name: 'Индивидуальный план развития',
     src: actionPlan,
-    nav: '/idp/idp',
+    nav: routes.employeeIdp,
   },
   {
     name: 'Бенефиты',
@@ -87,5 +88,5 @@ export const mainSidebarItems: MenuNavItemType[] = [
     src: apps,
     nav: '#',
     colorGray: true,
-  }
+  },
 ]

@@ -10,3 +10,20 @@ export interface MainGalleryItemType {
   name: string
   src: string
 }
+
+export interface routesType {
+  main: string
+  employee: string
+  employeeIdp: string
+  employeeIdpTasks: string
+  employeeIdpForm: string
+  employeeIdpFormDone: string
+  employeeCompetencies: string
+  head: string
+  headStats: string
+  headEmployees: string
+  headEmployeesId: string
+  headEmployeesIdTasks: string
+  headEmployeesIdForm: string
+  headEmployeesIdFormDone: string
+}
