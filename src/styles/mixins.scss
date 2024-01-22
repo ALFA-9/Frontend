@@ -28,7 +28,7 @@ $font-bold: 700;
 // typography mixins
 
 //headline_large in past
-@mixin text-headline-large-24-700 {
+@mixin text-h2-24-700 {
   $f-size: 24px;
   font-family: $roboto;
   font-weight: $font-bold;
@@ -38,7 +38,7 @@ $font-bold: 700;
 }
 
 //headline_xlarge in past
-@mixin text-headline-xlarge-40-700 {
+@mixin text-h1-40-700 {
   $f-size: 40px;
   font-family: $roboto;
   font-weight: $font-bold;
@@ -150,7 +150,7 @@ $font-bold: 700;
 
 @mixin page-title-default {
   @include reset-text;
-  @include text-headline-xlarge-40-700;
+  @include text-h1-40-700;
   margin-bottom: 40px;
 }
 
