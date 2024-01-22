@@ -3,6 +3,11 @@
 
 .footer {
   width: 100%;
+  background: $gray url('../../images/decor/footer-decor.svg') right bottom no-repeat;
+}
+
+.container {
+  max-width: 1280px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 312px);
   grid-template-areas:
@@ -12,10 +17,10 @@
   'copyright copyright copyright copyright';
   row-gap: 74px;
   align-items: flex-start;
+  padding: 40px 28px 28px;
+  margin: 0 auto;
   @include tiny-text;
-  padding: 40px calc((100vw - 1224px) / 2) 28px;
   box-sizing: border-box;
-  background: $gray url('../../images/decor/footer-decor.svg') right bottom no-repeat;
 }
 
 .logo {

@@ -1,0 +1,25 @@
+@import '../../../styles/const.scss';
+@import '../../../styles/mixins.scss';
+
+.button {
+  @include reset-link;
+  @include button_default;
+  background-color: $button-accent;
+  color: $white;
+
+  &:hover {
+    background-color: $button-accent-hover;
+  }
+
+  &:focus {
+    background-color: $button-accent-pressed;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: $medium-gray;
+  background-color: $button-accent-disabled;
+}

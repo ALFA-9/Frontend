@@ -6,7 +6,7 @@ export const idpSidebarItems: MenuNavItemType[] = [
   {
     name: 'ИПР',
     Svg: Idp,
-    nav: '/idp/idp/in-progress',
+    nav: '/idp/idp',
   },
   {
     name: 'Компетенции',

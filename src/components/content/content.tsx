@@ -2,10 +2,8 @@ import { FC } from 'react'
 import styles from './content.module.scss'
 import { Outlet, Route, Routes, useLocation } from 'react-router-dom'
 import MainGallery from '../../pages/main-gallery/main-gallery'
-import inProgress from '../../images/_temp/in-progress.jpg'
-import idpImg from '../../images/_temp/idp.jpg'
+import Idp from '../../pages/idp/idp'
 import competenciesImg from '../../images/_temp/competencies.jpg'
-import completeImg from '../../images/_temp/complete.jpg'
 import { UiPage } from '../../pages/ui-page/ui-page'
 const Content: FC = () => {
   const location = useLocation()
@@ -17,25 +15,8 @@ const Content: FC = () => {
       }`}>
       <Routes>
         <Route path='/' element={<MainGallery />} />
+        <Route path='/idp/idp' element={<Idp />} />
         <Route path='/idp/ui' element={<UiPage />} />
-        <Route
-          path='/idp/idp'
-          element={
-            <div>
-              <img src={idpImg} alt='#' />
-              <Outlet />
-            </div>
-          }>
-          <Route
-            path='/idp/idp/in-progress'
-            element={<img src={inProgress} alt='#' />}
-          />
-          <Route
-            path='/idp/idp/complete'
-            element={<img src={completeImg} alt='#' />}
-          />
-        </Route>
-        <Route />
         <Route
           path='/idp/competencies'
           element={<img src={competenciesImg} alt='#' />}
