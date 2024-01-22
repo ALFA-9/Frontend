@@ -4,7 +4,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 23px;
 }
 
 .title {
@@ -16,7 +16,7 @@
 .header_wrapper {
   width: 100%;
   display: flex;
-  column-gap: 27px;
+  column-gap: 35px;
   align-items: flex-end;
   margin-bottom: 24px;
 }

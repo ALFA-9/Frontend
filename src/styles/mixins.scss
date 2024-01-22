@@ -34,7 +34,7 @@ $font-bold: 700;
   font-weight: $font-bold;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 130);
-  letter-spacing: calc($f-size / 100 * 2);
+  letter-spacing: calc($f-size / 100 * 0);
 }
 
 //headline_xlarge in past
@@ -44,7 +44,7 @@ $font-bold: 700;
   font-weight: $font-bold;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 130);
-  letter-spacing: calc($f-size / 100 * 0);
+  letter-spacing: calc($f-size / 100 * 2);
 }
 
 @mixin text-search-14-400 {
