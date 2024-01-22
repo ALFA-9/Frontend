@@ -4,6 +4,7 @@ import InputTypeText from "../../ui/inputs/input-type-text/input-type-text";
 import InputTypeCheckbox from "../../ui/inputs/input-type-checkbox/input-type-checkbox";
 import InputTypeSwitcher from "../../ui/inputs/input-type-switcher/input-type-switcher";
 import InputTypeSelect from "../../ui/inputs/input-type-select/input-type-select";
+import { InputTypeTextaria } from "../../ui/inputs/input-type-textaria/input-type-textaria";
 
 export const UiPage = () => {
   const [inputData, setInputData] = useState({
@@ -18,7 +19,8 @@ export const UiPage = () => {
     switch2: true,
     switch3: false,
     switch4: true,
-    supervisor: "",
+    supervisor1: "",
+    supervisor2: "",
     datetime: "",
   });
 
@@ -75,9 +77,9 @@ export const UiPage = () => {
         {/* TODO  обработать для <select> атрибуты disabled, multiple, required */}
         <InputTypeSelect
           onChange={handleOnChange}
-          name="supervisor"
+          name="supervisor1"
           label="Руководитель"
-          value={inputData.supervisor}
+          value={inputData.supervisor1}
           size={5}
         >
           <option>Александров Александр Александрович</option>
@@ -90,9 +92,9 @@ export const UiPage = () => {
 
         <InputTypeSelect
           onChange={handleOnChange}
-          name="supervisor"
-          label="Руководитель"
-          value={inputData.supervisor}
+          name="supervisor2"
+          label="Руководитель2"
+          value={inputData.supervisor2}
           size={5}
         >
           <option>Александров Александр Александрович</option>
@@ -102,6 +104,11 @@ export const UiPage = () => {
           <option>Денисов Денис Денисович</option>
           <option>Егоров Егор Егорович</option>
         </InputTypeSelect>
+
+
+
+        <InputTypeTextaria />
+
         <hr />
         <InputTypeCheckbox
           onChange={handleOnChange}

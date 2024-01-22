@@ -1,0 +1,16 @@
+@import '../../../styles/const.scss';
+
+.textarea {
+  display: block;
+  width: calc(100% - 1px);
+
+  overflow: auto;
+  resize: none;
+  min-height: 40px;
+  max-height: 300px;
+  line-height: 20px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1px 6px;
+}
