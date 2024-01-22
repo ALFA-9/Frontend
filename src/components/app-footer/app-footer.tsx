@@ -7,10 +7,11 @@ import Twitter from '../../images/icons/twitter.svg';
 const AppFooter: FC = () => {
   return (
     <footer className={styles.footer}>
-      <div className={styles.logo}>
-        <Logo className={styles.logoIcon} />
-        <p className={styles.logoText}>Alfа People</p>
-      </div>
+      <div className={styles.container}>
+        <div className={styles.logo}>
+          <Logo className={styles.logoIcon} />
+          <p className={styles.logoText}>Alfа People</p>
+        </div>
       <div className={styles.phone}>
         <p className={styles.text}>Звонок по России бесплатный</p>
         <p className={styles.text}>+7 800 120-52-50</p>
@@ -82,6 +83,7 @@ const AppFooter: FC = () => {
       <div className={styles.copyright}>
         <p className={styles.copyrightText}>&copy; 1994 – 2023 Общество с ограниченной ответственностью “Альфа Пипл”</p>
         <p className={styles.copyrightText}>Политика в области персональных данных</p>
+      </div>
       </div>
     </footer>
   )

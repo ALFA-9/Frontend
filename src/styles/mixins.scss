@@ -24,19 +24,20 @@
 // typography mixins
 @mixin headline {
   font-family: $styrene;
-  line-height: 31.2px;
   font-weight: 700;
-  letter-spacing: -1.44px;
+  letter-spacing: -2.4px;
 }
 
 @mixin headline_xlarge {
   @include headline;
   font-size: 40px;
+  line-height: 52px;
 }
 
 @mixin headline_large {
   @include headline;
   font-size: 24px;
+  line-height: 31.2px;
 }
 
 @mixin logo-text {
@@ -65,4 +66,13 @@
 @mixin menu-card-title {
   @include menu-sidebar-text;
   line-height: 18.2px;
+}
+
+@mixin button_default {
+  display: inline-block;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-family: $roboto;
+  font-size: 16px;
+  line-height: 20.8px;
 }

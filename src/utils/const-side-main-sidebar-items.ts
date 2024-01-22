@@ -18,7 +18,7 @@ import apps from '../images/icons/sidebar-main/apps.png'
 export const mainSidebarMoreButton: MenuNavItemType = {
   name: 'ещё 23',
   src: apps,
-  nav: '#',
+  nav: '#'
 }
 
 export const mainSidebarItems: MenuNavItemType[] = [
@@ -45,7 +45,7 @@ export const mainSidebarItems: MenuNavItemType[] = [
   {
     name: 'Индивидуальный план развития',
     src: actionPlan,
-    nav: '/idp/idp/in-progress',
+    nav: '/idp/idp',
   },
   {
     name: 'Бенефиты',
@@ -87,5 +87,5 @@ export const mainSidebarItems: MenuNavItemType[] = [
     src: apps,
     nav: '#',
     colorGray: true,
-  },
+  }
 ]
