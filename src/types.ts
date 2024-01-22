@@ -27,3 +27,13 @@ export interface routesType {
   headEmployeesIdForm: string
   headEmployeesIdFormDone: string
 }
+
+export interface ScoreType {
+  name: string
+  score: number
+}
+
+export interface CompetenciesType {
+  title: string
+  scors: ScoreType[]
+}
