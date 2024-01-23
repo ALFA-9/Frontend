@@ -1,16 +1,63 @@
-@import '../../../styles/const.scss';
+@import "../../../styles/const.scss";
+
+.container {
+  padding: 20px 20px 54px 20px;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 200px;
+  max-height: 400px;
+  border-radius: 16px;
+  border: 1px solid $dark-gray;
+}
+
+
 
 .textarea {
-  display: block;
-  width: calc(100% - 1px);
-
+  display: inline-block;
+  min-width: 50;
+  width: 100%;
   overflow: auto;
   resize: none;
-  min-height: 40px;
-  max-height: 300px;
+  min-height: calc(200px - 74px);
+  max-height: calc(400px - 74px);
   line-height: 20px;
-  border: 1px solid #ccc;
   font-family: inherit;
   font-size: inherit;
-  padding: 1px 6px;
+
+
+  outline: none;
+}
+
+.textarea[contenteditable]:active {
+  outline: none;
+}
+
+/*
+.container:has(.textarea[contenteditable]:empty) {
+  background-color: $light-gray;
+}
+*/
+
+.textarea[contenteditable]:empty::before {
+  content: attr(placeholder);
+  color: gray;
+}
+
+.textarea::-webkit-scrollbar {
+  height: 3px;
+  width: 3px;
+  transform: translate(20px, 20px);
+}
+
+.textarea::-webkit-scrollbar-track {
+  background: $white;
+  transform: translate(20px, 20px);
+}
+
+.textarea::-webkit-scrollbar-thumb {
+  background: $dark-gray;
+  width: 30%;
+  border-radius: 10px;
+  transform: translate(20px, 20px);
 }

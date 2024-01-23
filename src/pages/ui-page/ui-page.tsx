@@ -21,23 +21,24 @@ export const UiPage = () => {
     switch4: true,
     supervisor1: "",
     supervisor2: "",
-    datetime: "",
+    beta: "",
   });
 
   const handleOnChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e:
+      | React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+      | React.FormEvent<HTMLParagraphElement>
   ) => {
-    const {
-      name,
-      value,
-      type,
-      checked,
-    }: { name: string; value: string; type: string; checked?: boolean } =
-      e.target;
+    const { id, name, value, type, checked, textContent, role }: any = e.target;
 
     setInputData({
       ...inputData,
-      [name]: type === "checkbox" ? checked : value,
+      [id || name]:
+        type === "checkbox"
+          ? checked
+          : role === "textaria"
+          ? textContent
+          : value,
     });
   };
 
@@ -45,7 +46,7 @@ export const UiPage = () => {
     <div className={styles.page}>
       <h1>Страница для тестирования UI компонентов</h1>
       <hr />
-      <p>-- {JSON.stringify(inputData)} --</p>
+      {/* <p>-- {JSON.stringify(inputData)} --</p> */}
 
       <form className={styles.container}>
         <InputTypeText
@@ -78,6 +79,7 @@ export const UiPage = () => {
         <InputTypeSelect
           onChange={handleOnChange}
           name="supervisor1"
+          id="supervisor1"
           label="Руководитель"
           value={inputData.supervisor1}
           size={5}
@@ -93,6 +95,7 @@ export const UiPage = () => {
         <InputTypeSelect
           onChange={handleOnChange}
           name="supervisor2"
+          id="supervisor2"
           label="Руководитель2"
           value={inputData.supervisor2}
           size={5}
@@ -105,9 +108,11 @@ export const UiPage = () => {
           <option>Егоров Егор Егорович</option>
         </InputTypeSelect>
 
-
-
-        <InputTypeTextaria />
+        <InputTypeTextaria
+          value={inputData.beta}
+          id="beta"
+          placeholder="Введите текст письма"
+          onInput={handleOnChange} />
 
         <hr />
         <InputTypeCheckbox

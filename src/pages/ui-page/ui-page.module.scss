@@ -4,6 +4,7 @@
 .page {
   @include reset-text;
   @include tiny-text;
+  width: 100%;
 }
 
 .container {
