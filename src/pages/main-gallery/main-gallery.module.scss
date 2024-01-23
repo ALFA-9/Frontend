@@ -4,24 +4,19 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 23px;
 }
 
 .title {
   @include reset-text;
-  color: $black;
-  font-family: $styrene;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 130%;
-  letter-spacing: -2.4px;
+  @include page-title-default;
+  margin: 0;
 }
 
 .header_wrapper {
   width: 100%;
   display: flex;
-  column-gap: 27px;
+  column-gap: 35px;
   align-items: flex-end;
   margin-bottom: 24px;
 }

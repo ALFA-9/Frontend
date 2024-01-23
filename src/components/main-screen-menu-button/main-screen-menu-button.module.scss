@@ -3,8 +3,7 @@
 
 .link {
   @include reset-link;
-  @include menu-sidebar-text;
-  line-height: 18px;
+  @include text-menu-sidebar-14-500;
   padding: 12px 20px;
   border-radius: 32px;
   background-color: $gray;

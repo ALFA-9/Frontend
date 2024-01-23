@@ -1,0 +1,14 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+.title {
+  @include page-title-default;
+  width: 100%;
+}
+
+.table_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+}

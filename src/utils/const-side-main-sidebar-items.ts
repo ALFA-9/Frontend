@@ -87,6 +87,6 @@ export const mainSidebarItems: MenuNavItemType[] = [
     name: 'ещё 23',
     src: apps,
     nav: '#',
-    colorGray: true,
+    textColorGray: true,
   },
 ]

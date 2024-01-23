@@ -1,28 +1,4 @@
 @font-face {
-  font-family: 'Styrene A Web';
-  src: url('../vendor/fonts/StyreneAWeb/StyreneAWeb-Regular.woff2') format('woff2'),
-       url('../vendor/fonts/StyreneAWeb/StyreneAWeb-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Styrene A Web';
-  src: url('../vendor/fonts/StyreneAWeb/StyreneAWeb-Medium.woff2') format('woff2'),
-       url('../vendor/fonts/StyreneAWeb/StyreneAWeb-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Styrene A Web';
-  src: url('../vendor/fonts/StyreneAWeb/StyreneAWeb-Bold.woff2') format('woff2'),
-       url('../vendor/fonts/StyreneAWeb/StyreneAWeb-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'Roboto';
   src: url('../vendor/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
   font-weight: 400;
@@ -38,8 +14,8 @@
 
 @font-face {
   font-family: 'Roboto';
-  src: url('../vendor/fonts/Roboto/RobotoMono-SemiBold.ttf') format('truetype');
-  font-weight: 600;
+  src: url('../vendor/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+  font-weight: 700;
   font-style: normal;
 }
 

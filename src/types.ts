@@ -3,7 +3,7 @@ export interface MenuNavItemType {
   src?: string
   Svg?: React.VFC<React.SVGProps<SVGSVGElement>>
   nav: string
-  colorGray?: boolean
+  textColorGray?: boolean
 }
 
 export interface MainGalleryItemType {
@@ -26,4 +26,14 @@ export interface routesType {
   headEmployeesIdTasks: string
   headEmployeesIdForm: string
   headEmployeesIdFormDone: string
+}
+
+export interface ScoreType {
+  name: string
+  score: number
+}
+
+export interface CompetenciesType {
+  title: string
+  scors: ScoreType[]
 }

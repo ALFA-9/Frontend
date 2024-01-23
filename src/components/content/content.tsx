@@ -6,6 +6,7 @@ import Idp from '../../pages/idp/idp'
 import competenciesImg from '../../images/_temp/competencies.jpg'
 import { UiPage } from '../../pages/ui-page/ui-page'
 import { routes } from '../../utils/const-routes'
+import EmployeeCompetencies from '../../pages/employee-competencies/employee-competencies'
 
 const Content: FC = () => {
   const location = useLocation()
@@ -25,7 +26,7 @@ const Content: FC = () => {
         <Route path='/idp/ui' element={<UiPage />} />
         <Route
           path={routes.employeeCompetencies}
-          element={<img src={competenciesImg} alt='#' />}
+          element={<EmployeeCompetencies />}
         />
         <Route path={routes.employeeIdpForm} element={<h1>employeeForm</h1>} />
         <Route

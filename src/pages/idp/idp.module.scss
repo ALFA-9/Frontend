@@ -6,9 +6,7 @@
 }
 
 .title {
-  @include reset-text;
-  @include headline_xlarge;
-  margin-bottom: 40px;
+  @include page-title-default;
 }
 
 .message {

@@ -73,7 +73,7 @@
 }
 
 @mixin text {
-  @include tiny-text;
+  @include text-tiny-12-400;
   line-height: 16px;
   margin: 0;
 }
@@ -105,14 +105,14 @@
 
 .title {
   @include reset-text;
-  @include menu-card-title;
+  @include text-menu-sidebar-14-500;
   color: $black;
   margin-top: 10px;
 }
 
 .title_big {
   @include reset-text;
-  @include headline_large;
+  @include text-h2-24-700;
   color: $white;
   white-space: nowrap;
   overflow: hidden;

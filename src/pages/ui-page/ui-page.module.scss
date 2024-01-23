@@ -3,12 +3,12 @@
 
 .page {
   @include reset-text;
-  @include tiny-text;
+  @include text-tiny-12-400;
   width: 100%;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  gap: 7px
+  gap: 7px;
 }
