@@ -7,6 +7,7 @@ import competenciesImg from '../../images/_temp/competencies.jpg'
 import { UiPage } from '../../pages/ui-page/ui-page'
 import { routes } from '../../utils/const-routes'
 import EmployeeCompetencies from '../../pages/employee-competencies/employee-competencies'
+import HeadEmployees from '../../pages/head-empoyees/head-empoyees'
 
 const Content: FC = () => {
   const location = useLocation()
@@ -33,9 +34,10 @@ const Content: FC = () => {
           path={routes.employeeIdpFormDone}
           element={<h1>employeeFormDone</h1>}
         />
+        <Route path={routes.head} element={<h1>Head</h1>} />
+        <Route path={routes.headEmployees} element={<HeadEmployees />} />
       </Routes>
     </section>
   )
 }
-UiPage
 export default Content
