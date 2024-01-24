@@ -1,163 +1,187 @@
-import React, { FC, useMemo, useState } from 'react'
-import { Input, Tree } from 'antd'
-import type { TreeDataNode } from 'antd'
-import style from './empoyees-list.module.scss'
-import Jpg from '../../images/icons/logo.svg'
-import { DownOutlined, MehOutlined } from '@ant-design/icons'
+//@ts-nocheck
 
-function example() {
-  return <div>123</div>
-}
+import React, { useState, useEffect } from 'react'
+import { Tree } from 'primereact/tree'
+//import { NodeService } from './service/NodeService'
 
-const { Search } = Input
+export default function FilterDemo() {
+  const [nodes, setNodes] = useState([])
 
-const x = 0
-const y = 0
-const z = 0
-const defaultData: TreeDataNode[] = [
-  {
-    title: '123',
-    key: 'Name0',
-    icon: <MehOutlined />,
-    children: [{ title: 'Name0-1', key: 'Name0-1', icon: <MehOutlined /> }],
-  },
-  { title: 'Name1', key: 'Name1', icon: <MehOutlined /> },
-]
+  const data = [
+    {
+      key: '0',
+      label: 'Documents',
+      data: 'Documents Folder',
+      icon: 'pi pi-fw pi-inbox',
 
-const generateData = (
-  _level: number,
-  _preKey?: React.Key,
-  _tns?: TreeDataNode[]
-) => {
-  const preKey = _preKey || '0'
-  const tns = _tns || defaultData
-
-  const children: React.Key[] = []
-  for (let i = 0; i < x; i++) {
-    const key = `${preKey}-${i}`
-    tns.push({ title: key, key })
-    if (i < y) {
-      children.push(key)
-    }
-  }
-  if (_level < 0) {
-    return tns
-  }
-  const level = _level - 1
-  children.forEach((key, index) => {
-    tns[index].children = []
-    return generateData(level, key, tns[index].children)
-  })
-}
-generateData(z)
-
-const dataList: { key: React.Key; title: string }[] = []
-const generateList = (data: TreeDataNode[]) => {
-  for (let i = 0; i < data.length; i++) {
-    const node = data[i]
-    const { key } = node
-    dataList.push({ key, title: key as string })
-    if (node.children) {
-      generateList(node.children)
-    }
-  }
-}
-generateList(defaultData)
-
-const getParentKey = (key: React.Key, tree: TreeDataNode[]): React.Key => {
-  let parentKey: React.Key
-  for (let i = 0; i < tree.length; i++) {
-    const node = tree[i]
-    if (node.children) {
-      if (node.children.some((item) => item.key === key)) {
-        parentKey = node.key
-      } else if (getParentKey(key, node.children)) {
-        parentKey = getParentKey(key, node.children)
-      }
-    }
-  }
-  return parentKey!
-}
-
-const EmployeesList: React.FC = () => {
-  const [expandedKeys, setExpandedKeys] = useState<React.Key[]>([])
-  const [searchValue, setSearchValue] = useState('')
-  const [autoExpandParent, setAutoExpandParent] = useState(true)
-
-  const onExpand = (newExpandedKeys: React.Key[]) => {
-    setExpandedKeys(newExpandedKeys)
-    setAutoExpandParent(false)
-  }
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target
-    const newExpandedKeys = dataList
-      .map((item) => {
-        if (item.title.indexOf(value) > -1) {
-          return getParentKey(item.key, defaultData)
-        }
-        return null
-      })
-      .filter(
-        (item, i, self): item is React.Key =>
-          !!(item && self.indexOf(item) === i)
-      )
-    setExpandedKeys(newExpandedKeys)
-    setSearchValue(value)
-    setAutoExpandParent(true)
-  }
-
-  const treeData = useMemo(() => {
-    const loop = (data: TreeDataNode[]): TreeDataNode[] =>
-      data.map((item) => {
-        const strTitle = item.title as string
-        const index = strTitle.indexOf(searchValue)
-        const beforeStr = strTitle.substring(0, index)
-        const afterStr = strTitle.slice(index + searchValue.length)
-        const title =
-          index > -1 ? (
-            <span>
-              {beforeStr}
-              <span className={style['site-tree-search-value']}>
-                {searchValue}
-              </span>
-              {afterStr}
-            </span>
-          ) : (
-            <>
-              <span>{strTitle}</span>
-            </>
-          )
-        if (item.children) {
-          return { title, key: item.key, children: loop(item.children) }
-        }
-
-        return {
-          title,
-          key: item.key,
-        }
-      })
-
-    return loop(defaultData)
-  }, [searchValue])
+      children: [
+        {
+          key: '0-0',
+          label: 'Work',
+          data: 'Work Folder',
+          icon: 'pi pi-fw pi-cog',
+          children: [
+            {
+              key: '0-0-0',
+              label: 'Expenses.doc',
+              icon: 'pi pi-fw pi-file',
+              data: 'Expenses Document',
+            },
+            {
+              key: '0-0-1',
+              label: 'Resume.doc',
+              icon: 'pi pi-fw pi-file',
+              data: 'Resume Document',
+            },
+          ],
+        },
+        {
+          key: '0-1',
+          label: 'Home',
+          data: 'Home Folder',
+          icon: 'pi pi-fw pi-home',
+          children: [
+            {
+              key: '0-1-0',
+              label: 'Invoices.txt',
+              icon: 'pi pi-fw pi-file',
+              data: 'Invoices for this month',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      key: '1',
+      label: 'Events',
+      data: 'Events Folder',
+      icon: 'pi pi-fw pi-calendar',
+      children: [
+        {
+          key: '1-0',
+          label: 'Meeting',
+          icon: 'pi pi-fw pi-calendar-plus',
+          data: 'Meeting',
+        },
+        {
+          key: '1-1',
+          label: 'Product Launch',
+          icon: 'pi pi-fw pi-calendar-plus',
+          data: 'Product Launch',
+        },
+        {
+          key: '1-2',
+          label: 'Report Review',
+          icon: 'pi pi-fw pi-calendar-plus',
+          data: 'Report Review',
+        },
+      ],
+    },
+    {
+      key: '2',
+      label: 'Movies',
+      data: 'Movies Folder',
+      icon: 'pi pi-fw pi-star-fill',
+      children: [
+        {
+          key: '2-0',
+          icon: 'pi pi-fw pi-star-fill',
+          label: 'Al Pacino',
+          data: 'Pacino Movies',
+          children: [
+            {
+              key: '2-0-0',
+              label: 'Scarface',
+              icon: 'pi pi-fw pi-video',
+              data: 'Scarface Movie',
+            },
+            {
+              key: '2-0-1',
+              label: 'Serpico',
+              icon: 'pi pi-fw pi-video',
+              data: 'Serpico Movie',
+            },
+          ],
+        },
+        {
+          key: '2-1',
+          label: 'Robert De Niro',
+          icon: 'pi pi-fw pi-star-fill',
+          data: 'De Niro Movies',
+          children: [
+            {
+              key: '2-1-0',
+              label: 'Goodfellas',
+              icon: 'pi pi-fw pi-video',
+              data: 'Goodfellas Movie',
+            },
+            {
+              key: '2-1-1',
+              label: 'Untouchables',
+              icon: 'pi pi-fw pi-video',
+              data: 'Untouchables Movie',
+            },
+          ],
+        },
+      ],
+    },
+  ]
 
   return (
-    <div className={style.tree}>
-      <Search
-        style={{ marginBottom: 8 }}
-        placeholder='Search'
-        onChange={onChange}
-      />
+    <div className='card flex flex-wrap justify-content-center gap-5'>
       <Tree
-        showIcon
-        onExpand={onExpand}
-        expandedKeys={expandedKeys}
-        autoExpandParent={autoExpandParent}
-        switcherIcon={<DownOutlined />}
-        treeData={treeData}
+        nodeTemplate={nodeTemplate}
+        value={data}
+        filter
+        filterMode='lenient'
+        filterPlaceholder='Lenient Filter'
+        className='w-full md:w-30rem'
       />
     </div>
   )
 }
 
-export default EmployeesList
+const nodeTemplate = (node, options) => {
+  let label = <b>{node.data}</b>
+
+  if (node.url) {
+    label = (
+      <a
+        href={node.url}
+        className='text-700 hover:text-primary'
+        target='_blank'
+        rel='noopener noreferrer'>
+        {node.label}
+      </a>
+    )
+  }
+
+  return (
+    <>
+      <span className={options.className}>{label}</span>
+      <div>+</div>
+    </>
+  )
+}
+
+const togglerTemplate = (node, options) => {
+  if (!node) {
+    return
+  }
+
+  const expanded = options.expanded
+  const iconClassName = classNames('p-tree-toggler-icon pi pi-fw', {
+    'pi-caret-right': !expanded,
+    'pi-caret-down': expanded,
+  })
+
+  return (
+    <button
+      type='button'
+      className='p-tree-toggler p-link'
+      tabIndex={-1}
+      onClick={options.onClick}>
+      <span className={iconClassName} aria-hidden='true'></span>
+    </button>
+  )
+}
