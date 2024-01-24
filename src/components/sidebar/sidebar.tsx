@@ -9,7 +9,10 @@ import styles from './sidebar.module.scss'
 import SidebarList from '../sidebar-list/sidebar-list'
 import { mainSidebarItems } from '../../utils/const-side-main-sidebar-items'
 import { FC } from 'react'
-import { idpSidebarItems } from '../../utils/const-idp-sidebar-items'
+import {
+  headSidebarItems,
+  idpSidebarItems,
+} from '../../utils/const-sidebar-items'
 import { routes } from '../../utils/const-routes'
 import ButtonAccent from '../../ui/buttons/button-accent/button-accent'
 import ButtonBack from '../../ui/buttons/button-back/button-back'
@@ -43,6 +46,10 @@ const Sidebar: FC = () => {
         <Route
           path={routes.employee + '/*'}
           element={<SidebarList mainSidebarItems={idpSidebarItems} />}
+        />
+        <Route
+          path={routes.head + '/*'}
+          element={<SidebarList mainSidebarItems={headSidebarItems} />}
         />
       </Routes>
     </nav>

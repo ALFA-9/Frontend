@@ -1,6 +1,9 @@
 import { MenuNavItemType } from '../types'
 import Idp from '../images/icons/sidebar-idp/IPR.svg'
 import Competencies from '../images/icons/sidebar-idp/skills.svg'
+
+import Employees from '../images/icons/sidebar-head/employees.svg'
+import Statistics from '../images/icons/sidebar-head/statistics.svg'
 import { routes } from './const-routes'
 
 export const idpSidebarItems: MenuNavItemType[] = [
@@ -18,5 +21,23 @@ export const idpSidebarItems: MenuNavItemType[] = [
     name: 'Тестирование UI',
     Svg: Competencies,
     nav: '/idp/ui',
+  },
+  {
+    name: 'Руководитель',
+    Svg: Competencies,
+    nav: routes.headStats,
+  },
+]
+
+export const headSidebarItems: MenuNavItemType[] = [
+  {
+    name: 'Статистика',
+    Svg: Statistics,
+    nav: routes.headStats,
+  },
+  {
+    name: 'Мои сотрудники',
+    Svg: Employees,
+    nav: routes.headEmployees,
   },
 ]
