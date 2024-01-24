@@ -1,12 +1,12 @@
-import { FC } from 'react'
-import styles from './head-empoyees.module.scss'
+import { FC, useCallback, useEffect, useMemo, useState } from 'react'
+//import styles from './head-empoyees.module.scss'
 import EmployeesList from '../../components/empoyees-list/empoyees-list'
-
+import { CalendarDesktop } from '@alfalab/core-components-calendar/desktop'
+//<EmployeesList />
 const HeadEmployees: FC = () => {
   return (
     <>
-      <h1 className={styles.title}>Мои сотрудники</h1>
-      <EmployeesList />
+      <h1>Мои сотрудники</h1>
     </>
   )
 }

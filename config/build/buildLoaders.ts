@@ -21,7 +21,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
   }
 
   const scssLoader = {
-    test: /\.s[ac]ss$/i,
+    test: /\.s?css$/i,
     use: [
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       {
@@ -38,6 +38,23 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
       'sass-loader',
       'postcss-loader',
     ],
+    include: /\.module\.s?css$/,
+  }
+
+  const cssLoader = {
+    test: /\.s?css$/i,
+    use: [
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1,
+        },
+      },
+      'sass-loader',
+      'postcss-loader',
+    ],
+    exclude: /\.module\.s?css$/,
   }
 
   const tsLoader = {
@@ -64,5 +81,12 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     },
   }
 
-  return [scssLoader, assetsLoader, tsLoader, fontsLoader, svgLoader]
+  return [
+    scssLoader,
+    cssLoader,
+    assetsLoader,
+    tsLoader,
+    fontsLoader,
+    svgLoader,
+  ]
 }
