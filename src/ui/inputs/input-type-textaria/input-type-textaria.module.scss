@@ -12,7 +12,6 @@
 }
 
 
-
 .textarea {
   display: inline-block;
   min-width: 50;
@@ -24,9 +23,15 @@
   line-height: 20px;
   font-family: inherit;
   font-size: inherit;
-
-
+  margin: 0;
+  color: $black;
   outline: none;
+  font-family: $roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .textarea[contenteditable]:active {
@@ -41,23 +46,26 @@
 
 .textarea[contenteditable]:empty::before {
   content: attr(placeholder);
-  color: gray;
+  color: $dark-gray;
+  font-family: $roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .textarea::-webkit-scrollbar {
   height: 3px;
   width: 3px;
-  transform: translate(20px, 20px);
 }
 
 .textarea::-webkit-scrollbar-track {
   background: $white;
-  transform: translate(20px, 20px);
 }
 
 .textarea::-webkit-scrollbar-thumb {
   background: $dark-gray;
   width: 30%;
   border-radius: 10px;
-  transform: translate(20px, 20px);
 }
