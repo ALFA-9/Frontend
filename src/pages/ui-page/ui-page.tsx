@@ -21,7 +21,7 @@ export const UiPage = () => {
     switch4: true,
     supervisor1: "",
     supervisor2: "",
-    beta: "",
+    textaria: "",
   });
 
   const handleOnChange = (
@@ -46,7 +46,7 @@ export const UiPage = () => {
     <div className={styles.page}>
       <h1>Страница для тестирования UI компонентов</h1>
       <hr />
-      {/* <p>-- {JSON.stringify(inputData)} --</p> */}
+      <p>-- {JSON.stringify(inputData)} --</p>
 
       <form className={styles.container}>
         <InputTypeText
@@ -109,10 +109,12 @@ export const UiPage = () => {
         </InputTypeSelect>
 
         <InputTypeTextaria
-          value={inputData.beta}
-          id="beta"
+          value={inputData.textaria}
+          maxlength={500}
+          id="textaria"
           placeholder="Введите текст письма"
-          onInput={handleOnChange} />
+          onInput={handleOnChange}
+        />
 
         <hr />
         <InputTypeCheckbox

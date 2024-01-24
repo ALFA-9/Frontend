@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import styles from "./input-type-textaria.module.scss";
 
 interface IInputTypeTextaria
@@ -7,20 +7,33 @@ interface IInputTypeTextaria
   extraClass?: string;
   label?: string;
   value: string;
+  maxlength?: number;
 }
 
 export const InputTypeTextaria: FC<IInputTypeTextaria> = ({
   value,
+  maxlength = Infinity,
   ...HTMLAttributes
 }) => {
   const myRef = useRef(null);
+  const [isExcess, setIsExcess] = useState(false);
+
+  useEffect(() => {
+    const curExcess = value.length > maxlength;
+    if (isExcess !== curExcess) {
+      setIsExcess(curExcess);
+    }
+  }, [value]);
 
   useEffect(() => {
     myRef.current.textContent = value;
   }, []);
 
   return (
-    <div className={styles.container}>
+    <label
+      htmlFor={HTMLAttributes.id}
+      className={`${styles.container} ${isExcess && styles.container_error}`}
+    >
       <p
         {...HTMLAttributes}
         className={styles.textarea}
@@ -28,6 +41,9 @@ export const InputTypeTextaria: FC<IInputTypeTextaria> = ({
         ref={myRef}
         contentEditable
       ></p>
-    </div>
+      <div className={styles.counter}>{`${isExcess ? "Много букв " : ""}${
+        value.length
+      }/${maxlength === Infinity ? "-" : maxlength}`}</div>
+    </label>
   );
 };
