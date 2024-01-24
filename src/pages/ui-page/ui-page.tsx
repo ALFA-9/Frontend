@@ -4,6 +4,7 @@ import InputTypeText from "../../ui/inputs/input-type-text/input-type-text";
 import InputTypeCheckbox from "../../ui/inputs/input-type-checkbox/input-type-checkbox";
 import InputTypeSwitcher from "../../ui/inputs/input-type-switcher/input-type-switcher";
 import InputTypeSelect from "../../ui/inputs/input-type-select/input-type-select";
+import { InputTypeTextaria } from "../../ui/inputs/input-type-textaria/input-type-textaria";
 
 export const UiPage = () => {
   const [inputData, setInputData] = useState({
@@ -18,24 +19,26 @@ export const UiPage = () => {
     switch2: true,
     switch3: false,
     switch4: true,
-    supervisor: "",
-    datetime: "",
+    supervisor1: "",
+    supervisor2: "",
+    textaria: "",
   });
 
   const handleOnChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e:
+      | React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+      | React.FormEvent<HTMLParagraphElement>
   ) => {
-    const {
-      name,
-      value,
-      type,
-      checked,
-    }: { name: string; value: string; type: string; checked?: boolean } =
-      e.target;
+    const { id, name, value, type, checked, textContent, role }: any = e.target;
 
     setInputData({
       ...inputData,
-      [name]: type === "checkbox" ? checked : value,
+      [id || name]:
+        type === "checkbox"
+          ? checked
+          : role === "textaria"
+          ? textContent
+          : value,
     });
   };
 
@@ -75,9 +78,10 @@ export const UiPage = () => {
         {/* TODO  обработать для <select> атрибуты disabled, multiple, required */}
         <InputTypeSelect
           onChange={handleOnChange}
-          name="supervisor"
+          name="supervisor1"
+          id="supervisor1"
           label="Руководитель"
-          value={inputData.supervisor}
+          value={inputData.supervisor1}
           size={5}
         >
           <option>Александров Александр Александрович</option>
@@ -90,9 +94,10 @@ export const UiPage = () => {
 
         <InputTypeSelect
           onChange={handleOnChange}
-          name="supervisor"
-          label="Руководитель"
-          value={inputData.supervisor}
+          name="supervisor2"
+          id="supervisor2"
+          label="Руководитель2"
+          value={inputData.supervisor2}
           size={5}
         >
           <option>Александров Александр Александрович</option>
@@ -102,6 +107,15 @@ export const UiPage = () => {
           <option>Денисов Денис Денисович</option>
           <option>Егоров Егор Егорович</option>
         </InputTypeSelect>
+
+        <InputTypeTextaria
+          value={inputData.textaria}
+          maxlength={500}
+          id="textaria"
+          placeholder="Введите текст письма"
+          onInput={handleOnChange}
+        />
+
         <hr />
         <InputTypeCheckbox
           onChange={handleOnChange}
