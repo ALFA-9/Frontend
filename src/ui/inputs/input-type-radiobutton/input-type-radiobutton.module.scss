@@ -1,0 +1,45 @@
+@import "../../../styles/const.scss";
+
+.label_container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $black;
+  font-family: $roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.original_input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.visible_input {
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid $dark-gray;
+  border-radius: 50%;
+  background-color: $white;
+}
+
+.original_input:checked + .visible_input {
+  border-color: $black;
+  border-width: 7.5px;
+}
+
+.original_input:focus + .visible_input {
+  outline: 1px solid $dark-gray;
+}
+
+.original_input:disabled + .visible_input {
+  background-color: $medium-gray;
+  border-color: $dark-gray;
+}
