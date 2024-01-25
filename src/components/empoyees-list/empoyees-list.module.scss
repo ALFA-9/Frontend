@@ -1,7 +1,26 @@
-.tree{
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+.tree {
   width: 100%;
 }
 
-.site-tree-search-value{
+.site-tree-search-value {
   color: red;
+}
+
+.example {
+  input {
+    background-color: $light-gray;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    padding: 8px 12px 8px 48px;
+    height: 40px;
+    margin-bottom: 24px;
+    @include text-search-14-400;
+  }
+  svg {
+    visibility: hidden;
+  }
 }
