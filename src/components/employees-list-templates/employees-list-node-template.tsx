@@ -31,7 +31,10 @@ const EmployeesListNodeTemplate: FC = (
   }
 
   return (
-    <article className={styles.outer_container}>
+    <article
+      className={`${styles.outer_container} ${
+        options.expanded && styles.outer_container_active
+      }`}>
       <div onClick={onOuterClick} className={styles.container}>
         <img className={styles.img} src={jpeg} alt='#' />
         <div className={styles.text_wrapper}>

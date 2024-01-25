@@ -20,7 +20,9 @@ const TogglerTemplate: FC = (
   const dontHaveChildrens = !node.children || node.children.length === 0
   return (
     <div
-      className={styles.outer_container}
+      className={`${styles.outer_container} ${
+        expanded && styles.outer_container_active
+      }`}
       style={{ marginLeft: `${lvl * 50}px` }}>
       {!dontHaveChildrens && (
         <button

@@ -12,6 +12,10 @@
   padding-right: 12px;
 }
 
+.outer_container_active {
+  border: none;
+}
+
 .button {
   @include reset-button;
   width: 100%;
