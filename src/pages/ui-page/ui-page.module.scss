@@ -1,5 +1,5 @@
-@import '../../styles/mixins.scss';
-@import '../../styles/const.scss';
+@import "../../styles/mixins.scss";
+@import "../../styles/const.scss";
 
 .page {
   @include reset-text;
@@ -11,4 +11,13 @@
   display: flex;
   flex-direction: column;
   gap: 7px;
+}
+
+.fieldset {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: fit-content;
+  height: fit-content;
 }

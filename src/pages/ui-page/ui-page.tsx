@@ -5,6 +5,7 @@ import InputTypeCheckbox from "../../ui/inputs/input-type-checkbox/input-type-ch
 import InputTypeSwitcher from "../../ui/inputs/input-type-switcher/input-type-switcher";
 import InputTypeSelect from "../../ui/inputs/input-type-select/input-type-select";
 import { InputTypeTextaria } from "../../ui/inputs/input-type-textaria/input-type-textaria";
+import InputTypeRadiobutton from "../../ui/inputs/input-type-radiobutton/input-type-radiobutton";
 
 export const UiPage = () => {
   const [inputData, setInputData] = useState({
@@ -22,24 +23,32 @@ export const UiPage = () => {
     supervisor1: "",
     supervisor2: "",
     textaria: "",
+    daterange: "",
   });
 
   const handleOnChange = (
     e:
       | React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-      | React.FormEvent<HTMLParagraphElement>
+      | React.FormEvent<HTMLParagraphElement | HTMLFieldSetElement>
   ) => {
     const { id, name, value, type, checked, textContent, role }: any = e.target;
 
-    setInputData({
-      ...inputData,
-      [id || name]:
-        type === "checkbox"
-          ? checked
-          : role === "textaria"
-          ? textContent
-          : value,
-    });
+    if (type === "radio") {
+      setInputData({
+        ...inputData,
+        [name]: value,
+      });
+    } else {
+      setInputData({
+        ...inputData,
+        [id || name]:
+          type === "checkbox"
+            ? checked
+            : role === "textaria"
+            ? textContent
+            : value,
+      });
+    }
   };
 
   return (
@@ -82,8 +91,10 @@ export const UiPage = () => {
           id="supervisor1"
           label="Руководитель"
           value={inputData.supervisor1}
+          defaultValue={""}
           size={5}
         >
+          <option>Александров Александр Александрович</option>
           <option>Александров Александр Александрович</option>
           <option>Борисов Борис Борисович</option>
           <option>Васильев Василий Васильевич</option>
@@ -98,6 +109,7 @@ export const UiPage = () => {
           id="supervisor2"
           label="Руководитель2"
           value={inputData.supervisor2}
+          defaultValue={""}
           size={5}
         >
           <option>Александров Александр Александрович</option>
@@ -173,6 +185,33 @@ export const UiPage = () => {
         />
 
         <hr />
+        <fieldset className={styles.fieldset} onChange={handleOnChange}>
+          <InputTypeRadiobutton
+            name="daterange"
+            value="3"
+            id="rad1"
+            label="3 месяца"
+          />
+          <InputTypeRadiobutton
+            name="daterange"
+            value="6"
+            id="rad2"
+            label="6 месяцев"
+          />
+          <InputTypeRadiobutton
+            name="daterange"
+            value="12"
+            id="rad3"
+            label="1 год"
+          />
+          <InputTypeRadiobutton
+            name="daterange"
+            value="other"
+            id="rad4"
+            label="Другое"
+          />
+        </fieldset>
+
         {/* <InputTypeDate
           onChange={handleOnChange}
           placeholder="Когда ваш день рождения?"
