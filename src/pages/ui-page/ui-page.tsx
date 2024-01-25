@@ -95,7 +95,6 @@ export const UiPage = () => {
           size={5}
         >
           <option>Александров Александр Александрович</option>
-          <option>Александров Александр Александрович</option>
           <option>Борисов Борис Борисович</option>
           <option>Васильев Василий Васильевич</option>
           <option disabled>Георгиев Георгий Георгиевич</option>
