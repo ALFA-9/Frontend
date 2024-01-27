@@ -8,7 +8,8 @@ import { UiPage } from '../../pages/ui-page/ui-page'
 import { routes } from '../../utils/const-routes'
 import EmployeeCompetencies from '../../pages/employee-competencies/employee-competencies'
 import HeadEmployees from '../../pages/head-empoyees/head-empoyees'
-import Calendar from '../calendar/calendar'
+import HeadStats from '../../pages/head-stats/head-stats'
+import InputTypeSelectSmall from '../../ui/inputs/input-type-select-small/input-type-select-small'
 
 const Content: FC = () => {
   const location = useLocation()
@@ -36,7 +37,7 @@ const Content: FC = () => {
           element={<h1>employeeFormDone</h1>}
         />
         <Route path={routes.head} element={<h1>Head</h1>} />
-        <Route path={routes.headStats} element={<Calendar />} />
+        <Route path={routes.headStats} element={<HeadStats />} />
         <Route path={routes.headEmployees} element={<HeadEmployees />} />
       </Routes>
     </section>

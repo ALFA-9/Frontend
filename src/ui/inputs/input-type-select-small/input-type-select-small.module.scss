@@ -1,0 +1,97 @@
+@import '../../../styles/const.scss';
+@import '../../../styles/mixins.scss';
+
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 52px;
+  z-index: 3;
+}
+
+.button {
+  @include reset-button;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: $light-gray;
+  &:hover {
+    background: $gray;
+  }
+}
+
+.button_active {
+  background: $gray;
+}
+
+.text_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.text_role {
+  @include reset-text;
+  @include text-tiny-12-400;
+  color: $dark-gray;
+  text-align: start;
+}
+
+.text_status {
+  @include reset-text;
+  @include text-medium-16-500;
+  color: $black;
+  text-align: start;
+}
+
+.svg {
+  width: 20px;
+  height: 20px;
+  transform: rotateZ(90deg);
+  transition: all 0.4s;
+  fill: $black;
+}
+
+.svg_active {
+  transform: rotateZ(90deg) rotateY(180deg);
+}
+
+.ul {
+  @include reset-list;
+  width: 100%;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 9px 56px 0px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  visibility: hidden;
+  height: 0;
+  transition: height 0.4s;
+}
+
+.ul_active {
+  visibility: visible;
+  height: auto;
+}
+
+.ul_item_button {
+  @include reset-button;
+  @include reset-text;
+  @include text-regular-16-400;
+  width: 100%;
+  text-align: start;
+  display: block;
+  box-sizing: border-box;
+  padding: 12px;
+  &:hover {
+    background: $light-gray;
+  }
+}
+
+.ul_item_button_disabled {
+  cursor: default;
+}

@@ -1,6 +1,5 @@
 import { FC, MouseEventHandler, useEffect, useState } from 'react'
 import styles from './employees-list-node-template.module.scss'
-import jpeg from '../../images/_temp/template.jpeg'
 import Dots from '../../images/icons/three_dots.svg'
 import { Link, useNavigate } from 'react-router-dom'
 import { TreeNodeTemplateOptions } from 'primereact/tree'
@@ -36,7 +35,7 @@ const EmployeesListNodeTemplate: FC = (
         options.expanded && styles.outer_container_active
       }`}>
       <div onClick={onOuterClick} className={styles.container}>
-        <img className={styles.img} src={jpeg} alt='#' />
+        <img className={styles.img} src={node.avatar} alt='#' />
         <div className={styles.text_wrapper}>
           <h3 className={styles.text_title}>{node.label}</h3>
           <p className={styles.text_subtitle}>

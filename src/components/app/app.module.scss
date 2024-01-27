@@ -4,8 +4,6 @@
   justify-content: center;
 }
 
-
-
 .main__wrapper {
   display: flex;
   padding: 80px 28px 160px 18px;
@@ -13,8 +11,15 @@
   width: 100%;
   column-gap: 24px;
   box-sizing: border-box;
+  position: relative;
 }
 
-.main_wrapper_main_gallery{
+.main_wrapper_main_gallery {
   column-gap: 34px;
+}
+
+.input_small {
+  width: 184px;
+  top: 12px;
+  right: 28px;
 }

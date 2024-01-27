@@ -1,0 +1,147 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+.container {
+  width: 100%;
+}
+
+.ul {
+  @include reset-list;
+}
+
+.filter_container {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 24px 53px 24px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $gray;
+}
+
+.filter_button_wrapper {
+  position: relative;
+}
+
+.button {
+  @include reset-button;
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  height: 24px;
+  fill: $dark-gray;
+  color: $dark-gray;
+  &:hover {
+    color: $light-black;
+    fill: $light-black;
+  }
+}
+.button_active {
+  color: $light-black;
+  fill: $light-black;
+}
+
+.button_text {
+  @include reset-text;
+  @include text-capslock-12-500;
+  line-height: 24px;
+}
+
+.svg_names {
+  width: 24px;
+  height: 24px;
+  transition: all 1s;
+}
+
+.svg_names_active {
+  transform: rotateX(180deg);
+}
+
+.svg_status {
+  width: 20px;
+  height: 20px;
+  transform: rotateZ(90deg);
+  transition: all 0.4s;
+}
+
+.svg_status_active {
+  transform: rotateZ(90deg) rotateY(180deg);
+}
+
+.status_list {
+  @include reset-list;
+  box-shadow: 0px 9px 56px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  position: absolute;
+  z-index: 3;
+  background-color: #fff;
+  min-width: 158px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  box-sizing: border-box;
+  padding: 20px;
+  top: calc(100% + 4px);
+  right: -50%;
+  visibility: hidden;
+  transition: height 0.4s;
+  height: 0px;
+}
+
+.status_list_active {
+  visibility: visible;
+  height: auto;
+}
+
+.status_list_button {
+  @include reset-button;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  width: 100%;
+  &:hover {
+    background-color: $light-gray;
+  }
+}
+.status_list_button_text {
+  @include reset-text;
+  @include text-regular-16-400;
+  color: $dark-gray;
+  height: 24px;
+  line-height: 24px;
+}
+
+.status_list_button_ball {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+}
+.all {
+  background-color: $light-black;
+}
+
+.in_progress {
+  background-color: $status-blue-100;
+}
+.missing {
+  background-color: $status-gray-100;
+}
+.canceled {
+  background-color: $status-orange-100;
+}
+.not_completed {
+  background-color: $status-red-100;
+}
+.completed {
+  background-color: $status-green-100;
+}
+
+.message {
+  @include reset-text;
+  font-family: $styrene;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  margin-top: 24px;
+}

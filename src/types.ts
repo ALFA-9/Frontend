@@ -41,8 +41,25 @@ export interface CompetenciesType {
   scors: ScoreType[]
 }
 
+export type statusColorsType =
+  | 'all'
+  | 'in_progress'
+  | 'missing'
+  | 'canceled'
+  | 'not_completed'
+  | 'completed'
+
+export interface StatusType {
+  text: string
+  style: statusColorsType
+}
+
 export interface TreeNodeMod {
   title?: string
+
+  avatar?: string
+
+  status?: statusColorsType
 
   subtitle?: string
   /**
@@ -100,4 +117,16 @@ export interface TreeNodeMod {
    * Visibility of node.
    */
   expanded?: boolean | undefined
+}
+
+export enum EnumUserStatuses {
+  employee = 'Сотрудник',
+  head = 'Руководитель',
+  mentor = 'Ментор',
+}
+
+export interface userStatus {
+  status: EnumUserStatuses
+  path: string
+  disabled?: boolean
 }

@@ -70,6 +70,7 @@ $font-bold: 700;
   font-family: $roboto;
   font-weight: $font-medium;
   font-size: $f-size;
+  text-transform: uppercase;
   line-height: calc($f-size / 100 * 130);
   letter-spacing: calc($f-size / 100 * 2);
 }

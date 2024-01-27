@@ -1,88 +1,88 @@
-import { FC, useEffect, useRef, useState } from "react";
-import styles from "./input-type-select.module.scss";
+import { FC, useEffect, useRef, useState } from 'react'
+import styles from './input-type-select.module.scss'
 
 // TODO Корректно обработать состояние disabled
 
 interface IInputTypeSelect
   extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  extraClass?: string;
-  label?: string;
+  extraClass?: string
+  label?: string
 }
 
 const InputTypeSelect: FC<IInputTypeSelect> = ({
-  extraClass = "",
-  label = "",
+  extraClass = '',
+  label = '',
   onChange = () => {},
   ...SelectHTMLAttributes
 }) => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('')
   const [optionItems, setOptionItems] = useState<
     Array<{
-      value: string;
-      key: string;
-      disabled: boolean;
+      value: string
+      key: string
+      disabled: boolean
     }>
-  >([]);
+  >([])
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
-  const selectRef = useRef<HTMLSelectElement>(null);
+  const selectRef = useRef<HTMLSelectElement>(null)
 
   useEffect(() => {
-    const childElementCount = selectRef.current?.childElementCount || 0;
-    const childItems = [];
+    const childElementCount = selectRef.current?.childElementCount || 0
+    const childItems = []
     for (let i = 0; i < childElementCount; i += 1) {
-      const { value, disabled } = selectRef.current?.[i] as HTMLOptionElement;
-      childItems.push({ value, key: value + i, disabled });
+      const { value, disabled } = selectRef.current?.[i] as HTMLOptionElement
+      childItems.push({ value, key: value + i, disabled })
     }
 
-    setOptionItems(childItems);
-    setInputValue(String(SelectHTMLAttributes.value || childItems[0].value));
-  }, []);
+    setOptionItems(childItems)
+    setInputValue(String(SelectHTMLAttributes.value || childItems[0].value))
+  }, [])
 
   useEffect(() => {
     onChange({
       target: {
         name: SelectHTMLAttributes.name,
         value: inputValue,
-        type: "select",
+        type: 'select',
       },
-    } as React.ChangeEvent<HTMLSelectElement>);
-  }, [inputValue]);
+    } as React.ChangeEvent<HTMLSelectElement>)
+  }, [inputValue])
 
   const handleOnChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    setInputValue(value);
-  };
+    const { value } = e.target
+    setInputValue(value)
+  }
 
   const handleSelectItem = (value: string, disabled: boolean) => {
     if (!disabled) {
-      setInputValue(value);
-      setIsDropdownOpen(false);
+      setInputValue(value)
+      setIsDropdownOpen(false)
     }
-  };
+  }
 
   const handleOverlayClick = () => {
-    setIsDropdownOpen(false);
-  };
+    setIsDropdownOpen(false)
+  }
 
   const handleSelectKeyDown = (e: React.KeyboardEvent<HTMLSelectElement>) => {
-    const { code } = e;
+    const { code } = e
 
-    if (code === "Enter" || code === "Space") {
-      e.preventDefault();
-      setIsDropdownOpen(!isDropdownOpen);
+    if (code === 'Enter' || code === 'Space') {
+      e.preventDefault()
+      setIsDropdownOpen(!isDropdownOpen)
     }
 
-    if (code === "Escape") {
-      e.preventDefault();
-      setIsDropdownOpen(false);
+    if (code === 'Escape') {
+      e.preventDefault()
+      setIsDropdownOpen(false)
     }
 
-    if (code === "Tab") {
-      setIsDropdownOpen(false);
+    if (code === 'Tab') {
+      setIsDropdownOpen(false)
     }
-  };
+  }
 
   return (
     <>
@@ -102,10 +102,9 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
         <div className={styles.wraper}>
           <div
             className={`${styles.input} ${
-              isDropdownOpen ? styles.input_open : ""
+              isDropdownOpen ? styles.input_open : ''
             }`}
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          >
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
             <p className={styles.text}>{inputValue}</p>
           </div>
           {isDropdownOpen && (
@@ -118,8 +117,7 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
                       ? `${48 * SelectHTMLAttributes.size}px`
                       : `calc(48px * 5 )`
                   }`,
-                }}
-              >
+                }}>
                 {optionItems.map(({ value, key, disabled }) => {
                   return (
                     <div
@@ -130,12 +128,11 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
                           ? styles.dropDownItem_disabled
                           : styles.dropDownItem
                       } ${
-                        value === inputValue ? styles.dropDownItem_select : ""
-                      }`}
-                    >
+                        value === inputValue ? styles.dropDownItem_select : ''
+                      }`}>
                       <p className={styles.dropDownItem_text}>{value}</p>
                     </div>
-                  );
+                  )
                 })}
               </div>
             </div>
@@ -143,7 +140,7 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
         </div>
       </label>
     </>
-  );
-};
+  )
+}
 
-export default InputTypeSelect;
+export default InputTypeSelect

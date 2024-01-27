@@ -1,0 +1,48 @@
+@import '../../../styles/const.scss';
+@import '../../../styles/mixins.scss';
+
+.text {
+  @include reset-text;
+  @include text-capslock-12-500;
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  line-height: 24px;
+  height: 24px;
+}
+
+.text_blue {
+  color: $status-blue-100;
+  background-color: $status-blue-10;
+}
+
+.text_purple {
+  color: $status-purple-100;
+  background-color: $status-purple-10;
+}
+
+.text_emerald {
+  color: $status-emerald-100;
+  background-color: $status-emerald-10;
+}
+
+.text_gray {
+  color: $status-gray-100;
+  background-color: $status-gray-10;
+}
+
+.text_orange {
+  color: $status-orange-100;
+  background-color: $status-orange-10;
+}
+
+.text_red {
+  color: $status-red-100;
+  background-color: $status-red-10;
+}
+
+.text_green {
+  color: $status-green-100;
+  background-color: $status-green-10;
+}
