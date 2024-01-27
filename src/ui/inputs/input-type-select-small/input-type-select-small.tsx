@@ -1,8 +1,9 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import styles from './input-type-select-small.module.scss'
 import ArrowSvg from '../../../images/icons/employee-temalate-arrow.svg'
-import { Link, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { EnumUserStatuses, userStatus } from '../../../types'
+import { routes } from '../../../utils/const-routes'
 
 interface InputTypeSelectSmallType {
   extraStyles: string
@@ -17,6 +18,25 @@ const InputTypeSelectSmall: FC<InputTypeSelectSmallType> = ({
     EnumUserStatuses.employee
   )
   const [isListOpen, setIsListOpen] = useState<boolean>(false)
+  const [isVisible, setIsVisible] = useState<boolean>(false)
+
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.pathname.includes(routes.employee)) {
+      setUserStatus(EnumUserStatuses.employee)
+    }
+
+    if (location.pathname.includes(routes.head)) {
+      setUserStatus(EnumUserStatuses.head)
+    }
+
+    if (location.pathname === routes.main) {
+      setIsVisible(false)
+    } else {
+      setIsVisible(true)
+    }
+  }, [location.pathname])
 
   const clickReset = () => {
     setIsListOpen(false)
@@ -35,28 +55,30 @@ const InputTypeSelectSmall: FC<InputTypeSelectSmallType> = ({
   }
 
   return (
-    <article className={`${styles.container} ${extraStyles}`}>
-      <button
-        onClick={handleClick}
-        className={`${styles.button} ${isListOpen && styles.button_active}`}>
-        <div>
-          <p className={styles.text_role}>Role</p>
-          <p className={styles.text_status}>{userStatus}</p>
-        </div>
-        <ArrowSvg
-          className={`${styles.svg} ${isListOpen && styles.svg_active}`}
-        />
-      </button>
-      <ul className={`${styles.ul} ${isListOpen && styles.ul_active}`}>
-        {data.map((item, i) => (
-          <InputTypeSelectSmallItem
-            data={item}
-            setUserStatus={setUserStatus}
-            key={item.status}
+    isVisible && (
+      <article className={`${styles.container} ${extraStyles}`}>
+        <button
+          onClick={handleClick}
+          className={`${styles.button} ${isListOpen && styles.button_active}`}>
+          <div>
+            <p className={styles.text_role}>Role</p>
+            <p className={styles.text_status}>{userStatus}</p>
+          </div>
+          <ArrowSvg
+            className={`${styles.svg} ${isListOpen && styles.svg_active}`}
           />
-        ))}
-      </ul>
-    </article>
+        </button>
+        <ul className={`${styles.ul} ${isListOpen && styles.ul_active}`}>
+          {data.map((item, i) => (
+            <InputTypeSelectSmallItem
+              data={item}
+              setUserStatus={setUserStatus}
+              key={item.status}
+            />
+          ))}
+        </ul>
+      </article>
+    )
   )
 }
 
