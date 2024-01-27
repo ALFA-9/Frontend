@@ -1,7 +1,5 @@
 import { IChartInputData } from "./types";
 
-
-
 export const testData: IChartInputData[] = [
   {
     value: 20,
@@ -9,7 +7,7 @@ export const testData: IChartInputData[] = [
     color: "rgba(47, 124, 246, 1)",
   },
   {
-    value: 12,
+    value: 2,
     title: "Выполнен",
     color: "rgba(76, 161, 105, 1)",
   },
@@ -24,8 +22,8 @@ export const testData: IChartInputData[] = [
     color: "rgba(208, 111, 42, 1)",
   },
   {
-    value: 20,
+    value: 30,
     title: "Отсутствует",
-    color: "rgba(111, 121, 133, 1)"
+    color: "rgba(111, 121, 133, 1)",
   },
 ];

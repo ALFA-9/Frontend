@@ -2,18 +2,7 @@ import { FC, useEffect, useMemo, useState } from "react";
 import { IPieChart, IPieChartRenderData, IPieChartSectorData } from "./types";
 import { getRenderData } from "./utils";
 import styles from "./pie-chart.module.scss";
-
-const sectorDefault: IPieChartSectorData = {
-  data: { value: -1, title: "", color: "" },
-  dashArray: [0, 0],
-  dashOffset: 0,
-  textX: 0,
-  textY: 0,
-  percentage: 0,
-  isVisiblePercentage: false,
-};
-
-// const sectorOffset = 15;
+import { renderDataDefault, sectorDefault } from "./const";
 
 const PieChart: FC<IPieChart> = ({
   data,
@@ -24,39 +13,21 @@ const PieChart: FC<IPieChart> = ({
   minVisiblePercentage = 0,
   sectorOffset = 15,
 }) => {
-  const [
-    {
-      rData,
-      radius,
-      drawThickness,
-      drawRadius,
-      totalValue,
-      drawLength,
-      baseValue,
-    },
-    setRData,
-  ] = useState<IPieChartRenderData>({
-    rData: [],
-    radius: 0,
-    drawThickness: 0,
-    drawRadius: 0,
-    totalValue: 0,
-    drawLength: 0,
-    baseValue: 0,
-  });
-
-  const [sData, setSData] = useState<IPieChartRenderData>({
-    rData: [],
-    radius: 0,
-    drawThickness: 0,
-    drawRadius: 0,
-    totalValue: 0,
-    drawLength: 0,
-    baseValue: 0,
-  });
+  const [{ rData, radius, drawThickness, drawRadius }, setRData] =
+    useState<IPieChartRenderData>(renderDataDefault);
 
   const [hSector, setHSector] = useState<IPieChartSectorData>(sectorDefault);
   const [sSector, setSSector] = useState<IPieChartSectorData>(sectorDefault);
+
+  const mainSize = useMemo(
+    () => diameter + sectorOffset * 2.5,
+    [diameter, sectorOffset]
+  );
+
+  const centerOffset = useMemo(
+    () => radius + sectorOffset * 1.25,
+    [radius, sectorOffset]
+  );
 
   useEffect(() => {
     setRData(
@@ -66,107 +37,57 @@ const PieChart: FC<IPieChart> = ({
         thickness,
         angleOffset,
         textRadiusOffset,
-        minVisiblePercentage
-      )
-    );
-
-    setSData(
-      getRenderData(
-        data,
-        diameter + sectorOffset * 2,
-        thickness,
-        angleOffset,
-        textRadiusOffset,
-        minVisiblePercentage
+        minVisiblePercentage,
+        sectorOffset
       )
     );
   }, []);
+
   return (
     <>
       <svg
-        className={styles.border}
-        width={diameter + sectorOffset * 3}
-        height={diameter + sectorOffset * 3}
-        viewBox={`0 0 ${diameter + sectorOffset * 3} ${
-          diameter + sectorOffset * 3
-        } `}
+        width={mainSize}
+        height={mainSize}
+        viewBox={`0 0 ${mainSize} ${mainSize} `}
       >
         {rData.length &&
           rData.map((item, index) => {
-            return item.data.title !== sSector.data.title ? (
+            const isSelected = sSector.data.title === item.data.title;
+            const isHovered = hSector.data.title === item.data.title;
+            const percentage = Math.round(item.percentage * 100);
+            return (
               <g
                 key={index}
-                className={styles.gcont}
+                className={styles.gContainer}
                 onMouseEnter={(e) => setHSector(item)}
                 onMouseLeave={(e) => setHSector(sectorDefault)}
-                onClick={(e) => setSSector(item)}
+                onClick={(e) => setSSector(isSelected ? sectorDefault : item)}
               >
                 <circle
-                  cx={radius + sectorOffset * 1.5}
-                  cy={radius + sectorOffset * 1.5}
+                  cx={centerOffset + (isSelected ? item.sOffsetX : 0)}
+                  cy={centerOffset + (isSelected ? item.sOffsetY : 0)}
                   r={drawRadius}
                   stroke={item.data.color}
-                  fill="none"
                   strokeWidth={
-                    hSector.data.title === item.data.title
+                    isHovered || isSelected
                       ? drawThickness + sectorOffset / 2
                       : drawThickness
                   }
                   strokeDashoffset={item.dashOffset}
                   strokeDasharray={item.dashArray.join(" ")}
-                ></circle>
-
-                <text
-                  className={styles.text}
-                  x={item.textX + sectorOffset * 1.5}
-                  y={item.textY + sectorOffset * 1.5}
-                  dominant-baseline="middle"
-                  text-anchor="middle"
-                >
-                  {`${Math.round(item.percentage * 100)}%`}
-                </text>
-              </g>
-            ) : (
-              <></>
-            );
-          })}
-
-        {sData.rData.length &&
-          sData.rData.map((item, index) => {
-            return item.data.title === sSector.data.title ? (
-              <g
-                key={index}
-                className={styles.gcont}
-                onClick={(e) => {
-                  setSSector(sectorDefault);
-                  setHSector(sectorDefault);
-                }}
-              >
-                <circle
-                  cx={radius + sectorOffset * 1.5}
-                  cy={radius + sectorOffset * 1.5}
-                  r={sData.drawRadius}
-                  stroke={item.data.color}
                   fill="none"
-                  strokeWidth={sData.drawThickness + sectorOffset / 2}
-                  strokeDashoffset={item.dashOffset - sectorOffset / 2}
-                  strokeDasharray={[
-                    item.dashArray[0] - sectorOffset,
-                    item.dashArray[1] + sectorOffset / 2,
-                  ].join(" ")}
                 ></circle>
+
                 <text
                   className={styles.text}
-                  x={item.textX + sectorOffset / 2}
-                  y={item.textY + sectorOffset / 2}
+                  x={item.textX + (isSelected ? item.sOffsetX : 0)}
+                  y={item.textY + (isSelected ? item.sOffsetY : 0)}
                   dominant-baseline="middle"
                   text-anchor="middle"
                 >
-                  {`${Math.round(item.percentage * 100)}%`}
+                  {`${item.isVisiblePercentage ? percentage + "%" : ""}`}
                 </text>
               </g>
-            ) : (
-              <></>
             );
           })}
       </svg>

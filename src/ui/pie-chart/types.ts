@@ -20,6 +20,8 @@ export interface IPieChartSectorData {
   dashOffset: number;
   textX: number;
   textY: number;
+  sOffsetX: number;
+  sOffsetY: number;
   percentage: number;
   isVisiblePercentage: boolean;
 }
@@ -29,7 +31,4 @@ export interface IPieChartRenderData {
   radius: number;
   drawThickness: number;
   drawRadius: number;
-  totalValue: number;
-  drawLength: number;
-  baseValue: number;
 }

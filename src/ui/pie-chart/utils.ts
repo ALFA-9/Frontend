@@ -10,7 +10,8 @@ export const getRenderData = (
   thickness: number,
   angleOffset: number,
   textRadiusOffset: number,
-  minVisiblePercentage: number
+  minVisiblePercentage: number,
+  sectorOffset: number
 ): IPieChartRenderData => {
   const radius = diameter / 2;
   const drawThickness =
@@ -32,8 +33,10 @@ export const getRenderData = (
       data: { ...item },
       dashArray: [curVal, drawLength - curVal],
       dashOffset: offset,
-      textX: radius + Math.cos(drawAngle) * textRadius,
-      textY: radius + Math.sin(drawAngle) * textRadius,
+      textX: radius + Math.cos(drawAngle) * textRadius + sectorOffset * 1.25,
+      textY: radius + Math.sin(drawAngle) * textRadius + sectorOffset * 1.25,
+      sOffsetX: Math.cos(drawAngle) * sectorOffset,
+      sOffsetY: Math.sin(drawAngle) * sectorOffset,
       percentage,
       isVisiblePercentage: Math.round(percentage * 100) >= minVisiblePercentage,
     };
@@ -46,9 +49,6 @@ export const getRenderData = (
     radius,
     drawThickness,
     drawRadius,
-    totalValue,
-    drawLength,
-    baseValue,
     rData,
   };
 };
