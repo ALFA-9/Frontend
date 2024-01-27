@@ -7,6 +7,9 @@ import InputTypeSelect from "../../ui/inputs/input-type-select/input-type-select
 import { InputTypeTextaria } from "../../ui/inputs/input-type-textaria/input-type-textaria";
 import InputTypeRadiobutton from "../../ui/inputs/input-type-radiobutton/input-type-radiobutton";
 
+import PieChart from "../../ui/pie-chart/pie-chart";
+import { testData } from "../../ui/pie-chart/test-data";
+
 export const UiPage = () => {
   const [inputData, setInputData] = useState({
     fullName: "",
@@ -54,6 +57,15 @@ export const UiPage = () => {
   return (
     <div className={styles.page}>
       <h1>Страница для тестирования UI компонентов</h1>
+
+      <PieChart
+        data={testData}
+        diameter={240}
+        thickness={60}
+        angleOffset={-90}
+        sectorOffset={14}
+        minVisiblePercentage={1}
+      />
       <hr />
       <p>-- {JSON.stringify(inputData)} --</p>
 
