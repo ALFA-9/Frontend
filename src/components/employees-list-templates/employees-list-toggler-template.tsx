@@ -23,7 +23,7 @@ const TogglerTemplate: FC = (
       className={`${styles.outer_container} ${
         expanded && styles.outer_container_active
       }`}
-      style={{ marginLeft: `${lvl * 50}px` }}>
+      style={{ marginLeft: `${lvl * 25}px` }}>
       {!dontHaveChildrens && (
         <button
           type='button'
