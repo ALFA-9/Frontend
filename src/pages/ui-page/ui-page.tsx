@@ -9,6 +9,9 @@ import InputTypeRadiobutton from "../../ui/inputs/input-type-radiobutton/input-t
 
 import PieChart from "../../ui/pie-chart/pie-chart";
 import { testData } from "../../ui/pie-chart/test-data";
+import { UniversalDateInput } from "@alfalab/core-components-universal-date-input";
+import { Calendar } from "@alfalab/core-components-calendar";
+import InputTypeDate from "../../ui/inputs/input-type-date/input-type-date";
 
 export const UiPage = () => {
   const [inputData, setInputData] = useState({
@@ -26,30 +29,43 @@ export const UiPage = () => {
     supervisor1: "",
     supervisor2: "",
     textaria: "",
-    daterange: "",
+    date: "",
+    date2: "",
   });
 
   const handleOnChange = (
     e:
       | React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-      | React.FormEvent<HTMLParagraphElement | HTMLFieldSetElement>
+      | React.FormEvent<HTMLParagraphElement | HTMLFieldSetElement>,
+    payload?: any
   ) => {
-    const { id, name, value, type, checked, textContent, role }: any = e.target;
+    if (!payload) {
+      const { id, name, value, type, checked, textContent, role }: any =
+        e.target;
 
-    if (type === "radio") {
+      if (type === "radio") {
+        setInputData({
+          ...inputData,
+          [name]: value,
+        });
+      } else {
+        setInputData({
+          ...inputData,
+          [id || name]:
+            type === "checkbox"
+              ? checked
+              : role === "textaria"
+              ? textContent
+              : value,
+        });
+      }
+    }
+
+    if (payload) {
+      const { id, name, value }: any = payload;
       setInputData({
         ...inputData,
         [name]: value,
-      });
-    } else {
-      setInputData({
-        ...inputData,
-        [id || name]:
-          type === "checkbox"
-            ? checked
-            : role === "textaria"
-            ? textContent
-            : value,
       });
     }
   };
@@ -66,6 +82,25 @@ export const UiPage = () => {
         sectorOffset={14}
         minVisiblePercentage={1}
       />
+      <InputTypeDate
+        value={inputData.date}
+        onChange={handleOnChange}
+        placeholder="Выберете дату"
+        id="date"
+        name="date"
+      />
+      <hr />
+
+      <div className={styles.test}>
+      <InputTypeDate
+        value={inputData.date2}
+        onChange={handleOnChange}
+        placeholder="Выберете дату"
+        id="date2"
+        name="date2"
+      />
+      </div>
+
       <hr />
       <p>-- {JSON.stringify(inputData)} --</p>
 
