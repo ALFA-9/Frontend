@@ -1,0 +1,181 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+.container {
+  @include reset-link;
+  display: block;
+  text-align: start;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  &:hover .info_wrapper {
+    background-color: $gray;
+  }
+  &:active .info_wrapper {
+    background-color: $medium-gray;
+  }
+}
+
+.lable_big {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.title_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title_button {
+  @include reset-button;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: $medium-gray;
+  }
+}
+
+.title_svg {
+  width: 24px;
+  height: 24px;
+  transform: rotate(90deg);
+}
+
+.title {
+  @include reset-text;
+  @include text-h2-24-700;
+}
+
+.info_wrapper {
+  box-sizing: border-box;
+  padding: 28px;
+  background-color: $light-gray;
+}
+
+.extra_info_wrapper {
+  margin-top: 24px;
+}
+
+.all_text_wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.text_wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.text_wrapper_right {
+  height: 37px;
+}
+
+.text_wrapper_left {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.text_gray {
+  @include reset-text;
+  @include text-regular-16-400;
+  line-height: 24px;
+  color: $dark-gray;
+}
+
+.text_black {
+  @include reset-text;
+  @include text-medium-16-500;
+}
+
+.progress_bar_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 21px;
+  column-gap: 16px;
+}
+.progress_bar_text {
+  @include reset-text;
+  @include text-medium-16-500;
+  min-width: 40px;
+}
+
+.progress_bar_empty {
+  max-width: 100%;
+  height: 8px;
+  width: 100%;
+  border-radius: 17px;
+  border: 1px solid $dark-gray;
+  background-color: $white;
+  position: relative;
+}
+
+.progress_bar_filled {
+  position: absolute;
+  height: 10px;
+  background-color: $sucess-color;
+  top: -1px;
+  left: -1px;
+  border-radius: 17px;
+}
+
+.button_wrapper {
+  position: relative;
+  height: 24px;
+  width: 24px;
+}
+
+.button_list {
+  @include reset-list;
+  overflow: hidden;
+  display: inline-block;
+  min-width: 184px;
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0px 9px 56px 0px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 5;
+  visibility: hidden;
+  height: 0px;
+  transition: height 0.4s;
+}
+
+.button_list_active {
+  height: auto;
+  visibility: visible;
+}
+
+.button_list_item {
+  @include reset-button;
+  @include text-regular-16-400;
+  line-height: 24px;
+  text-align: start;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  &:hover {
+    background-color: $light-gray;
+  }
+}
+
+.button_list_item_red {
+  color: $critical-color;
+}

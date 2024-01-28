@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { TreeNodeMod } from '../../types'
 import { routes } from '../../utils/const-routes'
 import LablesSmall from '../../ui/lables/lables-small/lables-small'
-import { LablesSmallEnum } from '../../ui/lables/lables-small/types'
+import { LablesSmallEnum } from '../../ui/lables/types'
 
 interface StatsEmployeeTemplateType {
   data: TreeNodeMod
@@ -28,11 +28,11 @@ const StatsEmployeeTemplate: FC<StatsEmployeeTemplateType> = ({ data }) => {
       statusColor = LablesSmallEnum.gray
       statusText = 'Отсутсвует'
       break
-    case 'canceled':
+    case 'cancelled':
       statusColor = LablesSmallEnum.orange
       statusText = 'Отменено'
       break
-    case 'not_completed':
+    case 'failed':
       statusColor = LablesSmallEnum.red
       statusText = 'Не выполнено'
       break

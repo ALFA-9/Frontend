@@ -41,17 +41,26 @@ export interface CompetenciesType {
   scors: ScoreType[]
 }
 
-export type statusColorsType =
+export type IdpStatuses = 'in_progress' | 'cancelled' | 'failed' | 'completed'
+
+export enum IdpStatusesTranslate {
+  in_progress = 'В работе',
+  cancelled = 'Отменен',
+  failed = 'Не выполнен',
+  completed = 'Выполнен',
+}
+
+export type StatusColorsType =
   | 'all'
   | 'in_progress'
   | 'missing'
-  | 'canceled'
-  | 'not_completed'
+  | 'cancelled'
+  | 'failed'
   | 'completed'
 
-export interface StatusType {
+export interface StatusTypeList {
   text: string
-  style: statusColorsType
+  style: StatusColorsType
 }
 
 export interface TreeNodeMod {
@@ -59,7 +68,7 @@ export interface TreeNodeMod {
 
   avatar?: string
 
-  status?: statusColorsType
+  status?: StatusColorsType
 
   subtitle?: string
   /**
@@ -129,4 +138,14 @@ export interface userStatus {
   status: EnumUserStatuses
   path: string
   disabled?: boolean
+}
+
+export interface IdpType {
+  id: string
+  title: string
+  head: string
+  currentTask: string
+  deadline: string
+  status: IdpStatuses
+  tasks: any[]
 }

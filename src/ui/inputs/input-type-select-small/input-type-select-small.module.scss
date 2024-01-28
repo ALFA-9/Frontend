@@ -3,8 +3,6 @@
 
 .container {
   position: absolute;
-  top: 0;
-  right: 0;
   height: 52px;
   z-index: 3;
 }
@@ -63,7 +61,7 @@
   @include reset-list;
   width: 100%;
   border-radius: 8px;
-  background: #fff;
+  background: $white;
   box-shadow: 0px 9px 56px 0px rgba(0, 0, 0, 0.1);
   position: absolute;
   top: calc(100% + 4px);
@@ -94,4 +92,5 @@
 
 .ul_item_button_disabled {
   cursor: default;
+  color: $gray;
 }

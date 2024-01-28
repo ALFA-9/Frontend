@@ -27,10 +27,15 @@ $font-bold: 700;
 
 // typography mixins
 
+@mixin for-all {
+  color: $black;
+  font-family: $roboto;
+}
+
 //headline_large in past
 @mixin text-h2-24-700 {
   $f-size: 24px;
-  font-family: $roboto;
+  @include for-all;
   font-weight: $font-bold;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 130);
@@ -40,7 +45,7 @@ $font-bold: 700;
 //headline_xlarge in past
 @mixin text-h1-40-700 {
   $f-size: 40px;
-  font-family: $roboto;
+  @include for-all;
   font-weight: $font-bold;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 130);
@@ -49,7 +54,7 @@ $font-bold: 700;
 
 @mixin text-search-14-400 {
   $f-size: 14px;
-  font-family: $roboto;
+  @include for-all;
   font-weight: $font-regular;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 130);
@@ -58,7 +63,7 @@ $font-bold: 700;
 
 @mixin text-button-16-400 {
   $f-size: 16px;
-  font-family: $roboto;
+  @include for-all;
   font-weight: $font-regular;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 130);
@@ -67,7 +72,7 @@ $font-bold: 700;
 
 @mixin text-capslock-12-500 {
   $f-size: 12px;
-  font-family: $roboto;
+  @include for-all;
   font-weight: $font-medium;
   font-size: $f-size;
   text-transform: uppercase;
@@ -78,7 +83,7 @@ $font-bold: 700;
 //tiny-text in past
 @mixin text-tiny-12-400 {
   $f-size: 12px;
-  font-family: $roboto;
+  @include for-all;
   font-weight: $font-regular;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 130);
@@ -87,7 +92,7 @@ $font-bold: 700;
 
 @mixin text-menu-header-16-500 {
   $f-size: 16px;
-  font-family: $roboto;
+  @include for-all;
   font-weight: $font-medium;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 130);
@@ -96,7 +101,7 @@ $font-bold: 700;
 
 @mixin text-menu-tabbar-18-400 {
   $f-size: 18px;
-  font-family: $roboto;
+  @include for-all;
   font-weight: $font-regular;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 130);
@@ -106,7 +111,7 @@ $font-bold: 700;
 //menu-sidebar-text in past
 @mixin text-menu-sidebar-14-500 {
   $f-size: 14px;
-  font-family: $roboto;
+  @include for-all;
   font-weight: $font-medium;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 130);
@@ -115,7 +120,7 @@ $font-bold: 700;
 
 @mixin text-big-24-400 {
   $f-size: 24px;
-  font-family: $roboto;
+  @include for-all;
   font-weight: $font-regular;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 150);
@@ -124,7 +129,7 @@ $font-bold: 700;
 
 @mixin text-medium-16-500 {
   $f-size: 16px;
-  font-family: $roboto;
+  @include for-all;
   font-weight: $font-medium;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 130);
@@ -133,7 +138,7 @@ $font-bold: 700;
 
 @mixin text-regular-16-400 {
   $f-size: 16px;
-  font-family: $roboto;
+  @include for-all;
   font-weight: $font-regular;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 130);
@@ -156,9 +161,17 @@ $font-bold: 700;
 }
 
 @mixin logo-text {
-  font-family: $roboto;
+  @include for-all;
   font-size: 20px;
   font-weight: 500;
   line-height: 26px;
   letter-spacing: -0.6px;
+}
+
+@mixin idp_list {
+  @include reset-list;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
 }

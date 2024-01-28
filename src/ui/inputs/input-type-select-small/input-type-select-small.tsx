@@ -31,7 +31,12 @@ const InputTypeSelectSmall: FC<InputTypeSelectSmallType> = ({
       setUserStatus(EnumUserStatuses.head)
     }
 
-    if (location.pathname === routes.main) {
+    if (
+      location.pathname === routes.main ||
+      location.pathname.includes('/form') ||
+      location.pathname.includes('/tasks') ||
+      location.pathname.includes('/done')
+    ) {
       setIsVisible(false)
     } else {
       setIsVisible(true)
@@ -61,7 +66,7 @@ const InputTypeSelectSmall: FC<InputTypeSelectSmallType> = ({
           onClick={handleClick}
           className={`${styles.button} ${isListOpen && styles.button_active}`}>
           <div>
-            <p className={styles.text_role}>Role</p>
+            <p className={styles.text_role}>Роль</p>
             <p className={styles.text_status}>{userStatus}</p>
           </div>
           <ArrowSvg

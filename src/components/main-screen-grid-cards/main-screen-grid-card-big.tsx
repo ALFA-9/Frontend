@@ -1,6 +1,5 @@
-import React, { FC } from 'react'
+import  { FC } from 'react'
 import styles from './main-screen-grid-cards.module.scss'
-import mountains from '../../images/main-gallery/mountains_big.jpeg'
 import { Link } from 'react-router-dom'
 import Heart from '../../images/icons/main-card/heart.svg'
 import Comments from '../../images/icons/main-card/message-square.svg'

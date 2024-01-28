@@ -1,5 +1,5 @@
-import jpeg from '../images/_temp/template.jpeg'
-import { TreeNodeMod } from '../types'
+import jpeg from '../../images/_temp/template.jpeg'
+import { TreeNodeMod } from '../../types'
 
 export const nodesData: TreeNodeMod[] = [
   {
@@ -56,7 +56,7 @@ export const nodesData: TreeNodeMod[] = [
     label: 'Барак Монголов',
     key: '2',
     subtitle: 'Генерал говнокомандующий',
-    status: 'not_completed',
+    status: 'failed',
     children: [
       {
         id: '2-0',

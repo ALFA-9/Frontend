@@ -11,9 +11,7 @@
 
 .message {
   @include reset-text;
-  font-family: $styrene;
-  font-size: 24px;
-  line-height: 36px;
+  @include text-big-24-400;
 
   &:not(:last-child) {
     margin-bottom: 12px;
@@ -22,4 +20,8 @@
 
 .button {
   margin-top: 40px;
+}
+
+.idp_list {
+  @include idp_list;
 }
