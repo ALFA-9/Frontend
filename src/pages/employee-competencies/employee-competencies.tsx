@@ -4,7 +4,7 @@ import CompetenciesTable from '../../components/competencies-table/competencies-
 import {
   hardSkillsCompetencies,
   softSkillsCompetencies,
-} from '../../utils/const-competencies-tables'
+} from '../../utils/_temp/const-competencies-tables'
 
 const EmployeeCompetencies: FC = () => {
   return (

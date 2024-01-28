@@ -3,10 +3,7 @@
 
 .tab {
   @include reset-button;
-  font-family: $styrene;
-  font-size: 18px;
-  line-height: 23.4px;
-  letter-spacing: -.36px;
+  @include text-menu-tabbar-18-400;
   padding-bottom: 18px;
   position: relative;
   z-index: 1;

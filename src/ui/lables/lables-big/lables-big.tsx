@@ -8,12 +8,12 @@ interface LablesSmallType {
   extraStyles?: string
 }
 
-const LablesSmall: FC<LablesSmallType> = ({ text, color, extraStyles }) => {
+const LablesBig: FC<LablesSmallType> = ({ text, color, extraStyles }) => {
   const text_color = color
 
   return (
     <p
-      className={`${styles.text_small} ${extraStyles}  ${
+      className={`${styles.text_big} ${extraStyles}  ${
         styles[`text_${LablesSmallEnum[text_color]}`]
       }`}>
       {text}
@@ -21,4 +21,4 @@ const LablesSmall: FC<LablesSmallType> = ({ text, color, extraStyles }) => {
   )
 }
 
-export default LablesSmall
+export default LablesBig

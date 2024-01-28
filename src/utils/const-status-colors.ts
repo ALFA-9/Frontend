@@ -1,6 +1,6 @@
-import { StatusType } from '../types'
+import { StatusTypeList } from '../types'
 
-export const filterListItems: StatusType[] = [
+export const filterListItems: StatusTypeList[] = [
   {
     text: 'Все',
     style: 'all',
@@ -15,11 +15,11 @@ export const filterListItems: StatusType[] = [
   },
   {
     text: 'Не выполнен',
-    style: 'not_completed',
+    style: 'failed',
   },
   {
     text: 'Отменен',
-    style: 'canceled',
+    style: 'cancelled',
   },
   {
     text: 'Отсутствует',

@@ -1,5 +1,3 @@
-// fonts
-$styrene: 'Styrene A Web', Arial, Helvetica, sans-serif;
 $roboto: 'Roboto', Arial, Helvetica, sans-serif;
 
 // colors
@@ -10,7 +8,7 @@ $gray: #e9e9eb;
 $dark-gray: #838383;
 $medium-gray: #dcdde1;
 $light-gray: #f3f4f6;
-$white: #ffffff;
+$white: #fff;
 
 $sucess-color: #2fc16e;
 $critical-color: #ef3124;
@@ -29,7 +27,7 @@ $button-secondary-disabled: #f2f3f5;
 $button-tertiary: $white;
 $button-tertiary-hover: #f2f3f5;
 $button-tertiary-pressed: #ededed;
-$button-tertiary-disabled: #ffffff;
+$button-tertiary-disabled: $white;
 
 $status-green-100: #4ca169;
 $status-green-10: #cff1e9;

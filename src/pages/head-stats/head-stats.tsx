@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import styles from './head-stats.module.scss'
 import StatsEmployeesList from '../../components/stats-employees-list/stats-employees-list'
-import { nodesData } from '../../utils/const-employees-list-node_temp'
+import { nodesData } from '../../utils/_temp/const-employees-list-node_temp'
 
 const HeadStats: FC = () => {
   return (

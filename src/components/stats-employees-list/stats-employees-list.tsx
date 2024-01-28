@@ -4,7 +4,7 @@ import NameSort from '../../images/icons/stats-list-name-filter.svg'
 import ArrowFilter from '../../images/icons/employee-temalate-arrow.svg'
 import StatsEmployeeTemplate from '../stats-employee-template/stats-employee-template'
 import { filterListItems } from '../../utils/const-status-colors'
-import { TreeNodeMod, statusColorsType } from '../../types'
+import { TreeNodeMod, StatusColorsType } from '../../types'
 import StatsEmployeesListStatusItem from './stats-employees-list-status-item/stats-employees-list-status-item'
 
 interface StatsEmployeesListType {
@@ -14,7 +14,7 @@ interface StatsEmployeesListType {
 const StatsEmployeesList: FC<StatsEmployeesListType> = ({ nodesData }) => {
   const [sortNames, setSortNames] = useState<boolean>(true)
   const [isFilterListOpen, setIsFilterListOpen] = useState<boolean>(false)
-  const [filterStatus, setFilterStatus] = useState<statusColorsType>('all')
+  const [filterStatus, setFilterStatus] = useState<StatusColorsType>('all')
 
   const newNodesData: TreeNodeMod[] = JSON.parse(JSON.stringify(nodesData))
 

@@ -74,7 +74,7 @@
   border-radius: 8px;
   position: absolute;
   z-index: 3;
-  background-color: #fff;
+  background-color: $white;
   min-width: 158px;
   display: flex;
   flex-direction: column;
@@ -130,7 +130,7 @@
 .canceled {
   background-color: $status-orange-100;
 }
-.not_completed {
+.fail {
   background-color: $status-red-100;
 }
 .completed {
@@ -139,9 +139,9 @@
 
 .message {
   @include reset-text;
-  font-family: $styrene;
+  @include text-regular-16-400;
   font-size: 24px;
-  line-height: 36px;
+  text-align: 24px;
   text-align: center;
   margin-top: 24px;
 }

@@ -1,15 +1,13 @@
 import { FC } from 'react'
 import styles from './content.module.scss'
-import { Outlet, Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import MainGallery from '../../pages/main-gallery/main-gallery'
 import Idp from '../../pages/idp/idp'
-import competenciesImg from '../../images/_temp/competencies.jpg'
 import { UiPage } from '../../pages/ui-page/ui-page'
 import { routes } from '../../utils/const-routes'
 import EmployeeCompetencies from '../../pages/employee-competencies/employee-competencies'
 import HeadEmployees from '../../pages/head-empoyees/head-empoyees'
 import HeadStats from '../../pages/head-stats/head-stats'
-import InputTypeSelectSmall from '../../ui/inputs/input-type-select-small/input-type-select-small'
 
 const Content: FC = () => {
   const location = useLocation()

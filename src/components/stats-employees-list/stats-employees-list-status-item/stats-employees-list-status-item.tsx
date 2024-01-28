@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import styles from '../stats-employees-list.module.scss'
-import { StatusType, statusColorsType } from '../../../types'
+import { StatusTypeList, StatusColorsType } from '../../../types'
 
 interface StatsEmployeesListStatusItemType {
-  item: StatusType
-  setFilterStatus: React.Dispatch<React.SetStateAction<statusColorsType>>
+  item: StatusTypeList
+  setFilterStatus: React.Dispatch<React.SetStateAction<StatusColorsType>>
   setIsFilterListOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
