@@ -1,7 +1,13 @@
 @import "../../../styles/const.scss";
 
-.addons {
+:root {
+  --calendar-width: 243px;
+  --calendar-height: 240px;
   --calendar-icon-color: $black;
+}
+
+.addons {
+  width: 18px;
 }
 
 .input {
@@ -23,27 +29,58 @@
   text-align: left;
 }
 
-.focused {
-  outline: none;
-  border: none;
-  box-shadow: none;
+.field {
+  background-color: $light-gray;
 }
 
-.field {
-  outline: none;
-  border: none;
+.field:has(input:focus) {
   background-color: $gray;
   box-shadow: none;
+  outline: none;
 }
 
-.field:active {
-  outline: none;
-  border: none;
+.field:has(input:focus:hover, .addons:hover, input:hover) {
+  background-color: $gray;
   box-shadow: none;
+  outline: none;
 }
 
-.wrapper {
-  outline: none;
-  border: none;
-  box-shadow: none;
+.filled .field {
+  background-color: $gray;
+}
+
+.calendarHeader {
+  padding: 8px;
+  padding-bottom: 0;
+}
+.calendarHeader button {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.calendarContent {
+  flex-grow: 0;
+  padding-bottom: 0;
+}
+
+.calendarContent table {
+  --calendar-day-size: 16px;
+  width: 219px;
+  border-spacing: 10px;
+  font-family: $roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+}
+
+.calendarContent .dayContent {
+  border: 1px solid green;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.02em;
 }
