@@ -40,8 +40,8 @@ const PieChart: FC<IPieChart> = ({
         minVisiblePercentage,
         sectorOffset
       )
-    )
-  }, [])
+    );
+  }, [data]);
 
   return (
     <>
@@ -79,9 +79,10 @@ const PieChart: FC<IPieChart> = ({
                   className={styles.text}
                   x={item.textX + (isSelected ? item.sOffsetX : 0)}
                   y={item.textY + (isSelected ? item.sOffsetY : 0)}
-                  dominantBaseline='middle'
-                  textAnchor='middle'>
-                  {`${item.isVisiblePercentage ? percentage + '%' : ''}`}
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                >
+                  {`${item.isVisiblePercentage ? percentage + "%" : ""}`}
                 </text>
               </g>
             )
