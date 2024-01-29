@@ -1,0 +1,78 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+@mixin container {
+  max-width: 808px;
+  width: 100%;
+}
+
+.title_wrapper {
+  @include container;
+  display: flex;
+  column-gap: 40px;
+  align-items: center;
+  margin-bottom: 40px;
+  align-self: flex-start;
+}
+
+.title_img {
+  display: block;
+  min-width: 100px;
+  width: 100px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.title {
+  @include page-title-default;
+  margin: 0;
+}
+
+.tab_child {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.extra_text_wrapper {
+  display: flex;
+  column-gap: 24px;
+}
+
+.competencies_container {
+  @include container;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.competencies_title {
+  @include reset-text;
+  @include text-h2-24-700;
+}
+
+.competencies_data {
+  @include reset-text;
+  @include text-regular-16-400;
+  line-height: 24px;
+  color: $dark-gray;
+}
+
+.idp_list {
+  @include idp_list;
+}
+
+.extra_container_styles {
+  position: relative;
+}
+
+.button_accent {
+  display: inline-block;
+  margin-top: 40px;
+  position: sticky;
+  bottom: 50px;
+}

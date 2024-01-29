@@ -1,19 +1,28 @@
 import { FC } from 'react'
 import styles from './button-back.module.scss'
 import Arrow from './arrow.svg'
+import { useNavigate } from 'react-router-dom'
 
 interface ButtonBackType {
-  onClick: React.MouseEventHandler<HTMLButtonElement>
-  text: string
+  path: string
+  extraStyles?: string
 }
 
-const ButtonBack: FC<ButtonBackType> = ({ onClick, text }) => {
+const ButtonBack: FC<ButtonBackType> = ({ path, extraStyles }) => {
+  const navigate = useNavigate()
+
+  function handleButtonBackClick() {
+    navigate(path)
+  }
+
   return (
-    <button onClick={onClick} className={styles.button}>
-      <div className={styles.svg_wrapper}>
+    <button
+      onClick={handleButtonBackClick}
+      className={`${extraStyles ? extraStyles : styles.button}`}>
+      <div className={`${styles.svg_wrapper} `}>
         <Arrow className={styles.svg} />
       </div>
-      <p className={styles.text}>{text}</p>
+      <p className={styles.text}>{'Назад'}</p>
     </button>
   )
 }

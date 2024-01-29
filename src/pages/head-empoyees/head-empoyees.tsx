@@ -6,6 +6,7 @@ import TogglerTemplate from '../../components/employees-list-templates/employees
 const HeadEmployees: FC = () => {
   return (
     <>
+    
       <h1 className={styles.title}>Мои сотрудники</h1>
       <EmployeesList />
     </>

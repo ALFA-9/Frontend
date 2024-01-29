@@ -56,7 +56,7 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
   return (
     <Link
       to={routes.employeeIdp + '/' + id + '/tasks'}
-      className={styles.container}>
+      className={`${styles.container}`}>
       {isHead && (
         <LablesBig
           color={taskStatusColor}
@@ -65,7 +65,8 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
         />
       )}
       <img className={styles.img} src={jpg} alt={title} />
-      <div className={styles.info_wrapper}>
+      <div
+        className={`${styles.info_wrapper}`}>
         <div className={styles.title_wrapper}>
           <h2 className={styles.title}>{title}</h2>
           {isHead && (
@@ -80,12 +81,13 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
                   isOptionsOpen && styles.button_list_active
                 }`}>
                 <li>
-                  <button className={styles.button_list_item}>
+                  <button disabled className={styles.button_list_item}>
                     Подтвердить
                   </button>
                 </li>
                 <li>
                   <button
+                    disabled
                     className={`${styles.button_list_item} ${styles.button_list_item_red}`}>
                     Отменить ИПР
                   </button>

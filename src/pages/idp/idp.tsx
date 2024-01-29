@@ -9,6 +9,7 @@ import {
   idpDataTemp,
   idpDataTempArr,
 } from '../../utils/_temp/const-idp-data_temp'
+import ButtonBack from '../../ui/buttons/button-back/button-back'
 
 const Idp: FC = () => {
   const [isIdpInProgressExist, setIsIdpInProgressExist] =
@@ -20,6 +21,7 @@ const Idp: FC = () => {
 
   return (
     <div className={styles.container}>
+      <ButtonBack path={routes.main} />
       <h1 className={styles.title}>Индивидуальный план развития</h1>
       <Tabs>
         <TabPane title='В работе'>

@@ -1,10 +1,4 @@
-import {
-  Link,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import styles from './sidebar.module.scss'
 import SidebarList from '../sidebar-list/sidebar-list'
 import { mainSidebarItems } from '../../utils/const-side-main-sidebar-items'
@@ -14,16 +8,10 @@ import {
   idpSidebarItems,
 } from '../../utils/const-sidebar-items'
 import { routes } from '../../utils/const-routes'
-import ButtonAccent from '../../ui/buttons/button-accent/button-accent'
 import ButtonBack from '../../ui/buttons/button-back/button-back'
 
 const Sidebar: FC = () => {
   const location = useLocation()
-  const navigate = useNavigate()
-
-  function handleButtonBackClick() {
-    navigate(-1)
-  }
 
   return (
     <nav
@@ -31,7 +19,7 @@ const Sidebar: FC = () => {
         location.pathname === routes.main && styles.content_main_gallery
       }`}>
       {location.pathname !== routes.main && (
-        <ButtonBack onClick={handleButtonBackClick} text='Назад' />
+        <ButtonBack extraStyles={styles.button_back} path='#' />
       )}
       {location.pathname === routes.main && (
         <h2 className={styles.title}>Сервисы</h2>
@@ -51,6 +39,7 @@ const Sidebar: FC = () => {
           path={routes.head + '/*'}
           element={<SidebarList mainSidebarItems={headSidebarItems} />}
         />
+        <Route path={routes.headEmployeesId + '/*'} element={<></>} />
       </Routes>
     </nav>
   )

@@ -23,3 +23,25 @@
 .button {
   @include reset-button;
 }
+
+.button_back {
+  @include reset-button;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  &:hover .svg_wrapper {
+    background-color: $button-secondary-hover;
+  }
+  &:hover .text {
+    color: $light-black;
+  }
+  &:active .svg_wrapper {
+    background-color: $button-secondary-pressed;
+  }
+  &:active .text {
+    color: $light-black;
+  }
+
+  margin: 12px 0px 40px 10px;
+  visibility: hidden;
+}

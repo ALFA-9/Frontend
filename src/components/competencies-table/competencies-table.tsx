@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import styles from './competencies-table.module.scss'
-import { CompetenciesType, ScoreType } from '../../types'
+import {  ScoreType } from '../../types'
 
 interface ScoreComponentType {
   score: number
@@ -35,11 +35,11 @@ const ListItem: FC<ScoreType> = ({ name, score }) => {
 }
 
 interface CompetenciesTableType {
-  data: CompetenciesType
+  scors?: ScoreType[]
+  title: string
 }
 
-const CompetenciesTable: FC<CompetenciesTableType> = ({ data }) => {
-  const { scors, title } = data
+const CompetenciesTable: FC<CompetenciesTableType> = ({ title, scors }) => {
 
   const averageRating: number =
     Math.round(
@@ -54,7 +54,7 @@ const CompetenciesTable: FC<CompetenciesTableType> = ({ data }) => {
   return (
     <article className={styles.container}>
       <div className={styles.title_wrapper}>
-        <h2 className={styles.title}>{title}</h2>
+        <h3 className={styles.title}>{title}</h3>
         <div className={styles.average_score_wrapper}>
           <p className={styles.average_score_text}>Средняя оценка</p>
           <Score score={averageRating} isAverageRating={true} />

@@ -1,0 +1,21 @@
+@import '../../styles/const.scss';
+@import '../../styles/mixins.scss';
+
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  background-color: $light-gray;
+  border-radius: 8px;
+}
+
+.text_context {
+  @include reset-text;
+  @include text-tiny-12-400;
+  color: $dark-gray;
+}
+
+.text_content {
+  @include reset-text;
+  @include text-medium-16-500;
+}

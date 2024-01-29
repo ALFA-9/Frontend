@@ -6,14 +6,9 @@
   display: block;
   text-align: start;
   width: 100%;
-  border-radius: 16px;
-  overflow: hidden;
   position: relative;
   &:hover .info_wrapper {
     background-color: $gray;
-  }
-  &:active .info_wrapper {
-    background-color: $medium-gray;
   }
 }
 
@@ -29,6 +24,7 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  border-radius: 16px 16px 0 0;
 }
 
 .title_wrapper {
@@ -63,6 +59,7 @@
   box-sizing: border-box;
   padding: 28px;
   background-color: $light-gray;
+  border-radius: 0 0 16px 16px;
 }
 
 .extra_info_wrapper {
@@ -152,7 +149,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  z-index: 5;
+  z-index: 8;
   visibility: hidden;
   height: 0px;
   transition: height 0.4s;

@@ -1,6 +1,7 @@
 import jpeg from '../../images/_temp/template.jpeg'
 import { TreeNodeMod } from '../../types'
-
+import { softSkillsCompetencies } from './const-competencies-tables'
+softSkillsCompetencies
 export const nodesData: TreeNodeMod[] = [
   {
     id: '0',
@@ -67,3 +68,19 @@ export const nodesData: TreeNodeMod[] = [
     ],
   },
 ]
+
+const flatten = (array: TreeNodeMod[]): TreeNodeMod[] => {
+  let nodesDataFlat: TreeNodeMod[] = []
+
+  const arr = array.map((item) => {
+    if (item.children && item.children.length > 0) {
+      nodesDataFlat = [...nodesDataFlat, ...flatten(item.children)]
+      nodesDataFlat.push({ ...item, children: [] })
+    } else {
+      nodesDataFlat.push(item)
+    }
+  })
+  return nodesDataFlat
+}
+
+const nodesDataFlat: TreeNodeMod[] = flatten(nodesData)

@@ -36,10 +36,7 @@ export interface ScoreType {
   score: number
 }
 
-export interface CompetenciesType {
-  title: string
-  scors: ScoreType[]
-}
+
 
 export type IdpStatuses = 'in_progress' | 'cancelled' | 'failed' | 'completed'
 

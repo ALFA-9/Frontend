@@ -5,14 +5,23 @@ import {
   hardSkillsCompetencies,
   softSkillsCompetencies,
 } from '../../utils/_temp/const-competencies-tables'
+import ButtonBack from '../../ui/buttons/button-back/button-back'
+import { routes } from '../../utils/const-routes'
 
 const EmployeeCompetencies: FC = () => {
   return (
     <>
+      <ButtonBack path={routes.main} />
       <h1 className={styles.title}>Компетенции</h1>
       <div className={styles.table_wrapper}>
-        <CompetenciesTable data={softSkillsCompetencies} />
-        <CompetenciesTable data={hardSkillsCompetencies} />
+        <CompetenciesTable
+          title={softSkillsCompetencies.title}
+          scors={softSkillsCompetencies.scors}
+        />
+        <CompetenciesTable
+          title={hardSkillsCompetencies.title}
+          scors={hardSkillsCompetencies.scors}
+        />
       </div>
     </>
   )

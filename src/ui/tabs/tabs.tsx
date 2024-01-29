@@ -1,18 +1,21 @@
-import styles from './tabs.module.scss';
-import { useState, ReactElement, FC } from 'react';
-import Tab, { TTabProps } from './tab/tab';
+import styles from './tabs.module.scss'
+import { useState, ReactElement, FC } from 'react'
+import Tab, { TTabProps } from './tab/tab'
 
 export type TTabsProps = {
-  children: ReactElement<TTabProps>[],
+  children: ReactElement<TTabProps>[]
   preActiveTabIndex?: number
+  extraContainerStyles?: string
 }
 
-const Tabs: FC<TTabsProps> = props => {
-  const { children, preActiveTabIndex } = props;
-  const [activeTabIndex, setActiveTabIndex] = useState<number>(preActiveTabIndex || 0);
+const Tabs: FC<TTabsProps> = (props) => {
+  const { children, preActiveTabIndex, extraContainerStyles } = props
+  const [activeTabIndex, setActiveTabIndex] = useState<number>(
+    preActiveTabIndex || 0
+  )
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${extraContainerStyles}`}>
       <ul className={styles.tabs}>
         {children.map((child, index) => (
           <Tab
@@ -24,11 +27,9 @@ const Tabs: FC<TTabsProps> = props => {
           />
         ))}
       </ul>
-      <div className={styles.content}>
-        {children[activeTabIndex]}
-      </div>
+      <div className={styles.content}>{children[activeTabIndex]}</div>
     </div>
   )
 }
 
-export default Tabs;
+export default Tabs
