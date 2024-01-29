@@ -27,26 +27,31 @@ const InputTypeDate: FC<IInputTypeDate> = ({
     onChange(event, { ...payload, id, name });
   };
   return (
-    <UniversalDateInput
-      breakpoint={1024}
-      addonsClassName={styles.addons}
-      fieldClassName={styles.field}
-      inputClassName={styles.input}
-      focusedClassName={styles.focused}
-      wrapperClassName={styles.wrapper}
-      block={true}
-      view="date"
-      size="s"
-      placeholder={placeholder}
-      value={value}
-      onChange={onChangeHandler}
-      disableUserInput={false}
-      picker={true}
-      Calendar={Calendar}
-      calendarProps={{
-        selectorView: "full",
-      }}
-    />
+      <UniversalDateInput
+        breakpoint={1024}
+        addonsClassName={styles.addons}
+        fieldClassName={styles.field}
+        inputClassName={styles.input}
+        focusedClassName={styles.focused}
+        filledClassName={styles.filled}
+        wrapperClassName={styles.wrapper}
+        block={true}
+        view="date"
+        size="s"
+        placeholder={placeholder}
+        value={value}
+        onChange={onChangeHandler}
+        disableUserInput={false}
+        picker={true}
+        Calendar={Calendar}
+        calendarProps={{
+          selectorView: "full",
+          responsive: false,
+          className: `${styles.calendar}`,
+          headerClassName: `${styles.calendarHeader}`,
+          contentClassName: `${styles.calendarContent}`,
+        }}
+      />
   );
 };
 
