@@ -1,11 +1,11 @@
-import styles from './idp.module.scss'
+import styles from './employee-idp.module.scss'
 import { FC } from 'react'
 import Tabs from '../../ui/tabs/tabs'
 import TabPane from '../../ui/tabs/tab-pane/tab-pane'
 import ButtonAccent from '../../ui/buttons/button-accent/button-accent'
 import { routes } from '../../utils/const-routes'
 
-const Idp: FC = () => {
+const EmployeeIdp: FC = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Индивидуальный план развития</h1>
@@ -41,4 +41,4 @@ const Idp: FC = () => {
   )
 }
 
-export default Idp
+export default EmployeeIdp

@@ -1,5 +1,5 @@
-import { FC } from "react";
-import styles from "./input-type-checkbox.module.scss";
+import { FC } from 'react';
+import styles from './input-type-checkbox.module.scss';
 
 interface IInputTypeCheckbox
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -8,14 +8,14 @@ interface IInputTypeCheckbox
 }
 
 const InputTypeCheckbox: FC<IInputTypeCheckbox> = ({
-  extraClass = "",
-  label = "",
+  extraClass = '',
+  label = '',
   ...InputHTMLAttributes
 }) => {
   return (
     <label htmlFor={InputHTMLAttributes.id} className={styles.label_container}>
       <input
-        type="checkbox"
+        type='checkbox'
         {...InputHTMLAttributes}
         className={`${styles.original_input} ${extraClass}`}
       />

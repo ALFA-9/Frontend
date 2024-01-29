@@ -3,14 +3,15 @@ import styles from "./input-type-textaria.module.scss";
 
 interface IInputTypeTextaria
   extends React.HTMLAttributes<HTMLParagraphElement> {
-  placeholder?: string;
-  extraClass?: string;
-  label?: string;
-  value: string;
-  maxlength?: number;
+  placeholder?: string,
+  extraClass?: string,
+  label?: string,
+  name: string,
+  value: string,
+  maxlength?: number
 }
 
-export const InputTypeTextaria: FC<IInputTypeTextaria> = ({
+const InputTypeTextaria: FC<IInputTypeTextaria> = ({
   value,
   maxlength = Infinity,
   ...HTMLAttributes
@@ -45,5 +46,7 @@ export const InputTypeTextaria: FC<IInputTypeTextaria> = ({
         value.length
       }/${maxlength === Infinity ? "-" : maxlength}`}</div>
     </label>
-  );
-};
+  )
+}
+
+export default InputTypeTextaria;

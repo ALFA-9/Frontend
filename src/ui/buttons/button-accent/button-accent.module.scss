@@ -2,7 +2,7 @@
 @import '../../../styles/mixins.scss';
 
 .button {
-  @include reset-link;
+  @include reset-button;
   @include button_default;
   background-color: $button-accent;
   color: $white;
@@ -11,15 +11,13 @@
     background-color: $button-accent-hover;
   }
 
-  &:focus {
+  &:active {
     background-color: $button-accent-pressed;
   }
-}
 
-.disabled {
-  pointer-events: none;
-  cursor: default;
-  text-decoration: none;
-  color: $medium-gray;
-  background-color: $button-accent-disabled;
+  &:disabled {
+    cursor: default;
+    color: $medium-gray;
+    background-color: $button-accent-disabled;
+  }
 }
