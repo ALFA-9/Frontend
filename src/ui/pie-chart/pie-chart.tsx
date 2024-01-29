@@ -41,7 +41,7 @@ const PieChart: FC<IPieChart> = ({
         sectorOffset
       )
     );
-  }, []);
+  }, [data]);
 
   return (
     <>
@@ -82,8 +82,8 @@ const PieChart: FC<IPieChart> = ({
                   className={styles.text}
                   x={item.textX + (isSelected ? item.sOffsetX : 0)}
                   y={item.textY + (isSelected ? item.sOffsetY : 0)}
-                  dominant-baseline="middle"
-                  text-anchor="middle"
+                  dominantBaseline="middle"
+                  textAnchor="middle"
                 >
                   {`${item.isVisiblePercentage ? percentage + "%" : ""}`}
                 </text>
