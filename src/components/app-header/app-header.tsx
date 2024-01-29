@@ -10,10 +10,7 @@ const AppHeader: FC = () => {
   return (
     <header className={styles.header}>
       <Link className={styles.link_logo} to={routes.main}>
-        <div className={styles.logo}>
-          <Logo className={styles.logoIcon} />
-          <p className={styles.logoText}>Alfа People</p>
-        </div>
+        <Logo className={styles.logo} />
       </Link>
       <nav>
         <ul className={styles.menu}>

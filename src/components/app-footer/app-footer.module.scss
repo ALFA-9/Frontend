@@ -26,19 +26,8 @@
 
 .logo {
   grid-area: logo;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logoIcon {
-  width: 40px;
+  width: 170px;
   height: 40px;
-}
-
-.logoText {
-  @include reset-text;
-  @include logo-text;
 }
 
 .text {

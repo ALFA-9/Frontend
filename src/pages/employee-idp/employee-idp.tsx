@@ -1,4 +1,4 @@
-import styles from './idp.module.scss'
+import styles from './employee-idp.module.scss'
 import { FC, useState } from 'react'
 import Tabs from '../../ui/tabs/tabs'
 import TabPane from '../../ui/tabs/tab-pane/tab-pane'

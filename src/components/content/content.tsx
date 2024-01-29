@@ -2,7 +2,9 @@ import { FC } from 'react'
 import styles from './content.module.scss'
 import { Route, Routes, useLocation, useParams } from 'react-router-dom'
 import MainGallery from '../../pages/main-gallery/main-gallery'
-import Idp from '../../pages/employee-idp/idp'
+import EmployeeIdp from '../../pages/employee-idp/employee-idp'
+import EmployeeForm from '../../pages/employee-form/employee-form'
+import competenciesImg from '../../images/_temp/competencies.jpg'
 import { UiPage } from '../../pages/ui-page/ui-page'
 import { routes } from '../../utils/const-routes'
 import EmployeeCompetencies from '../../pages/employee-competencies/employee-competencies'
@@ -22,15 +24,17 @@ const Content: FC = () => {
       }`}>
       <Routes>
         <Route path={routes.main} element={<MainGallery />} />
-        <Route path={routes.employeeIdp} element={<Idp />} />
-        <Route path={routes.employeeIdpTasks} element={<IdpTasks />} />
+        <Route path={routes.employeeIdp} element={<EmployeeIdp />} />
+        <Route
+          path={routes.employeeIdpTasks}
+          element={<h1>employeeIdpTasks</h1>}
+        />
         <Route path='/idp/ui' element={<UiPage />} />
         <Route
           path={routes.employeeCompetencies}
           element={<EmployeeCompetencies />}
         />
-        <Route path={routes.employeeIdpForm} element={<>Форма</>} />
-
+        <Route path={routes.employeeIdpForm} element={<EmployeeForm />} />
         <Route
           path={routes.employeeIdpFormDone}
           element={<h1>employeeFormDone</h1>}

@@ -1,14 +1,16 @@
-import { FC, useState } from "react";
-import styles from "./input-type-text.module.scss";
+import { FC, useState } from 'react';
+import styles from './input-type-text.module.scss';
 
 interface IInputTypeText extends React.InputHTMLAttributes<HTMLInputElement> {
   extraClass?: string;
+  outerClass?: string;
   label?: string;
 }
 
 const InputTypeText: FC<IInputTypeText> = ({
-  extraClass = "",
-  label = "",
+  extraClass = '',
+  outerClass = '',
+  label = '',
   ...InputHTMLAttributes
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false)
@@ -16,7 +18,7 @@ const InputTypeText: FC<IInputTypeText> = ({
 
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${outerClass}`}>
       {InputHTMLAttributes.value && label && (
         <label  htmlFor={InputHTMLAttributes.id} className={styles.label}>
           {label}
@@ -24,7 +26,7 @@ const InputTypeText: FC<IInputTypeText> = ({
         </label>
       )}
       <input
-        type="text"
+        type='text'
         {...InputHTMLAttributes}
         className={`${styles.input} ${extraClass} ${InputHTMLAttributes.value ? styles.input__notEmpty : ''}`}
       />

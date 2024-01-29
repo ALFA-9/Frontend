@@ -1,5 +1,5 @@
-import { FC } from "react";
-import styles from "./input-type-radiobutton.module.scss";
+import { FC } from 'react';
+import styles from './input-type-radiobutton.module.scss';
 
 interface IInputTypeRadiobutton
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -8,14 +8,14 @@ interface IInputTypeRadiobutton
 }
 
 const InputTypeRadiobutton: FC<IInputTypeRadiobutton> = ({
-  extraClass = "",
-  label = "",
+  extraClass = '',
+  label = '',
   ...InputHTMLAttributes
 }) => {
   return (
     <label htmlFor={InputHTMLAttributes.id} className={styles.label_container}>
       <input
-        type="radio"
+        type='radio'
         className={styles.original_input}
         {...InputHTMLAttributes}
       />

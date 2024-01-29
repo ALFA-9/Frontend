@@ -1,30 +1,35 @@
 import styles from './button-accent.module.scss';
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { ButtonHTMLAttributes, FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-type TButtonAccentProps = {
+interface IButtonAccentProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string,
-  path: string,
-  disabled?: boolean,
+  path?: string,
   extraClass?: string
 }
 
-const ButtonAccent: FC<TButtonAccentProps> = ({
+const ButtonAccent: FC<IButtonAccentProps> = ({
   title = '',
   path = '',
-  disabled = false,
   extraClass = '',
   ...InputHTMLAttributes
 }) => {
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(path);
+  }
+
   return (
-    <Link
-      to={path}
+    <button
+      onClick={handleClick}
+      className={`${styles.button} ${extraClass}`}
       {...InputHTMLAttributes}
-      className={`${styles.button} ${disabled ? styles.disabled : ''} ${extraClass}`}
     >
       {title}
-    </Link>
+    </button>
   )
 }
 

@@ -4,7 +4,7 @@ import InputTypeText from "../../ui/inputs/input-type-text/input-type-text";
 import InputTypeCheckbox from "../../ui/inputs/input-type-checkbox/input-type-checkbox";
 import InputTypeSwitcher from "../../ui/inputs/input-type-switcher/input-type-switcher";
 import InputTypeSelect from "../../ui/inputs/input-type-select/input-type-select";
-import { InputTypeTextaria } from "../../ui/inputs/input-type-textaria/input-type-textaria";
+import InputTypeTextaria from "../../ui/inputs/input-type-textaria/input-type-textaria";
 import InputTypeRadiobutton from "../../ui/inputs/input-type-radiobutton/input-type-radiobutton";
 
 import PieChart from "../../ui/pie-chart/pie-chart";
@@ -167,6 +167,7 @@ export const UiPage = () => {
         </InputTypeSelect>
 
         <InputTypeTextaria
+          name="textaria"
           value={inputData.textaria}
           maxlength={500}
           id="textaria"
