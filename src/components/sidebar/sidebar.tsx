@@ -39,7 +39,7 @@ const Sidebar: FC = () => {
           path={routes.head + '/*'}
           element={<SidebarList mainSidebarItems={headSidebarItems} />}
         />
-        <Route path={routes.headEmployeesId + '/*'} element={<></>} />
+        <Route path={routes.headStaffId + '/*'} element={<></>} />
       </Routes>
     </nav>
   )

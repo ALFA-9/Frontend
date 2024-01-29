@@ -33,6 +33,6 @@ export const headSidebarItems: MenuNavItemType[] = [
   {
     name: 'Мои сотрудники',
     Svg: Employees,
-    nav: routes.headEmployees,
+    nav: routes.headStaff,
   },
 ]

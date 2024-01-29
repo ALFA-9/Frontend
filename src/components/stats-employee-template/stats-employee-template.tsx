@@ -46,7 +46,7 @@ const StatsEmployeeTemplate: FC<StatsEmployeeTemplateType> = ({ data }) => {
   }
 
   const onOuterClick: MouseEventHandler<HTMLDivElement> = () => {
-    navigate(routes.headEmployees + '/' + id)
+    navigate(routes.headStaff + '/' + id)
   }
 
   return (

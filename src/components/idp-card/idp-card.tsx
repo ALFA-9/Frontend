@@ -3,10 +3,14 @@ import styles from './idp-card.module.scss'
 import jpg from '../../images/_temp/idp.jpeg'
 import LablesBig from '../../ui/lables/lables-big/lables-big'
 import { LablesSmallEnum } from '../../ui/lables/types'
-import { IdpStatusesTranslate, IdpType } from '../../types'
-import { Link } from 'react-router-dom'
-import { routes } from '../../utils/const-routes'
+import {
+  DropDownMenuItemType,
+  IdpStatusesTranslate,
+  IdpType,
+} from '../../types'
+import { Link, useLocation } from 'react-router-dom'
 import Dots from '../../images/icons/three_dots.svg'
+import DropDownMenu from '../../ui/drop-down-menu/drop-down-menu'
 
 interface IdpCardType {
   data: IdpType
@@ -17,8 +21,9 @@ interface IdpCardType {
 const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
   const [tasksProgress, setTasksProgress] = useState<string>('50%')
   const [isOptionsOpen, setIsOptionsOpen] = useState<boolean>(false)
-
   const { currentTask, deadline, head, tasks, title, status, id } = data
+
+  const location = useLocation()
 
   let taskStatusColor: LablesSmallEnum
   switch (status) {
@@ -53,9 +58,29 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
     document.body.addEventListener('click', clickReset)
   }
 
+  const handleTestClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+    console.log('click')
+  }
+
+  const dropDownList: DropDownMenuItemType[] = [
+    {
+      onClick: handleTestClick,
+      text: 'Подтвердить',
+      isDisabled: true,
+      isRed: false,
+    },
+
+    {
+      onClick: handleTestClick,
+      text: 'Отменить ИПР',
+      isDisabled: true,
+      isRed: true,
+    },
+  ]
+
   return (
     <Link
-      to={routes.employeeIdp + '/' + id + '/tasks'}
+      to={location.pathname + '/' + id + '/tasks'}
       className={`${styles.container}`}>
       {isHead && (
         <LablesBig
@@ -65,8 +90,7 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
         />
       )}
       <img className={styles.img} src={jpg} alt={title} />
-      <div
-        className={`${styles.info_wrapper}`}>
+      <div className={`${styles.info_wrapper}`}>
         <div className={styles.title_wrapper}>
           <h2 className={styles.title}>{title}</h2>
           {isHead && (
@@ -76,23 +100,7 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
                 className={styles.title_button}>
                 <Dots className={styles.title_svg} />
               </button>
-              <ul
-                className={`${styles.button_list} ${
-                  isOptionsOpen && styles.button_list_active
-                }`}>
-                <li>
-                  <button disabled className={styles.button_list_item}>
-                    Подтвердить
-                  </button>
-                </li>
-                <li>
-                  <button
-                    disabled
-                    className={`${styles.button_list_item} ${styles.button_list_item_red}`}>
-                    Отменить ИПР
-                  </button>
-                </li>
-              </ul>
+              <DropDownMenu isOpen={isOptionsOpen} items={dropDownList} />
             </div>
           )}
         </div>

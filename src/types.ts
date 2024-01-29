@@ -1,5 +1,6 @@
 import { TreeNode } from 'primereact/treenode'
 import { IconType } from 'primereact/utils'
+import { MouseEventHandler } from 'react'
 
 export interface MenuNavItemType {
   name: string
@@ -24,19 +25,17 @@ export interface routesType {
   employeeCompetencies: string
   head: string
   headStats: string
-  headEmployees: string
-  headEmployeesId: string
-  headEmployeesIdTasks: string
-  headEmployeesIdForm: string
-  headEmployeesIdFormDone: string
+  headStaff: string
+  headStaffId: string
+  headStaffIdTasks: string
+  headStaffIdForm: string
+  headStaffIdFormDone: string
 }
 
 export interface ScoreType {
   name: string
   score: number
 }
-
-
 
 export type IdpStatuses = 'in_progress' | 'cancelled' | 'failed' | 'completed'
 
@@ -145,4 +144,11 @@ export interface IdpType {
   deadline: string
   status: IdpStatuses
   tasks: any[]
+}
+
+export interface DropDownMenuItemType {
+  text: string
+  isDisabled?: boolean
+  isRed?: boolean
+  onClick: MouseEventHandler<HTMLButtonElement>
 }

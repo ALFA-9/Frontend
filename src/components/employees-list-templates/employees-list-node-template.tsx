@@ -15,7 +15,7 @@ const EmployeesListNodeTemplate: FC = (
 
   const onOuterClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation()
-    navigate(routes.headEmployees + '/' + node.id)
+    navigate(routes.headStaff + '/' + node.id)
   }
 
   const clickReset = () => {
@@ -51,7 +51,7 @@ const EmployeesListNodeTemplate: FC = (
       </div>
 
       <Link
-        to={routes.headEmployees + '/' + node.id + '/form'}
+        to={routes.headStaff + '/' + node.id + '/form'}
         className={`${styles.popup} ${isPopupOpen && styles.popup_active}`}>
         <p className={styles.popup_link}>Назначить ИПР</p>
       </Link>

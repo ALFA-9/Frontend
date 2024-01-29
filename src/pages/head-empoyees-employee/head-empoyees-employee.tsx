@@ -14,6 +14,7 @@ import IdpCard from '../../components/idp-card/idp-card'
 import ButtonBack from '../../ui/buttons/button-back/button-back'
 import { useLocation, useNavigate } from 'react-router-dom'
 import ButtonAccent from '../../ui/buttons/button-accent/button-accent'
+import { routes } from '../../utils/const-routes'
 
 const HeadEmpoyeesEmployee: FC = () => {
   const location = useLocation()
@@ -25,6 +26,7 @@ const HeadEmpoyeesEmployee: FC = () => {
 
   return (
     <>
+      <ButtonBack path={routes.headStaff} />
       <div className={`${styles.title_wrapper}`}>
         <img className={styles.title_img} src={avatar} alt='#' />
         <h1 className={styles.title}>HeadEmpoyeesEmployee</h1>
