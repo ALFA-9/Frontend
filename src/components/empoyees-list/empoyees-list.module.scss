@@ -12,6 +12,7 @@
 .example {
   input {
     background-color: $light-gray;
+    background: $light-gray url('../../images/icons/search.svg') center left 12px no-repeat;
     border-radius: 8px;
     border: none;
     outline: none;
