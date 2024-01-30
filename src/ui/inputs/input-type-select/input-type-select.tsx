@@ -5,12 +5,14 @@ import styles from './input-type-select.module.scss'
 
 interface IInputTypeSelect
   extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  extraClass?: string
+  extraClass?: string,
+  outerClass?: string,
   label?: string
 }
 
 const InputTypeSelect: FC<IInputTypeSelect> = ({
   extraClass = '',
+  outerClass = '',
   label = '',
   onChange = () => {},
   ...SelectHTMLAttributes
@@ -89,7 +91,7 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
       {isDropdownOpen && (
         <div onClick={handleOverlayClick} className={styles.overlay} />
       )}
-      <label htmlFor={SelectHTMLAttributes.id} className={styles.label}>
+      <label htmlFor={SelectHTMLAttributes.id} className={`${styles.label} ${outerClass}`}>
         <p className={styles.label_text}>{label}</p>
         <select
           {...SelectHTMLAttributes}

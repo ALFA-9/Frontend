@@ -25,6 +25,12 @@ $font-bold: 700;
   cursor: pointer;
 }
 
+@mixin reset-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
 // typography mixins
 
 @mixin for-all {

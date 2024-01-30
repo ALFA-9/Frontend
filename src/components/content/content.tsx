@@ -11,6 +11,7 @@ import EmployeeCompetencies from '../../pages/employee-competencies/employee-com
 import HeadEmployees from '../../pages/head-empoyees/head-empoyees'
 import HeadStats from '../../pages/head-stats/head-stats'
 import HeadEmpoyeesEmployee from '../../pages/head-empoyees-employee/head-empoyees-employee'
+import HeadForm from '../../pages/head-form/head-form'
 import EmployeeIdpForm from '../../pages/idp-tasks/idp-tasks'
 import IdpTasks from '../../pages/idp-tasks/idp-tasks'
 
@@ -49,6 +50,7 @@ const Content: FC = () => {
             element={<HeadEmpoyeesEmployee />}
           />
           <Route path={routes.headStaffIdTasks} element={<IdpTasks />} />
+          <Route path={routes.headStaffIdForm} element={<HeadForm />} />
         </>
       </Routes>
     </section>

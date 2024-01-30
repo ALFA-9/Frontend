@@ -85,7 +85,6 @@ const EmployeeForm: FC = () => {
             onChange={handleChange}
             label='ФИО'
             placeholder='ФИО'
-            extraClass={styles.input}
           />
           <div className={styles.row}>
             <InputTypeText
@@ -115,7 +114,7 @@ const EmployeeForm: FC = () => {
             label='Руководитель'
             size={size}
           >
-            {user.supervisor.map((item, index) => <option key={index}>{item}</option>)}
+            {user.supervisor.map((item, index) => <option key={`option${index}`}>{item}</option>)}
           </InputTypeSelect>
           <div className={styles.textaria}>
             <p className={styles.legend}>Сопроводительное письмо</p>

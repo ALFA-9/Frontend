@@ -1,0 +1,36 @@
+@import '../../../styles/const.scss';
+@import '../../../styles/mixins.scss';
+
+.button {
+  @include reset-button;
+  @include button_default;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid $dark-gray;
+  background-color: $button-tertiary;
+  color: $black;
+
+  &:hover {
+    background-color: $button-tertiary-hover;
+  }
+
+  &:active {
+    background-color: $button-tertiary-pressed;
+  }
+
+  &:disabled {
+    cursor: default;
+    color: $dark-gray;
+    background-color: $button-tertiary-disabled;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  @include reset-text;
+}

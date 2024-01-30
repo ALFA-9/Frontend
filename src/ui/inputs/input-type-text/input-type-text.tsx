@@ -2,9 +2,9 @@ import { FC, useState } from 'react';
 import styles from './input-type-text.module.scss';
 
 interface IInputTypeText extends React.InputHTMLAttributes<HTMLInputElement> {
-  extraClass?: string;
-  outerClass?: string;
-  label?: string;
+  extraClass?: string,
+  outerClass?: string,
+  label?: string
 }
 
 const InputTypeText: FC<IInputTypeText> = ({

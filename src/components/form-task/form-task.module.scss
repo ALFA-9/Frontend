@@ -1,0 +1,72 @@
+@import '../../styles/const.scss';
+@import '../../styles/mixins.scss';
+
+.task {
+  @include reset-fieldset;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+}
+
+.title {
+  @include reset-text;
+  @include text-h2-24-700;
+}
+
+.row {
+  display: flex;
+  gap: 24px;
+}
+
+.halfrow {
+  flex: 1;
+}
+
+.textaria {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.legend {
+  @include reset-text;
+  @include text-medium-16-500;
+}
+
+.deadline {
+  @include reset-fieldset;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.daterange {
+  width: 184px;
+
+  &:first-child {
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 12px;
+      height: 1px;
+      background-color: $black;
+      position: absolute;
+      top: 24px;
+      right: -24px;
+    }
+  }
+}
