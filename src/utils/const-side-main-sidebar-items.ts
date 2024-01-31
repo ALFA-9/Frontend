@@ -1,92 +1,112 @@
 import { MenuNavItemType } from '../types'
 
-import actionPlan from '../images/icons/sidebar-main/action-plan.png'
-import ask from '../images/icons/sidebar-main/ask.png'
-import book from '../images/icons/sidebar-main/book.png'
-import bookBlue from '../images/icons/sidebar-main/book_blue.png'
-import candy from '../images/icons/sidebar-main/candy.png'
-import drink from '../images/icons/sidebar-main/drink.png'
-import healthCare from '../images/icons/sidebar-main/health-care.png'
-import knowledge from '../images/icons/sidebar-main/knowledge.png'
-import documents from '../images/icons/sidebar-main/upload.png'
-import user from '../images/icons/sidebar-main/user.png'
-import team from '../images/icons/sidebar-main/team.png'
-import wallet from '../images/icons/sidebar-main/wallet.png'
+import ActionPlan from '../images/icons/sidebar-main/action-plan.svg'
+import Ask from '../images/icons/sidebar-main/ask.svg'
+import Book from '../images/icons/sidebar-main/book.svg'
+import BookBlue from '../images/icons/sidebar-main/book_blue.svg'
+import Candy from '../images/icons/sidebar-main/candy.svg'
+import Drink from '../images/icons/sidebar-main/drink.svg'
+import HealthCare from '../images/icons/sidebar-main/health-care.svg'
+import Knowledge from '../images/icons/sidebar-main/knowledge.svg'
+import Documents from '../images/icons/sidebar-main/upload.svg'
+import User from '../images/icons/sidebar-main/user.svg'
+import Team from '../images/icons/sidebar-main/team.svg'
+import Wallet from '../images/icons/sidebar-main/wallet.svg'
+import Apps from '../images/icons/sidebar-main/apps.svg'
 
-import apps from '../images/icons/sidebar-main/apps.png'
 import { routes } from './const-routes'
 
 export const mainSidebarMoreButton: MenuNavItemType = {
   name: 'ещё 23',
-  src: apps,
+  Svg: Apps,
   nav: '#',
+  isMainMenu: true,
 }
 
 export const mainSidebarItems: MenuNavItemType[] = [
   {
     name: 'Мой доход',
-    src: wallet,
+    Svg: Wallet,
     nav: '#',
+    isMainMenu: true,
   },
   {
     name: 'Мои заявки',
-    src: ask,
+    Svg: Ask,
     nav: '#',
+    isMainMenu: true,
   },
   {
     name: 'Базы знаний',
-    src: book,
+    Svg: Book,
     nav: '#',
+    isMainMenu: true,
   },
   {
     name: 'Мое обучение',
-    src: bookBlue,
+    Svg: BookBlue,
     nav: '#',
+    isMainMenu: true,
   },
   {
     name: 'Индивидуальный план развития',
-    src: actionPlan,
+    Svg: ActionPlan,
     nav: routes.employeeIdp,
+    isMainMenu: true,
   },
   {
     name: 'Бенефиты',
-    src: candy,
+    Svg: Candy,
     nav: '#',
+    isMainMenu: true,
   },
   {
     name: 'Отпуск',
-    src: drink,
+    Svg: Drink,
     nav: '#',
+    isMainMenu: true,
+  },
+  {
+    name: 'Заказ справок и документов',
+    Svg: Ask,
+    nav: '#',
+    isMainMenu: true,
   },
   {
     name: 'Больничные и пособия',
-    src: healthCare,
+    Svg: HealthCare,
     nav: '#',
+    isMainMenu: true,
   },
   {
     name: 'IT-услуги',
-    src: knowledge,
+    Svg: Knowledge,
     nav: '#',
+    isMainMenu: true,
   },
   {
     name: 'Документы на подпись',
-    src: documents,
+    Svg: Documents,
     nav: '#',
+    isMainMenu: true,
   },
   {
     name: 'Личные данные',
-    src: user,
+    Svg: User,
     nav: '#',
+    isMainMenu: true,
   },
   {
     name: 'Моя команда',
-    src: team,
+    Svg: Team,
     nav: '#',
+    isMainMenu: true,
   },
   {
     name: 'ещё 23',
-    src: apps,
+    Svg: Apps,
     nav: '#',
     textColorGray: true,
+    isMainMenu: true,
   },
 ]

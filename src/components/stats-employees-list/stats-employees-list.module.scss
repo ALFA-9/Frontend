@@ -140,8 +140,5 @@
 .message {
   @include reset-text;
   @include text-regular-16-400;
-  font-size: 24px;
-  text-align: 24px;
-  text-align: center;
-  margin-top: 24px;
+  margin: 28px 0 0 80px;
 }

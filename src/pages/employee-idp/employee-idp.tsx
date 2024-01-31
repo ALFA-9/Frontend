@@ -1,5 +1,5 @@
 import styles from './employee-idp.module.scss'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Tabs from '../../ui/tabs/tabs'
 import TabPane from '../../ui/tabs/tab-pane/tab-pane'
 import ButtonAccent from '../../ui/buttons/button-accent/button-accent'
@@ -10,6 +10,7 @@ import {
   idpDataTempArr,
 } from '../../utils/_temp/const-idp-data_temp'
 import ButtonBack from '../../ui/buttons/button-back/button-back'
+//import { getProseptProducts } from '../../api/test'
 
 const Idp: FC = () => {
   const [isIdpInProgressExist, setIsIdpInProgressExist] =
@@ -18,6 +19,11 @@ const Idp: FC = () => {
   const [isIdpFailedExist, setIsIdpFailedExist] = useState<boolean>(false)
   const [isIdpCancelledExist, setIsIdpCancelledExist] =
     useState<boolean>(false)
+
+  // useEffect(() => {
+  //   //@ts-ignore
+  //   //getProseptProducts().then((res) => console.log(res))
+  // }, [])
 
   return (
     <div className={styles.container}>

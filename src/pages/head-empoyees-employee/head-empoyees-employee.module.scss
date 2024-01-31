@@ -71,8 +71,12 @@
 }
 
 .button_accent {
-  display: inline-block;
+  display: block;
   margin-top: 40px;
+  background-color: #fff;
+  z-index: 4;
   position: sticky;
-  bottom: 50px;
+  bottom: 0px;
+  padding: 20px 0;
+  box-sizing: border-box;
 }

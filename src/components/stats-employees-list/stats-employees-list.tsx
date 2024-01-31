@@ -100,7 +100,11 @@ const StatsEmployeesList: FC<StatsEmployeesListType> = ({ nodesData }) => {
           <StatsEmployeeTemplate data={node} key={node.key} />
         ))}
       </ul>
-      {!isSomeoneHere && <p className={styles.message}>Никого не найдено</p>}
+      {!isSomeoneHere && (
+        <p className={styles.message}>
+          Сотрудников с данным статусом ИПР не найдено
+        </p>
+      )}
     </article>
   )
 }

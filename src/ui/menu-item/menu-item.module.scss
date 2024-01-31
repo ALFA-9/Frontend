@@ -27,11 +27,14 @@
   color: $dark-gray;
 }
 
-.img {
+.svg {
+  width: 20px;
+  height: 20px;
+}
+
+.svg_main {
   width: 24px;
-  aspect-ratio: 1/1;
-  object-fit: contain;
-  object-position: center;
+  height: 24px;
 }
 
 .text {

@@ -32,7 +32,7 @@ const HeadEmpoyeesEmployee: FC = () => {
         <h1 className={styles.title}>HeadEmpoyeesEmployee</h1>
       </div>
       <Tabs extraContainerStyles={styles.extra_container_styles}>
-        <TabPane title='Не выполнен'>
+        <TabPane title='Личная информация'>
           <section aria-label='Личная информация' className={styles.tab_child}>
             <TextArea context={'Департамент'} content={'Отдел рекламы'} />
             <div className={styles.extra_text_wrapper}>

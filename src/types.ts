@@ -4,10 +4,10 @@ import { MouseEventHandler } from 'react'
 
 export interface MenuNavItemType {
   name: string
-  src?: string
   Svg?: React.VFC<React.SVGProps<SVGSVGElement>>
   nav: string
   textColorGray?: boolean
+  isMainMenu?:boolean
 }
 
 export interface MainGalleryItemType {

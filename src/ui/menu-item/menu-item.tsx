@@ -9,7 +9,7 @@ interface MenuItemComponent {
 }
 
 const MenuItem: FC<MenuItemComponent> = ({ item }) => {
-  const { name, nav, src, textColorGray, Svg } = item
+  const { name, nav, textColorGray, Svg, isMainMenu } = item
   const location = useLocation()
 
   const active = location.pathname.includes(nav)
@@ -21,8 +21,11 @@ const MenuItem: FC<MenuItemComponent> = ({ item }) => {
         className={`${styles.link} ${textColorGray && styles.link_gray} ${
           active && styles.link_active
         }`}>
-        {Svg && <Svg />}
-        {src && <img className={styles.img} src={src} alt={name} />}
+        {isMainMenu ? (
+          <Svg className={styles.svg_main} />
+        ) : (
+          <Svg className={styles.svg} />
+        )}
         <p className={styles.text}>{name}</p>
       </Link>
     </li>
