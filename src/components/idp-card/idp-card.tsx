@@ -69,7 +69,12 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
       isDisabled: true,
       isRed: false,
     },
-
+    {
+      onClick: handleTestClick,
+      text: 'Редактировать',
+      isDisabled: true,
+      isRed: false,
+    },
     {
       onClick: handleTestClick,
       text: 'Отменить ИПР',

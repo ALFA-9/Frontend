@@ -16,14 +16,16 @@ const ButtonBack: FC<ButtonBackType> = ({ path, extraStyles }) => {
   }
 
   return (
-    <button
-      onClick={handleButtonBackClick}
-      className={`${extraStyles ? extraStyles : styles.button}`}>
-      <div className={`${styles.svg_wrapper} `}>
-        <Arrow className={styles.svg} />
-      </div>
-      <p className={styles.text}>{'Назад'}</p>
-    </button>
+    <div className={styles.button_container}>
+      <button
+        onClick={handleButtonBackClick}
+        className={`${extraStyles ? extraStyles : styles.button}`}>
+        <div className={`${styles.svg_wrapper} `}>
+          <Arrow className={styles.svg} />
+        </div>
+        <p className={styles.text}>{'Назад'}</p>
+      </button>
+    </div>
   )
 }
 

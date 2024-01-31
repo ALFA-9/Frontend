@@ -8,7 +8,6 @@ import {
   idpSidebarItems,
 } from '../../utils/const-sidebar-items'
 import { routes } from '../../utils/const-routes'
-import ButtonBack from '../../ui/buttons/button-back/button-back'
 
 const Sidebar: FC = () => {
   const location = useLocation()
@@ -18,9 +17,6 @@ const Sidebar: FC = () => {
       className={`${styles.content} ${
         location.pathname === routes.main && styles.content_main_gallery
       }`}>
-      {location.pathname !== routes.main && (
-        <ButtonBack extraStyles={styles.button_back} path='#' />
-      )}
       {location.pathname === routes.main && (
         <h2 className={styles.title}>Сервисы</h2>
       )}

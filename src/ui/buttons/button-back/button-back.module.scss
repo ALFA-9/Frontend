@@ -1,6 +1,15 @@
 @import '../../../styles/mixins.scss';
 @import '../../../styles/const.scss';
 
+.button_container {
+  position: absolute;
+  top: 80px;
+  left: 18px;
+  height: 100%;
+  z-index: 3;
+  width: 0;
+}
+
 .button {
   @include reset-button;
   display: flex;
@@ -18,11 +27,10 @@
   &:active .text {
     color: $light-black;
   }
-
-  margin: 12px 0px 40px 10px;
-  position: absolute;
-  top: 80px;
-  left: 18px;
+  position: sticky;
+  top: 0;
+  padding-top: 12px;
+  padding-left: 10px;
 }
 
 .svg_wrapper {

@@ -1,11 +1,10 @@
-import styles from './button-accent.module.scss';
-import { ButtonHTMLAttributes, FC } from 'react';
-import { useNavigate } from 'react-router-dom';
+import styles from './button-accent.module.scss'
+import { ButtonHTMLAttributes, FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-interface IButtonAccentProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
-  title: string,
-  path?: string,
+interface IButtonAccentProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  title: string
+  path?: string
   extraClass?: string
 }
 
@@ -15,22 +14,21 @@ const ButtonAccent: FC<IButtonAccentProps> = ({
   extraClass = '',
   ...InputHTMLAttributes
 }) => {
-
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate(path);
+    navigate(path)
+    window.scrollTo(0, 0)
   }
 
   return (
     <button
       onClick={handleClick}
       className={`${styles.button} ${extraClass}`}
-      {...InputHTMLAttributes}
-    >
+      {...InputHTMLAttributes}>
       {title}
     </button>
   )
 }
 
-export default ButtonAccent;
+export default ButtonAccent

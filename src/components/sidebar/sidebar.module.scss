@@ -5,10 +5,15 @@
   max-width: 194px;
   width: 100%;
   transition: max-width 0.4s;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  padding-top: 84px;
 }
 
 .content_main_gallery {
   max-width: 288px;
+  padding: 0;
 }
 
 .title {
@@ -18,30 +23,4 @@
   color: $dark-gray;
   font-weight: 400;
   margin: 0 0 12px 12px;
-}
-
-.button {
-  @include reset-button;
-}
-
-.button_back {
-  @include reset-button;
-  display: flex;
-  align-items: center;
-  column-gap: 8px;
-  &:hover .svg_wrapper {
-    background-color: $button-secondary-hover;
-  }
-  &:hover .text {
-    color: $light-black;
-  }
-  &:active .svg_wrapper {
-    background-color: $button-secondary-pressed;
-  }
-  &:active .text {
-    color: $light-black;
-  }
-
-  margin: 12px 0px 40px 10px;
-  visibility: hidden;
 }
