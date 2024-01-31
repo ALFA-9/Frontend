@@ -11,6 +11,10 @@
   padding: 24px 28px;
   margin: 0 auto;
   color: $black;
+  position: sticky;
+  top: 0;
+  background-color: $white;
+  z-index: 10;
 }
 
 .link_logo {

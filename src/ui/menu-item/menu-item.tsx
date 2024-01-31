@@ -20,7 +20,7 @@ const MenuItem: FC<MenuItemComponent> = ({ item }) => {
         to={nav}
         className={`${styles.link} ${textColorGray && styles.link_gray} ${
           active && styles.link_active
-        }`}>
+        } ${isMainMenu && styles.link_main}`}>
         {isMainMenu ? (
           <Svg className={styles.svg_main} />
         ) : (

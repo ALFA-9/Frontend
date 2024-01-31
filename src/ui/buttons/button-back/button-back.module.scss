@@ -3,11 +3,11 @@
 
 .button_container {
   position: absolute;
-  top: 80px;
+  top: 0px;
   left: 18px;
   height: 100%;
   z-index: 3;
-  width: 0;
+  width: 0px;
 }
 
 .button {
@@ -29,7 +29,7 @@
   }
   position: sticky;
   top: 0;
-  padding-top: 12px;
+  padding-top: 92px;
   padding-left: 10px;
 }
 
