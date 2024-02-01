@@ -7,7 +7,8 @@
     "test": "jest",
     "build": "webpack --env mode=production",
     "start": "webpack serve --env mode=development",
-    "server": "serve -s build"
+    "server": "serve -s build",
+    "deploy": "ssh admin@51.250.2.48 rm -rf '/home/admin/hakaton_alfa/*' && scp -r ./build/* ssh admin@51.250.2.48:/home/admin/hakaton_alfa"
   },
   "keywords": [],
   "author": "",
