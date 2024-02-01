@@ -1,22 +1,21 @@
-const BASE_URL = 'http://localhost:8000/api'
+import axios from 'axios'
 
-const handleResponse: any = (res: any): any => {
-  if (res.ok) {
-    return res.json()
-  }
-  return Promise.reject(`Ошибка: ${res}`)
-}
+const BASE_URL = 'https://api.new.red-hand.ru/api'
 
-const defaultHeader: any = (): any => {
-  return {
-    Authorization: `Token 01d37e01c85064b1853f12d41345042811891419`,
-    // 'Content-Type': 'application/json',
-  }
-}
+// const handleResponse = (res:<T>):T => {
+//   if (res.ok) {
+//     return res
+//   }
+//   return Promise.reject(`Ошибка: ${res}`)
+// }
 
-export const getProseptProducts = () => {
-  return fetch(`${BASE_URL}/employees/me/`, {
-    method: 'GET',
-    headers: defaultHeader(),
-  }).then(handleResponse) as Promise<any>
+const getToken = <T>(): Promise<T> => {
+  return axios({
+    method: 'POST',
+    url: `${BASE_URL}/api/auth`,
+    data: { email: 'zoduvon-ofe57@alfabank.ru' },
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
 }

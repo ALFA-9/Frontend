@@ -10,7 +10,7 @@ import {
   idpDataTempArr,
 } from '../../utils/_temp/const-idp-data_temp'
 import ButtonBack from '../../ui/buttons/button-back/button-back'
-//import { getProseptProducts } from '../../api/test'
+//import { autoTest } from '../../api/test'
 
 const Idp: FC = () => {
   const [isIdpInProgressExist, setIsIdpInProgressExist] =
@@ -22,7 +22,7 @@ const Idp: FC = () => {
 
   // useEffect(() => {
   //   //@ts-ignore
-  //   //getProseptProducts().then((res) => console.log(res))
+  //   autoTest().then((res) => console.log(res))
   // }, [])
 
   return (
