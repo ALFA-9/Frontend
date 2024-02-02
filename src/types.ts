@@ -7,7 +7,7 @@ export interface MenuNavItemType {
   Svg?: React.VFC<React.SVGProps<SVGSVGElement>>
   nav: string
   textColorGray?: boolean
-  isMainMenu?:boolean
+  isMainMenu?: boolean
 }
 
 export interface MainGalleryItemType {

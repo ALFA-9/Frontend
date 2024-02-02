@@ -12,7 +12,7 @@ import {
   getSubordinates,
   postComment,
   getIdpDataById,
-} from '../../api/test'
+} from '../../api/api'
 import { useEffect, useState } from 'react'
 
 export default function App() {
