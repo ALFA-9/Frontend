@@ -3,12 +3,12 @@ import styles from "./input-type-textaria.module.scss";
 
 interface IInputTypeTextaria
   extends React.HTMLAttributes<HTMLParagraphElement> {
-  placeholder?: string,
-  extraClass?: string,
-  label?: string,
-  name: string,
-  value: string,
-  maxlength?: number
+  placeholder?: string;
+  extraClass?: string;
+  label?: string;
+  name: string;
+  value: string;
+  maxlength?: number;
 }
 
 const InputTypeTextaria: FC<IInputTypeTextaria> = ({
@@ -33,7 +33,9 @@ const InputTypeTextaria: FC<IInputTypeTextaria> = ({
   return (
     <label
       htmlFor={HTMLAttributes.id}
-      className={`${styles.container} ${isExcess && styles.container_error}`}
+      className={`${styles.container} ${
+        maxlength === Infinity && styles.container_noLimit
+      } ${isExcess && styles.container_error}`}
     >
       <p
         {...HTMLAttributes}
@@ -42,11 +44,13 @@ const InputTypeTextaria: FC<IInputTypeTextaria> = ({
         ref={myRef}
         contentEditable
       ></p>
-      <div className={styles.counter}>{`${isExcess ? "Много букв " : ""}${
-        value.length
-      }/${maxlength === Infinity ? "-" : maxlength}`}</div>
+      {maxlength !== Infinity && (
+        <div className={styles.counter}>{`${isExcess ? "Много букв " : ""}${
+          value.length
+        }/${maxlength}`}</div>
+      )}
     </label>
-  )
-}
+  );
+};
 
 export default InputTypeTextaria;

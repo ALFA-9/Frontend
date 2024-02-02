@@ -12,6 +12,10 @@
   display: flex;
 }
 
+.container_noLimit {
+  padding: 20px;
+}
+
 .container:hover {
   background-color: $gray;
 }
