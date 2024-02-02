@@ -10,7 +10,6 @@ import {
   idpDataTempArr,
 } from '../../utils/_temp/const-idp-data_temp'
 import ButtonBack from '../../ui/buttons/button-back/button-back'
-//import { autoTest } from '../../api/test'
 
 const Idp: FC = () => {
   const [isIdpInProgressExist, setIsIdpInProgressExist] =
@@ -19,11 +18,6 @@ const Idp: FC = () => {
   const [isIdpFailedExist, setIsIdpFailedExist] = useState<boolean>(false)
   const [isIdpCancelledExist, setIsIdpCancelledExist] =
     useState<boolean>(false)
-
-  // useEffect(() => {
-  //   //@ts-ignore
-  //   autoTest().then((res) => console.log(res))
-  // }, [])
 
   return (
     <div className={styles.container}>
