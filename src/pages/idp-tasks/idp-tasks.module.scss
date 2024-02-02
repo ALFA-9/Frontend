@@ -11,3 +11,10 @@
   width: 100%;
   align-self: flex-start;
 }
+
+.tasks {
+  @include reset-list;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

@@ -1,0 +1,28 @@
+@import '../../../styles/const.scss';
+@import '../../../styles/mixins.scss';
+
+.button {
+  @include reset-button;
+  display: flex;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: $button-accent;
+
+  &:hover {
+    background-color: $button-accent-hover;
+  }
+
+  &:active {
+    background-color: $button-accent-pressed;
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: $button-accent-disabled;
+  }
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}

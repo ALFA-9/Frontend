@@ -1,0 +1,44 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+.divider {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  @include reset-button;
+  @include text-tiny-12-400;
+  color: $dark-gray;
+  white-space: nowrap;
+  cursor: pointer;
+  position: relative;
+
+  &::before, &::after {
+    content: '';
+    width: 100%;
+    height: 16px;
+    border-bottom: 1px solid $medium-gray;
+    transform: translateY(-50%);
+    z-index: -1;
+  }
+
+  &:hover {
+    color: $light-black;
+
+    &::before, &::after {
+      border-color: $dark-gray;
+    }
+  }
+
+  &:active {
+    color: $black;
+
+    &::before, &::after {
+      border-color: $dark-gray;
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}

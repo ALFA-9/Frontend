@@ -17,7 +17,6 @@ type TUser = {
 const HeadForm: FC = () => {
   const [isDone, setIsDone] = useState(false);
   const [taskCount, setTaskCount] = useState(1);
-  let count = 0;
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -67,7 +66,7 @@ const HeadForm: FC = () => {
             />
           </fieldset>
           <ul className={styles.tasks}>
-            {[...Array(taskCount)].map(() => <FormTask title={`Задача ${++count}`} key={`task${count}`} />)}
+            {[...Array(taskCount)].map((item, index) => <FormTask title={`Задача ${++index}`} key={`form-task${index}`} />)}
           </ul>
           <AddButton
             title='Добавить еще одну задачу'
