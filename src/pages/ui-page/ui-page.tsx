@@ -29,6 +29,7 @@ export const UiPage = () => {
     supervisor1: "",
     supervisor2: "",
     textaria: "",
+    textaria2: "",
     date: "",
     date2: "",
   });
@@ -92,13 +93,13 @@ export const UiPage = () => {
       <hr />
 
       <div className={styles.test}>
-      <InputTypeDate
-        value={inputData.date2}
-        onChange={handleOnChange}
-        placeholder="Выберете дату"
-        id="date2"
-        name="date2"
-      />
+        <InputTypeDate
+          value={inputData.date2}
+          onChange={handleOnChange}
+          placeholder="Выберете дату"
+          id="date2"
+          name="date2"
+        />
       </div>
 
       <hr />
@@ -171,6 +172,14 @@ export const UiPage = () => {
           value={inputData.textaria}
           maxlength={500}
           id="textaria"
+          placeholder="Введите текст письма"
+          onInput={handleOnChange}
+        />
+
+        <InputTypeTextaria
+          name="textaria2"
+          value={inputData.textaria2}
+          id="textaria2"
           placeholder="Введите текст письма"
           onInput={handleOnChange}
         />
