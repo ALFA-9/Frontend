@@ -1,31 +1,30 @@
-import styles from './head-form.module.scss'
-import { FC, FormEvent, useState, useEffect } from 'react'
-import InputTypeText from '../../ui/inputs/input-type-text/input-type-text'
-import ButtonAccent from '../../ui/buttons/button-accent/button-accent'
-import FormTask from '../../components/form-task/form-task'
-import AddButton from '../../ui/buttons/add-button/add-button'
-import { useForm } from '../../hooks/use-form'
-import { routes } from '../../utils/const-routes'
-import ButtonBack from '../../ui/buttons/button-back/button-back'
-import { useParams } from 'react-router-dom'
+import styles from './head-form.module.scss';
+import { FC, FormEvent, useState, useEffect } from 'react';
+import InputTypeText from '../../ui/inputs/input-type-text/input-type-text';
+import ButtonAccent from '../../ui/buttons/button-accent/button-accent';
+import FormTask from '../../components/form-task/form-task';
+import AddButton from '../../ui/buttons/add-button/add-button';
+import { useForm } from '../../hooks/use-form';
+import { routes } from '../../utils/const-routes';
+import ButtonBack from '../../ui/buttons/button-back/button-back';
+import { useParams } from 'react-router-dom';
 
 type TUser = {
-  fullName: string
-  department: string
-  position: string
+  fullName: string,
+  department: string,
+  position: string,
   idpTitle: string
 }
 
 const HeadForm: FC = () => {
-  const [isDone, setIsDone] = useState(false)
-  const [taskCount, setTaskCount] = useState(1)
-  let count = 0
+  const [isDone, setIsDone] = useState(false);
+  const [taskCount, setTaskCount] = useState(1);
 
-  const params = useParams()
+  const params = useParams();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setIsDone(true)
+    event.preventDefault();
+    setIsDone(true);
   }
 
   return (
@@ -73,7 +72,9 @@ const HeadForm: FC = () => {
             />
           </fieldset>
           <ul className={styles.tasks}>
-            {[...Array(taskCount)].map((item, index) => <FormTask title={`Задача ${++index}`} key={`form-task${index}`} />)}
+            {[...Array(taskCount)].map((item, index) =>
+              <FormTask title={`Задача ${++index}`} key={`form-task${index}`} />
+            )}
           </ul>
           <AddButton
             title='Добавить еще одну задачу'
