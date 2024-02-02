@@ -16,7 +16,7 @@ const FilterDemo: FC = () => {
         togglerTemplate={TogglerTemplate}
         value={nodesData}
         filter
-        filterMode='lenient'
+        filterMode='strict'
         filterPlaceholder='Поиск по сотрудникам'
       />
     </div>
@@ -24,3 +24,4 @@ const FilterDemo: FC = () => {
 }
 
 export default FilterDemo
+//lenient
