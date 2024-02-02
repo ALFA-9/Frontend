@@ -11,6 +11,7 @@ const NewCommentForm: FC<INewCommentProps> = ({ onSubmit }) => {
   return (
     <form className={styles.form} onSubmit={onSubmit}>
       <InputTypeText
+        label='Комментарий'
         placeholder='Напишите комментарий'
         extraClass={styles.input}
         outerClass={styles.inputContainer}

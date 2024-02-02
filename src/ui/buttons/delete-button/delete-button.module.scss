@@ -1,0 +1,37 @@
+@import '../../../styles/const.scss';
+@import '../../../styles/mixins.scss';
+
+.button {
+  @include reset-button;
+  @include text-button-16-500;
+  max-height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  padding: 8px;
+  background-color: transparent;
+  color: $black;
+
+  &:hover {
+    color: $light-black;
+  }
+
+  &:active {
+    color: $dark-gray;
+  }
+
+  &:disabled {
+    cursor: default;
+    color: $medium-gray;
+  }
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.title {
+  @include reset-text;
+}

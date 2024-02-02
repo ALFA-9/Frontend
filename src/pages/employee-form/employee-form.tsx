@@ -91,7 +91,6 @@ const EmployeeForm: FC = () => {
       {!isDone && (
         <form onSubmit={handleSubmit} className={styles.form}>
           <InputTypeText
-            id='fullName'
             name={'fullName'}
             value={values.fullName}
             onChange={handleChange}
@@ -100,7 +99,6 @@ const EmployeeForm: FC = () => {
           />
           <div className={styles.row}>
             <InputTypeText
-              id='department'
               name={'department'}
               value={values.department}
               onChange={handleChange}
@@ -109,7 +107,6 @@ const EmployeeForm: FC = () => {
               outerClass={styles.halfrow}
             />
             <InputTypeText
-              id='position'
               name={'position'}
               value={values.position}
               onChange={handleChange}
@@ -119,7 +116,6 @@ const EmployeeForm: FC = () => {
             />
           </div>
           <InputTypeSelect
-            id='supervisor'
             name={'supervisor'}
             value={values.supervisor}
             onChange={handleChange}
@@ -132,7 +128,6 @@ const EmployeeForm: FC = () => {
           <div className={styles.textaria}>
             <p className={styles.legend}>Сопроводительное письмо</p>
             <InputTypeTextaria
-              id='textaria'
               name={'textaria'}
               value={values.textaria}
               onInput={handleChange}

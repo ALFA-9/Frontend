@@ -1,8 +1,10 @@
+import { useState, FC } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import ButtonBack from '../../ui/buttons/button-back/button-back';
 import IdpTask from '../../components/idp-task/idp-task';
 import { routes } from '../../utils/const-routes';
 import styles from './idp-tasks.module.scss';
+
 
 const taskData = {
   name: 'Задача 1. Создание сервера. Подключение баз данных',
@@ -15,19 +17,22 @@ const taskData = {
   description: 'Создать сервер с использованием языка программирования Python и фреймворка Flask, который будет обрабатывать запросы пользователей и возвращать им соответствующие данные. Сервер должен быть доступен через HTTP-протокол, а также иметь возможность обрабатывать запросы на стороне сервера и на стороне клиента. Сервер должен обеспечивать безопасность данных пользователей и защиту от несанкционированного доступа.'
 }
 
-const IdpTasks = () => {
+const IdpTasks: FC = () => {
   const location = useLocation();
   const params = useParams();
 
   const pathUserId = params.user_id;
 
   const count = 2;
+  let isHead = false;
 
   const pathResolve = () => {
     if (location.pathname.includes(routes.employee)) {
+      isHead = false;
       return routes.employeeIdp;
     }
     if (location.pathname.includes(routes.head)) {
+      isHead = true;
       return routes.headStaff + '/' + pathUserId;
     }
   }
@@ -40,7 +45,9 @@ const IdpTasks = () => {
           ИПР 2. Разработчик на Python. Уровень Middle
         </h1>
         <ul className={styles.tasks}>
-          {[...Array(count)].map((item, index) => <IdpTask data={taskData} key={`idp-task${index}`} />)}
+          {[...Array(count)].map((item, index) =>
+            <IdpTask data={taskData} isHead={isHead} key={`idp-task${index}`}/>
+          )}
         </ul>
       </div>
     </>
