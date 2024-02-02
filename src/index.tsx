@@ -1,7 +1,7 @@
 import './index.scss'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { store } from './services/store'
+import { store } from './redux/store'
 import { Provider } from 'react-redux'
 import App from './components/app/app'
 import { BrowserRouter } from 'react-router-dom'
