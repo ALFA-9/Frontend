@@ -10,6 +10,7 @@ import {
   idpDataTempArr,
 } from '../../utils/_temp/const-idp-data_temp'
 import ButtonBack from '../../ui/buttons/button-back/button-back'
+import { useAppSelector } from '../../redux/hooks'
 
 const Idp: FC = () => {
   const [isIdpInProgressExist, setIsIdpInProgressExist] =
@@ -19,9 +20,12 @@ const Idp: FC = () => {
   const [isIdpCancelledExist, setIsIdpCancelledExist] =
     useState<boolean>(false)
 
+  const actualUser = useAppSelector((state) => state.activeUser.user)
+
   return (
     <div className={styles.container}>
       <ButtonBack path={routes.main} />
+      <h1 className={styles.title}>Redux: {actualUser.first_name}</h1>
       <h1 className={styles.title}>Индивидуальный план развития</h1>
       <Tabs>
         <TabPane title='В работе'>

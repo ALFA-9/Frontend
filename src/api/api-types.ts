@@ -5,11 +5,11 @@ export interface UserType {
   last_name: string
   patronymic: string
   email: string
-  phone: string
+  phone?: string
   grade: number
   post: number
   department: number
-  is_staff: false
+  is_staff?: false
   subordinates?: UserType[]
 }
 
