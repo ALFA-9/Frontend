@@ -35,8 +35,8 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
           },
         },
       },
-      'sass-loader',
       'postcss-loader',
+      'sass-loader',
     ],
   }
 
@@ -50,8 +50,8 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
           importLoaders: 1,
         },
       },
-      'sass-loader',
       'postcss-loader',
+      'sass-loader',
     ],
     exclude: /\.module\.s?css$/i,
   }
