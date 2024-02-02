@@ -96,6 +96,7 @@ const EmployeeForm: FC = () => {
             onChange={handleChange}
             label='ФИО'
             placeholder='ФИО'
+            disabled
           />
           <div className={styles.row}>
             <InputTypeText
@@ -105,6 +106,7 @@ const EmployeeForm: FC = () => {
               label='Департамент'
               placeholder='Департамент'
               outerClass={styles.halfrow}
+              disabled
             />
             <InputTypeText
               name={'position'}
@@ -113,6 +115,7 @@ const EmployeeForm: FC = () => {
               label='Должность'
               placeholder='Должность'
               outerClass={styles.halfrow}
+              disabled
             />
           </div>
           <InputTypeSelect
@@ -133,7 +136,6 @@ const EmployeeForm: FC = () => {
               onInput={handleChange}
               label='Сопроводительное письмо'
               placeholder='Введите текст или загрузите письмо'
-              maxlength={500}
             />
           </div>
           <div className={styles.load}>
