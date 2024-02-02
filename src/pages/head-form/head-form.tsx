@@ -12,11 +12,44 @@ import { useParams } from 'react-router-dom';
 type TUser = {
   fullName: string,
   department: string,
-  position: string,
-  idpTitle: string
+  position: string
 }
 
 const HeadForm: FC = () => {
+  const user: TUser = {
+    fullName: 'Габдрахманов Александр Александрович',
+    department: 'Отдел рекламы',
+    position: 'Backend-разработчик'
+  }
+
+  const { values, setValues, handleChange } = useForm({
+    fullName: '',
+    department: '',
+    position: '',
+    idpTitle: '',
+    textaria: '',
+  })
+
+  const autofill = (user: TUser) => {
+    if (
+      user &&
+      user.fullName &&
+      user.department &&
+      user.position
+    )
+      setValues({
+        fullName: user.fullName,
+        department: user.department,
+        position: user.position,
+        idpTitle: '',
+        textaria: '',
+      })
+  }
+
+  useEffect(() => {
+    if (user) autofill(user)
+  }, [])
+
   const [isDone, setIsDone] = useState(false);
   const [taskCount, setTaskCount] = useState(1);
 
@@ -51,29 +84,41 @@ const HeadForm: FC = () => {
         <form onSubmit={handleSubmit} className={styles.form}>
           <fieldset className={styles.info}>
             <InputTypeText
+              name={'fullName'}
+              value={values.fullName}
+              onChange={handleChange}
               label='ФИО'
               placeholder='ФИО'
             />
             <div className={styles.row}>
               <InputTypeText
+                name={'department'}
+                value={values.department}
+                onChange={handleChange}
                 label='Департамент'
                 placeholder='Департамент'
                 outerClass={styles.halfrow}
               />
               <InputTypeText
+                name={'position'}
+                value={values.position}
+                onChange={handleChange}
                 label='Должность'
                 placeholder='Должность'
                 outerClass={styles.halfrow}
               />
             </div>
             <InputTypeText
+              name={'idpTitle'}
+              value={values.idpTitle}
+              onChange={handleChange}
               label='Название ИПР'
               placeholder='Название ИПР'
             />
           </fieldset>
           <ul className={styles.tasks}>
             {[...Array(taskCount)].map((item, index) =>
-              <FormTask title={`Задача ${++index}`} key={`form-task${index}`} />
+              <FormTask title={`Задача ${++index}`} hasDelete={index > 1} key={`form-task${index}`} />
             )}
           </ul>
           <AddButton

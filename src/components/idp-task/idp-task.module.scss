@@ -30,24 +30,59 @@
   margin-left: auto;
 }
 
-.content {
+.card {
   @include text-regular-16-400;
+  background-color: $light-gray;
   padding: 28px;
+  border-radius: 16px;
 }
 
-.about {
+.content {
   padding-bottom: 24px;
   border-bottom: 1px solid $medium-gray;
+}
+
+.header {
+  display: grid;
+  grid-template-areas:
+    'type dots'
+    'control control';
+  gap: 16px;
+}
+
+.dotsMenu {
+  grid-area: dots;
+  justify-self: right;
+  position: relative;
+}
+
+.dotsButton {
+  @include reset-button;
+  display: flex;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: $medium-gray;
+  }
+}
+
+.dotsIcon {
+  width: 24px;
+  height: 24px;
 }
 
 .row {
   display: flex;
   align-items: center;
   gap: 12px;
+}
 
-  &:not(:last-child) {
-    margin-bottom: 16px;
-  }
+.type {
+  grid-area: type;
+}
+
+.control {
+  grid-area: control;
 }
 
 .term {

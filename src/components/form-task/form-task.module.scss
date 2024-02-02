@@ -9,6 +9,12 @@
   gap: 24px;
 }
 
+.headline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .title {
   @include reset-text;
   @include text-h2-24-700;

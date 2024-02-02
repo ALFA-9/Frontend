@@ -1,43 +1,76 @@
 import styles from './form-task.module.scss';
-import { FC } from 'react';
+import { FC, MouseEventHandler, useEffect } from 'react';
 import InputTypeText from '../../ui/inputs/input-type-text/input-type-text';
 import InputTypeSelect from '../../ui/inputs/input-type-select/input-type-select';
 import InputTypeTextaria from '../../ui/inputs/input-type-textaria/input-type-textaria';
 import InputTypeRadiobutton from '../../ui/inputs/input-type-radiobutton/input-type-radiobutton';
 import InputTypeDate from '../../ui/inputs/input-type-date/input-type-date';
+import DeleteButton from '../../ui/buttons/delete-button/delete-button';
 import { useForm } from '../../hooks/use-form';
 
 interface IFormTaskProps {
-  title: string
+  title: string,
+  hasDelete?: boolean
 }
 
-const FormTask: FC<IFormTaskProps> = ({title}) => {
+const FormTask: FC<IFormTaskProps> = ({ title, hasDelete = false }) => {
+  const { values, setValues, handleChange } = useForm({
+    name: '',
+    type: '',
+    control: '',
+    description: '',
+    dateStart: '',
+    dateEnd: ''
+  })
+
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
+    console.log('delete');
+  }
+
   return (
     <li>
       <fieldset className={styles.task}>
-        <p className={styles.title}>{title}</p>
+        <div className={styles.headline}>
+          <p className={styles.title}>{title}</p>
+          {hasDelete && <DeleteButton type='button' onClick={handleClick}/>}
+        </div>
         <InputTypeText
+          name={'name'}
+          value={values.name}
+          onChange={handleChange}
           label='Название'
           placeholder='Название'
         />
         <div className={styles.row}>
           <InputTypeSelect
+            name={'type'}
+            value={values.type}
+            onChange={handleChange}
             label='Тип'
-            value='Самостоятельное обучение'
             outerClass={styles.halfrow}
-          />
+          >
+            {['Самостоятельное обучение', 'Проект', 'Задание на рабочем месте'].map((item, index) => (
+              <option key={`type-option${index}`}>{item}</option>
+            ))}
+          </InputTypeSelect>
           <InputTypeSelect
+            name={'control'}
+            value={values.control}
+            onChange={handleChange}
             label='Метод приемки'
-            value='Собеседование'
             outerClass={styles.halfrow}
-          />
+          >
+            {['Собеседование', 'Тест', 'Другое'].map((item, index) => (
+              <option key={`control-option${index}`}>{item}</option>
+            ))}
+          </InputTypeSelect>
         </div>
         <div className={styles.textaria}>
           <p className={styles.legend}>Описание</p>
           <InputTypeTextaria
-            id='textaria'
-            name={'textaria'}
+            name={'description'}
             value=''
+            onChange={handleChange}
             label='Описание'
             placeholder='Введите текст'
             maxlength={500}
