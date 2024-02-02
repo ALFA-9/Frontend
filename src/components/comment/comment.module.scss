@@ -1,0 +1,49 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/const.scss';
+
+.hidden {
+  display: none;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  display: block;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.authorName {
+  @include reset-text;
+  @include text-medium-16-500;
+  margin-bottom: 4px;
+}
+
+.authorPost {
+  @include reset-text;
+  @include text-tiny-12-400;
+  color: $dark-gray;
+}
+
+.published {
+  @include reset-text;
+  @include text-tiny-12-400;
+  color: $dark-gray;
+  margin-left: auto;
+}
+
+.text {
+  @include reset-text;
+  @include text-regular-16-400;
+  line-height: 24px;
+  padding-left: 56px;
+}

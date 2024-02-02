@@ -1,0 +1,17 @@
+@import '../../styles/const.scss';
+
+.form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.input {
+  max-height: 48px;
+  border: 1px solid $medium-gray;
+}
+
+.inputContainer {
+  width: 100%;
+}

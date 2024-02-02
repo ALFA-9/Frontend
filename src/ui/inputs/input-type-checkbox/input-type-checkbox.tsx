@@ -3,17 +3,19 @@ import styles from './input-type-checkbox.module.scss';
 
 interface IInputTypeCheckbox
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  extraClass?: string;
-  label?: string;
+  extraClass?: string,
+  labelClass?: string,
+  label?: string
 }
 
 const InputTypeCheckbox: FC<IInputTypeCheckbox> = ({
   extraClass = '',
+  labelClass = '',
   label = '',
   ...InputHTMLAttributes
 }) => {
   return (
-    <label htmlFor={InputHTMLAttributes.id} className={styles.label_container}>
+    <label htmlFor={InputHTMLAttributes.id} className={`${styles.label_container} ${labelClass}`}>
       <input
         type='checkbox'
         {...InputHTMLAttributes}
@@ -22,7 +24,7 @@ const InputTypeCheckbox: FC<IInputTypeCheckbox> = ({
       <span className={styles.visible_input} />
       {label}
     </label>
-  );
-};
+  )
+}
 
 export default InputTypeCheckbox;

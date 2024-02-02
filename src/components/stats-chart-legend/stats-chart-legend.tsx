@@ -1,15 +1,15 @@
 import { FC } from "react";
 import styles from "./stats-chart-legend.module.scss";
-import { LabelsWithDot } from "../../ui/lables/labels-with-dot/labels-with-dot";
+import LabelsWithDot from "../../ui/lables/labels-with-dot/labels-with-dot";
 
 type TStatsChartLegendInputData = {
-  value?: number;
-  title: string;
-  color: string;
-};
+  value?: number,
+  title: string,
+  color: string
+}
 
 interface IStatsChartLegend {
-  itemData: TStatsChartLegendInputData[];
+  itemData: TStatsChartLegendInputData[]
 }
 
 export const StatsChartLegend: FC<IStatsChartLegend> = ({ itemData }) => {
@@ -19,5 +19,5 @@ export const StatsChartLegend: FC<IStatsChartLegend> = ({ itemData }) => {
         return <LabelsWithDot color={color} title={title} key={index} />;
       })}
     </div>
-  );
-};
+  )
+}

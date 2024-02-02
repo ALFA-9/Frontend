@@ -48,37 +48,39 @@ const HeadForm: FC = () => {
       )}
       {!isDone && (
         <>
-          <h1 className={styles.title}>Назначить ИПР</h1>
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <fieldset className={styles.info}>
-              <InputTypeText label='ФИО' placeholder='ФИО' />
-              <div className={styles.row}>
-                <InputTypeText
-                  label='Департамент'
-                  placeholder='Департамент'
-                  outerClass={styles.halfrow}
-                />
-                <InputTypeText
-                  label='Должность'
-                  placeholder='Должность'
-                  outerClass={styles.halfrow}
-                />
-              </div>
-              <InputTypeText label='Название ИПР' placeholder='Название ИПР' />
-            </fieldset>
-            <ul className={styles.tasks}>
-              {[...Array(taskCount)].map(() => (
-                <FormTask title={`Задача ${++count}`} key={`task${count}`} />
-              ))}
-            </ul>
-            <AddButton
-              title='Добавить еще одну задачу'
-              type='button'
-              onClick={() => {
-                setTaskCount(taskCount + 1)
-              }}
+        <h1 className={styles.title}>Назначить ИПР</h1>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <fieldset className={styles.info}>
+            <InputTypeText
+              label='ФИО'
+              placeholder='ФИО'
             />
-            <ButtonAccent
+            <div className={styles.row}>
+              <InputTypeText
+                label='Департамент'
+                placeholder='Департамент'
+                outerClass={styles.halfrow}
+              />
+              <InputTypeText
+                label='Должность'
+                placeholder='Должность'
+                outerClass={styles.halfrow}
+              />
+            </div>
+            <InputTypeText
+              label='Название ИПР'
+              placeholder='Название ИПР'
+            />
+          </fieldset>
+          <ul className={styles.tasks}>
+            {[...Array(taskCount)].map((item, index) => <FormTask title={`Задача ${++index}`} key={`form-task${index}`} />)}
+          </ul>
+          <AddButton
+            title='Добавить еще одну задачу'
+            type='button'
+            onClick={() => {setTaskCount(taskCount + 1)}}
+          />
+          <ButtonAccent
               title='Назначить ИПР'
               type='submit'
               extraClass={styles.submitButton}
