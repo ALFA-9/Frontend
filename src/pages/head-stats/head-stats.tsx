@@ -18,15 +18,31 @@ import {
   setMyUnitEmployees,
 } from "../../redux/slices/employees-slice";
 import { Spinner } from "@alfalab/core-components-spinner";
-import { StatsChartData, getChartData } from "./head-stats.utils";
+import {
+  TStatData,
+  TStatsChartInputData,
+  getStatsAndChartData,
+} from "./head-stats.utils";
 
 const HeadStats: FC = () => {
   const dispatch = useAppDispatch();
   const [option, setOption] = useState<"all" | "direct">("all");
-  const [chartData, setChartData] = useState<StatsChartData>({
+  const [chartData, setChartData] = useState<{
+    allEmployees: TStatsChartInputData[];
+    directEmployees: TStatsChartInputData[];
+  }>({
     allEmployees: [],
     directEmployees: [],
   });
+
+  const [statData, setStatData] = useState<{
+    allEmployees: TStatData;
+    directEmployees: TStatData;
+  }>({
+    allEmployees: { title: "", itemsData: [] },
+    directEmployees: { title: "", itemsData: [] },
+  });
+
   const { id: currentUserId } = useAppSelector(
     (state) => state.activeUser.user
   );
@@ -53,7 +69,11 @@ const HeadStats: FC = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      setChartData(getChartData(employees, currentUserId));
+      const { allEmployees, directEmployees, statAll, statDirect } =
+      getStatsAndChartData(employees, currentUserId);
+
+        setChartData({ allEmployees, directEmployees });
+        setStatData({ allEmployees:statAll, directEmployees:statDirect });
     }
   }, [isSuccess]);
 
@@ -67,13 +87,19 @@ const HeadStats: FC = () => {
         <>
           <div className={styles.topContainer}>
             <div className={styles.cardContainer}>
-              <div onClick={() => setOption("all")}>
-                <StatsCommonCard {...statisticsFakeApi.getAllUnitsData()} />
-              </div>
+              <StatsCommonCard
+                onClickHandler={setOption}
+                option={option}
+                id="all"
+                {...statData.allEmployees}
+              />
 
-              <div onClick={() => setOption("direct")}>
-                <StatsCommonCard {...statisticsFakeApi.getMyUnitData()} />
-              </div>
+              <StatsCommonCard
+                onClickHandler={setOption}
+                option={option}
+                id="direct"
+                {...statData.directEmployees}
+              />
             </div>
 
             <PieChart
@@ -97,7 +123,7 @@ const HeadStats: FC = () => {
             />
           </div>
 
-          <StatsEmployeesList nodesData={nodesData} />
+          <StatsEmployeesList nodesData={employees} />
         </>
       )}
     </>

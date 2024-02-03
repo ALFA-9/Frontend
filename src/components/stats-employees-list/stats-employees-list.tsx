@@ -6,9 +6,10 @@ import StatsEmployeeTemplate from '../stats-employee-template/stats-employee-tem
 import { filterListItems } from '../../utils/const-status-colors'
 import { TreeNodeMod, StatusColorsType } from '../../types'
 import StatsEmployeesListStatusItem from './stats-employees-list-status-item/stats-employees-list-status-item'
+import { EmployeeType } from '../../api/api-types'
 
 interface StatsEmployeesListType {
-  nodesData: TreeNodeMod[]
+  nodesData: EmployeeType[]
 }
 
 const StatsEmployeesList: FC<StatsEmployeesListType> = ({ nodesData }) => {
@@ -16,7 +17,7 @@ const StatsEmployeesList: FC<StatsEmployeesListType> = ({ nodesData }) => {
   const [isFilterListOpen, setIsFilterListOpen] = useState<boolean>(false)
   const [filterStatus, setFilterStatus] = useState<StatusColorsType>('all')
 
-  const newNodesData: TreeNodeMod[] = JSON.parse(JSON.stringify(nodesData))
+  const newNodesData: EmployeeType[] = JSON.parse(JSON.stringify(nodesData))
 
   sortNames && newNodesData.sort((a, b) => (a.label > b.label ? 1 : -1))
   !sortNames && newNodesData.sort((a, b) => (a.label > b.label ? -1 : 1))
@@ -45,7 +46,7 @@ const StatsEmployeesList: FC<StatsEmployeesListType> = ({ nodesData }) => {
     if (filterStatus === 'all') {
       return node
     }
-    if (node.status === filterStatus) {
+    if (node.status_idp === filterStatus) {
       return node
     }
   })
@@ -97,7 +98,7 @@ const StatsEmployeesList: FC<StatsEmployeesListType> = ({ nodesData }) => {
       </div>
       <ul className={styles.ul}>
         {filteredNodesData.map((node) => (
-          <StatsEmployeeTemplate data={node} key={node.key} />
+          <StatsEmployeeTemplate data={node} key={node.id} />
         ))}
       </ul>
       {!isSomeoneHere && (

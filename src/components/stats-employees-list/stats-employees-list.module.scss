@@ -121,7 +121,7 @@
   background-color: $light-black;
 }
 
-.in_progress {
+.in_work {
   background-color: $status-blue-100;
 }
 .missing {
@@ -130,10 +130,10 @@
 .canceled {
   background-color: $status-orange-100;
 }
-.fail {
+.not_completed {
   background-color: $status-red-100;
 }
-.completed {
+.done {
   background-color: $status-green-100;
 }
 
