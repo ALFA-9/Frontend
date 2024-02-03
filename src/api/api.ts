@@ -142,13 +142,6 @@ export const postIdpRequestByEmployee = ({
   })
 }
 
-//Получение статистики для активного юзера
-export const getStatistic = (): Promise<AxiosResponse<StatisticType>> => {
-  return instance({
-    method: 'GET',
-    url: `statistic/`,
-  })
-}
 
 interface PostCommentType {
   task_id: number;
