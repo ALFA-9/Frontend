@@ -44,7 +44,7 @@ const PieChart: FC<IPieChart> = ({
   }, [data]);
 
   return (
-    <>
+    <div style={{width: `${mainSize}px`}}>
       <svg
         width={mainSize}
         height={mainSize}
@@ -88,7 +88,7 @@ const PieChart: FC<IPieChart> = ({
             )
           })}
       </svg>
-    </>
+    </div>
   )
 }
 
