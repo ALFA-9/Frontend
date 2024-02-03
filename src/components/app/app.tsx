@@ -6,7 +6,7 @@ import Content from '../content/content'
 import { useLocation } from 'react-router-dom'
 import InputTypeSelectSmall from '../../ui/inputs/input-type-select-small/input-type-select-small'
 import { userStatuses } from '../../utils/const-user-statuses'
-import { getUserMe, getToken } from '../../api/api'
+import { getUserMe, getToken, getSubordinates } from '../../api/api'
 import { useEffect, useState } from 'react'
 
 import { useAppSelector, useAppDispatch } from '../../redux/hooks'
@@ -22,9 +22,11 @@ export default function App() {
     try {
       const token = await getToken()
       localStorage.setItem('token', token.data.token)
-      console.log(activeUser)
       const currentUser = await getUserMe()
+      console.log(currentUser.data)
       dispatch(setActiveUser({ user: currentUser.data }))
+      const headEmployees = await getSubordinates()
+      console.log(headEmployees)
       setIsLoading(false)
     } catch (error) {
       console.log(error.toJSON())

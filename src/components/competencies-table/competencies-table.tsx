@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import styles from './competencies-table.module.scss'
-import {  ScoreType } from '../../types'
+import { HardSkills, SoftSkills } from '../../api/api-types'
 
 interface ScoreComponentType {
   score: number
@@ -25,6 +25,11 @@ const Score: FC<ScoreComponentType> = ({ score, isAverageRating }) => {
   return <p className={`${styles.score_number} ${color}`}>{score + '/10'}</p>
 }
 
+interface ScoreType {
+  name: string
+  score: number
+}
+
 const ListItem: FC<ScoreType> = ({ name, score }) => {
   return (
     <li className={styles.list_item}>
@@ -35,21 +40,18 @@ const ListItem: FC<ScoreType> = ({ name, score }) => {
 }
 
 interface CompetenciesTableType {
-  scors?: ScoreType[]
   title: string
+  scors: SoftSkills | HardSkills
 }
 
 const CompetenciesTable: FC<CompetenciesTableType> = ({ title, scors }) => {
+  const { average, ...rest } = scors
 
-  const averageRating: number =
-    Math.round(
-      (scors.reduce(
-        (accumulator, currentValue) => accumulator + currentValue.score,
-        0
-      ) /
-        scors.length) *
-        10
-    ) / 10
+  let scorsArr: ScoreType[] = []
+
+  for (let [key, value] of Object.entries(rest)) {
+    scorsArr = [...scorsArr, { name: key, score: value }]
+  }
 
   return (
     <article className={styles.container}>
@@ -57,11 +59,11 @@ const CompetenciesTable: FC<CompetenciesTableType> = ({ title, scors }) => {
         <h3 className={styles.title}>{title}</h3>
         <div className={styles.average_score_wrapper}>
           <p className={styles.average_score_text}>Средняя оценка</p>
-          <Score score={averageRating} isAverageRating={true} />
+          <Score score={average} isAverageRating={true} />
         </div>
       </div>
       <ul className={styles.list}>
-        {scors.map((item, i) => (
+        {scorsArr.map((item, i) => (
           <ListItem key={i} name={item.name} score={item.score} />
         ))}
       </ul>

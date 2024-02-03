@@ -32,31 +32,49 @@ export interface routesType {
   headStaffIdFormDone: string
 }
 
-export interface ScoreType {
-  name: string
-  score: number
-}
+export type GradeType =
+  | 'intern'
+  | 'junior'
+  | 'junior plus'
+  | 'middle'
+  | 'middle plus'
+  | 'senior'
+  | 'senior plus'
+  | 'principal'
+  | 'principal plus'
 
-export type IdpStatuses = 'in_progress' | 'cancelled' | 'failed' | 'completed'
+export type IdpStatuses = 'in_work' | 'done' | 'not_completed' | 'canceled'
 
 export enum IdpStatusesTranslate {
-  in_progress = 'В работе',
-  cancelled = 'Отменен',
-  failed = 'Не выполнен',
-  completed = 'Выполнен',
+  in_work = 'В работе',
+  canceled = 'Отменен',
+  not_completed = 'Не выполнен',
+  done = 'Выполнен',
 }
 
 export type StatusColorsType =
   | 'all'
-  | 'in_progress'
+  | 'in_work'
   | 'missing'
-  | 'cancelled'
-  | 'failed'
-  | 'completed'
+  | 'canceled'
+  | 'not_completed'
+  | 'done'
 
 export interface StatusTypeList {
   text: string
   style: StatusColorsType
+}
+
+
+interface SubordinatesType {
+  id: number
+  director: number
+  first_name: string
+  last_name: string
+  patronymic: string
+  post: string
+  status_idp: IdpStatuses
+  subordinates: SubordinatesType[]
 }
 
 export interface TreeNodeMod {

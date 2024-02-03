@@ -1,12 +1,12 @@
-import airplane from '../images/main-gallery/airplane.jpeg'
-import armcheir from '../images/main-gallery/armcheir.jpeg'
-import arms from '../images/main-gallery/arms.jpeg'
-import building from '../images/main-gallery/building.jpeg'
-import office from '../images/main-gallery/office.jpeg'
-import stairs from '../images/main-gallery/stairs.jpeg'
-import wheel from '../images/main-gallery/wheel.jpeg'
+import airplane from '../images/main-gallery/airplane.jpg'
+import armcheir from '../images/main-gallery/armcheir.jpg'
+import arms from '../images/main-gallery/arms.jpg'
+import building from '../images/main-gallery/building.jpg'
+import office from '../images/main-gallery/office.jpg'
+import stairs from '../images/main-gallery/stairs.jpg'
+import wheel from '../images/main-gallery/wheel.jpg'
 
-import mountains from '../images/main-gallery/mountains_big.jpeg'
+import mountains from '../images/main-gallery/mountains_big.jpg'
 
 import { MainGalleryItemType } from '../types'
 

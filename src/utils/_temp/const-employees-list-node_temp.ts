@@ -1,24 +1,22 @@
 import jpeg from '../../images/_temp/template.jpeg'
 import { TreeNodeMod } from '../../types'
-import { softSkillsCompetencies } from './const-competencies-tables'
-softSkillsCompetencies
 export const nodesData: TreeNodeMod[] = [
   {
-    id: '0',
+    id: '1',
     label: 'Ушат Помоев',
     key: '0',
     avatar: jpeg,
     subtitle: 'Умывальников начальник',
-    status: 'in_progress',
+    status: 'in_work',
     children: [
       {
-        id: '0-0',
+        id: '2',
         label: '0-0',
         avatar: jpeg,
         key: '0-0',
         children: [
           {
-            id: '0-0-0',
+            id: '3',
             avatar: jpeg,
             label: '0-0-0',
             key: '0-0-0',
@@ -28,7 +26,7 @@ export const nodesData: TreeNodeMod[] = [
     ],
   },
   {
-    id: '1',
+    id: '4',
     avatar: jpeg,
     label: 'Поджёг Сараев',
     key: '1',
@@ -36,13 +34,13 @@ export const nodesData: TreeNodeMod[] = [
     status: 'missing',
     children: [
       {
-        id: '1-0',
+        id: '5',
         avatar: jpeg,
         label: '1-0',
         key: '1-0',
         children: [
           {
-            id: '1-0-0',
+            id: '6',
             avatar: jpeg,
             label: '1-0-0',
             key: '1-0-0',
@@ -52,15 +50,15 @@ export const nodesData: TreeNodeMod[] = [
     ],
   },
   {
-    id: '2',
+    id: '7',
     avatar: jpeg,
     label: 'Барак Монголов',
     key: '2',
     subtitle: 'Генерал говнокомандующий',
-    status: 'failed',
+    status: 'not_completed',
     children: [
       {
-        id: '2-0',
+        id: '8',
         avatar: jpeg,
         label: '2-0',
         key: '2-0',
@@ -74,10 +72,13 @@ const flatten = (array: TreeNodeMod[]): TreeNodeMod[] => {
 
   const arr = array.map((item) => {
     if (item.children && item.children.length > 0) {
-      nodesDataFlat = [...nodesDataFlat, ...flatten(item.children)]
-      nodesDataFlat.push({ ...item, children: [] })
+      nodesDataFlat = [
+        ...nodesDataFlat,
+        ...flatten(item.children),
+        { ...item, children: [] },
+      ]
     } else {
-      nodesDataFlat.push(item)
+      nodesDataFlat = [...nodesDataFlat, item]
     }
   })
   return nodesDataFlat

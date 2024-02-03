@@ -17,7 +17,7 @@ const TogglerTemplate: FC = (
 
   const expanded = options.expanded
 
-  const dontHaveChildrens = !node.children || node.children.length === 0
+  const dontHaveChildrens = node.children?.length < 1
   return (
     <div
       className={`${styles.outer_container} ${

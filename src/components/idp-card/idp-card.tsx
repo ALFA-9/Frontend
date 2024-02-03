@@ -1,42 +1,43 @@
-import { FC, MouseEventHandler, TransitionEventHandler, useState } from 'react'
+import { FC, MouseEventHandler, useState } from 'react'
 import styles from './idp-card.module.scss'
 import jpg from '../../images/_temp/idp.jpeg'
 import LablesBig from '../../ui/lables/lables-big/lables-big'
 import { LablesSmallEnum } from '../../ui/lables/types'
-import {
-  DropDownMenuItemType,
-  IdpStatusesTranslate,
-  IdpType,
-} from '../../types'
+import { DropDownMenuItemType, IdpStatusesTranslate } from '../../types'
 import { Link, useLocation } from 'react-router-dom'
 import Dots from '../../images/icons/three_dots.svg'
 import DropDownMenu from '../../ui/drop-down-menu/drop-down-menu'
+import { UserTypeIdp } from '../../api/api-types'
 
 interface IdpCardType {
-  data: IdpType
+  data: UserTypeIdp
   extraInfo?: boolean
   isHead?: boolean
 }
 
 const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
-  const [tasksProgress, setTasksProgress] = useState<string>('50%')
   const [isOptionsOpen, setIsOptionsOpen] = useState<boolean>(false)
-  const { currentTask, deadline, head, tasks, title, status, id } = data
+  const { current_task, director, id, progress, status_idp, title } = data
 
   const location = useLocation()
 
+  const currentTime = Date.now()
+  const deadline = Date.parse(current_task?.date_end)
+  const deadlineColor =
+    currentTime < deadline ? LablesSmallEnum.green : LablesSmallEnum.red
+
   let taskStatusColor: LablesSmallEnum
-  switch (status) {
-    case 'in_progress':
+  switch (status_idp) {
+    case 'in_work':
       taskStatusColor = LablesSmallEnum.blue
       break
-    case 'completed':
+    case 'done':
       taskStatusColor = LablesSmallEnum.green
       break
-    case 'cancelled':
+    case 'canceled':
       taskStatusColor = LablesSmallEnum.orange
       break
-    case 'failed':
+    case 'not_completed':
       taskStatusColor = LablesSmallEnum.red
       break
   }
@@ -90,7 +91,7 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
       {isHead && (
         <LablesBig
           color={taskStatusColor}
-          text={IdpStatusesTranslate[status]}
+          text={IdpStatusesTranslate[status_idp]}
           extraStyles={styles.lable_big}
         />
       )}
@@ -112,28 +113,31 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
         {extraInfo && (
           <div className={styles.extra_info_wrapper}>
             <div className={styles.progress_bar_wrapper}>
-              <p className={styles.progress_bar_text}>{tasksProgress}</p>
+              <p className={styles.progress_bar_text}>{progress + '%'}</p>
               <div className={styles.progress_bar_empty}>
                 <div
                   className={styles.progress_bar_filled}
-                  style={{ width: `${tasksProgress}` }}></div>
+                  style={{ width: `${progress}%` }}></div>
               </div>
             </div>
             <div className={styles.all_text_wrapper}>
               <div className={styles.text_wrapper_left}>
                 <div className={styles.text_wrapper}>
                   <p className={styles.text_gray}>Текущая задача</p>
-                  <p className={styles.text_black}>{currentTask}</p>
+                  <p className={styles.text_black}>{current_task.name}</p>
                 </div>
                 <div className={styles.text_wrapper}>
                   <p className={styles.text_gray}>Назначил</p>
-                  <p className={styles.text_black}>{head}</p>
+                  <p className={styles.text_black}>{director}</p>
                 </div>
               </div>
               <div
                 className={`${styles.text_wrapper} ${styles.text_wrapper_right}`}>
                 <p className={styles.text_gray}>Ближайший дедлайн</p>
-                <LablesBig color={LablesSmallEnum.green} text={deadline} />
+                <LablesBig
+                  color={deadlineColor}
+                  text={current_task?.date_end || '0'}
+                />
               </div>
             </div>
           </div>

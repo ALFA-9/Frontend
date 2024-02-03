@@ -5,20 +5,17 @@ import Tabs from '../../ui/tabs/tabs'
 import TabPane from '../../ui/tabs/tab-pane/tab-pane'
 import TextArea from '../../ui/text-area/text-area'
 import CompetenciesTable from '../../components/competencies-table/competencies-table'
-import {
-  hardSkillsCompetencies,
-  softSkillsCompetencies,
-} from '../../utils/_temp/const-competencies-tables'
-import { idpDataTempArr } from '../../utils/_temp/const-idp-data_temp'
 import IdpCard from '../../components/idp-card/idp-card'
 import ButtonBack from '../../ui/buttons/button-back/button-back'
 import { useLocation, useNavigate } from 'react-router-dom'
 import ButtonAccent from '../../ui/buttons/button-accent/button-accent'
 import { routes } from '../../utils/const-routes'
+import { useAppSelector } from '../../redux/hooks'
 
 const HeadEmpoyeesEmployee: FC = () => {
   const location = useLocation()
   const navigate = useNavigate()
+  const actualUser = useAppSelector((state) => state.activeUser.user)
 
   const handleNewIdpClick = () => {
     navigate(location.pathname + '/form')
@@ -45,20 +42,19 @@ const HeadEmpoyeesEmployee: FC = () => {
           </section>
           <section className={styles.competencies_container}>
             <h2 className={styles.competencies_title}>Компетенции</h2>
-            <p className={styles.competencies_data}>Данные от 15.09.23</p>
             <CompetenciesTable
-              title={softSkillsCompetencies.title}
-              scors={softSkillsCompetencies.scors}
+              title={'Soft Skills'}
+              scors={actualUser.soft_skills}
             />
             <CompetenciesTable
-              title={hardSkillsCompetencies.title}
-              scors={hardSkillsCompetencies.scors}
+              title={'Hard Skills'}
+              scors={actualUser.hard_skills}
             />
           </section>
         </TabPane>
         <TabPane title='Индивидуальный план развития'>
           <ul className={styles.idp_list}>
-            {idpDataTempArr.map((item) => (
+            {actualUser.idps.map((item) => (
               <IdpCard data={item} key={item.title} isHead={true} />
             ))}
           </ul>

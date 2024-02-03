@@ -20,7 +20,7 @@ const StatsEmployeeTemplate: FC<StatsEmployeeTemplateType> = ({ data }) => {
   let statusText
 
   switch (status) {
-    case 'in_progress':
+    case 'in_work':
       statusColor = LablesSmallEnum.blue
       statusText = 'В работе'
       break
@@ -28,15 +28,15 @@ const StatsEmployeeTemplate: FC<StatsEmployeeTemplateType> = ({ data }) => {
       statusColor = LablesSmallEnum.gray
       statusText = 'Отсутсвует'
       break
-    case 'cancelled':
+    case 'canceled':
       statusColor = LablesSmallEnum.orange
       statusText = 'Отменено'
       break
-    case 'failed':
+    case 'not_completed':
       statusColor = LablesSmallEnum.red
       statusText = 'Не выполнено'
       break
-    case 'completed':
+    case 'done':
       statusColor = LablesSmallEnum.green
       statusText = 'Выполнено'
 

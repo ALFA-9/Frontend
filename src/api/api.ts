@@ -2,10 +2,10 @@ import axios, { AxiosResponse } from 'axios'
 import {
   CommentType,
   IdpByIdType,
-  StatisticType,
   TaskType,
   UserType,
   PostNewIdp,
+  SubordinatesType,
 } from './api-types'
 
 const BASE_URL = 'https://api.new.red-hand.ru/api/'
@@ -53,7 +53,9 @@ export const getUserById = (
 }
 
 //Получить подчиненных активного юзера с вложенностью
-export const getSubordinates = (): Promise<AxiosResponse<UserType>> => {
+export const getSubordinates = (): Promise<
+  AxiosResponse<SubordinatesType[]>
+> => {
   return instance({
     method: 'GET',
     url: `employees/get_subordinates`,
@@ -118,14 +120,6 @@ export const postIdpRequestByEmployee = ({
       letter,
       title,
     },
-  })
-}
-
-//Получение статистики для активного юзера
-export const getStatistic = (): Promise<AxiosResponse<StatisticType>> => {
-  return instance({
-    method: 'GET',
-    url: `statistic/`,
   })
 }
 

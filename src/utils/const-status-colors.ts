@@ -7,19 +7,19 @@ export const filterListItems: StatusTypeList[] = [
   },
   {
     text: 'В работе',
-    style: 'in_progress',
+    style: 'in_work',
   },
   {
     text: 'Выполнен',
-    style: 'completed',
+    style: 'done',
   },
   {
     text: 'Не выполнен',
-    style: 'failed',
+    style: 'not_completed',
   },
   {
     text: 'Отменен',
-    style: 'cancelled',
+    style: 'canceled',
   },
   {
     text: 'Отсутствует',

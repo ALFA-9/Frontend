@@ -13,6 +13,8 @@ const EmployeesListNodeTemplate: FC = (
   const navigate = useNavigate()
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
 
+  console.log(node)
+
   const onOuterClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation()
     navigate(routes.headStaff + '/' + node.id)
@@ -35,7 +37,7 @@ const EmployeesListNodeTemplate: FC = (
         options.expanded && styles.outer_container_active
       }`}>
       <div onClick={onOuterClick} className={styles.container}>
-        <img className={styles.img} src={node.avatar} alt='#' />
+        <img className={styles.img} src={node.avatar} alt={node.label} />
         <div className={styles.text_wrapper}>
           <h3 className={styles.text_title}>{node.label}</h3>
           <p className={styles.text_subtitle}>

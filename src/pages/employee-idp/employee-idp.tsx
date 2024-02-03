@@ -1,38 +1,55 @@
 import styles from './employee-idp.module.scss'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import Tabs from '../../ui/tabs/tabs'
 import TabPane from '../../ui/tabs/tab-pane/tab-pane'
 import ButtonAccent from '../../ui/buttons/button-accent/button-accent'
 import { routes } from '../../utils/const-routes'
 import IdpCard from '../../components/idp-card/idp-card'
-import {
-  idpDataTemp,
-  idpDataTempArr,
-} from '../../utils/_temp/const-idp-data_temp'
 import ButtonBack from '../../ui/buttons/button-back/button-back'
 import { useAppSelector } from '../../redux/hooks'
+import { UserTypeIdp } from '../../api/api-types'
 
 const Idp: FC = () => {
-  const [isIdpInProgressExist, setIsIdpInProgressExist] =
-    useState<boolean>(true)
-  const [isIdpCompletedExist, setIsIdpCompletedExist] = useState<boolean>(true)
-  const [isIdpFailedExist, setIsIdpFailedExist] = useState<boolean>(false)
-  const [isIdpCancelledExist, setIsIdpCancelledExist] =
-    useState<boolean>(false)
-
   const actualUser = useAppSelector((state) => state.activeUser.user)
+
+  let doneIdp: UserTypeIdp[] = []
+  let cancelledIdp: UserTypeIdp[] = []
+  let inWorkIdp: UserTypeIdp[] = []
+  let notCompletedIdp: UserTypeIdp[] = []
+
+  actualUser.idps.forEach((item) => {
+    switch (item.status_idp) {
+      case 'done':
+        doneIdp = [...doneIdp, item]
+        break
+
+      case 'canceled':
+        cancelledIdp = [...cancelledIdp, item]
+        break
+
+      case 'in_work':
+        inWorkIdp = [...inWorkIdp, item]
+        break
+
+      case 'in_work':
+        notCompletedIdp = [...notCompletedIdp, item]
+        break
+
+      default:
+        break
+    }
+  })
 
   return (
     <div className={styles.container}>
       <ButtonBack path={routes.main} />
-      <h1 className={styles.title}>Redux: {actualUser.first_name}</h1>
       <h1 className={styles.title}>Индивидуальный план развития</h1>
       <Tabs>
         <TabPane title='В работе'>
-          {isIdpInProgressExist && (
-            <IdpCard data={idpDataTemp} extraInfo={true} />
+          {inWorkIdp.length > 0 && (
+            <IdpCard data={inWorkIdp[0]} extraInfo={true} />
           )}
-          {!isIdpInProgressExist && (
+          {!(inWorkIdp.length > 0) && (
             <>
               <p className={styles.message}>
                 У вас сейчас нет назначенного индивидуального плана развития.
@@ -49,24 +66,38 @@ const Idp: FC = () => {
           )}
         </TabPane>
         <TabPane title='Выполнен'>
-          {isIdpCompletedExist && (
+          {doneIdp.length > 0 && (
             <ul className={styles.idp_list}>
-              {idpDataTempArr.map((item) => (
+              {doneIdp.map((item) => (
                 <IdpCard data={item} key={item.title} />
               ))}
             </ul>
           )}
-          {!isIdpCompletedExist && (
+          {!(doneIdp.length > 0) && (
             <p className={styles.message}>Пока у вас нет выполненных ИПР.</p>
           )}
         </TabPane>
         <TabPane title='Не выполнен'>
-          {!isIdpFailedExist && (
+          {notCompletedIdp.length > 0 && (
+            <ul className={styles.idp_list}>
+              {notCompletedIdp.map((item) => (
+                <IdpCard data={item} key={item.title} />
+              ))}
+            </ul>
+          )}
+          {!(notCompletedIdp.length > 0) && (
             <p className={styles.message}>У вас нет невыполненных ИПР.</p>
           )}
         </TabPane>
         <TabPane title='Отменен'>
-          {!isIdpCancelledExist && (
+          {cancelledIdp.length > 0 && (
+            <ul className={styles.idp_list}>
+              {cancelledIdp.map((item) => (
+                <IdpCard data={item} key={item.title} />
+              ))}
+            </ul>
+          )}
+          {!(cancelledIdp.length > 0) && (
             <p className={styles.message}>
               На данный момент отмененных ИПР нет.
             </p>

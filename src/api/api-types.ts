@@ -1,16 +1,63 @@
+import { GradeType, IdpStatuses } from '../types'
+
 //API TYPES
+export interface HardSkills {
+  ['Структуры данных и алгоритмы']: number
+  ['Инфраструктура разработкие']: number
+  ['Аналитическое мышление']: number
+  ['Высшая математика']: number
+  average: number
+}
+
+export interface SoftSkills {
+  ['Наставничество']: number
+  ['Работа в коллективе']: number
+  ['Коммуникабельность']: number
+  ['Аналитическое мышление']: number
+  ['Личная эффективность']: number
+  average: number
+}
+
+export interface UserTypeIdpCurrentTask {
+  id: number
+  name: string
+  date_end: string
+}
+
+export interface UserTypeIdp {
+  id: number
+  title: string
+  progress: number
+  director: string
+  status_idp: IdpStatuses
+  current_task: null | UserTypeIdpCurrentTask
+}
+
+export interface SubordinatesType {
+  id: number
+  director: number
+  first_name: string
+  last_name: string
+  patronymic: string
+  post: string
+  status_idp: IdpStatuses
+  subordinates: SubordinatesType[]
+}
+
 export interface UserType {
   id: number
+  is_director: boolean
   first_name: string
   last_name: string
   patronymic: string
   email: string
-  phone?: string
-  grade: number
-  post: number
-  department: number
-  is_staff?: false
-  subordinates?: UserType[]
+  grade: GradeType
+  post: string
+  department: string
+  image: string
+  hard_skills: HardSkills
+  soft_skills: SoftSkills
+  idps: UserTypeIdp[]
 }
 
 export interface CommentType {
@@ -26,8 +73,8 @@ export interface TaskType {
   description: string
   idp: number
   type: string
-  status_progress: 'in_work' | 'done' | ' not_completed'
-  status_accept: 'accepted' | 'not_accepted' | 'canceled'
+  status_progress: IdpStatuses
+  status_accept: 'accepted' | 'not_accepted'
   control: string
   date_start: string
   date_end: string
@@ -38,33 +85,25 @@ export interface IdpByIdType {
   title: string
   employee: number
   director: number
-  status_idp: 'in_work' | 'done' | 'not_completed' | ' canceled'
+  status_idp: IdpStatuses
   tasks: TaskType[]
 }
 
-export interface StatisticType {
-  in_work: number
-  canceled: number
-  done: number
-  not_completed: number
-  null: number
-}
-
 export enum EnumTaskTypeTypes {
-  Other = 1,
-  WorkplaceTask,
-  LearningFromTheExperiencesOfOthers,
-  SelfpacedLearning,
-  Project,
+  ['Проект'] = 1,
+  ['Задание на рабочем месте'],
+  ['Обучение самостоятельное'],
+  ['Обучение на опыте других'],
+  ['Другое'],
 }
 
 export enum EnumTaskControlTypes {
-  Testing = 1,
-  Interview,
-  PracticalTask,
-  Presentation,
-  Performance,
-  Other,
+  ['Тестирование'] = 1,
+  ['Собеседование'],
+  ['Практическая задача'],
+  ['Презентация'],
+  ['Выступление'],
+  ['Другое'],
 }
 
 export interface PostNewIdpTask {
@@ -82,5 +121,3 @@ export interface PostNewIdp {
   director: number
   tasks: PostNewIdpTask[]
 }
-
-

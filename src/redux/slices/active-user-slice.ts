@@ -12,23 +12,40 @@ interface ActiveUserType {
 const initialState: ActiveUserType = {
   user: {
     id: 0,
-    department: 0,
+    department: 'default',
     email: 'example@mail.ru',
     first_name: 'John',
     last_name: 'Doe',
     patronymic: '007',
-    grade: 0,
-    post: 0,
+    grade: 'intern',
+    post: 'Директор',
+    image: '#',
+    idps: [],
+    is_director: false,
+    hard_skills: {
+      ['Аналитическое мышление']: 0,
+      ['Высшая математика']: 0,
+      ['Инфраструктура разработкие']: 0,
+      ['Структуры данных и алгоритмы']: 0,
+      average: 0,
+    },
+    soft_skills: {
+      ['Аналитическое мышление']: 0,
+      ['Личная эффективность']: 0,
+      ['Работа в коллективе']: 0,
+      ['Коммуникабельность']: 0,
+      ['Наставничество']: 0,
+      average: 0,
+    },
   },
 }
 
-export const activeUser = createSlice({
+const activeUser = createSlice({
   name: 'activeUser',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     setActiveUser: (state, action: PayloadAction<ActiveUserType>) => {
-      state.user = { ...state.user, ...action.payload.user }
+      state.user = action.payload.user
     },
   },
 })
@@ -36,6 +53,6 @@ export const activeUser = createSlice({
 export const { setActiveUser } = activeUser.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectActiveUser = (state: RootState) => state.activeUser
+// export const selectActiveUser = (state: RootState) => state.activeUser
 
 export default activeUser.reducer

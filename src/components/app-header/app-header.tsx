@@ -5,8 +5,10 @@ import Notification from '../../images/icons/bell.svg'
 import Avatar from '../../images/content/user.jpg'
 import { routes } from '../../utils/const-routes'
 import { Link } from 'react-router-dom'
+import { useAppSelector } from '../../redux/hooks'
 
 const AppHeader: FC = () => {
+  const actualUser = useAppSelector((state) => state.activeUser.user)
   return (
     <header className={styles.header}>
       <Link className={styles.link_logo} to={routes.main}>
@@ -37,7 +39,7 @@ const AppHeader: FC = () => {
           <Notification className={styles.notificationIcon} />
         </a>
         <a href='#' className={styles.profile}>
-          <img src={Avatar} className={styles.avatar} />
+          <img src={actualUser.image} className={styles.avatar} />
         </a>
       </div>
     </header>
