@@ -9,11 +9,20 @@ type TItemData = {
 interface IStatsCommonCard {
   title: string;
   itemsData: TItemData[];
+  option: "all" | "direct";
+  onClickHandler: React.Dispatch<React.SetStateAction<"all" | "direct">>;
+  id: "all" | "direct";
 }
 
-export const StatsCommonCard: FC<IStatsCommonCard> = ({ title, itemsData }) => {
+export const StatsCommonCard: FC<IStatsCommonCard> = ({
+  title,
+  itemsData,
+  option,
+  onClickHandler,
+  id
+}) => {
   return (
-    <div className={styles.card}>
+    <div onClick={()=>onClickHandler(id)} className={`${styles.card} ${option === id ? styles.card__selected : ''}`}>
       <p className={styles.title}>{title}</p>
       <div className={styles.container}>
         {itemsData.map((item, index) => (

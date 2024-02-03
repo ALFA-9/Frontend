@@ -1,18 +1,26 @@
+import { stat } from "fs";
 import { EmployeeType } from "../../api/api-types";
 
-type TStatsChartInputData = {
+export type TStatsChartInputData = {
   value: number;
-  status: "in_work" | "done" | "failed" | "cancelled" | "missing";
+  status: "in_work" | "done" | "not_completed" | "cancelled" | "missing";
   title: string;
   color: string;
+};
+
+export type TStatData = {
+  title: string;
+  itemsData: { title: string; value: number }[];
 };
 
 export type StatsChartData = {
   allEmployees: TStatsChartInputData[];
   directEmployees: TStatsChartInputData[];
+  statAll: TStatData;
+  statDirect: TStatData;
 };
 
-export const getChartData = (
+export const getStatsAndChartData = (
   employees: EmployeeType[],
   curUserId: number
 ): StatsChartData => {
@@ -29,9 +37,9 @@ export const getChartData = (
       title: "Выполнен",
       color: "rgba(76, 161, 105, 1)",
     },
-    failed: {
+    not_completed: {
       value: 0,
-      status: "failed",
+      status: "not_completed",
       title: "Не выполнен",
       color: "rgba(199, 51, 34, 1)",
     },
@@ -62,9 +70,9 @@ export const getChartData = (
       title: "Выполнен",
       color: "rgba(76, 161, 105, 1)",
     },
-    failed: {
+    not_completed: {
       value: 0,
-      status: "failed",
+      status: "not_completed",
       title: "Не выполнен",
       color: "rgba(199, 51, 34, 1)",
     },
@@ -82,12 +90,38 @@ export const getChartData = (
     },
   };
 
+  const statAll = {
+    title: "Мое подразделение",
+    itemsData: [
+      { title: "Штатная численность", value: 0 },
+      { title: "Сотрудники", value: 0 },
+      { title: "ИПР", value: 0 },
+    ],
+  };
+
+  const statDirect = {
+    title: "Сотрудники прямого подчинения",
+    itemsData: [
+      { title: "Штатная численность", value: 0 },
+      { title: "Сотрудники", value: 0 },
+      { title: "ИПР", value: 0 },
+    ],
+  };
+
   employees.forEach(({ status_idp, director }) => {
     const curAll = allEmployees[status_idp]?.value;
-    if (typeof curAll === "number") {
+    statAll.itemsData[0].value += 1;
+    statAll.itemsData[1].value += 1;
+    if (director === curUserId) {
+      statDirect.itemsData[0].value += 1;
+      statDirect.itemsData[1].value += 1;
+    }
+    if (status_idp !== 'missing') {
       allEmployees[status_idp].value += 1;
+      statAll.itemsData[2].value += 1;
       if (director === curUserId) {
         directEmployees[status_idp].value += 1;
+        statDirect.itemsData[2].value += 1;
       }
     } else {
       allEmployees.missing.value += 1;
@@ -97,5 +131,10 @@ export const getChartData = (
     }
   });
 
-  return { allEmployees: Object.values(allEmployees), directEmployees: Object.values(directEmployees) };
+  return {
+    allEmployees: Object.values(allEmployees),
+    directEmployees: Object.values(directEmployees),
+    statAll,
+    statDirect,
+  };
 };
