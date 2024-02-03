@@ -11,7 +11,7 @@ type IUnionsData = {
 export const statisticsFakeApi = {
   getAllUnitsData: (): IUnionsData => {
     return {
-      title: "Вся структура",
+      title: "Мое подразделение",
       itemsData: [
         { title: "Штатная численность", value: 30 },
         { title: "Сотрудники", value: 25 },
@@ -22,7 +22,7 @@ export const statisticsFakeApi = {
 
   getMyUnitData: (): IUnionsData => {
     return {
-      title: "Мое подразделение",
+      title: "Сотрудники прямого подчинения",
       itemsData: [
         { title: "Штатная численность", value: 16 },
         { title: "Сотрудники", value: 16 },

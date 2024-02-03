@@ -2,7 +2,6 @@ import axios, { AxiosResponse } from "axios";
 import {
   CommentType,
   IdpByIdType,
-  StatisticType,
   TaskType,
   UserType,
   PostNewIdp,
@@ -82,6 +81,14 @@ export const getUserMe = (): Promise<AxiosResponse<UserType>> => {
 interface getIdpDataById {
   idp: number;
 }
+
+//Получить ИПР (????)
+export const getIdp = (): Promise<AxiosResponse<any>> => {
+  return instance({
+    method: "GET",
+    url: `idps/`,
+  });
+};
 
 //Получить ИПР(его задания и комментарии) по ID
 export const getIdpDataById = ({
