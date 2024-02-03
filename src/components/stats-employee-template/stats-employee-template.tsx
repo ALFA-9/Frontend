@@ -53,7 +53,7 @@ const StatsEmployeeTemplate: FC<StatsEmployeeTemplateType> = ({ data }) => {
   return (
     <li className={`${styles.outer_container}`}>
       <div onClick={onOuterClick} className={styles.container}>
-        <img className={styles.img} src={avatar ||  patronymic.endsWith('вна') ? notman : man} alt="#" />
+        <img className={styles.img} src={avatar ||  patronymic.endsWith('на') ? notman : man} alt="#" />
         <div className={styles.text_wrapper}>
           <h3 className={styles.text_title}>{label}</h3>
           <p className={styles.text_subtitle}>{subtitle}</p>
