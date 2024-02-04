@@ -1,5 +1,5 @@
 import styles from "./head-form.module.scss";
-import { FC, FormEvent, useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import InputTypeText from "../../ui/inputs/input-type-text/input-type-text";
 import ButtonAccent from "../../ui/buttons/button-accent/button-accent";
 import FormTask from "../../components/form-task/form-task";
@@ -20,25 +20,65 @@ import { getUserById } from "../../api/api";
 import LoaderCircle from "../../components/loader/loader";
 import ErrorPage from "../not-found/error";
 
-type TUser = {
-  fullName: string;
-  department: string;
-  position: string;
-};
-
-const user: TUser = {
-  fullName: "Габдрахманов Александр Александрович",
-  department: "Отдел рекламы",
-  position: "Backend-разработчик",
-};
+import { getNewDefaultTaskDTO, getObjectFromEvent } from "./head-form.utils";
+import { TIDPDTO } from "./head-form.types";
+import { data } from "autoprefixer";
 
 const HeadForm: FC = () => {
   const params = useParams();
   const dispatch = useAppDispatch();
-
   const { user, isRequest, isFailed, isSuccess, errorMessage } = useAppSelector(
     (state) => state.activeEmployee
   );
+  const [newIDP, setNewIDP] = useState<TIDPDTO>({
+    idpTitle: `ИПР ${user.idps.length + 1}. `,
+    tasks: [getNewDefaultTaskDTO()],
+  });
+  const [isDone, setIsDone] = useState(false);
+
+  useEffect(() => {
+    if (user.id !== +params.user_id) {
+      receivingActiveEmployee();
+    }
+  }, [user, params]);
+
+  const addTask = () => {
+    const arr = newIDP.tasks.slice();
+    arr.push(getNewDefaultTaskDTO());
+    setNewIDP({ ...newIDP, tasks: arr });
+  };
+
+  const removTask = (uuid: string) => {
+    const arr = newIDP.tasks.filter((item) => item.uuid !== uuid);
+    setNewIDP({ ...newIDP, tasks: arr });
+  };
+
+  const updateTask = (uuid: string, data: Record<string, string>) => {
+    const arr = newIDP.tasks.slice().map((item) => {
+      if (item.uuid === uuid) {
+        return { ...item, ...data };
+      }
+      return item;
+    });
+    setNewIDP({ ...newIDP, tasks: arr });
+  };
+
+  const handleTaskEvent = (
+    e:
+      | React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+      | React.FormEvent<HTMLParagraphElement | HTMLFieldSetElement>,
+    uuid: string,
+    payload?: any
+  ) => {
+    const newData = getObjectFromEvent(e, payload);
+    console.log(newData);
+    updateTask(uuid, newData);
+  };
+
+  const handleTitleEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const res = getObjectFromEvent(e);
+    setNewIDP({ ...newIDP, ...res });
+  };
 
   async function receivingActiveEmployee() {
     dispatch(setIsRequestActiveEmployee(true));
@@ -55,28 +95,6 @@ const HeadForm: FC = () => {
       dispatch(setIsRequestActiveEmployee(false));
     }
   }
-
-  useEffect(() => {
-    if (user.id !== +params.user_id) {
-      receivingActiveEmployee();
-    }
-  }, [user, params]);
-
-  const { values, setValues, handleChange } = useForm({
-    fullName: "",
-    department: "",
-    position: "",
-    idpTitle: "",
-    textaria: "",
-  });
-
-  const [isDone, setIsDone] = useState(false);
-  const [taskCount, setTaskCount] = useState(1);
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setIsDone(true);
-  };
 
   return (
     <div className={styles.container}>
@@ -101,69 +119,70 @@ const HeadForm: FC = () => {
       {isSuccess && !isDone && (
         <>
           <h1 className={styles.title}>Назначить ИПР</h1>
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <fieldset className={styles.info}>
+
+          <form className={styles.form}>
+            <InputTypeText
+              name={"fullName"}
+              value={[user.last_name, user.first_name, user.patronymic].join(
+                " "
+              )}
+              label="ФИО"
+              placeholder="ФИО"
+              disabled
+            />
+            <div className={styles.row}>
               <InputTypeText
-                name={"fullName"}
-                value={[user.last_name, user.first_name, user.patronymic].join(
-                  " "
-                )}
-                onChange={handleChange}
-                label="ФИО"
-                placeholder="ФИО"
+                name={"department"}
+                value={user.department}
+                label="Департамент"
+                placeholder="Департамент"
+                outerClass={styles.halfrow}
                 disabled
               />
-              <div className={styles.row}>
-                <InputTypeText
-                  name={"department"}
-                  value={user.department}
-                  onChange={handleChange}
-                  label="Департамент"
-                  placeholder="Департамент"
-                  outerClass={styles.halfrow}
-                  disabled
-                />
-                <InputTypeText
-                  name={"position"}
-                  value={user.post}
-                  onChange={handleChange}
-                  label="Должность"
-                  placeholder="Должность"
-                  outerClass={styles.halfrow}
-                  disabled
-                />
-              </div>
               <InputTypeText
-                name={"idpTitle"}
-                value={values.idpTitle}
-                onChange={handleChange}
-                label="Название ИПР"
-                placeholder="Название ИПР"
+                name={"position"}
+                value={user.post}
+                label="Должность"
+                placeholder="Должность"
+                outerClass={styles.halfrow}
+                disabled
               />
-            </fieldset>
-            <ul className={styles.tasks}>
-              {[...Array(taskCount)].map((item, index, arr) => (
-                <FormTask
-                  title={`Задача ${++index}`}
-                  hasDelete={arr.length > 1}
-                  key={`form-task${index}`}
-                  index={index}
-                />
-              ))}
-            </ul>
-            <AddButton
-              title="Добавить еще одну задачу"
-              type="button"
-              onClick={() => {
-                setTaskCount(taskCount + 1);
-              }}
-            />
-            <ButtonAccent
-              title="Назначить ИПР"
-              type="submit"
-              extraClass={styles.submitButton}
+            </div>
+            <InputTypeText
+              name={"idpTitle"}
+              id={"idpTitle"}
+              value={newIDP.idpTitle}
+              onChange={handleTitleEvent}
+              label="Название ИПР"
+              placeholder="Название ИПР"
             />
           </form>
+
+          <ul className={styles.tasks}>
+            {newIDP.tasks.map((item, index, arr) => (
+              <FormTask
+                {...item}
+                hasDelete={arr.length > 1}
+                key={item.uuid}
+                index={index}
+                removTask={removTask}
+                onChange={handleTaskEvent}
+              />
+            ))}
+          </ul>
+          <AddButton
+            title="Добавить еще одну задачу"
+            type="button"
+            onClick={() => {
+              addTask();
+            }}
+          />
+          <ButtonAccent
+            title="Назначить ИПР"
+            type="button"
+            onClick={() => setIsDone(true)}
+            extraClass={styles.submitButton}
+          />
         </>
       )}
     </div>

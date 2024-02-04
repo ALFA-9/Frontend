@@ -52,6 +52,11 @@
   display: flex;
   align-items: center;
   gap: 32px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: fit-content;
+  height: fit-content;
 }
 
 .date {
