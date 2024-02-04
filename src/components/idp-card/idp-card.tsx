@@ -82,7 +82,6 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
 
   async function receivingUserData(status_idp: IdpStatuses) {
     try {
-      console.log(id, status_idp, title)
       await pathIdpStatus({ idp: id, status_idp, title })
       dispatch(patcIdpActiveEmployee({ id: id, status_idp: status_idp }))
     } catch (error) {}
@@ -91,14 +90,12 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
   const handleApproveClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    console.log('click')
     receivingUserData('done')
   }
 
   const handleCancelClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    console.log('click')
     receivingUserData('cancelled')
   }
 

@@ -10,7 +10,7 @@ import {
 } from './api-types'
 import { IdpStatuses } from '../types'
 
-export const BASE_URL = 'https://api.new.red-hand.ru/api/'
+export const BASE_URL = 'https://api.new.red-hand.ru'
 
 interface TokenType {
   token: string

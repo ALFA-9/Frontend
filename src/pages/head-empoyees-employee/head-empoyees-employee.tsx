@@ -10,7 +10,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import ButtonAccent from '../../ui/buttons/button-accent/button-accent'
 import { routes } from '../../utils/const-routes'
 import { useAppSelector, useAppDispatch } from '../../redux/hooks'
-import { getUserById } from '../../api/api'
+import { BASE_URL, getUserById } from '../../api/api'
 import {
   setActiveEmployee,
   setErrorMessageActiveEmployee,
@@ -74,7 +74,7 @@ const HeadEmpoyeesEmployee: FC = () => {
           <div className={`${styles.title_wrapper}`}>
             <img
               className={styles.title_img}
-              src={user.image}
+              src={BASE_URL + user.image}
               alt={`${user.last_name} ${user.first_name} ${user?.patronymic}`}
             />
             <h1

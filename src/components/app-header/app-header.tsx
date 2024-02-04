@@ -5,6 +5,7 @@ import Notification from '../../images/icons/bell.svg'
 import { routes } from '../../utils/const-routes'
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../../redux/hooks'
+import { BASE_URL } from '../../api/api'
 
 const AppHeader: FC = () => {
   const actualUser = useAppSelector((state) => state.activeUser.user)
@@ -39,7 +40,7 @@ const AppHeader: FC = () => {
           <Notification className={styles.notificationIcon} />
         </a>
         <a href='#' className={styles.profile}>
-          <img src={actualUser.image} className={styles.avatar} />
+          <img src={BASE_URL + actualUser.image} className={styles.avatar} />
         </a>
       </div>
     </header>

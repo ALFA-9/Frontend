@@ -55,7 +55,7 @@ const IdpTask: FC<IIdpTaskProps> = ({ data, isHead }) => {
       statusColor = 'red';
       statusText = 'Не выполнен';
       break;
-    case 'canceled':
+    case 'cancelled':
       statusColor = 'orange';
       statusText = 'Отменён';
       break;
@@ -93,7 +93,6 @@ const IdpTask: FC<IIdpTaskProps> = ({ data, isHead }) => {
 
   const handleClick = () => {
     setIsHidden(!isHidden);
-    console.log('isHidden: ', isHidden)
   }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -113,7 +112,6 @@ const IdpTask: FC<IIdpTaskProps> = ({ data, isHead }) => {
   }
 
   const handleTestClick: MouseEventHandler<HTMLButtonElement> = (event) => {
-    console.log('click')
   }
 
   const dropDownList: DropDownMenuItemType[] = [

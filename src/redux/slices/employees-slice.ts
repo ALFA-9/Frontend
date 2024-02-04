@@ -21,7 +21,6 @@ const initialState: IMyUnitEmployees = {
 
 export const myUnitEmployees = createSlice({
   name: "myUnitEmployees",
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     setMyUnitEmployees: (state, action: PayloadAction<EmployeeType[]>) => {

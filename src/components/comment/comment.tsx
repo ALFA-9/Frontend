@@ -1,20 +1,25 @@
-import { CommentType } from '../../api/api-types';
-import styles from './comment.module.scss';
-import { FC } from 'react';
+import { BASE_URL } from '../../api/api'
+import { CommentType } from '../../api/api-types'
+import styles from './comment.module.scss'
+import { FC } from 'react'
 
 interface ICommentProps {
-  data: CommentType,
+  data: CommentType
   isHidden?: boolean
 }
 
 const Comment: FC<ICommentProps> = ({ data, isHidden = false }) => {
-  const { employee, employee_image, employee_post, pub_date, body } = data;
-  const url = 'https://api.new.red-hand.ru';
+  const { employee, employee_image, employee_post, pub_date, body } = data
+  const url = BASE_URL
 
   return (
     <div className={`${styles.container} ${isHidden ? styles.hidden : ''}`}>
       <div className={styles.header}>
-        <img src={`${url}${employee_image}`} alt={employee} className={styles.avatar} />
+        <img
+          src={`${url}${employee_image}`}
+          alt={employee}
+          className={styles.avatar}
+        />
         <div className={styles.author}>
           <p className={styles.authorName}>{employee}</p>
           <p className={styles.authorPost}>{employee_post}</p>
@@ -26,4 +31,4 @@ const Comment: FC<ICommentProps> = ({ data, isHidden = false }) => {
   )
 }
 
-export default Comment;
+export default Comment

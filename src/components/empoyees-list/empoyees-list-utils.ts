@@ -20,7 +20,7 @@ export function changeType(
     id: id + '',
     lvl: lvl,
     label: `${last_name} ${first_name} ${patronymic}`,
-    avatar: 'https://api.new.red-hand.ru/' + image,
+    avatar: BASE_URL + '/' + image,
     subtitle: post,
     key: id + '',
     children:

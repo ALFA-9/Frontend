@@ -42,7 +42,4 @@ export const {
   setEmployeesListIsFailed,
 } = employeesList.actions
 
-// Other code such as selectors can use the imported `RootState` type
-//export const selectActiveUser = (state: RootState) => state.activeUser
-
 export default employeesList.reducer

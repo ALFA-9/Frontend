@@ -25,7 +25,7 @@
   color: inherit;
 }
 
-.checkbox {
+.statusbar .checkbox {
   width: auto;
   margin-left: auto;
 }
@@ -126,12 +126,13 @@
   gap: 12px;
 }
 
-.input {
+.inputContainer .input {
   max-height: 48px;
   border: 1px solid $medium-gray;
   background-color: $white;
 
-  &,&::placeholder {
+  &,
+  &::placeholder {
     @include text-search-14-400;
   }
 

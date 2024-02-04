@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { UserType } from '../../api/api-types'
 import { defaultUser } from '../../utils/const-default-user'
 
-// Define a type for the slice state
+
 
 interface ActiveUserType {
   user: UserType
@@ -51,8 +51,5 @@ export const {
   setIsFailedSetActiveUser,
   setErrMessageSetActiveUser,
 } = activeUser.actions
-
-// Other code such as selectors can use the imported `RootState` type
-// export const selectActiveUser = (state: RootState) => state.activeUser
 
 export default activeUser.reducer

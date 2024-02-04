@@ -5,6 +5,7 @@ import { routes } from "../../utils/const-routes";
 import LablesSmall from "../../ui/lables/lables-small/lables-small";
 import { LablesSmallEnum } from "../../ui/lables/types";
 import { EmployeeType } from "../../api/api-types";
+import { BASE_URL } from "../../api/api";
 
 interface StatsEmployeeTemplateType {
   data: EmployeeType;
@@ -57,7 +58,7 @@ const StatsEmployeeTemplate: FC<StatsEmployeeTemplateType> = ({ data }) => {
   return (
     <li className={`${styles.outer_container}`}>
       <div onClick={onOuterClick} className={styles.container}>
-        <img className={styles.img} src={image} alt="#" />
+        <img className={styles.img} src={BASE_URL + image} alt={label} />
         <div className={styles.text_wrapper}>
           <h3 className={styles.text_title}>{label}</h3>
           <p className={styles.text_subtitle}>{subtitle}</p>

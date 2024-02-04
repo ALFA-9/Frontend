@@ -4,7 +4,6 @@ import { UserType } from '../../api/api-types'
 import { defaultUser } from '../../utils/const-default-user'
 import { IdpStatuses } from '../../types'
 
-// Define a type for the slice state
 
 interface ActiveUserType {
   user: UserType
@@ -68,7 +67,5 @@ export const {
   patcIdpActiveEmployee,
 } = activeEmployee.actions
 
-// Other code such as selectors can use the imported `RootState` type
-// export const selectActiveUser = (state: RootState) => state.activeUser
 
 export default activeEmployee.reducer
