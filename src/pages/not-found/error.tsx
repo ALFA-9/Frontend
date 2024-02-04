@@ -6,7 +6,11 @@ interface NotFoundType {
 }
 
 const ErrorPage: FC<NotFoundType> = ({ text }) => {
-  return <p className={styles.title}>{text}</p>
+  return (
+    <div className={styles.wrapper}>
+      <p className={styles.title}>{text}</p>
+    </div>
+  )
 }
 
 export default ErrorPage

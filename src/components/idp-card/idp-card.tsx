@@ -18,6 +18,10 @@ interface IdpCardType {
 const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
   const [isOptionsOpen, setIsOptionsOpen] = useState<boolean>(false)
   const [isInProgress, setIsInProgress] = useState<boolean>(false)
+  const [taskStatusColor, setTaskStatusColor] = useState<LablesSmallEnum>(
+    LablesSmallEnum.blue
+  )
+
   const { current_task, director, id, progress, status_idp, title } = data
 
   const location = useLocation()
@@ -27,39 +31,29 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
   const deadlineColor =
     currentTime < deadline ? LablesSmallEnum.green : LablesSmallEnum.red
 
-  let taskStatusColor: LablesSmallEnum
-  switch (status_idp) {
-    case 'in_work':
-      taskStatusColor = LablesSmallEnum.blue
-      break
-    case 'done':
-      taskStatusColor = LablesSmallEnum.green
-      break
-    case 'canceled':
-      taskStatusColor = LablesSmallEnum.orange
-      break
-    case 'not_completed':
-      taskStatusColor = LablesSmallEnum.red
-      break
-  }
-
   useEffect(() => {
     switch (status_idp) {
       case 'in_work':
-        taskStatusColor = LablesSmallEnum.blue
+        setTaskStatusColor(LablesSmallEnum.blue)
         setIsInProgress(true)
         break
+
       case 'done':
-        taskStatusColor = LablesSmallEnum.green
+        setTaskStatusColor(LablesSmallEnum.green)
+        setIsInProgress(false)
         break
+
       case 'canceled':
-        taskStatusColor = LablesSmallEnum.orange
+        setTaskStatusColor(LablesSmallEnum.orange)
+        setIsInProgress(false)
         break
+
       case 'not_completed':
-        taskStatusColor = LablesSmallEnum.red
+        setTaskStatusColor(LablesSmallEnum.red)
+        setIsInProgress(false)
         break
     }
-  }, [])
+  }, [status_idp])
 
   const clickReset = () => {
     setIsOptionsOpen(false)

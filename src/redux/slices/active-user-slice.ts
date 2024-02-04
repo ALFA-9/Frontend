@@ -12,7 +12,7 @@ interface ActiveUserType {
   isSuccess: boolean
   isFailed: boolean
   errMessage: string
-  usersTest?: string
+
 }
 
 export const initialState: ActiveUserType = {
@@ -21,7 +21,7 @@ export const initialState: ActiveUserType = {
   isSuccess: false,
   isFailed: false,
   errMessage: '',
-  usersTest: '',
+
 }
 
 const activeUser = createSlice({
@@ -43,10 +43,6 @@ const activeUser = createSlice({
     setErrMessageSetActiveUser: (state, action: PayloadAction<string>) => {
       state.errMessage = action.payload
     },
-    setUsersTest: (state, action: PayloadAction<string>) => {
-      console.log(action.payload)
-      state.usersTest = action.payload
-    },
   },
 })
 
@@ -56,7 +52,6 @@ export const {
   setIsSuccessSetActiveUser,
   setIsFailedSetActiveUser,
   setErrMessageSetActiveUser,
-  setUsersTest,
 } = activeUser.actions
 
 // Other code such as selectors can use the imported `RootState` type
