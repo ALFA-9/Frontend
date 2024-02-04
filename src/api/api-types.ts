@@ -35,6 +35,7 @@ export interface UserTypeIdp {
 
 export interface SubordinatesType {
   id: number
+  image: string
   director: number
   first_name: string
   last_name: string

@@ -4,6 +4,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import { UiPage } from '../../pages/ui-page/ui-page'
 import { routes } from '../../utils/const-routes'
 import MainGallery from '../../pages/main-gallery/main-gallery'
+import { useAppSelector } from '../../redux/hooks'
 const EmployeeIdp = lazy(() => import('../../pages/employee-idp/employee-idp'))
 const EmployeeForm = lazy(
   () => import('../../pages/employee-form/employee-form')
@@ -23,7 +24,7 @@ const IdpTasks = lazy(() => import('../../pages/idp-tasks/idp-tasks'))
 
 const Content: FC = () => {
   const location = useLocation()
-
+  const activeUser = useAppSelector((state) => state.activeUser)
   return (
     <section
       className={`${styles.content} ${
@@ -76,49 +77,51 @@ const Content: FC = () => {
           element={<h1>employeeFormDone</h1>}
         />
 
-        <>
-          <Route path={routes.head} element={<h1>Head</h1>} />
-          <Route
-            path={routes.headStats}
-            element={
-              <Suspense>
-                <HeadStats />
-              </Suspense>
-            }
-          />
-          <Route
-            path={routes.headStaff}
-            element={
-              <Suspense>
-                <HeadEmployees />
-              </Suspense>
-            }
-          />
-          <Route
-            path={routes.headStaffId}
-            element={
-              <Suspense>
-                <HeadEmpoyeesEmployee />
-              </Suspense>
-            }
-          />
-          <Route
-            path={routes.headStaffIdTasks}
-            element={
-              <Suspense>
-                <IdpTasks />
-              </Suspense>
-            }
-          />
-          <Route
-            path={routes.headStaffIdForm}
-            element={
-              <Suspense>
-                <HeadForm />
-              </Suspense>
-            }
-          />
-        </>
+        {activeUser.user.is_director && (
+          <>
+            <Route path={routes.head} element={<h1>Head</h1>} />
+            <Route
+              path={routes.headStats}
+              element={
+                <Suspense>
+                  <HeadStats />
+                </Suspense>
+              }
+            />
+            <Route
+              path={routes.headStaff}
+              element={
+                <Suspense>
+                  <HeadEmployees />
+                </Suspense>
+              }
+            />
+            <Route
+              path={routes.headStaffId}
+              element={
+                <Suspense>
+                  <HeadEmpoyeesEmployee />
+                </Suspense>
+              }
+            />
+            <Route
+              path={routes.headStaffIdTasks}
+              element={
+                <Suspense>
+                  <IdpTasks />
+                </Suspense>
+              }
+            />
+            <Route
+              path={routes.headStaffIdForm}
+              element={
+                <Suspense>
+                  <HeadForm />
+                </Suspense>
+              }
+            />
+          </>
+        )}
       </Routes>
     </section>
   )

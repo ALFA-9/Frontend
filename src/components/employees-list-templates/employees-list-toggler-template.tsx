@@ -13,7 +13,7 @@ const TogglerTemplate: FC = (
   }
 
   const regex = /[0-9]/g
-  const lvl = node.key.match(regex).length - 1
+  const lvl = node.lvl
 
   const expanded = options.expanded
 

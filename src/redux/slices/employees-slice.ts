@@ -36,7 +36,6 @@ export const myUnitEmployees = createSlice({
     setIsFailedMyUnitEmployees: (state, action: PayloadAction<boolean>) => {
       state.isFailed = action.payload;
     },
-
     setErrorMessageMyUnitEmployees: (state, action: PayloadAction<string>) => {
       state.errorMessage = action.payload;
     },

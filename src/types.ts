@@ -65,7 +65,6 @@ export interface StatusTypeList {
   style: StatusColorsType
 }
 
-
 interface SubordinatesType {
   id: number
   director: number
@@ -79,6 +78,8 @@ interface SubordinatesType {
 
 export interface TreeNodeMod {
   title?: string
+
+  lvl?: number
 
   avatar?: string
 
