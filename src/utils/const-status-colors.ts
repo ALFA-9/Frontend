@@ -19,7 +19,7 @@ export const filterListItems: StatusTypeList[] = [
   },
   {
     text: 'Отменен',
-    style: 'canceled',
+    style: 'cancelled',
   },
   {
     text: 'Отсутствует',

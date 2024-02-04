@@ -8,8 +8,9 @@ import {
   EmployeeType,
   SubordinatesType,
 } from './api-types'
+import { IdpStatuses } from '../types'
 
-export const BASE_URL = 'https://api.new.red-hand.ru/api/'
+export const BASE_URL = 'https://api.new.red-hand.ru'
 
 interface TokenType {
   token: string
@@ -19,7 +20,7 @@ interface TokenType {
 export const postToken = (): Promise<AxiosResponse<TokenType>> => {
   return axios({
     method: 'POST',
-    url: `${BASE_URL}auth/`,
+    url: `${BASE_URL}/api/auth/`,
     data: { email: 'zoduvon-ofe57@alfabank.ru' },
     headers: {
       'Content-Type': 'application/json',
@@ -28,7 +29,7 @@ export const postToken = (): Promise<AxiosResponse<TokenType>> => {
 }
 
 const instance = axios.create({
-  baseURL: 'https://api.new.red-hand.ru/api',
+  baseURL: BASE_URL + '/api/',
   headers: {
     'Content-Type': 'application/json',
     Authorization: `Token ${localStorage.getItem('token')}`,
@@ -88,10 +89,31 @@ interface getIdpDataById {
 //Получить ИПР(его задания и комментарии) по ID
 export const getIdpDataById = ({
   idp,
-}: getIdpDataById): Promise<AxiosResponse<IdpByIdType>> => { // TokenType => IdpByIdType
+}: getIdpDataById): Promise<AxiosResponse<IdpByIdType>> => {
   return instance({
     method: 'GET',
     url: `idps/${idp}/`,
+  })
+}
+
+interface PathIdpStatusType {
+  title: string
+  status_idp: IdpStatuses
+  idp: number
+}
+
+//Редактирование статуса ИПР
+export const pathIdpStatus = ({
+  idp,
+  status_idp,
+  title,
+}: PathIdpStatusType): Promise<AxiosResponse<PathIdpStatusType>> => {
+  return instance({
+    method: 'PATCH',
+    url: `idps/${idp}/`,
+    data: {
+      status_idp: status_idp,
+    },
   })
 }
 

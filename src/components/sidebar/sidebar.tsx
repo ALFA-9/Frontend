@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { Route, Routes, useLocation} from 'react-router-dom'
 import styles from './sidebar.module.scss'
 import SidebarList from '../sidebar-list/sidebar-list'
 import { mainSidebarItems } from '../../utils/const-side-main-sidebar-items'

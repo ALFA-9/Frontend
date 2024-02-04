@@ -1,4 +1,3 @@
-import { TreeNode } from 'primereact/treenode'
 import { IconType } from 'primereact/utils'
 import { MouseEventHandler } from 'react'
 
@@ -43,11 +42,11 @@ export type GradeType =
   | 'principal'
   | 'principal plus'
 
-export type IdpStatuses = 'in_work' | 'done' | 'not_completed' | 'canceled'
+export type IdpStatuses = 'in_work' | 'done' | 'not_completed' | 'cancelled'
 
 export enum IdpStatusesTranslate {
   in_work = 'В работе',
-  canceled = 'Отменен',
+  cancelled = 'Отменен',
   not_completed = 'Не выполнен',
   done = 'Выполнен',
 }
@@ -56,7 +55,7 @@ export type StatusColorsType =
   | 'all'
   | 'in_work'
   | 'missing'
-  | 'canceled'
+  | 'cancelled'
   | 'not_completed'
   | 'done'
 

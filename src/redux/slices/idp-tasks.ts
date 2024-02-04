@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getIdpDataById, postComment } from '../../api/api';
-import { TaskType, CommentType } from '../../api/api-types';
-import { RootState } from '../store';
+import { getIdpDataById} from '../../api/api';
+import { TaskType} from '../../api/api-types';
 
 interface IInitialState {
   title: string,

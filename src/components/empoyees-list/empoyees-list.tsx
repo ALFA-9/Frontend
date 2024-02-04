@@ -23,6 +23,7 @@ const FilterDemo: FC = () => {
 
   async function receivingSubordinatesList() {
     dispatch(setEmployeesListIsRequest(true))
+    dispatch(setEmployeesListIsFailed(false))
     try {
       const subordinatesList = await getSubordinates()
       const employeesListNodeType = subordinatesList.data.map((item) =>

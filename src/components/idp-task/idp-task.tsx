@@ -4,7 +4,7 @@ import { postComment } from '../../api/api';
 import { useAppDispatch } from '../../redux/hooks';
 import { fetchIdpDataById } from '../../redux/slices/idp-tasks';
 import { useForm } from '../../hooks/use-form';
-import { TaskType, CommentType } from '../../api/api-types';
+import { TaskType} from '../../api/api-types';
 import { LablesSmallEnum } from '../../ui/lables/types';
 import { DropDownMenuItemType } from '../../types';
 import LabelsWithDot from '../../ui/lables/labels-with-dot/labels-with-dot';
@@ -16,7 +16,6 @@ import Divider from '../divider/divider';
 import InputTypeText from '../../ui/inputs/input-type-text/input-type-text';
 import SendButton from '../../ui/buttons/send-button/send-button';
 import Dots from '../../images/icons/three_dots.svg';
-// import NewCommentForm from '../new-comment/new-comment-form';
 
 interface IIdpTaskProps {
   data: TaskType,

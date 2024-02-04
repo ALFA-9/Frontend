@@ -3,12 +3,18 @@ import styles from './idp-card.module.scss'
 import jpg from '../../images/_temp/idp.jpeg'
 import LablesBig from '../../ui/lables/lables-big/lables-big'
 import { LablesSmallEnum } from '../../ui/lables/types'
-import { DropDownMenuItemType, IdpStatusesTranslate } from '../../types'
+import {
+  DropDownMenuItemType,
+  IdpStatuses,
+  IdpStatusesTranslate,
+} from '../../types'
 import { Link, useLocation } from 'react-router-dom'
 import Dots from '../../images/icons/three_dots.svg'
 import DropDownMenu from '../../ui/drop-down-menu/drop-down-menu'
 import { UserTypeIdp } from '../../api/api-types'
-
+import { useAppDispatch } from '../../redux/hooks'
+import { patcIdpActiveEmployee } from '../../redux/slices/head-employees-employee-slice'
+import { pathIdpStatus } from '../../api/api'
 interface IdpCardType {
   data: UserTypeIdp
   extraInfo?: boolean
@@ -21,6 +27,8 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
   const [taskStatusColor, setTaskStatusColor] = useState<LablesSmallEnum>(
     LablesSmallEnum.blue
   )
+
+  const dispatch = useAppDispatch()
 
   const { current_task, director, id, progress, status_idp, title } = data
 
@@ -43,7 +51,7 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
         setIsInProgress(false)
         break
 
-      case 'canceled':
+      case 'cancelled':
         setTaskStatusColor(LablesSmallEnum.orange)
         setIsInProgress(false)
         break
@@ -72,21 +80,37 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
     document.body.addEventListener('click', clickReset)
   }
 
-  const handleTestClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+  async function receivingUserData(status_idp: IdpStatuses) {
+    try {
+      console.log(id, status_idp, title)
+      await pathIdpStatus({ idp: id, status_idp, title })
+      dispatch(patcIdpActiveEmployee({ id: id, status_idp: status_idp }))
+    } catch (error) {}
+  }
+
+  const handleApproveClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
     console.log('click')
+    receivingUserData('done')
+  }
+
+  const handleCancelClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    console.log('click')
+    receivingUserData('cancelled')
   }
 
   const dropDownList: DropDownMenuItemType[] = [
     {
-      onClick: handleTestClick,
+      onClick: handleApproveClick,
       text: 'Подтвердить',
-      isDisabled: true,
       isRed: false,
     },
     {
-      onClick: handleTestClick,
+      onClick: handleCancelClick,
       text: 'Отменить ИПР',
-      isDisabled: true,
       isRed: true,
     },
   ]

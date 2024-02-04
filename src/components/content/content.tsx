@@ -1,7 +1,6 @@
 import { FC, Suspense, lazy } from 'react'
 import styles from './content.module.scss'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { UiPage } from '../../pages/ui-page/ui-page'
 import { routes } from '../../utils/const-routes'
 import MainGallery from '../../pages/main-gallery/main-gallery'
 import { useAppSelector } from '../../redux/hooks'
@@ -55,7 +54,6 @@ const Content: FC = () => {
             </Suspense>
           }
         />
-        <Route path='/idp/ui' element={<UiPage />} />
         <Route
           path={routes.employeeCompetencies}
           element={
@@ -76,7 +74,6 @@ const Content: FC = () => {
           path={routes.employeeIdpFormDone}
           element={<h1>employeeFormDone</h1>}
         />
-
         {activeUser.user.is_director && (
           <>
             <Route path={routes.head} element={<h1>Head</h1>} />

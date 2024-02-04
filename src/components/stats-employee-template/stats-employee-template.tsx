@@ -1,7 +1,5 @@
 import { FC, MouseEventHandler } from "react";
 import styles from "./stats-employee-template.module.scss";
-import man from "../../images/_temp/template.jpeg";
-import notman from "../../images/_temp/kVP39KjZvo3X-min.png";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../utils/const-routes";
 import LablesSmall from "../../ui/lables/lables-small/lables-small";
@@ -21,7 +19,6 @@ const StatsEmployeeTemplate: FC<StatsEmployeeTemplateType> = ({ data }) => {
     post: subtitle,
     status_idp: status,
     image,
-    patronymic,
   } = data;
 
   let statusColor;

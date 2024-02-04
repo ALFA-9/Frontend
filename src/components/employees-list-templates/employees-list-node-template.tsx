@@ -51,12 +51,22 @@ const EmployeesListNodeTemplate: FC = (
       </div>
 
       <Link
-        to={routes.headStaff + '/' + node.id + '/form'}
-        className={`${styles.popup} ${isPopupOpen && styles.popup_active}`}>
-        <p className={styles.popup_link}>Назначить ИПР</p>
+        to={
+          node.status === 'in_work'
+            ? ''
+            : routes.headStaff + '/' + node.id + '/form'
+        }
+        className={`${styles.popup} ${isPopupOpen && styles.popup_active} ${
+          node.status === 'in_work' ? styles.popup_deactive : ''
+        }`}>
+        <p
+          className={`${styles.popup_link} ${
+            node.status === 'in_work' ? styles.popup_deactive : ''
+          }`}>
+          Назначить ИПР
+        </p>
       </Link>
     </article>
   )
 }
-
 export default EmployeesListNodeTemplate
