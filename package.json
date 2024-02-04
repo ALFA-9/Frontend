@@ -46,7 +46,6 @@
   },
   "dependencies": {
     "@alfalab/core-components-calendar": "^7.3.2",
-    "@alfalab/core-components-spinner": "^3.2.0",
     "@alfalab/core-components-universal-date-input": "^1.5.0",
     "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.5",
