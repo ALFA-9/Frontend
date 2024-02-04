@@ -31,13 +31,13 @@ $font-bold: 700;
   margin: 0;
 }
 
-// typography mixins
 @mixin for-all {
   color: $black;
   font-family: $roboto;
 }
 
-//headline_large in past
+
+// text-ui-kit
 @mixin text-h2-24-700 {
   $f-size: 24px;
   @include for-all;
@@ -47,7 +47,6 @@ $font-bold: 700;
   letter-spacing: calc($f-size / 100 * 0);
 }
 
-//headline_xlarge in past
 @mixin text-h1-40-700 {
   $f-size: 40px;
   @include for-all;
@@ -85,7 +84,6 @@ $font-bold: 700;
   letter-spacing: calc($f-size / 100 * 2);
 }
 
-//tiny-text in past
 @mixin text-tiny-12-400 {
   $f-size: 12px;
   @include for-all;
@@ -117,7 +115,6 @@ $font-bold: 700;
   letter-spacing: calc($f-size / 100 * 0);
 }
 
-//menu-sidebar-text in past
 @mixin text-menu-sidebar-14-500 {
   $f-size: 14px;
   @include for-all;
@@ -162,6 +159,7 @@ $font-bold: 700;
   border-radius: 8px;
 }
 
+//page header
 @mixin page-title-default {
   @include reset-text;
   @include text-h1-40-700;
