@@ -8,10 +8,11 @@ import {
   idpSidebarItems,
 } from '../../utils/const-sidebar-items'
 import { routes } from '../../utils/const-routes'
+import { useAppSelector } from '../../redux/hooks'
 
 const Sidebar: FC = () => {
   const location = useLocation()
-
+  const activeUser = useAppSelector((state) => state.activeUser)
   return (
     <nav
       className={`${styles.content} ${
@@ -31,11 +32,15 @@ const Sidebar: FC = () => {
           path={routes.employee + '/*'}
           element={<SidebarList mainSidebarItems={idpSidebarItems} />}
         />
-        <Route
-          path={routes.head + '/*'}
-          element={<SidebarList mainSidebarItems={headSidebarItems} />}
-        />
-        <Route path={routes.headStaffId + '/*'} element={<></>} />
+        {activeUser.user.is_director && (
+          <>
+            <Route
+              path={routes.head + '/*'}
+              element={<SidebarList mainSidebarItems={headSidebarItems} />}
+            />
+            <Route path={routes.headStaffId + '/*'} element={<></>} />
+          </>
+        )}
       </Routes>
     </nav>
   )

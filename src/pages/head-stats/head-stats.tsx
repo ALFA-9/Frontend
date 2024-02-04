@@ -1,15 +1,15 @@
-import { FC, useEffect, useState } from "react";
-import styles from "./head-stats.module.scss";
-import StatsEmployeesList from "../../components/stats-employees-list/stats-employees-list";
-import { nodesData } from "../../utils/_temp/const-employees-list-node_temp";
-import PieChart from "../../ui/pie-chart/pie-chart";
-import { statisticsFakeApi } from "../../utils/_temp/const-general-statistics";
-import { StatsCommonCard } from "../../components/stats-common-card/stats-common-card";
-import { StatsChartLegend } from "../../components/stats-chart-legend/stats-chart-legend";
-import ButtonBack from "../../ui/buttons/button-back/button-back";
-import { routes } from "../../utils/const-routes";
-import { getAllEmployeesInMyUnit, getIdp, getIdpDataById } from "../../api/api";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { FC, useEffect, useState } from 'react'
+import styles from './head-stats.module.scss'
+import StatsEmployeesList from '../../components/stats-employees-list/stats-employees-list'
+import { nodesData } from '../../utils/_temp/const-employees-list-node_temp'
+import PieChart from '../../ui/pie-chart/pie-chart'
+import { statisticsFakeApi } from '../../utils/_temp/const-general-statistics'
+import { StatsCommonCard } from '../../components/stats-common-card/stats-common-card'
+import { StatsChartLegend } from '../../components/stats-chart-legend/stats-chart-legend'
+import ButtonBack from '../../ui/buttons/button-back/button-back'
+import { routes } from '../../utils/const-routes'
+import { getAllEmployeesInMyUnit, getIdpDataById } from '../../api/api'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import {
   setErrorMessageMyUnitEmployees,
   setIsFailedMyUnitEmployees,
@@ -45,27 +45,27 @@ const HeadStats: FC = () => {
 
   const { id: currentUserId } = useAppSelector(
     (state) => state.activeUser.user
-  );
+  )
   const { employees, isFailed, isRequest, isSuccess, errorMessage } =
-    useAppSelector((state) => state.myUnitEmployees);
+    useAppSelector((state) => state.myUnitEmployees)
 
   useEffect(() => {
     if (!isFailed && !isRequest && !isSuccess) {
-      dispatch(setIsRequestMyUnitEmployees(true));
+      dispatch(setIsRequestMyUnitEmployees(true))
       getAllEmployeesInMyUnit()
         .then(({ data }) => {
-          dispatch(setMyUnitEmployees(data));
-          dispatch(setIsSuccessMyUnitEmployees(true));
+          dispatch(setMyUnitEmployees(data))
+          dispatch(setIsSuccessMyUnitEmployees(true))
         })
         .catch(({ message }) => {
-          dispatch(setErrorMessageMyUnitEmployees(message));
-          dispatch(setIsFailedMyUnitEmployees(true));
+          dispatch(setErrorMessageMyUnitEmployees(message))
+          dispatch(setIsFailedMyUnitEmployees(true))
         })
         .finally(() => {
-          dispatch(setIsRequestMyUnitEmployees(false));
-        });
+          dispatch(setIsRequestMyUnitEmployees(false))
+        })
     }
-  }, [isFailed, isRequest, isSuccess]);
+  }, [isFailed, isRequest, isSuccess])
 
   useEffect(() => {
     if (isSuccess) {
@@ -75,13 +75,13 @@ const HeadStats: FC = () => {
         setChartData({ allEmployees, directEmployees });
         setStatData({ allEmployees:statAll, directEmployees:statDirect });
     }
-  }, [isSuccess]);
+  }, [isSuccess])
 
   return (
     <>
       <ButtonBack path={routes.main} />
       <h1 className={styles.title}>Статистика ИПР сотрудников</h1>
-      <Spinner visible={isRequest} size="m" />
+      {isRequest && <LoaderCircle />}
       {isFailed && <p>{errorMessage}</p>}
       {isSuccess && (
         <>
@@ -104,7 +104,7 @@ const HeadStats: FC = () => {
 
             <PieChart
               data={
-                option === "all"
+                option === 'all'
                   ? chartData.allEmployees
                   : chartData.directEmployees
               }
@@ -116,7 +116,7 @@ const HeadStats: FC = () => {
             />
             <StatsChartLegend
               itemData={
-                option === "all"
+                option === 'all'
                   ? chartData.allEmployees
                   : chartData.directEmployees
               }
@@ -127,7 +127,7 @@ const HeadStats: FC = () => {
         </>
       )}
     </>
-  );
-};
+  )
+}
 
-export default HeadStats;
+export default HeadStats

@@ -5,9 +5,9 @@
   position: absolute;
   top: 0px;
   left: 18px;
-  height: 100%;
+  height: calc(100% - 160px - 124px);
   z-index: 3;
-  width: 0px;
+  width: 0;
 }
 
 .button {
