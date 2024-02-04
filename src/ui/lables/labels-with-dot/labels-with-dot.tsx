@@ -1,7 +1,7 @@
 import { useState, FC } from 'react';
 import styles from './labels-with-dot.module.scss';
 
-interface ILabelsWithDot {
+export interface ILabelsWithDot {
   color: string,
   title: string
 }

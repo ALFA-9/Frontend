@@ -18,8 +18,8 @@
     width: 100%;
     height: 16px;
     border-bottom: 1px solid $medium-gray;
+    border-color: $gray;
     transform: translateY(-50%);
-    z-index: -1;
   }
 
   &:hover {

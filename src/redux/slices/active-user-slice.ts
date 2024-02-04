@@ -12,7 +12,6 @@ interface ActiveUserType {
   isSuccess: boolean
   isFailed: boolean
   errMessage: string
-
 }
 
 export const initialState: ActiveUserType = {

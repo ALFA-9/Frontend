@@ -10,6 +10,7 @@ import {
 } from './api-types'
 
 export const BASE_URL = 'https://api.new.red-hand.ru/api/'
+export const IMG_URL = 'https://api.new.red-hand.ru'
 
 interface TokenType {
   token: string
