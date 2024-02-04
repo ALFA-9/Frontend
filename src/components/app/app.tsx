@@ -14,28 +14,28 @@ import { setActiveUser } from '../../redux/slices/active-user-slice'
 
 export default function App() {
   const location = useLocation()
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const activeUser = useAppSelector((state) => state.activeUser)
   const dispatch = useAppDispatch()
 
-  async function receivingUserToken() {
-    try {
-      const token = await getToken()
-      localStorage.setItem('token', token.data.token)
-      const currentUser = await getUserMe()
-      console.log(currentUser.data)
-      dispatch(setActiveUser({ user: currentUser.data }))
-      const headEmployees = await getSubordinates()
-      console.log(headEmployees)
-      setIsLoading(false)
-    } catch (error) {
-      console.log(error.toJSON())
-    }
-  }
+  // async function receivingUserToken() {
+  //   try {
+  //     const token = await getToken()
+  //     localStorage.setItem('token', token.data.token)
+  //     const currentUser = await getUserMe()
+  //     console.log(currentUser.data)
+  //     dispatch(setActiveUser({ user: currentUser.data }))
+  //     const headEmployees = await getSubordinates()
+  //     console.log(headEmployees)
+  //     setIsLoading(false)
+  //   } catch (error) {
+  //     console.log(error.toJSON())
+  //   }
+  // }
 
-  useEffect(() => {
-    receivingUserToken()
-  }, [])
+  // useEffect(() => {
+  //   receivingUserToken()
+  // }, [])
 
   return (
     <>
