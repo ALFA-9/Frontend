@@ -33,7 +33,7 @@ const IdpTasks: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchIdpDataById({idp: 55005}));
+    dispatch(fetchIdpDataById({idp: +params.idp}));
   }, []);
 
   return (
