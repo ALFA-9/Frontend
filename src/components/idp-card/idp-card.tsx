@@ -37,17 +37,20 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
         setTaskStatusColor(LablesSmallEnum.blue)
         setIsInProgress(true)
         break
-        
+
       case 'done':
         setTaskStatusColor(LablesSmallEnum.green)
+        setIsInProgress(false)
         break
 
       case 'canceled':
         setTaskStatusColor(LablesSmallEnum.orange)
+        setIsInProgress(false)
         break
 
       case 'not_completed':
         setTaskStatusColor(LablesSmallEnum.red)
+        setIsInProgress(false)
         break
     }
   }, [status_idp])

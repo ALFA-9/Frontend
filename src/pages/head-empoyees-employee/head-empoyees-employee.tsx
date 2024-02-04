@@ -60,7 +60,7 @@ const HeadEmpoyeesEmployee: FC = () => {
 
   useEffect(() => {
     user.idps.forEach((item) =>
-      item.status_idp === "in_work" ? setIsAddIdpButtonDisabled(true) : ""
+      item.status_idp === "in_work" ? setIsAddIdpButtonDisabled(true) : setIsAddIdpButtonDisabled(false)
     );
   }, [user]);
 
