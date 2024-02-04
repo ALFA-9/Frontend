@@ -18,3 +18,12 @@
   flex-direction: column;
   gap: 40px;
 }
+
+.message {
+  @include reset-text;
+  @include text-big-24-400;
+
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+}
