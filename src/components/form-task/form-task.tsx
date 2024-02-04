@@ -6,23 +6,43 @@ import InputTypeTextaria from "../../ui/inputs/input-type-textaria/input-type-te
 import InputTypeRadiobutton from "../../ui/inputs/input-type-radiobutton/input-type-radiobutton";
 import InputTypeDate from "../../ui/inputs/input-type-date/input-type-date";
 import DeleteButton from "../../ui/buttons/delete-button/delete-button";
-import { useForm } from "../../hooks/use-form";
+import { TTaskDTO } from "../../pages/head-form/head-form.types";
 
-interface IFormTaskProps {
-  title: string;
+interface IFormTaskProps extends TTaskDTO {
   hasDelete?: boolean;
   index: number;
+  removTask: (uuid: string) => void;
+  onChange: (
+    e:
+      | React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+      | React.FormEvent<HTMLParagraphElement | HTMLFieldSetElement>,
+    uuid: string,
+    payload?: any
+  ) => void;
 }
 
-const FormTask: FC<IFormTaskProps> = ({ title, hasDelete = false, index }) => {
-  const { values, setValues, handleChange } = useForm({
-    name: "",
-    type: "",
-    control: "",
-    description: "",
-    dateStart: "",
-    dateEnd: "",
-  });
+const FormTask: FC<IFormTaskProps> = ({
+  uuid,
+  title,
+  type,
+  method,
+  description,
+  period,
+  startDate,
+  endDate,
+  hasDelete = false,
+  index,
+  removTask,
+  onChange,
+}) => {
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+      | React.FormEvent<HTMLParagraphElement | HTMLFieldSetElement>,
+    payload?: any
+  ) => {
+    onChange(e, uuid, payload);
+  };
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     console.log("delete");
@@ -30,14 +50,22 @@ const FormTask: FC<IFormTaskProps> = ({ title, hasDelete = false, index }) => {
 
   return (
     <li>
-      <fieldset className={styles.task}>
+      <form id={"" + index} name={"" + index} className={styles.task}>
         <div className={styles.headline}>
-          <p className={styles.title}>{title}</p>
-          {hasDelete && <DeleteButton type="button" onClick={handleClick} />}
+          <p className={styles.title}>{`Задача ${index + 1}`}</p>
+          {hasDelete && (
+            <DeleteButton
+              type="button"
+              onClick={() => {
+                removTask(uuid);
+              }}
+            />
+          )}
         </div>
         <InputTypeText
-          name={"name"}
-          value={values.name}
+          name={"title"}
+          id={"title"}
+          value={title}
           onChange={handleChange}
           label="Название"
           placeholder="Название"
@@ -45,7 +73,8 @@ const FormTask: FC<IFormTaskProps> = ({ title, hasDelete = false, index }) => {
         <div className={styles.row}>
           <InputTypeSelect
             name={"type"}
-            value={values.type}
+            id={"type"}
+            value={type}
             onChange={handleChange}
             label="Тип"
             outerClass={styles.halfrow}
@@ -59,8 +88,9 @@ const FormTask: FC<IFormTaskProps> = ({ title, hasDelete = false, index }) => {
             ))}
           </InputTypeSelect>
           <InputTypeSelect
-            name={"control"}
-            value={values.control}
+            name={"method"}
+            id={"method"}
+            value={method}
             onChange={handleChange}
             label="Метод приемки"
             outerClass={styles.halfrow}
@@ -74,64 +104,66 @@ const FormTask: FC<IFormTaskProps> = ({ title, hasDelete = false, index }) => {
           <p className={styles.legend}>Описание</p>
           <InputTypeTextaria
             name={"description"}
-            value=""
-            onChange={handleChange}
+            id={"description"}
+            value={description}
+            onInput={handleChange}
             label="Описание"
             placeholder="Введите текст"
             maxlength={500}
           />
         </div>
-        <fieldset className={styles.deadline}>
+        <div className={styles.deadline}>
           <p className={styles.legend}>Срок выполнения</p>
-          <div className={styles.radio}>
+
+          <fieldset onChange={handleChange} className={styles.radio}>
             <InputTypeRadiobutton
-              name={"daterange" + index}
+              name="period"
               value="3"
               id={"rad1" + index}
               label="3 месяца"
             />
             <InputTypeRadiobutton
-              name={"daterange" + index}
+              name="period"
               value="6"
               id={"rad2" + index}
               label="6 месяцев"
             />
             <InputTypeRadiobutton
-              name={"daterange" + index}
+              name="period"
               value="12"
               id={"rad3" + index}
               label="1 год"
             />
             <InputTypeRadiobutton
-              name={"daterange" + index}
+              name="period"
               value="other"
               id={"rad4" + index}
               label="Другое"
               defaultChecked
             />
-          </div>
+          </fieldset>
           <div className={styles.date}>
             <div className={styles.daterange}>
               <InputTypeDate
-                value=""
-                onChange={() => {}}
+                value={startDate}
+                onChange={handleChange}
                 placeholder="Выберете дату"
-                id="date"
-                name="date"
+                id="startDate"
+                name="startDate"
               />
             </div>
             <div className={styles.daterange}>
               <InputTypeDate
-                value=""
-                onChange={() => {}}
+                value={endDate}
+                onChange={handleChange}
                 placeholder="Выберете дату"
-                id="date"
-                name="date"
+                id="endDate"
+                name="endDate"
               />
             </div>
           </div>
-        </fieldset>
-      </fieldset>
+        </div>
+      </form>
     </li>
   );
 };
