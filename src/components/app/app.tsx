@@ -22,29 +22,36 @@ import LoaderCircle from '../loader/loader'
 
 export default function App() {
   const location = useLocation()
-  const { isFailed, isRequest, isSuccess, user, errMessage, usersTest } =
-    useAppSelector((state) => state.activeUser)
+  const { isFailed, isRequest, isSuccess, user, errMessage } = useAppSelector(
+    (state) => state.activeUser
+  )
   const dispatch = useAppDispatch()
 
-  async function receivingUserData(email: string) {
+  async function receivingUserData() {
     dispatch(setIsFailedSetActiveUser(false))
     dispatch(setIsRequestSetActiveUser(true))
     try {
-      const token = await postToken('zoduvon-ofe57@alfabank.ru')
+      const token = await postToken()
       localStorage.setItem('token', token.data.token)
       const currentUser = await getUserMe()
       dispatch(setActiveUser(currentUser.data))
       dispatch(setIsSuccessSetActiveUser(true))
     } catch (error) {
       dispatch(setIsFailedSetActiveUser(true))
-      dispatch(setErrMessageSetActiveUser(`Ошибка ${error.toJSON().status}`))
+      dispatch(
+        setErrMessageSetActiveUser(
+          `Ошибка ${
+            error.toJSON().status === null ? 502 : error.toJSON().status
+          }`
+        )
+      )
     } finally {
       dispatch(setIsRequestSetActiveUser(false))
     }
   }
 
   useEffect(() => {
-    receivingUserData(usersTest)
+    receivingUserData()
   }, [])
 
   const userStatuses = [

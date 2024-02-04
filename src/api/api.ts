@@ -16,13 +16,11 @@ interface TokenType {
 }
 
 //Получить токен
-export const postToken = (
-  email: string
-): Promise<AxiosResponse<TokenType>> => {
+export const postToken = (): Promise<AxiosResponse<TokenType>> => {
   return axios({
     method: 'POST',
     url: `${BASE_URL}auth/`,
-    data: { email: email },
+    data: { email: 'zoduvon-ofe57@alfabank.ru' },
     headers: {
       'Content-Type': 'application/json',
     },
