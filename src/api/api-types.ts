@@ -66,7 +66,7 @@ export interface EmployeeType {
   first_name: string;
   id: number;
   label?:string;
-  avatar?: string;
+  image?: string;
   last_name: string;
   patronymic: string;
   post: string;
