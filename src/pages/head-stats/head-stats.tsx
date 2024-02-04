@@ -23,6 +23,7 @@ import {
   TStatsChartInputData,
   getStatsAndChartData,
 } from "./head-stats.utils";
+import LoaderCircle from '../../components/loader/loader'
 
 const HeadStats: FC = () => {
   const dispatch = useAppDispatch();
