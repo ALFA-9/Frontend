@@ -118,3 +118,28 @@
   @include reset-text;
   color: $dark-gray;
 }
+
+.form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.input {
+  max-height: 48px;
+  border: 1px solid $medium-gray;
+  background-color: $white;
+
+  &,&::placeholder {
+    @include text-search-14-400;
+  }
+
+  &::placeholder {
+    color: $medium-gray;
+  }
+}
+
+.inputContainer {
+  width: 100%;
+}

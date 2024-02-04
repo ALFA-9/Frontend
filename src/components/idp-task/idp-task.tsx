@@ -1,46 +1,39 @@
 import styles from './idp-task.module.scss';
 import { useState, FormEvent, FC, MouseEventHandler } from 'react';
+import { postComment } from '../../api/api';
+import { useAppDispatch } from '../../redux/hooks';
+import { fetchIdpDataById } from '../../redux/slices/idp-tasks';
+import { useForm } from '../../hooks/use-form';
+import { TaskType, CommentType } from '../../api/api-types';
+import { LablesSmallEnum } from '../../ui/lables/types';
+import { DropDownMenuItemType } from '../../types';
 import LabelsWithDot from '../../ui/lables/labels-with-dot/labels-with-dot';
 import LablesSmall from '../../ui/lables/lables-small/lables-small';
 import InputTypeCheckbox from '../../ui/inputs/input-type-checkbox/input-type-checkbox';
-import { LablesSmallEnum } from '../../ui/lables/types';
-import { DropDownMenuItemType } from '../../types';
 import DropDownMenu from '../../ui/drop-down-menu/drop-down-menu';
 import Comment from '../comment/comment';
 import Divider from '../divider/divider';
-import NewCommentForm from '../new-comment/new-comment-form';
+import InputTypeText from '../../ui/inputs/input-type-text/input-type-text';
+import SendButton from '../../ui/buttons/send-button/send-button';
 import Dots from '../../images/icons/three_dots.svg';
-
-const commentData = {
-  image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1024px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
-  employee: 'Базаров Василий Иванович',
-  employeePost: 'Линейный руководитель 1',
-  pubDate: '29.01.24 11:47',
-  body: 'Неплохой промежуточный результат, но есть над чем ещё поработать. В дальнейшем рекомендую больше внимания уделять вопросу защиты от несанкционированного доступа.'
-}
+// import NewCommentForm from '../new-comment/new-comment-form';
 
 interface IIdpTaskProps {
-  data: {
-    name: string,
-    dateStart: string,
-    dateEnd: string,
-    statusProgress: string,
-    statusAccept: boolean,
-    type: string,
-    control: string,
-    description: string
-  },
+  data: TaskType,
   isHead?: boolean
 }
 
 const IdpTask: FC<IIdpTaskProps> = ({ data, isHead }) => {
-  //
-  const { name, dateStart, dateEnd, statusProgress, statusAccept, type, control, description } = data;
-  const commentsCount = 4;
+  const { id, idp, name, date_start, date_end, status_progress, type, control, description, comments } = data;
+  const commentsCount = comments.length;
   const hasComments = !!commentsCount;
-  //
+
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(true);
+
+  const dispatch = useAppDispatch();
+
+  const { values, setValues, handleChange } = useForm({ comment: '' });
 
   const setDividerTitle = (count: number) =>
     isHidden ? `Показать еще ${count - 1}` : `Свернуть`;
@@ -69,6 +62,9 @@ const IdpTask: FC<IIdpTaskProps> = ({ data, isHead }) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    postComment({task_id: id, comment: values.comment});
+    dispatch(fetchIdpDataById({idp: idp}));
+    setValues({ comment: '' });
   }
 
   const handleTestClick: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -103,7 +99,7 @@ const IdpTask: FC<IIdpTaskProps> = ({ data, isHead }) => {
           {name}
         </h2>
         <div className={styles.statusbar}>
-          <span className={styles.dates}>{dateStart}–{dateEnd}</span>
+          <span className={styles.dates}>{date_start}–{date_end}</span>
           <LabelsWithDot color='green' title='Выполнен'/>
           {
             !isHead && (
@@ -146,9 +142,9 @@ const IdpTask: FC<IIdpTaskProps> = ({ data, isHead }) => {
               ? (
                 <>
                 <ul className={styles.comments}>
-                  {[...Array(commentsCount)].map((item, index) =>
+                  {comments.map((comment, index) =>
                     <Comment
-                      data={commentData}
+                      data={comment}
                       isHidden={index === 0 ? false : isHidden}
                       key={`comment${index}`}
                     />
@@ -168,7 +164,18 @@ const IdpTask: FC<IIdpTaskProps> = ({ data, isHead }) => {
                 </p>
               )
             }
-            <NewCommentForm onSubmit={handleSubmit}/>
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <InputTypeText
+                name={'comment'}
+                value={values.comment}
+                onChange={handleChange}
+                label='Комментарий'
+                placeholder='Напишите комментарий'
+                extraClass={styles.input}
+                outerClass={styles.inputContainer}
+              />
+              <SendButton type='submit' />
+            </form>
           </div>
         </div>
       </article>

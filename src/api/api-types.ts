@@ -75,6 +75,7 @@ export interface EmployeeType {
 
 export interface CommentType {
   employee: string;
+  employee_image: string;
   employee_post: string;
   body: string;
   pub_date: string;

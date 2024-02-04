@@ -88,7 +88,7 @@ interface getIdpDataById {
 //Получить ИПР(его задания и комментарии) по ID
 export const getIdpDataById = ({
   idp,
-}: getIdpDataById): Promise<AxiosResponse<TokenType>> => {
+}: getIdpDataById): Promise<AxiosResponse<IdpByIdType>> => { // TokenType => IdpByIdType
   return instance({
     method: 'GET',
     url: `idps/${idp}/`,
