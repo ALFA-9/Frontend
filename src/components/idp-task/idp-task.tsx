@@ -1,10 +1,10 @@
 import styles from './idp-task.module.scss';
 import { useState, FormEvent, FC, MouseEventHandler } from 'react';
 import { postComment } from '../../api/api';
-import { useAppDispatch } from '../../redux/hooks';
-import { fetchIdpDataById } from '../../redux/slices/idp-tasks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { addComment } from '../../redux/slices/idp-tasks-slice';
 import { useForm } from '../../hooks/use-form';
-import { TaskType, CommentType } from '../../api/api-types';
+import { TaskType } from '../../api/api-types';
 import { LablesSmallEnum } from '../../ui/lables/types';
 import { DropDownMenuItemType } from '../../types';
 import LabelsWithDot from '../../ui/lables/labels-with-dot/labels-with-dot';
@@ -16,7 +16,6 @@ import Divider from '../divider/divider';
 import InputTypeText from '../../ui/inputs/input-type-text/input-type-text';
 import SendButton from '../../ui/buttons/send-button/send-button';
 import Dots from '../../images/icons/three_dots.svg';
-// import NewCommentForm from '../new-comment/new-comment-form';
 
 interface IIdpTaskProps {
   data: TaskType,
@@ -24,9 +23,46 @@ interface IIdpTaskProps {
 }
 
 const IdpTask: FC<IIdpTaskProps> = ({ data, isHead }) => {
-  const { id, idp, name, date_start, date_end, status_progress, type, control, description, comments } = data;
+  const {
+    id,
+    name,
+    date_start,
+    date_end,
+    status_progress,
+    type,
+    control,
+    description,
+    comments
+  } = data;
   const commentsCount = comments.length;
   const hasComments = !!commentsCount;
+
+  const activeUser = useAppSelector(state => state.activeUser.user);
+
+  let statusColor;
+  let statusText;
+
+  switch (status_progress) {
+    case 'in_work':
+      statusColor = 'blue';
+      statusText = 'В работе';
+      break;
+    case 'done':
+      statusColor = 'green';
+      statusText = 'Выполнен';
+      break;
+    case 'not_completed':
+      statusColor = 'red';
+      statusText = 'Не выполнен';
+      break;
+    case 'canceled':
+      statusColor = 'orange';
+      statusText = 'Отменён';
+      break;
+    default:
+      statusColor = 'gray';
+      statusText = 'Отсутствует';
+  }
 
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(true);
@@ -62,9 +98,18 @@ const IdpTask: FC<IIdpTaskProps> = ({ data, isHead }) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    postComment({task_id: id, comment: values.comment});
-    dispatch(fetchIdpDataById({idp: idp}));
-    setValues({ comment: '' });
+    postComment({task_id: id, comment: values.comment})
+      .then(res => {
+        dispatch(addComment({
+          task: id,
+          employee: `${activeUser.last_name} ${activeUser.first_name} ${activeUser.patronymic}`,
+          employee_image: res.data.employee_image,
+          employee_post: activeUser.post,
+          pub_date: res.data.pub_date,
+          body: res.data.body,
+        }))
+        setValues({ comment: '' })
+      })
   }
 
   const handleTestClick: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -100,7 +145,7 @@ const IdpTask: FC<IIdpTaskProps> = ({ data, isHead }) => {
         </h2>
         <div className={styles.statusbar}>
           <span className={styles.dates}>{date_start}–{date_end}</span>
-          <LabelsWithDot color='green' title='Выполнен'/>
+          <LabelsWithDot color={statusColor} title={statusText} />
           {
             !isHead && (
               <InputTypeCheckbox
@@ -173,6 +218,7 @@ const IdpTask: FC<IIdpTaskProps> = ({ data, isHead }) => {
                 placeholder='Напишите комментарий'
                 extraClass={styles.input}
                 outerClass={styles.inputContainer}
+                required
               />
               <SendButton type='submit' />
             </form>
