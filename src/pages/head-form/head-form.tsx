@@ -8,6 +8,17 @@ import { useForm } from "../../hooks/use-form";
 import { routes } from "../../utils/const-routes";
 import ButtonBack from "../../ui/buttons/button-back/button-back";
 import { useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import {
+  setActiveEmployee,
+  setErrorMessageActiveEmployee,
+  setIsFailedActiveEmployee,
+  setIsRequestActiveEmployee,
+  setIsSuccessActiveEmployee,
+} from "../../redux/slices/head-employees-employee-slice";
+import { getUserById } from "../../api/api";
+import LoaderCircle from "../../components/loader/loader";
+import ErrorPage from "../not-found/error";
 
 type TUser = {
   fullName: string;
@@ -23,6 +34,34 @@ const user: TUser = {
 
 const HeadForm: FC = () => {
   const params = useParams();
+  const dispatch = useAppDispatch();
+
+  const { user, isRequest, isFailed, isSuccess, errorMessage } = useAppSelector(
+    (state) => state.activeEmployee
+  );
+
+  async function receivingActiveEmployee() {
+    dispatch(setIsRequestActiveEmployee(true));
+    try {
+      const employee = await getUserById(+params.user_id);
+      dispatch(setActiveEmployee({ user: employee.data }));
+      dispatch(setIsSuccessActiveEmployee(true));
+    } catch (error) {
+      dispatch(setIsFailedActiveEmployee(true));
+      dispatch(
+        setErrorMessageActiveEmployee(`Ошибка ${error.toJSON().status}`)
+      );
+    } finally {
+      dispatch(setIsRequestActiveEmployee(false));
+    }
+  }
+
+  useEffect(() => {
+    if (user.id !== +params.user_id) {
+      receivingActiveEmployee();
+    }
+  }, [user, params]);
+
   const { values, setValues, handleChange } = useForm({
     fullName: "",
     department: "",
@@ -30,22 +69,6 @@ const HeadForm: FC = () => {
     idpTitle: "",
     textaria: "",
   });
-
-  const autofill = (user: TUser) => {
-    if (user && user.fullName && user.department && user.position)
-      setValues({
-        fullName: user.fullName,
-        department: user.department,
-        position: user.position,
-        idpTitle: "",
-        textaria: "",
-      });
-  };
-
-  useEffect(() => {
-    console.log(params);
-    if (user) autofill(user);
-  }, []);
 
   const [isDone, setIsDone] = useState(false);
   const [taskCount, setTaskCount] = useState(1);
@@ -58,7 +81,9 @@ const HeadForm: FC = () => {
   return (
     <div className={styles.container}>
       <ButtonBack path={routes.headStaff + "/" + params.user_id} />
-      {isDone && (
+      {isRequest && <LoaderCircle />}
+      {isFailed && <ErrorPage text={errorMessage} />}
+      {isSuccess && isDone && (
         <>
           <h1 className={styles.title}>ИПР успешно назначен</h1>
           <p className={styles.message}>
@@ -68,39 +93,44 @@ const HeadForm: FC = () => {
           <ButtonAccent
             title="Вернуться на страницу сотрудника"
             type="button"
-            path={routes.headStaffId}
+            path={routes.headStaff + "/" + params.user_id}
             extraClass={styles.returnButton}
           />
         </>
       )}
-      {!isDone && (
+      {isSuccess && !isDone && (
         <>
           <h1 className={styles.title}>Назначить ИПР</h1>
           <form onSubmit={handleSubmit} className={styles.form}>
             <fieldset className={styles.info}>
               <InputTypeText
                 name={"fullName"}
-                value={values.fullName}
+                value={[user.last_name, user.first_name, user.patronymic].join(
+                  " "
+                )}
                 onChange={handleChange}
                 label="ФИО"
                 placeholder="ФИО"
+                disabled
               />
               <div className={styles.row}>
                 <InputTypeText
                   name={"department"}
-                  value={values.department}
+                  value={user.department}
                   onChange={handleChange}
                   label="Департамент"
                   placeholder="Департамент"
                   outerClass={styles.halfrow}
+                  disabled
                 />
                 <InputTypeText
                   name={"position"}
-                  value={values.position}
+                  value={user.post}
                   onChange={handleChange}
                   label="Должность"
                   placeholder="Должность"
                   outerClass={styles.halfrow}
+                  disabled
                 />
               </div>
               <InputTypeText
@@ -117,6 +147,7 @@ const HeadForm: FC = () => {
                   title={`Задача ${++index}`}
                   hasDelete={arr.length > 1}
                   key={`form-task${index}`}
+                  index={index}
                 />
               ))}
             </ul>

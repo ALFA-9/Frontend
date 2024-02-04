@@ -11,9 +11,10 @@ import { useForm } from "../../hooks/use-form";
 interface IFormTaskProps {
   title: string;
   hasDelete?: boolean;
+  index: number;
 }
 
-const FormTask: FC<IFormTaskProps> = ({ title, hasDelete = false }) => {
+const FormTask: FC<IFormTaskProps> = ({ title, hasDelete = false, index }) => {
   const { values, setValues, handleChange } = useForm({
     name: "",
     type: "",
@@ -84,28 +85,29 @@ const FormTask: FC<IFormTaskProps> = ({ title, hasDelete = false }) => {
           <p className={styles.legend}>Срок выполнения</p>
           <div className={styles.radio}>
             <InputTypeRadiobutton
-              name="daterange"
+              name={"daterange" + index}
               value="3"
-              id="rad1"
+              id={"rad1" + index}
               label="3 месяца"
             />
             <InputTypeRadiobutton
-              name="daterange"
+              name={"daterange" + index}
               value="6"
-              id="rad2"
+              id={"rad2" + index}
               label="6 месяцев"
             />
             <InputTypeRadiobutton
-              name="daterange"
+              name={"daterange" + index}
               value="12"
-              id="rad3"
+              id={"rad3" + index}
               label="1 год"
             />
             <InputTypeRadiobutton
-              name="daterange"
+              name={"daterange" + index}
               value="other"
-              id="rad4"
+              id={"rad4" + index}
               label="Другое"
+              defaultChecked
             />
           </div>
           <div className={styles.date}>
