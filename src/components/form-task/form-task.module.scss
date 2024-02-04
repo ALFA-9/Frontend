@@ -1,5 +1,5 @@
-@import '../../styles/const.scss';
-@import '../../styles/mixins.scss';
+@import "../../styles/const.scss";
+@import "../../styles/mixins.scss";
 
 .task {
   @include reset-fieldset;
@@ -33,6 +33,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
 }
 
 .legend {
@@ -66,7 +67,7 @@
     position: relative;
 
     &::after {
-      content: '';
+      content: "";
       width: 12px;
       height: 1px;
       background-color: $black;
