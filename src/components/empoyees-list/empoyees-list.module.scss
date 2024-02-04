@@ -3,6 +3,9 @@
 
 .tree {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .site-tree-search-value {
@@ -10,6 +13,7 @@
 }
 
 .example {
+  width: 100%;
   input {
     background-color: $light-gray;
     background: $light-gray url('../../images/icons/search.svg') center left 12px no-repeat;

@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, useState } from 'react'
+import { FC, MouseEventHandler, useEffect, useState } from 'react'
 import styles from './idp-card.module.scss'
 import jpg from '../../images/_temp/idp.jpeg'
 import LablesBig from '../../ui/lables/lables-big/lables-big'
@@ -17,6 +17,7 @@ interface IdpCardType {
 
 const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
   const [isOptionsOpen, setIsOptionsOpen] = useState<boolean>(false)
+  const [isInProgress, setIsInProgress] = useState<boolean>(false)
   const { current_task, director, id, progress, status_idp, title } = data
 
   const location = useLocation()
@@ -41,6 +42,24 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
       taskStatusColor = LablesSmallEnum.red
       break
   }
+
+  useEffect(() => {
+    switch (status_idp) {
+      case 'in_work':
+        taskStatusColor = LablesSmallEnum.blue
+        setIsInProgress(true)
+        break
+      case 'done':
+        taskStatusColor = LablesSmallEnum.green
+        break
+      case 'canceled':
+        taskStatusColor = LablesSmallEnum.orange
+        break
+      case 'not_completed':
+        taskStatusColor = LablesSmallEnum.red
+        break
+    }
+  }, [])
 
   const clickReset = () => {
     setIsOptionsOpen(false)
@@ -72,12 +91,6 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
     },
     {
       onClick: handleTestClick,
-      text: 'Редактировать',
-      isDisabled: true,
-      isRed: false,
-    },
-    {
-      onClick: handleTestClick,
       text: 'Отменить ИПР',
       isDisabled: true,
       isRed: true,
@@ -99,7 +112,7 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
       <div className={`${styles.info_wrapper}`}>
         <div className={styles.title_wrapper}>
           <h2 className={styles.title}>{title}</h2>
-          {isHead && (
+          {isHead && isInProgress && (
             <div className={styles.button_wrapper}>
               <button
                 onClick={openOptionsList}

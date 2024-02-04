@@ -13,8 +13,6 @@ const EmployeesListNodeTemplate: FC = (
   const navigate = useNavigate()
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
 
-  console.log(node)
-
   const onOuterClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation()
     navigate(routes.headStaff + '/' + node.id)

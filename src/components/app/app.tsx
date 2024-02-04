@@ -5,59 +5,88 @@ import Sidebar from '../sidebar/sidebar'
 import Content from '../content/content'
 import { useLocation } from 'react-router-dom'
 import InputTypeSelectSmall from '../../ui/inputs/input-type-select-small/input-type-select-small'
-import { userStatuses } from '../../utils/const-user-statuses'
-import { getUserMe, getToken, getSubordinates } from '../../api/api'
+import { getUserMe, postToken, getSubordinates } from '../../api/api'
 import { useEffect, useState } from 'react'
-
 import { useAppSelector, useAppDispatch } from '../../redux/hooks'
-import { setActiveUser } from '../../redux/slices/active-user-slice'
+import {
+  setActiveUser,
+  setIsRequestSetActiveUser,
+  setIsSuccessSetActiveUser,
+  setIsFailedSetActiveUser,
+  setErrMessageSetActiveUser,
+} from '../../redux/slices/active-user-slice'
+import { EnumUserStatuses } from '../../types'
+import { routes } from '../../utils/const-routes'
+import ErrorPage from '../../pages/not-found/error'
+import LoaderCircle from '../loader/loader'
 
 export default function App() {
   const location = useLocation()
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const activeUser = useAppSelector((state) => state.activeUser)
+  const { isFailed, isRequest, isSuccess, user, errMessage, usersTest } =
+    useAppSelector((state) => state.activeUser)
   const dispatch = useAppDispatch()
 
-  // async function receivingUserToken() {
-  //   try {
-  //     const token = await getToken()
-  //     localStorage.setItem('token', token.data.token)
-  //     const currentUser = await getUserMe()
-  //     console.log(currentUser.data)
-  //     dispatch(setActiveUser({ user: currentUser.data }))
-  //     const headEmployees = await getSubordinates()
-  //     console.log(headEmployees)
-  //     setIsLoading(false)
-  //   } catch (error) {
-  //     console.log(error.toJSON())
-  //   }
-  // }
+  async function receivingUserData(email: string) {
+    dispatch(setIsFailedSetActiveUser(false))
+    dispatch(setIsRequestSetActiveUser(true))
+    try {
+      const token = await postToken('zoduvon-ofe57@alfabank.ru')
+      localStorage.setItem('token', token.data.token)
+      const currentUser = await getUserMe()
+      dispatch(setActiveUser(currentUser.data))
+      dispatch(setIsSuccessSetActiveUser(true))
+    } catch (error) {
+      dispatch(setIsFailedSetActiveUser(true))
+      dispatch(setErrMessageSetActiveUser(`Ошибка ${error.toJSON().status}`))
+    } finally {
+      dispatch(setIsRequestSetActiveUser(false))
+    }
+  }
 
-  // useEffect(() => {
-  //   receivingUserToken()
-  // }, [])
+  useEffect(() => {
+    receivingUserData(usersTest)
+  }, [])
+
+  const userStatuses = [
+    {
+      status: EnumUserStatuses.employee,
+      path: routes.employeeIdp,
+    },
+    {
+      status: EnumUserStatuses.head,
+      path: routes.headStats,
+      disabled: !user.is_director,
+    },
+    {
+      status: EnumUserStatuses.mentor,
+      path: '#',
+      disabled: true,
+    },
+  ]
 
   return (
     <>
-      {!isLoading && (
-        <>
-          <AppHeader />
-          <main className={styles.main}>
-            <div
-              className={`${styles.main__wrapper} ${
-                location.pathname === '/' && styles.main_wrapper_main_gallery
-              }`}>
-              <InputTypeSelectSmall
-                extraStyles={styles.input_small}
-                data={userStatuses}
-              />
+      <AppHeader />
+      <main className={styles.main}>
+        <div
+          className={`${styles.main__wrapper} ${
+            location.pathname === '/' && styles.main_wrapper_main_gallery
+          }`}>
+          <InputTypeSelectSmall
+            extraStyles={styles.input_small}
+            data={userStatuses}
+          />
+          {isFailed && <ErrorPage text={errMessage} />}
+          {isRequest && <LoaderCircle />}
+          {isSuccess && !isRequest && (
+            <>
               <Sidebar />
               <Content />
-            </div>
-          </main>
-          <AppFooter />
-        </>
-      )}
+            </>
+          )}
+        </div>
+      </main>
+      <AppFooter />
     </>
   )
 }
