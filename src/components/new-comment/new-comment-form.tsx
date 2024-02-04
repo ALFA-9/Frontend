@@ -9,9 +9,7 @@ interface INewCommentProps {
 }
 
 const NewCommentForm: FC<INewCommentProps> = ({ onSubmit }) => {
-  const { values, setValues, handleChange } = useForm({ comment: '' });
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {}
+  const { values, handleChange } = useForm({ comment: '' });
 
   return (
     <form className={styles.form} onSubmit={onSubmit} name={'newComment'}>

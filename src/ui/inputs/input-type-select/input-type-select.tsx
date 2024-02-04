@@ -1,8 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import styles from './input-type-select.module.scss'
 
-// TODO Корректно обработать состояние disabled
-
 interface IInputTypeSelect
   extends React.SelectHTMLAttributes<HTMLSelectElement> {
   extraClass?: string,

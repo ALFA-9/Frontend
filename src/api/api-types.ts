@@ -62,23 +62,23 @@ export interface UserType {
 }
 
 export interface EmployeeType {
-  director: number;
-  first_name: string;
-  id: number;
-  label?:string;
-  image?: string;
-  last_name: string;
-  patronymic: string;
-  post: string;
-  status_idp: string;
+  director: number
+  first_name: string
+  id: number
+  label?: string
+  image?: string
+  last_name: string
+  patronymic: string
+  post: string
+  status_idp: string
 }
 
 export interface CommentType {
-  employee: string;
-  employee_image: string;
-  employee_post: string;
-  body: string;
-  pub_date: string;
+  employee: string
+  employee_image: string
+  employee_post: string
+  body: string
+  pub_date: string
 }
 
 export interface TaskType {
@@ -105,7 +105,7 @@ export interface IdpByIdType {
 
 export interface StatisticType {
   in_work: number
-  canceled: number
+  cancelled: number
   done: number
   not_completed: number
   null: number
@@ -129,17 +129,17 @@ export enum EnumTaskControlTypes {
 }
 
 export interface PostNewIdpTask {
-  name: string;
-  description: string;
-  date_start: string;
-  date_end: string;
-  type: EnumTaskTypeTypes;
-  control: EnumTaskControlTypes;
+  name: string
+  description: string
+  date_start: string
+  date_end: string
+  type: EnumTaskTypeTypes
+  control: EnumTaskControlTypes
 }
 
 export interface PostNewIdp {
-  title: string;
-  employee: number;
-  director: number;
-  tasks: PostNewIdpTask[];
+  title: string
+  employee: number
+  director: number
+  tasks: PostNewIdpTask[]
 }

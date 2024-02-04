@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router-dom'
-import png from '../../images/icons/Main_screen/action-plan.png'
 import styles from './menu-item.module.scss'
 import { MenuNavItemType } from '../../types'
 import { FC } from 'react'

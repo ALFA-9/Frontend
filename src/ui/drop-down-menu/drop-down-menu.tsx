@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler } from 'react'
+import { FC } from 'react'
 import styles from './drop-down-menu.module.scss'
 import { DropDownMenuItemType } from '../../types'
 

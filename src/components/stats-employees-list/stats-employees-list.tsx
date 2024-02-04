@@ -4,7 +4,7 @@ import NameSort from '../../images/icons/stats-list-name-filter.svg'
 import ArrowFilter from '../../images/icons/employee-temalate-arrow.svg'
 import StatsEmployeeTemplate from '../stats-employee-template/stats-employee-template'
 import { filterListItems } from '../../utils/const-status-colors'
-import { TreeNodeMod, StatusColorsType } from '../../types'
+import { StatusColorsType } from '../../types'
 import StatsEmployeesListStatusItem from './stats-employees-list-status-item/stats-employees-list-status-item'
 import { EmployeeType } from '../../api/api-types'
 

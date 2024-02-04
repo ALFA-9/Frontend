@@ -110,13 +110,18 @@
   }
 }
 
+.popup_link {
+  @include reset-text;
+  @include text-regular-16-400;
+  white-space: nowrap;
+}
+
 .popup_active {
   width: 184px;
   visibility: visible;
 }
 
-.popup_link {
-  @include reset-text;
-  @include text-regular-16-400;
-  white-space: nowrap;
+.popup_deactive {
+  cursor: default;
+  color: $gray;
 }

@@ -11,10 +11,12 @@ export function changeType(
     subordinates,
     post,
     image,
+    status_idp,
   }: SubordinatesType,
   lvl: number
 ): TreeNodeMod {
   return {
+    status: status_idp,
     id: id + '',
     lvl: lvl,
     label: `${last_name} ${first_name} ${patronymic}`,

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import  { FC } from 'react'
 import styles from './main-gallery.module.scss'
 import MainScreenGridCardBig from '../../components/main-screen-grid-cards/main-screen-grid-card-big'
 import MainScreenGridCardSmall from '../../components/main-screen-grid-cards/main-screen-grid-card-small'
@@ -6,7 +6,6 @@ import {
   mainGalleryBigItem,
   mainGalleryItems,
 } from '../../utils/const-main-gallery-items'
-import { Link } from 'react-router-dom'
 import MainScreenMenuButton from '../../components/main-screen-menu-button/main-screen-menu-button'
 
 const MainGallery: FC = () => {

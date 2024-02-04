@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './main-screen-menu-button.module.scss'
 
-import React, { FC } from 'react'
+import  { FC } from 'react'
 
 interface MainScreenMenuButtonType {
   text: string

@@ -23,7 +23,7 @@ const Idp: FC = () => {
         doneIdp = [...doneIdp, item]
         break
 
-      case 'canceled':
+      case 'cancelled':
         cancelledIdp = [...cancelledIdp, item]
         break
 
@@ -64,6 +64,11 @@ const Idp: FC = () => {
               />
             </>
           )}
+          <ButtonAccent
+            path={routes.employeeIdpForm}
+            title='Подать заявку на ИПР'
+            extraClass={styles.button}
+          />
         </TabPane>
         <TabPane title='Выполнен'>
           {doneIdp.length > 0 && (
