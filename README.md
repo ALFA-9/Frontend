@@ -6,6 +6,8 @@
 
 [**Макет Figma**](https://www.figma.com/file/AXLBBWgE91P41rGwLaIldz/Задача-Альфа-Банка?type=design&node-id=0%3A1&mode=design&t=5mc0w5G01q9YN5Z8-1)
 
+[**Ссылка на скриншоты и билд (Яндекс Диск)**](https://disk.yandex.ru/d/hBjJ932l9TIJAA)
+
 
 ## Authors
 
