@@ -36,7 +36,7 @@ function setHeaders() {
 }
 
 const instance = axios.create({
-  baseURL: BASE_URL + '/api/',
+  baseURL: BASE_URL + '/api/v1/',
 })
 
 //Получить данные всех сотрудников моего подразделения
