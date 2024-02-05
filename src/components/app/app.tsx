@@ -5,8 +5,8 @@ import Sidebar from '../sidebar/sidebar'
 import Content from '../content/content'
 import { useLocation } from 'react-router-dom'
 import InputTypeSelectSmall from '../../ui/inputs/input-type-select-small/input-type-select-small'
-import { getUserMe, postToken, getSubordinates } from '../../api/api'
-import { useEffect, useState } from 'react'
+import { getUserMe, postToken } from '../../api/api'
+import { useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../../redux/hooks'
 import {
   setActiveUser,
@@ -33,7 +33,7 @@ export default function App() {
     try {
       const token = await postToken()
       localStorage.setItem('token', token.data.token)
-      const currentUser = await getUserMe(token.data.token)
+      const currentUser = await getUserMe()
       dispatch(setActiveUser(currentUser.data))
       dispatch(setIsSuccessSetActiveUser(true))
     } catch (error) {

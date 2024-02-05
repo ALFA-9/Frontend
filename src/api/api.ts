@@ -28,24 +28,15 @@ export const postToken = (): Promise<AxiosResponse<TokenType>> => {
   })
 }
 
-//Получить данные активного юзера
-export const getUserMe = (token:string): Promise<AxiosResponse<UserType>> => {
-  return axios({
-    method: 'GET',
-    url: `${BASE_URL}/api/employees/me/`,
-    headers:{
-      'Content-Type': 'application/json',
-      Authorization: `Token ${token}`
-    }
-  })
+function setHeaders() {
+  return {
+    'Content-Type': 'application/json',
+    Authorization: `Token ${localStorage.getItem('token')}`,
+  }
 }
 
 const instance = axios.create({
   baseURL: BASE_URL + '/api/',
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: `Token ${localStorage.getItem('token')}`,
-  },
 })
 
 //Получить данные всех сотрудников моего подразделения
@@ -55,6 +46,7 @@ export const getAllEmployeesInMyUnit = (): Promise<
   return instance({
     method: 'GET',
     url: `employees/`,
+    headers: setHeaders(),
   })
 }
 
@@ -65,6 +57,7 @@ export const getUserById = (
   return instance({
     method: 'GET',
     url: `employees/${user_id}/`,
+    headers: setHeaders(),
   })
 }
 
@@ -73,6 +66,7 @@ export const getUserDirectors = (): Promise<AxiosResponse<UserType>> => {
   return instance({
     method: 'GET',
     url: `employees/directors/`,
+    headers: setHeaders(),
   })
 }
 
@@ -83,6 +77,16 @@ export const getSubordinates = (): Promise<
   return instance({
     method: 'GET',
     url: `employees/subordinates/`,
+    headers: setHeaders(),
+  })
+}
+
+//Получить данные активного юзера
+export const getUserMe = (): Promise<AxiosResponse<UserType>> => {
+  return instance({
+    method: 'GET',
+    url: `employees/me/`,
+    headers: setHeaders(),
   })
 }
 
@@ -97,6 +101,7 @@ export const getIdpDataById = ({
   return instance({
     method: 'GET',
     url: `idps/${idp}/`,
+    headers: setHeaders(),
   })
 }
 
@@ -110,7 +115,6 @@ interface PathIdpStatusType {
 export const pathIdpStatus = ({
   idp,
   status_idp,
-  title,
 }: PathIdpStatusType): Promise<AxiosResponse<PathIdpStatusType>> => {
   return instance({
     method: 'PATCH',
@@ -118,6 +122,7 @@ export const pathIdpStatus = ({
     data: {
       status_idp: status_idp,
     },
+    headers: setHeaders(),
   })
 }
 
@@ -137,6 +142,7 @@ export const postNewIdp = ({
       tasks,
       title,
     },
+    headers: setHeaders(),
   })
 }
 
@@ -165,6 +171,7 @@ export const postIdpRequestByEmployee = ({
       letter,
       title,
     },
+    headers: setHeaders(),
   })
 }
 
@@ -184,6 +191,7 @@ export const postComment = ({
     data: {
       body: comment,
     },
+    headers: setHeaders(),
   })
 }
 
@@ -202,5 +210,6 @@ export const patchTask = ({
     data: {
       ...rest,
     },
+    headers: setHeaders(),
   })
 }
