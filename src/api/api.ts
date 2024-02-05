@@ -28,6 +28,18 @@ export const postToken = (): Promise<AxiosResponse<TokenType>> => {
   })
 }
 
+//Получить данные активного юзера
+export const getUserMe = (token:string): Promise<AxiosResponse<UserType>> => {
+  return axios({
+    method: 'GET',
+    url: `${BASE_URL}/api/employees/me/`,
+    headers:{
+      'Content-Type': 'application/json',
+      Authorization: `Token ${token}`
+    }
+  })
+}
+
 const instance = axios.create({
   baseURL: BASE_URL + '/api/',
   headers: {
@@ -71,14 +83,6 @@ export const getSubordinates = (): Promise<
   return instance({
     method: 'GET',
     url: `employees/subordinates/`,
-  })
-}
-
-//Получить данные активного юзера
-export const getUserMe = (): Promise<AxiosResponse<UserType>> => {
-  return instance({
-    method: 'GET',
-    url: `employees/me/`,
   })
 }
 

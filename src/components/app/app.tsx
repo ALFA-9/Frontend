@@ -33,7 +33,7 @@ export default function App() {
     try {
       const token = await postToken()
       localStorage.setItem('token', token.data.token)
-      const currentUser = await getUserMe()
+      const currentUser = await getUserMe(token.data.token)
       dispatch(setActiveUser(currentUser.data))
       dispatch(setIsSuccessSetActiveUser(true))
     } catch (error) {
