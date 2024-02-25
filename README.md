@@ -1,4 +1,5 @@
 # Проект "ALFA-9"
+SPA от фронтенда 9 команды ХАКАТОН+ по задаче от Альфа-Банка
 
 Общее описание задачи: Нужно создать сервис, в рамках которого для сотрудников можно будет составить ИПР (индивидуальные планы развития), просматривать его и валидировать выполнение целей. 
 
@@ -11,9 +12,9 @@
 
 ## Authors
 
-- [Кирилл Красноруцкий](https://github.com/Red-Handed-Guy) - Ответственный за координацию разработки и работу API. Сборка Webpak. Роутинг. Боковая навигация. Разработка страниц по путям: / , /employee/idp, /employee/competencies , /head/staff, /head/staff/:id
-- [Елизавета Ананьева-Рященко](https://github.com/lizananeva) - Сформировала организацию и единый стиль именования фалов и папок внутри проекта. Header, Footer. Разработка страниц по путям: /employee/idp/form , /employee/idp/:id/tasks , /head/staff/:id/form, /head/staff/:id/:id/tasks
-- [Александр Огородников](https://github.com/Zorkiy82) - Разработка 60 % компонентов UI kit, в том числе самые трудоёмкие. Разработка страниц по путям: /head/stats , /head/staff/:id/form
+- [Кирилл Красноруцкий](https://github.com/Red-Handed-Guy) [<span><img src="https://cdn-icons-png.flaticon.com/128/906/906377.png" height="25" align="center" alt="Telegram" title="Telegram" style="right" /></span>](https://t.me/Red_Handed_Guy) - Ответственный за координацию разработки и работу API. Сборка Webpack. Роутинг. Боковая навигация. Разработка страниц по путям: / , /employee/idp, /employee/competencies , /head/staff, /head/staff/:id
+- [Елизавета Ананьева-Рященко](https://github.com/lizananeva) [<span><img src="https://cdn-icons-png.flaticon.com/128/906/906377.png" height="25" align="center" alt="Telegram" title="Telegram" style="right" /></span>](https://t.me/lizananeva) - Сформировала организацию и единый стиль именования фалов и папок внутри проекта. Header, Footer. Разработка страниц по путям: /employee/idp/form , /employee/idp/:id/tasks , /head/staff/:id/form, /head/staff/:id/:id/tasks
+- [Александр Огородников](https://github.com/Zorkiy82) [<span><img src="https://cdn-icons-png.flaticon.com/128/906/906377.png" height="25" align="center" alt="Telegram" title="Telegram" style="right" /></span>](https://t.me/ogorodnikov_ao) - Разработка 60 % компонентов UI kit, в том числе самые трудоёмкие. Разработка страниц по путям: /head/stats , /head/staff/:id/form
 
 
 ## Installation
@@ -71,12 +72,13 @@
 - [Roboto](https://fonts.google.com/specimen/Roboto)
 
 3) **SVG**
-Все SVG взяты из маккета [Figma](https://www.figma.com/file/AXLBBWgE91P41rGwLaIldz/Задача-Альфа-Банка?type=design&node-id=0%3A1&mode=design&t=5mc0w5G01q9YN5Z8-1)
+Все SVG взяты из макета [Figma](https://www.figma.com/file/AXLBBWgE91P41rGwLaIldz/Задача-Альфа-Банка?type=design&node-id=0%3A1&mode=design&t=5mc0w5G01q9YN5Z8-1)
 
 
 ## SCSS
 
-Все основные SCSS константы лежат по пути src/styles/const.scss, все константы являются цветовой палитрой приложения. Все цвета взяты из макета Figma UI kit.
+Все основные SCSS константы лежат по пути src/styles/const.scss.
+- и являются цветовой палитрой приложения. Все цвета взяты из макета Figma UI kit.
 
 Все основные миксины лежат по пути src/styles/mixins.scss.
 - начинающиеся с text - различные шрифты на основе Figma UI kit
