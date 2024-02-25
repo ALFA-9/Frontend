@@ -11,6 +11,7 @@ import {
 import { IdpStatuses } from '../types'
 
 export const BASE_URL = 'https://api.new.red-hand.ru'
+//export const BASE_URL = ''
 
 interface TokenType {
   token: string

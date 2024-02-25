@@ -152,7 +152,7 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
               <div className={styles.text_wrapper_left}>
                 <div className={styles.text_wrapper}>
                   <p className={styles.text_gray}>Текущая задача</p>
-                  <p className={styles.text_black}>{current_task.name}</p>
+                  <p className={styles.text_black}>{current_task?.name}</p>
                 </div>
                 <div className={styles.text_wrapper}>
                   <p className={styles.text_gray}>Назначил</p>

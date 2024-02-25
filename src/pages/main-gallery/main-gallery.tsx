@@ -1,4 +1,4 @@
-import  { FC } from 'react'
+import { FC } from 'react'
 import styles from './main-gallery.module.scss'
 import MainScreenGridCardBig from '../../components/main-screen-grid-cards/main-screen-grid-card-big'
 import MainScreenGridCardSmall from '../../components/main-screen-grid-cards/main-screen-grid-card-small'
