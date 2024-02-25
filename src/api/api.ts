@@ -53,7 +53,7 @@ export const getAllEmployeesInMyUnit = (): Promise<
 
 //Получить данные юзера по ID
 export const getUserById = (
-  user_id: number
+  user_id: number,
 ): Promise<AxiosResponse<UserType>> => {
   return instance({
     method: 'GET',
@@ -204,6 +204,7 @@ interface PatchTaskType {
 export const patchTask = ({
   data,
 }: PatchTaskType): Promise<AxiosResponse<TaskType>> => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id, ...rest } = data
   return instance({
     method: 'PATCH',

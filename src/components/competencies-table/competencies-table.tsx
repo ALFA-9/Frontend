@@ -49,7 +49,7 @@ const CompetenciesTable: FC<CompetenciesTableType> = ({ title, scors }) => {
 
   let scorsArr: ScoreType[] = []
 
-  for (let [key, value] of Object.entries(rest)) {
+  for (const [key, value] of Object.entries(rest)) {
     scorsArr = [...scorsArr, { name: key, score: value }]
   }
 
@@ -63,8 +63,8 @@ const CompetenciesTable: FC<CompetenciesTableType> = ({ title, scors }) => {
         </div>
       </div>
       <ul className={styles.list}>
-        {scorsArr.map((item, i) => (
-          <ListItem key={i} name={item.name} score={item.score} />
+        {scorsArr.map(item => (
+          <ListItem key={item.name} name={item.name} score={item.score} />
         ))}
       </ul>
     </article>

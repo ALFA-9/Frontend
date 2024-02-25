@@ -1,14 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../store";
-import { EmployeeType } from "../../api/api-types";
+import { createSlice } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
+import type { RootState } from '../store'
+import { EmployeeType } from '../../api/api-types'
 
 interface IMyUnitEmployees {
-  employees: EmployeeType[];
-  isRequest: boolean;
-  isSuccess: boolean;
-  isFailed: boolean;
-  errorMessage: string;
+  employees: EmployeeType[]
+  isRequest: boolean
+  isSuccess: boolean
+  isFailed: boolean
+  errorMessage: string
 }
 
 const initialState: IMyUnitEmployees = {
@@ -16,37 +16,37 @@ const initialState: IMyUnitEmployees = {
   isRequest: false,
   isSuccess: false,
   isFailed: false,
-  errorMessage: "",
-};
+  errorMessage: '',
+}
 
 export const myUnitEmployees = createSlice({
-  name: "myUnitEmployees",
+  name: 'myUnitEmployees',
   initialState,
   reducers: {
     setMyUnitEmployees: (state, action: PayloadAction<EmployeeType[]>) => {
-      const modArr = action.payload.map((item) => {
+      const modArr = action.payload.map(item => {
         return {
           ...item,
-          label: [item.last_name, item.first_name, item.patronymic].join(" "),
-          status_idp: item.status_idp === null ? "missing" : item.status_idp,
-        };
-      });
-      state.employees = modArr;
+          label: [item.last_name, item.first_name, item.patronymic].join(' '),
+          status_idp: item.status_idp === null ? 'missing' : item.status_idp,
+        }
+      })
+      state.employees = modArr
     },
     setIsRequestMyUnitEmployees: (state, action: PayloadAction<boolean>) => {
-      state.isRequest = action.payload;
+      state.isRequest = action.payload
     },
     setIsSuccessMyUnitEmployees: (state, action: PayloadAction<boolean>) => {
-      state.isSuccess = action.payload;
+      state.isSuccess = action.payload
     },
     setIsFailedMyUnitEmployees: (state, action: PayloadAction<boolean>) => {
-      state.isFailed = action.payload;
+      state.isFailed = action.payload
     },
     setErrorMessageMyUnitEmployees: (state, action: PayloadAction<string>) => {
-      state.errorMessage = action.payload;
+      state.errorMessage = action.payload
     },
   },
-});
+})
 
 export const {
   setMyUnitEmployees,
@@ -54,9 +54,8 @@ export const {
   setIsSuccessMyUnitEmployees,
   setIsFailedMyUnitEmployees,
   setErrorMessageMyUnitEmployees,
-} = myUnitEmployees.actions;
+} = myUnitEmployees.actions
 
-export const selectMyUnitEmployees = (state: RootState) =>
-  state.myUnitEmployees;
+export const selectMyUnitEmployees = (state: RootState) => state.myUnitEmployees
 
-export default myUnitEmployees.reducer;
+export default myUnitEmployees.reducer

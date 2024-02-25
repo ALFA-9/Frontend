@@ -107,5 +107,5 @@ export const mainSidebarItems: MenuNavItemType[] = [
     nav: '#',
     textColorGray: true,
     isMainMenu: true,
-  }
+  },
 ]

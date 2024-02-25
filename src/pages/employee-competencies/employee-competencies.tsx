@@ -6,7 +6,7 @@ import { routes } from '../../utils/const-routes'
 import { useAppSelector } from '../../redux/hooks'
 
 const EmployeeCompetencies: FC = () => {
-  const actualUser = useAppSelector((state) => state.activeUser.user)
+  const actualUser = useAppSelector(state => state.activeUser.user)
   return (
     <>
       <ButtonBack path={routes.main} />

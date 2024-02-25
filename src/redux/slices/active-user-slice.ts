@@ -3,8 +3,6 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { UserType } from '../../api/api-types'
 import { defaultUser } from '../../utils/const-default-user'
 
-
-
 interface ActiveUserType {
   user: UserType
   isRequest: boolean
@@ -19,7 +17,6 @@ export const initialState: ActiveUserType = {
   isSuccess: false,
   isFailed: false,
   errMessage: '',
-
 }
 
 const activeUser = createSlice({

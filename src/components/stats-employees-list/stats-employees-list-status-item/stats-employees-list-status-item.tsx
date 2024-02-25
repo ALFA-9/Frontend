@@ -24,7 +24,8 @@ const StatsEmployeesListStatusItem: FC<StatsEmployeesListStatusItemType> = ({
         <div
           className={`${styles.status_list_button_ball} ${
             styles[`${item.style}`]
-          }`}></div>
+          }`}
+        ></div>
         <p className={styles.status_list_button_text}>{item.text}</p>
       </button>
     </li>

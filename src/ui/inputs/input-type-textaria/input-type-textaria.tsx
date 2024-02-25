@@ -1,14 +1,14 @@
-import { FC, useEffect, useRef, useState } from "react";
-import styles from "./input-type-textaria.module.scss";
+import { FC, useEffect, useRef, useState } from 'react'
+import styles from './input-type-textaria.module.scss'
 
 interface IInputTypeTextaria
   extends React.HTMLAttributes<HTMLParagraphElement> {
-  placeholder?: string;
-  extraClass?: string;
-  label?: string;
-  name: string;
-  value: string;
-  maxlength?: number;
+  placeholder?: string
+  extraClass?: string
+  label?: string
+  name: string
+  value: string
+  maxlength?: number
 }
 
 const InputTypeTextaria: FC<IInputTypeTextaria> = ({
@@ -16,19 +16,19 @@ const InputTypeTextaria: FC<IInputTypeTextaria> = ({
   maxlength = Infinity,
   ...HTMLAttributes
 }) => {
-  const myRef = useRef(null);
-  const [isExcess, setIsExcess] = useState(false);
+  const myRef = useRef(null)
+  const [isExcess, setIsExcess] = useState(false)
 
   useEffect(() => {
-    const curExcess = value.length > maxlength;
+    const curExcess = value.length > maxlength
     if (isExcess !== curExcess) {
-      setIsExcess(curExcess);
+      setIsExcess(curExcess)
     }
-  }, [value]);
+  }, [value])
 
   useEffect(() => {
-    myRef.current.textContent = value;
-  }, []);
+    myRef.current.textContent = value
+  }, [])
 
   return (
     <label
@@ -45,12 +45,12 @@ const InputTypeTextaria: FC<IInputTypeTextaria> = ({
         contentEditable
       ></p>
       {maxlength !== Infinity && (
-        <div className={styles.counter}>{`${isExcess ? "Много букв " : ""}${
+        <div className={styles.counter}>{`${isExcess ? 'Много букв ' : ''}${
           value.length
         }/${maxlength}`}</div>
       )}
     </label>
-  );
-};
+  )
+}
 
-export default InputTypeTextaria;
+export default InputTypeTextaria

@@ -3,8 +3,8 @@ import styles from './input-type-select.module.scss'
 
 interface IInputTypeSelect
   extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  extraClass?: string,
-  outerClass?: string,
+  extraClass?: string
+  outerClass?: string
   label?: string
 }
 
@@ -89,7 +89,10 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
       {isDropdownOpen && (
         <div onClick={handleOverlayClick} className={styles.overlay} />
       )}
-      <label htmlFor={SelectHTMLAttributes.id} className={`${styles.label} ${outerClass}`}>
+      <label
+        htmlFor={SelectHTMLAttributes.id}
+        className={`${styles.label} ${outerClass}`}
+      >
         <p className={styles.label_text}>{label}</p>
         <select
           {...SelectHTMLAttributes}
@@ -104,7 +107,8 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
             className={`${styles.input} ${
               isDropdownOpen ? styles.input_open : ''
             }`}
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
             <p className={styles.text}>{inputValue}</p>
           </div>
           {isDropdownOpen && (
@@ -117,7 +121,8 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
                       ? `${48 * SelectHTMLAttributes.size}px`
                       : `calc(48px * 5 )`
                   }`,
-                }}>
+                }}
+              >
                 {optionItems.map(({ value, key, disabled }) => {
                   return (
                     <div
@@ -129,7 +134,8 @@ const InputTypeSelect: FC<IInputTypeSelect> = ({
                           : styles.dropDownItem
                       } ${
                         value === inputValue ? styles.dropDownItem_select : ''
-                      }`}>
+                      }`}
+                    >
                       <p className={styles.dropDownItem_text}>{value}</p>
                     </div>
                   )

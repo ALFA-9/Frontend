@@ -6,13 +6,12 @@ import Arrow from '../../images/icons/employee-temalate-arrow.svg'
 
 const TogglerTemplate: FC = (
   node: TreeNodeMod,
-  options: TreeTogglerTemplateOptions
+  options: TreeTogglerTemplateOptions,
 ) => {
   if (!node) {
     return
   }
 
-  const regex = /[0-9]/g
   const lvl = node.lvl
 
   const expanded = options.expanded
@@ -23,13 +22,15 @@ const TogglerTemplate: FC = (
       className={`${styles.outer_container} ${
         expanded && styles.outer_container_active
       }`}
-      style={{ marginLeft: `${lvl * 25}px` }}>
+      style={{ marginLeft: `${lvl * 25}px` }}
+    >
       {!dontHaveChildrens && (
         <button
-          type='button'
+          type="button"
           className={`${styles.button}`}
           tabIndex={-1}
-          onClick={options.onClick}>
+          onClick={options.onClick}
+        >
           <Arrow
             className={`${styles.svg} ${expanded && styles.svg_active}`}
             style={{ visibility: 'visible' }}

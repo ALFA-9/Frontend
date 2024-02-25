@@ -8,10 +8,10 @@ export type TTabsProps = {
   extraContainerStyles?: string
 }
 
-const Tabs: FC<TTabsProps> = (props) => {
+const Tabs: FC<TTabsProps> = props => {
   const { children, preActiveTabIndex, extraContainerStyles } = props
   const [activeTabIndex, setActiveTabIndex] = useState<number>(
-    preActiveTabIndex || 0
+    preActiveTabIndex || 0,
   )
 
   return (

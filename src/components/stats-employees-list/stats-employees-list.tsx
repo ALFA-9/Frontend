@@ -31,7 +31,7 @@ const StatsEmployeesList: FC<StatsEmployeesListType> = ({ nodesData }) => {
     document.body.removeEventListener('click', clickReset)
   }
 
-  const openFilterList: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const openFilterList: MouseEventHandler<HTMLButtonElement> = e => {
     e.stopPropagation()
     if (isFilterListOpen) {
       setIsFilterListOpen(false)
@@ -42,7 +42,7 @@ const StatsEmployeesList: FC<StatsEmployeesListType> = ({ nodesData }) => {
     document.body.addEventListener('click', clickReset)
   }
 
-  const filteredNodesData = newNodesData.filter((node) => {
+  const filteredNodesData = newNodesData.filter(node => {
     if (filterStatus === 'all') {
       return node
     }
@@ -59,7 +59,8 @@ const StatsEmployeesList: FC<StatsEmployeesListType> = ({ nodesData }) => {
         <button
           onClick={toggleSort}
           className={`${styles.button}`}
-          type='button'>
+          type="button"
+        >
           <p className={styles.button_text}>Сотрудники</p>
           <NameSort
             className={`${styles.svg_names} ${
@@ -73,7 +74,8 @@ const StatsEmployeesList: FC<StatsEmployeesListType> = ({ nodesData }) => {
             className={`${styles.button} ${
               isFilterListOpen && styles.button_active
             }`}
-            type='button'>
+            type="button"
+          >
             <p className={styles.button_text}>Статус</p>
             <ArrowFilter
               className={`${styles.svg_status} ${
@@ -84,7 +86,8 @@ const StatsEmployeesList: FC<StatsEmployeesListType> = ({ nodesData }) => {
           <ul
             className={`${styles.status_list} ${
               isFilterListOpen && styles.status_list_active
-            }`}>
+            }`}
+          >
             {filterListItems.map((item, i) => (
               <StatsEmployeesListStatusItem
                 item={item}
@@ -97,7 +100,7 @@ const StatsEmployeesList: FC<StatsEmployeesListType> = ({ nodesData }) => {
         </div>
       </div>
       <ul className={styles.ul}>
-        {filteredNodesData.map((node) => (
+        {filteredNodesData.map(node => (
           <StatsEmployeeTemplate data={node} key={node.id} />
         ))}
       </ul>

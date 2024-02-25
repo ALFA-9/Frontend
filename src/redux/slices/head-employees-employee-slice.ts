@@ -4,7 +4,6 @@ import { UserType } from '../../api/api-types'
 import { defaultUser } from '../../utils/const-default-user'
 import { IdpStatuses } from '../../types'
 
-
 interface ActiveUserType {
   user: UserType
   isRequest: boolean
@@ -47,12 +46,12 @@ const activeEmployee = createSlice({
     },
     patcIdpActiveEmployee: (
       state,
-      action: PayloadAction<handleApproveClick>
+      action: PayloadAction<handleApproveClick>,
     ) => {
-      state.user.idps = state.user.idps.map((item) =>
+      state.user.idps = state.user.idps.map(item =>
         item.id === action.payload.id
           ? { ...item, status_idp: action.payload.status_idp }
-          : item
+          : item,
       )
     },
   },
@@ -66,6 +65,5 @@ export const {
   setErrorMessageActiveEmployee,
   patcIdpActiveEmployee,
 } = activeEmployee.actions
-
 
 export default activeEmployee.reducer

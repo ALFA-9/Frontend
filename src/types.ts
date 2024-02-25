@@ -64,17 +64,6 @@ export interface StatusTypeList {
   style: StatusColorsType
 }
 
-interface SubordinatesType {
-  id: number
-  director: number
-  first_name: string
-  last_name: string
-  patronymic: string
-  post: string
-  status_idp: IdpStatuses
-  subordinates: SubordinatesType[]
-}
-
 export interface TreeNodeMod {
   title?: string
 
@@ -100,6 +89,7 @@ export interface TreeNodeMod {
   /**
    * Data represented by the node.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any | undefined
   /**
    * Icon of the node to display next to content.
@@ -161,6 +151,7 @@ export interface IdpType {
   currentTask: string
   deadline: string
   status: IdpStatuses
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   tasks: any[]
 }
 

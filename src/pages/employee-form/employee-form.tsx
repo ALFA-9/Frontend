@@ -81,8 +81,8 @@ const EmployeeForm: FC = () => {
             </p>
           </div>
           <ButtonAccent
-            title='Вернуться на страницу ИПР'
-            type='button'
+            title="Вернуться на страницу ИПР"
+            type="button"
             path={routes.employeeIdp}
             extraClass={styles.returnButton}
           />
@@ -94,8 +94,8 @@ const EmployeeForm: FC = () => {
             name={'fullName'}
             value={values.fullName}
             onChange={handleChange}
-            label='ФИО'
-            placeholder='ФИО'
+            label="ФИО"
+            placeholder="ФИО"
             disabled
           />
           <div className={styles.row}>
@@ -103,8 +103,8 @@ const EmployeeForm: FC = () => {
               name={'department'}
               value={values.department}
               onChange={handleChange}
-              label='Департамент'
-              placeholder='Департамент'
+              label="Департамент"
+              placeholder="Департамент"
               outerClass={styles.halfrow}
               disabled
             />
@@ -112,8 +112,8 @@ const EmployeeForm: FC = () => {
               name={'position'}
               value={values.position}
               onChange={handleChange}
-              label='Должность'
-              placeholder='Должность'
+              label="Должность"
+              placeholder="Должность"
               outerClass={styles.halfrow}
               disabled
             />
@@ -122,8 +122,9 @@ const EmployeeForm: FC = () => {
             name={'supervisor'}
             value={values.supervisor}
             onChange={handleChange}
-            label='Руководитель'
-            size={size}>
+            label="Руководитель"
+            size={size}
+          >
             {user.supervisor.map((item, index) => (
               <option key={`option${index}`}>{item}</option>
             ))}
@@ -134,22 +135,22 @@ const EmployeeForm: FC = () => {
               name={'textaria'}
               value={values.textaria}
               onInput={handleChange}
-              label='Сопроводительное письмо'
-              placeholder='Введите текст или загрузите письмо'
+              label="Сопроводительное письмо"
+              placeholder="Введите текст или загрузите письмо"
             />
           </div>
           <div className={styles.load}>
             <LoadButton
-              title='Выберите файл'
-              type='button'
-              accept='.doc,.docx'
+              title="Выберите файл"
+              type="button"
+              accept=".doc,.docx"
               extraClass={styles.loadButton}
             />
             <span className={styles.hint}>Форматы .doc, .docx</span>
           </div>
           <ButtonAccent
-            title='Отправить'
-            type='submit'
+            title="Отправить"
+            type="submit"
             extraClass={styles.submitButton}
           />
         </form>

@@ -6,8 +6,15 @@ import activeEmployee from './slices/head-employees-employee-slice'
 import idpTasks from './slices/idp-tasks-slice'
 
 export const store = configureStore({
-  reducer: { activeUser, myUnitEmployees, employeesList, activeEmployee, idpTasks },
-  middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false })
+  reducer: {
+    activeUser,
+    myUnitEmployees,
+    employeesList,
+    activeEmployee,
+    idpTasks,
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({ serializableCheck: false }),
 })
 
 export type RootState = ReturnType<typeof store.getState>

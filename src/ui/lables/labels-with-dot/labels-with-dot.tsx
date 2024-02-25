@@ -1,8 +1,8 @@
-import { FC } from 'react';
-import styles from './labels-with-dot.module.scss';
+import { FC } from 'react'
+import styles from './labels-with-dot.module.scss'
 
 export interface ILabelsWithDot {
-  color: string,
+  color: string
   title: string
 }
 
@@ -15,4 +15,4 @@ const LabelsWithDot: FC<ILabelsWithDot> = ({ color, title }) => {
   )
 }
 
-export default LabelsWithDot;
+export default LabelsWithDot

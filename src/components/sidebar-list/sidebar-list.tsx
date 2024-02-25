@@ -10,8 +10,8 @@ interface SidebarList {
 const SidebarList: FC<SidebarList> = ({ mainSidebarItems }) => {
   return (
     <ul className={styles.list}>
-      {mainSidebarItems.map((item, i) => (
-        <MenuItem key={i} item={item} />
+      {mainSidebarItems.map(item => (
+        <MenuItem key={item.name} item={item} />
       ))}
     </ul>
   )

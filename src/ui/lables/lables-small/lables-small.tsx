@@ -15,7 +15,8 @@ const LablesSmall: FC<LablesSmallType> = ({ text, color, extraStyles }) => {
     <p
       className={`${styles.text_small} ${extraStyles}  ${
         styles[`text_${LablesSmallEnum[text_color]}`]
-      }`}>
+      }`}
+    >
       {text}
     </p>
   )

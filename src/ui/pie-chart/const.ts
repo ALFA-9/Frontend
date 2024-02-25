@@ -1,7 +1,7 @@
-import { IPieChartRenderData, IPieChartSectorData } from "./types";
+import { IPieChartRenderData, IPieChartSectorData } from './types'
 
 export const sectorDefault: IPieChartSectorData = {
-  data: { value: -1, title: "", color: "" },
+  data: { value: -1, title: '', color: '' },
   dashArray: [0, 0],
   dashOffset: 0,
   textX: 0,
@@ -10,11 +10,11 @@ export const sectorDefault: IPieChartSectorData = {
   sOffsetY: 0,
   percentage: 0,
   isVisiblePercentage: false,
-};
+}
 
 export const renderDataDefault: IPieChartRenderData = {
   rData: [],
   radius: 0,
   drawThickness: 0,
   drawRadius: 0,
-};
+}

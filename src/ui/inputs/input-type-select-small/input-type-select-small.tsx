@@ -15,7 +15,7 @@ const InputTypeSelectSmall: FC<InputTypeSelectSmallType> = ({
   data,
 }) => {
   const [userStatus, setUserStatus] = useState<EnumUserStatuses>(
-    EnumUserStatuses.employee
+    EnumUserStatuses.employee,
   )
   const [isListOpen, setIsListOpen] = useState<boolean>(false)
   const [isVisible, setIsVisible] = useState<boolean>(false)
@@ -48,7 +48,7 @@ const InputTypeSelectSmall: FC<InputTypeSelectSmallType> = ({
     document.body.removeEventListener('click', clickReset)
   }
 
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = e => {
     e.stopPropagation()
     if (isListOpen) {
       setIsListOpen(false)
@@ -64,7 +64,8 @@ const InputTypeSelectSmall: FC<InputTypeSelectSmallType> = ({
       <article className={`${styles.container} ${extraStyles}`}>
         <button
           onClick={handleClick}
-          className={`${styles.button} ${isListOpen && styles.button_active}`}>
+          className={`${styles.button} ${isListOpen && styles.button_active}`}
+        >
           <div>
             <p className={styles.text_role}>Роль</p>
             <p className={styles.text_status}>{userStatus}</p>
@@ -74,7 +75,7 @@ const InputTypeSelectSmall: FC<InputTypeSelectSmallType> = ({
           />
         </button>
         <ul className={`${styles.ul} ${isListOpen && styles.ul_active}`}>
-          {data.map((item, i) => (
+          {data.map(item => (
             <InputTypeSelectSmallItem
               data={item}
               setUserStatus={setUserStatus}
@@ -113,7 +114,8 @@ const InputTypeSelectSmallItem: FC<InputTypeSelectSmallItemType> = ({
         disabled={disabled}
         className={`${styles.ul_item_button} ${
           disabled && styles.ul_item_button_disabled
-        }`}>
+        }`}
+      >
         {status}
       </button>
     </li>

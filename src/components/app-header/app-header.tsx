@@ -8,7 +8,7 @@ import { useAppSelector } from '../../redux/hooks'
 import { BASE_URL } from '../../api/api'
 
 const AppHeader: FC = () => {
-  const actualUser = useAppSelector((state) => state.activeUser.user)
+  const actualUser = useAppSelector(state => state.activeUser.user)
 
   return (
     <header className={styles.header}>
@@ -18,29 +18,33 @@ const AppHeader: FC = () => {
       <nav>
         <ul className={styles.menu}>
           <li>
-            <a href='#' className={styles.link}>
+            <a href="#" className={styles.link}>
               Контакты
             </a>
           </li>
           <li>
-            <a href='#' className={styles.link}>
+            <a href="#" className={styles.link}>
               Всё о работе
             </a>
           </li>
           <li>
-            <a href='#' className={styles.link}>
+            <a href="#" className={styles.link}>
               Подразделения
             </a>
           </li>
         </ul>
       </nav>
       <div className={styles.trayMenu}>
-        <input type='search' className={styles.search} placeholder='Поиск' />
-        <a href='#' className={styles.notification}>
+        <input type="search" className={styles.search} placeholder="Поиск" />
+        <a href="#" className={styles.notification}>
           <Notification className={styles.notificationIcon} />
         </a>
-        <a href='#' className={styles.profile}>
-          <img src={BASE_URL + actualUser.image} className={styles.avatar} />
+        <a href="#" className={styles.profile}>
+          <img
+            src={BASE_URL + actualUser.image}
+            alt={actualUser.first_name + ' ' + actualUser.last_name}
+            className={styles.avatar}
+          />
         </a>
       </div>
     </header>

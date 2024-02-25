@@ -33,14 +33,15 @@ const LoadButton: FC<ILoadButtonProps> = ({
       <input
         style={{ display: 'none' }}
         ref={inputRef}
-        type='file'
+        type="file"
         accept={accept}
         onChange={handleFileChange}
       />
       <button
         onClick={handleClick}
         className={`${styles.button} ${extraClass}`}
-        {...InputHTMLAttributes}>
+        {...InputHTMLAttributes}
+      >
         <PaperClip className={styles.icon} />
         <p className={styles.title}>{title}</p>
       </button>

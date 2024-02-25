@@ -1,59 +1,53 @@
-import { FC, MouseEventHandler } from "react";
-import styles from "./stats-employee-template.module.scss";
-import { useNavigate } from "react-router-dom";
-import { routes } from "../../utils/const-routes";
-import LablesSmall from "../../ui/lables/lables-small/lables-small";
-import { LablesSmallEnum } from "../../ui/lables/types";
-import { EmployeeType } from "../../api/api-types";
-import { BASE_URL } from "../../api/api";
+import { FC, MouseEventHandler } from 'react'
+import styles from './stats-employee-template.module.scss'
+import { useNavigate } from 'react-router-dom'
+import { routes } from '../../utils/const-routes'
+import LablesSmall from '../../ui/lables/lables-small/lables-small'
+import { LablesSmallEnum } from '../../ui/lables/types'
+import { EmployeeType } from '../../api/api-types'
+import { BASE_URL } from '../../api/api'
 
 interface StatsEmployeeTemplateType {
-  data: EmployeeType;
+  data: EmployeeType
 }
 
 const StatsEmployeeTemplate: FC<StatsEmployeeTemplateType> = ({ data }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const {
-    label,
-    id,
-    post: subtitle,
-    status_idp: status,
-    image,
-  } = data;
+  const { label, id, post: subtitle, status_idp: status, image } = data
 
-  let statusColor;
-  let statusText;
+  let statusColor
+  let statusText
 
   switch (status) {
-    case "in_work":
-      statusColor = LablesSmallEnum.blue;
-      statusText = "В работе";
-      break;
-    case "missing":
-      statusColor = LablesSmallEnum.gray;
-      statusText = "Отсутствует";
-      break;
-    case "cancelled":
-      statusColor = LablesSmallEnum.orange;
-      statusText = "Отменён";
-      break;
-    case "not_completed":
-      statusColor = LablesSmallEnum.red;
-      statusText = "Не выполнен";
-      break;
-    case "done":
-      statusColor = LablesSmallEnum.green;
-      statusText = "Выполнен";
+    case 'in_work':
+      statusColor = LablesSmallEnum.blue
+      statusText = 'В работе'
+      break
+    case 'missing':
+      statusColor = LablesSmallEnum.gray
+      statusText = 'Отсутствует'
+      break
+    case 'cancelled':
+      statusColor = LablesSmallEnum.orange
+      statusText = 'Отменён'
+      break
+    case 'not_completed':
+      statusColor = LablesSmallEnum.red
+      statusText = 'Не выполнен'
+      break
+    case 'done':
+      statusColor = LablesSmallEnum.green
+      statusText = 'Выполнен'
 
-      break;
+      break
     default:
-      statusColor = LablesSmallEnum.gray;
+      statusColor = LablesSmallEnum.gray
   }
 
   const onOuterClick: MouseEventHandler<HTMLDivElement> = () => {
-    navigate(routes.headStaff + "/" + id);
-  };
+    navigate(routes.headStaff + '/' + id)
+  }
 
   return (
     <li className={`${styles.outer_container}`}>
@@ -68,7 +62,7 @@ const StatsEmployeeTemplate: FC<StatsEmployeeTemplateType> = ({ data }) => {
         </div>
       </div>
     </li>
-  );
-};
+  )
+}
 
-export default StatsEmployeeTemplate;
+export default StatsEmployeeTemplate

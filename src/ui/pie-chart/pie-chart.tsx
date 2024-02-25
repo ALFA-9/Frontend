@@ -21,12 +21,12 @@ const PieChart: FC<IPieChart> = ({
 
   const mainSize = useMemo(
     () => diameter + sectorOffset * 2.5,
-    [diameter, sectorOffset]
+    [diameter, sectorOffset],
   )
 
   const centerOffset = useMemo(
     () => radius + sectorOffset * 1.25,
-    [radius, sectorOffset]
+    [radius, sectorOffset],
   )
 
   useEffect(() => {
@@ -38,17 +38,18 @@ const PieChart: FC<IPieChart> = ({
         angleOffset,
         textRadiusOffset,
         minVisiblePercentage,
-        sectorOffset
-      )
-    );
-  }, [data]);
+        sectorOffset,
+      ),
+    )
+  }, [data])
 
   return (
-    <div style={{width: `${mainSize}px`}}>
+    <div style={{ width: `${mainSize}px` }}>
       <svg
         width={mainSize}
         height={mainSize}
-        viewBox={`0 0 ${mainSize} ${mainSize} `}>
+        viewBox={`0 0 ${mainSize} ${mainSize} `}
+      >
         {rData.length &&
           rData.map((item, index) => {
             const isSelected = sSector.data.title === item.data.title
@@ -58,9 +59,10 @@ const PieChart: FC<IPieChart> = ({
               <g
                 key={index}
                 className={styles.gContainer}
-                onMouseEnter={(e) => setHSector(item)}
-                onMouseLeave={(e) => setHSector(sectorDefault)}
-                onClick={(e) => setSSector(isSelected ? sectorDefault : item)}>
+                onMouseEnter={() => setHSector(item)}
+                onMouseLeave={() => setHSector(sectorDefault)}
+                onClick={() => setSSector(isSelected ? sectorDefault : item)}
+              >
                 <circle
                   cx={centerOffset + (isSelected ? item.sOffsetX : 0)}
                   cy={centerOffset + (isSelected ? item.sOffsetY : 0)}
@@ -73,7 +75,8 @@ const PieChart: FC<IPieChart> = ({
                   }
                   strokeDashoffset={item.dashOffset}
                   strokeDasharray={item.dashArray.join(' ')}
-                  fill='none'></circle>
+                  fill="none"
+                ></circle>
 
                 <text
                   className={styles.text}
@@ -82,7 +85,7 @@ const PieChart: FC<IPieChart> = ({
                   dominantBaseline="middle"
                   textAnchor="middle"
                 >
-                  {`${item.isVisiblePercentage ? percentage + "%" : ""}`}
+                  {`${item.isVisiblePercentage ? percentage + '%' : ''}`}
                 </text>
               </g>
             )

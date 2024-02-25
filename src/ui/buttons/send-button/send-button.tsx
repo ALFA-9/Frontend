@@ -1,9 +1,8 @@
-import styles from './send-button.module.scss';
-import { ButtonHTMLAttributes, FC } from 'react';
-import SendArrow from './send.svg';
+import styles from './send-button.module.scss'
+import { ButtonHTMLAttributes, FC } from 'react'
+import SendArrow from './send.svg'
 
-interface ISendButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ISendButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   extraClass?: string
 }
 
@@ -11,7 +10,6 @@ const SendButton: FC<ISendButtonProps> = ({
   extraClass = '',
   ...InputHTMLAttributes
 }) => {
-
   return (
     <button
       className={`${styles.button} ${extraClass}`}
@@ -22,4 +20,4 @@ const SendButton: FC<ISendButtonProps> = ({
   )
 }
 
-export default SendButton;
+export default SendButton

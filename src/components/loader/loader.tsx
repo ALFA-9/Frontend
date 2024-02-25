@@ -4,7 +4,7 @@ import styles from './loader.module.scss'
 const LoaderCircle = () => {
   return (
     <div className={styles.spinnerContainer}>
-      <Spinner visible={true} size='m' />
+      <Spinner visible={true} size="m" />
     </div>
   )
 }

@@ -15,7 +15,8 @@ const LablesBig: FC<LablesSmallType> = ({ text, color, extraStyles }) => {
     <p
       className={`${styles.text_big} ${extraStyles}  ${
         styles[`text_${LablesSmallEnum[text_color]}`]
-      }`}>
+      }`}
+    >
       {text}
     </p>
   )

@@ -23,7 +23,7 @@ import LoaderCircle from '../loader/loader'
 export default function App() {
   const location = useLocation()
   const { isFailed, isRequest, isSuccess, user, errMessage } = useAppSelector(
-    (state) => state.activeUser
+    state => state.activeUser,
   )
   const dispatch = useAppDispatch()
 
@@ -42,8 +42,8 @@ export default function App() {
         setErrMessageSetActiveUser(
           `Ошибка ${
             error.toJSON().status === null ? 502 : error.toJSON().status
-          }`
-        )
+          }`,
+        ),
       )
     } finally {
       dispatch(setIsRequestSetActiveUser(false))
@@ -78,7 +78,8 @@ export default function App() {
         <div
           className={`${styles.main__wrapper} ${
             location.pathname === '/' && styles.main_wrapper_main_gallery
-          }`}>
+          }`}
+        >
           <InputTypeSelectSmall
             extraStyles={styles.input_small}
             data={userStatuses}

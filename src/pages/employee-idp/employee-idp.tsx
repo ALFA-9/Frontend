@@ -10,14 +10,14 @@ import { useAppSelector } from '../../redux/hooks'
 import { UserTypeIdp } from '../../api/api-types'
 
 const Idp: FC = () => {
-  const actualUser = useAppSelector((state) => state.activeUser.user)
+  const actualUser = useAppSelector(state => state.activeUser.user)
 
   let doneIdp: UserTypeIdp[] = []
   let cancelledIdp: UserTypeIdp[] = []
   let inWorkIdp: UserTypeIdp[] = []
   let notCompletedIdp: UserTypeIdp[] = []
 
-  actualUser.idps.forEach((item) => {
+  actualUser.idps.forEach(item => {
     switch (item.status_idp) {
       case 'done':
         doneIdp = [...doneIdp, item]
@@ -31,7 +31,7 @@ const Idp: FC = () => {
         inWorkIdp = [...inWorkIdp, item]
         break
 
-      case 'in_work':
+      case 'not_completed':
         notCompletedIdp = [...notCompletedIdp, item]
         break
 
@@ -45,7 +45,7 @@ const Idp: FC = () => {
       <ButtonBack path={routes.main} />
       <h1 className={styles.title}>Индивидуальный план развития</h1>
       <Tabs>
-        <TabPane title='В работе'>
+        <TabPane title="В работе">
           {inWorkIdp.length > 0 && (
             <IdpCard data={inWorkIdp[0]} extraInfo={true} />
           )}
@@ -59,21 +59,21 @@ const Idp: FC = () => {
               </p>
               <ButtonAccent
                 path={routes.employeeIdpForm}
-                title='Подать заявку на ИПР'
+                title="Подать заявку на ИПР"
                 extraClass={styles.button}
               />
             </>
           )}
           <ButtonAccent
             path={routes.employeeIdpForm}
-            title='Подать заявку на ИПР'
+            title="Подать заявку на ИПР"
             extraClass={styles.button}
           />
         </TabPane>
-        <TabPane title='Выполнен'>
+        <TabPane title="Выполнен">
           {doneIdp.length > 0 && (
             <ul className={styles.idp_list}>
-              {doneIdp.map((item) => (
+              {doneIdp.map(item => (
                 <IdpCard data={item} key={item.title} />
               ))}
             </ul>
@@ -82,10 +82,10 @@ const Idp: FC = () => {
             <p className={styles.message}>Пока у вас нет выполненных ИПР.</p>
           )}
         </TabPane>
-        <TabPane title='Не выполнен'>
+        <TabPane title="Не выполнен">
           {notCompletedIdp.length > 0 && (
             <ul className={styles.idp_list}>
-              {notCompletedIdp.map((item) => (
+              {notCompletedIdp.map(item => (
                 <IdpCard data={item} key={item.title} />
               ))}
             </ul>
@@ -94,10 +94,10 @@ const Idp: FC = () => {
             <p className={styles.message}>У вас нет невыполненных ИПР.</p>
           )}
         </TabPane>
-        <TabPane title='Отменен'>
+        <TabPane title="Отменен">
           {cancelledIdp.length > 0 && (
             <ul className={styles.idp_list}>
-              {cancelledIdp.map((item) => (
+              {cancelledIdp.map(item => (
                 <IdpCard data={item} key={item.title} />
               ))}
             </ul>

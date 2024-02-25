@@ -25,7 +25,8 @@ const ButtonAccent: FC<IButtonAccentProps> = ({
     <button
       onClick={handleClick}
       className={`${styles.button} ${extraClass}`}
-      {...InputHTMLAttributes}>
+      {...InputHTMLAttributes}
+    >
       {title}
     </button>
   )

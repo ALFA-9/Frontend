@@ -1,8 +1,8 @@
-import styles from './app-footer.module.scss';
-import { FC } from 'react';
-import Logo from '../../images/icons/logo.svg';
-import Vk from '../../images/icons/vk.svg';
-import Twitter from '../../images/icons/twitter.svg';
+import styles from './app-footer.module.scss'
+import { FC } from 'react'
+import Logo from '../../images/icons/logo.svg'
+import Vk from '../../images/icons/vk.svg'
+import Twitter from '../../images/icons/twitter.svg'
 
 const AppFooter: FC = () => {
   return (
@@ -34,38 +34,58 @@ const AppFooter: FC = () => {
         <nav className={styles.menuLeft}>
           <ul className={styles.menu}>
             <li>
-              <a href='#' className={styles.link}>IT-услуги</a>
+              <a href="#" className={styles.link}>
+                IT-услуги
+              </a>
             </li>
             <li>
-              <a href='#' className={styles.link}>Страхование</a>
+              <a href="#" className={styles.link}>
+                Страхование
+              </a>
             </li>
             <li>
-              <a href='#' className={styles.link}>Банковские услуги</a>
+              <a href="#" className={styles.link}>
+                Банковские услуги
+              </a>
             </li>
             <li>
-              <a href='#' className={styles.link}>Бенефиты</a>
+              <a href="#" className={styles.link}>
+                Бенефиты
+              </a>
             </li>
             <li>
-              <a href='#' className={styles.link}>Путешествия</a>
+              <a href="#" className={styles.link}>
+                Путешествия
+              </a>
             </li>
           </ul>
         </nav>
         <nav className={styles.menuRight}>
           <ul className={styles.menu}>
             <li>
-              <a href='#' className={styles.link}>Новости</a>
+              <a href="#" className={styles.link}>
+                Новости
+              </a>
             </li>
             <li>
-              <a href='#' className={styles.link}>О компании</a>
+              <a href="#" className={styles.link}>
+                О компании
+              </a>
             </li>
             <li>
-              <a href='#' className={styles.link}>Поддержка</a>
+              <a href="#" className={styles.link}>
+                Поддержка
+              </a>
             </li>
             <li>
-              <a href='#' className={styles.link}>Вакансии</a>
+              <a href="#" className={styles.link}>
+                Вакансии
+              </a>
             </li>
             <li>
-              <a href='#' className={styles.link}>Контакты</a>
+              <a href="#" className={styles.link}>
+                Контакты
+              </a>
             </li>
           </ul>
         </nav>
@@ -78,12 +98,17 @@ const AppFooter: FC = () => {
           </li>
         </ul>
         <div className={styles.copyright}>
-          <p className={styles.copyrightText}>&copy; 1994 – 2023 Общество с ограниченной ответственностью “Альфа Пипл”</p>
-          <p className={styles.copyrightText}>Политика в области персональных данных</p>
+          <p className={styles.copyrightText}>
+            &copy; 1994 – 2023 Общество с ограниченной ответственностью “Альфа
+            Пипл”
+          </p>
+          <p className={styles.copyrightText}>
+            Политика в области персональных данных
+          </p>
         </div>
       </div>
     </footer>
   )
 }
 
-export default AppFooter;
+export default AppFooter

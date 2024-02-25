@@ -12,13 +12,12 @@ import {
   setEmployeesListIsFailed,
 } from '../../redux/slices/head-employees-slice'
 import { changeType } from './empoyees-list-utils'
-import { Spinner } from '@alfalab/core-components-spinner'
 import LoaderCircle from '../loader/loader'
 
 const FilterDemo: FC = () => {
   const dispatch = useAppDispatch()
   const { employeesList, isFailed, isRequest, isSuccess } = useAppSelector(
-    (state) => state.employeesList
+    state => state.employeesList,
   )
 
   async function receivingSubordinatesList() {
@@ -26,8 +25,8 @@ const FilterDemo: FC = () => {
     dispatch(setEmployeesListIsFailed(false))
     try {
       const subordinatesList = await getSubordinates()
-      const employeesListNodeType = subordinatesList.data.map((item) =>
-        changeType(item, 0)
+      const employeesListNodeType = subordinatesList.data.map(item =>
+        changeType(item, 0),
       )
       dispatch(setEmployeesList(employeesListNodeType))
       dispatch(setEmployeesListIsSuccess(true))
@@ -54,8 +53,8 @@ const FilterDemo: FC = () => {
           togglerTemplate={TogglerTemplate}
           value={employeesList}
           filter
-          filterMode='strict'
-          filterPlaceholder='Поиск по сотрудникам'
+          filterMode="strict"
+          filterPlaceholder="Поиск по сотрудникам"
         />
       )}
     </div>

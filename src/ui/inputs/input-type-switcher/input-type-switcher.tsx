@@ -1,10 +1,10 @@
-import { FC } from 'react';
-import styles from './input-type-switcher.module.scss';
+import { FC } from 'react'
+import styles from './input-type-switcher.module.scss'
 
 interface IInputTypeSwitcher
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  extraClass?: string;
-  label?: string;
+  extraClass?: string
+  label?: string
 }
 
 const InputTypeSwitcher: FC<IInputTypeSwitcher> = ({
@@ -24,7 +24,7 @@ const InputTypeSwitcher: FC<IInputTypeSwitcher> = ({
       </div>
       {label}
     </label>
-  );
-};
+  )
+}
 
-export default InputTypeSwitcher;
+export default InputTypeSwitcher

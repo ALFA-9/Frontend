@@ -1,34 +1,34 @@
 export interface IChartInputData {
-  value: number;
-  title: string;
-  color: string;
+  value: number
+  title: string
+  color: string
 }
 
 export interface IPieChart {
-  data: IChartInputData[];
-  diameter: number;
-  thickness: number;
-  angleOffset?: number;
-  textRadiusOffset?: number;
-  minVisiblePercentage?: number;
-  sectorOffset?: number;
+  data: IChartInputData[]
+  diameter: number
+  thickness: number
+  angleOffset?: number
+  textRadiusOffset?: number
+  minVisiblePercentage?: number
+  sectorOffset?: number
 }
 
 export interface IPieChartSectorData {
-  data: IChartInputData;
-  dashArray: [number, number];
-  dashOffset: number;
-  textX: number;
-  textY: number;
-  sOffsetX: number;
-  sOffsetY: number;
-  percentage: number;
-  isVisiblePercentage: boolean;
+  data: IChartInputData
+  dashArray: [number, number]
+  dashOffset: number
+  textX: number
+  textY: number
+  sOffsetX: number
+  sOffsetY: number
+  percentage: number
+  isVisiblePercentage: boolean
 }
 
 export interface IPieChartRenderData {
-  rData: IPieChartSectorData[];
-  radius: number;
-  drawThickness: number;
-  drawRadius: number;
+  rData: IPieChartSectorData[]
+  radius: number
+  drawThickness: number
+  drawRadius: number
 }

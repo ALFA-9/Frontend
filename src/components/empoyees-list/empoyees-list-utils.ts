@@ -13,7 +13,7 @@ export function changeType(
     image,
     status_idp,
   }: SubordinatesType,
-  lvl: number
+  lvl: number,
 ): TreeNodeMod {
   return {
     status: status_idp,
@@ -25,7 +25,7 @@ export function changeType(
     key: id + '',
     children:
       subordinates?.length > 0
-        ? subordinates.map((item) => changeType(item, lvl + 1))
+        ? subordinates.map(item => changeType(item, lvl + 1))
         : [],
   }
 }

@@ -1,9 +1,9 @@
 import styles from './delete-button.module.scss'
 import { ButtonHTMLAttributes, MouseEventHandler, FC } from 'react'
-import Cross from './cross.svg';
+import Cross from './cross.svg'
 
 interface IDeleteButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  onClick: MouseEventHandler<HTMLButtonElement>,
+  onClick: MouseEventHandler<HTMLButtonElement>
   title?: string
   extraClass?: string
 }
@@ -14,12 +14,12 @@ const DeleteButton: FC<IDeleteButtonProps> = ({
   extraClass = '',
   ...InputHTMLAttributes
 }) => {
-
   return (
     <button
       className={`${styles.button} ${extraClass}`}
       onClick={onClick}
-      {...InputHTMLAttributes}>
+      {...InputHTMLAttributes}
+    >
       <Cross className={styles.icon} />
       <p className={styles.title}>{title}</p>
     </button>

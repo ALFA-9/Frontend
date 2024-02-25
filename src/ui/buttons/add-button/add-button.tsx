@@ -1,10 +1,9 @@
-import styles from './add-button.module.scss';
-import { ButtonHTMLAttributes, FC } from 'react';
-import  Plus from './plus.svg';
+import styles from './add-button.module.scss'
+import { ButtonHTMLAttributes, FC } from 'react'
+import Plus from './plus.svg'
 
-interface IAddButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
-  title: string,
+interface IAddButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  title: string
   extraClass?: string
 }
 
@@ -13,7 +12,6 @@ const AddButton: FC<IAddButtonProps> = ({
   extraClass = '',
   ...InputHTMLAttributes
 }) => {
-
   return (
     <button
       className={`${styles.button} ${extraClass}`}
@@ -25,4 +23,4 @@ const AddButton: FC<IAddButtonProps> = ({
   )
 }
 
-export default AddButton;
+export default AddButton

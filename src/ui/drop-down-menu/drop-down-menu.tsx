@@ -10,9 +10,8 @@ interface DropDownMenuType {
 const DropDownMenu: FC<DropDownMenuType> = ({ isOpen, items }) => {
   return (
     <ul
-      className={`${styles.button_list} ${
-        isOpen && styles.button_list_active
-      }`}>
+      className={`${styles.button_list} ${isOpen && styles.button_list_active}`}
+    >
       {items.map((item, i) => (
         <DropDownMenuItem key={i} {...item} />
       ))}
@@ -35,7 +34,8 @@ const DropDownMenuItem: FC<DropDownMenuItemType> = ({
         disabled={isDisabled}
         className={`${styles.button_list_item} ${
           isRed && styles.button_list_item_red
-        }`}>
+        }`}
+      >
         {text}
       </button>
     </li>

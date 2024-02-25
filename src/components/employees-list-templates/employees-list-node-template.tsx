@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, useEffect, useState } from 'react'
+import { FC, MouseEventHandler, useState } from 'react'
 import styles from './employees-list-node-template.module.scss'
 import Dots from '../../images/icons/three_dots.svg'
 import { Link, useNavigate } from 'react-router-dom'
@@ -8,12 +8,12 @@ import { routes } from '../../utils/const-routes'
 
 const EmployeesListNodeTemplate: FC = (
   node: TreeNodeMod,
-  options: TreeNodeTemplateOptions
+  options: TreeNodeTemplateOptions,
 ) => {
   const navigate = useNavigate()
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
 
-  const onOuterClick: MouseEventHandler<HTMLDivElement> = (e) => {
+  const onOuterClick: MouseEventHandler<HTMLDivElement> = e => {
     e.stopPropagation()
     navigate(routes.headStaff + '/' + node.id)
   }
@@ -23,7 +23,7 @@ const EmployeesListNodeTemplate: FC = (
     document.body.removeEventListener('click', clickReset)
   }
 
-  const onInnerClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const onInnerClick: MouseEventHandler<HTMLButtonElement> = e => {
     e.stopPropagation()
     setIsPopupOpen(true)
     document.body.addEventListener('click', clickReset)
@@ -33,7 +33,8 @@ const EmployeesListNodeTemplate: FC = (
     <article
       className={`${styles.outer_container} ${
         options.expanded && styles.outer_container_active
-      }`}>
+      }`}
+    >
       <div onClick={onOuterClick} className={styles.container}>
         <img className={styles.img} src={node.avatar} alt={node.label} />
         <div className={styles.text_wrapper}>
@@ -45,7 +46,8 @@ const EmployeesListNodeTemplate: FC = (
         <button
           disabled={isPopupOpen}
           onClick={onInnerClick}
-          className={styles.button}>
+          className={styles.button}
+        >
           <Dots className={styles.svg} style={{ visibility: 'visible' }} />
         </button>
       </div>
@@ -58,11 +60,13 @@ const EmployeesListNodeTemplate: FC = (
         }
         className={`${styles.popup} ${isPopupOpen && styles.popup_active} ${
           node.status === 'in_work' ? styles.popup_deactive : ''
-        }`}>
+        }`}
+      >
         <p
           className={`${styles.popup_link} ${
             node.status === 'in_work' ? styles.popup_deactive : ''
-          }`}>
+          }`}
+        >
           Назначить ИПР
         </p>
       </Link>

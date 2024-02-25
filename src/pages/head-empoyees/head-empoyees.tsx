@@ -4,7 +4,6 @@ import EmployeesList from '../../components/empoyees-list/empoyees-list'
 import ButtonBack from '../../ui/buttons/button-back/button-back'
 import { routes } from '../../utils/const-routes'
 
-
 const HeadEmployees: FC = () => {
   return (
     <>

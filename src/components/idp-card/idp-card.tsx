@@ -15,6 +15,7 @@ import { UserTypeIdp } from '../../api/api-types'
 import { useAppDispatch } from '../../redux/hooks'
 import { patcIdpActiveEmployee } from '../../redux/slices/head-employees-employee-slice'
 import { pathIdpStatus } from '../../api/api'
+import { AxiosError } from 'axios'
 interface IdpCardType {
   data: UserTypeIdp
   extraInfo?: boolean
@@ -25,7 +26,7 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
   const [isOptionsOpen, setIsOptionsOpen] = useState<boolean>(false)
   const [isInProgress, setIsInProgress] = useState<boolean>(false)
   const [taskStatusColor, setTaskStatusColor] = useState<LablesSmallEnum>(
-    LablesSmallEnum.blue
+    LablesSmallEnum.blue,
   )
 
   const dispatch = useAppDispatch()
@@ -68,7 +69,7 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
     document.body.removeEventListener('click', clickReset)
   }
 
-  const openOptionsList: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const openOptionsList: MouseEventHandler<HTMLButtonElement> = e => {
     e.preventDefault()
     e.stopPropagation()
     if (isOptionsOpen) {
@@ -84,16 +85,19 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
     try {
       await pathIdpStatus({ idp: id, status_idp, title })
       dispatch(patcIdpActiveEmployee({ id: id, status_idp: status_idp }))
-    } catch (error) {}
+    } catch (error) {
+      const err = error.toJSON() as AxiosError
+      console.log(err.message)
+    }
   }
 
-  const handleApproveClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleApproveClick: MouseEventHandler<HTMLButtonElement> = e => {
     e.preventDefault()
     e.stopPropagation()
     receivingUserData('done')
   }
 
-  const handleCancelClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleCancelClick: MouseEventHandler<HTMLButtonElement> = e => {
     e.preventDefault()
     e.stopPropagation()
     receivingUserData('cancelled')
@@ -115,7 +119,8 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
   return (
     <Link
       to={location.pathname + '/' + id + '/tasks'}
-      className={`${styles.container}`}>
+      className={`${styles.container}`}
+    >
       {isHead && (
         <LablesBig
           color={taskStatusColor}
@@ -129,9 +134,7 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
           <h2 className={styles.title}>{title}</h2>
           {isHead && isInProgress && (
             <div className={styles.button_wrapper}>
-              <button
-                onClick={openOptionsList}
-                className={styles.title_button}>
+              <button onClick={openOptionsList} className={styles.title_button}>
                 <Dots className={styles.title_svg} />
               </button>
               <DropDownMenu isOpen={isOptionsOpen} items={dropDownList} />
@@ -145,7 +148,8 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
               <div className={styles.progress_bar_empty}>
                 <div
                   className={styles.progress_bar_filled}
-                  style={{ width: `${progress}%` }}></div>
+                  style={{ width: `${progress}%` }}
+                ></div>
               </div>
             </div>
             <div className={styles.all_text_wrapper}>
@@ -160,7 +164,8 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
                 </div>
               </div>
               <div
-                className={`${styles.text_wrapper} ${styles.text_wrapper_right}`}>
+                className={`${styles.text_wrapper} ${styles.text_wrapper_right}`}
+              >
                 <p className={styles.text_gray}>Ближайший дедлайн</p>
                 <LablesBig
                   color={current_task ? deadlineColor : LablesSmallEnum.green}

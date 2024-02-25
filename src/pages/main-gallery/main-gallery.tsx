@@ -14,9 +14,9 @@ const MainGallery: FC = () => {
       <div className={styles.header_wrapper}>
         <h1 className={styles.title}>Лента</h1>
         <nav className={styles.links_container}>
-          <MainScreenMenuButton text='Новости' isBlack={true} />
-          <MainScreenMenuButton text='События' />
-          <MainScreenMenuButton text='Моменты' />
+          <MainScreenMenuButton text="Новости" isBlack={true} />
+          <MainScreenMenuButton text="События" />
+          <MainScreenMenuButton text="Моменты" />
         </nav>
       </div>
       <div className={styles.grid}>

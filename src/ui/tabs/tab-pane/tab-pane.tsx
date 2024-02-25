@@ -1,10 +1,10 @@
-import { ReactElement, FC } from 'react';
+import { ReactElement, FC } from 'react'
 
 type TTabPaneProps = {
-  title: string,
+  title: string
   children: ReactElement | ReactElement[]
 }
 
-const TabPane: FC<TTabPaneProps> = ({ children }) => <>{children}</>;
+const TabPane: FC<TTabPaneProps> = ({ children }) => <>{children}</>
 
-export default TabPane;
+export default TabPane

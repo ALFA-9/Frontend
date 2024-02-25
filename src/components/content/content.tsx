@@ -6,29 +6,30 @@ import MainGallery from '../../pages/main-gallery/main-gallery'
 import { useAppSelector } from '../../redux/hooks'
 const EmployeeIdp = lazy(() => import('../../pages/employee-idp/employee-idp'))
 const EmployeeForm = lazy(
-  () => import('../../pages/employee-form/employee-form')
+  () => import('../../pages/employee-form/employee-form'),
 )
 const EmployeeCompetencies = lazy(
-  () => import('../../pages/employee-competencies/employee-competencies')
+  () => import('../../pages/employee-competencies/employee-competencies'),
 )
 const HeadEmployees = lazy(
-  () => import('../../pages/head-empoyees/head-empoyees')
+  () => import('../../pages/head-empoyees/head-empoyees'),
 )
 const HeadStats = lazy(() => import('../../pages/head-stats/head-stats'))
 const HeadEmpoyeesEmployee = lazy(
-  () => import('../../pages/head-empoyees-employee/head-empoyees-employee')
+  () => import('../../pages/head-empoyees-employee/head-empoyees-employee'),
 )
 const HeadForm = lazy(() => import('../../pages/head-form/head-form'))
 const IdpTasks = lazy(() => import('../../pages/idp-tasks/idp-tasks'))
 
 const Content: FC = () => {
   const location = useLocation()
-  const activeUser = useAppSelector((state) => state.activeUser)
+  const activeUser = useAppSelector(state => state.activeUser)
   return (
     <section
       className={`${styles.content} ${
         location.pathname === '/' && styles.content_main_gallery
-      }`}>
+      }`}
+    >
       <Routes>
         <Route
           path={routes.main}

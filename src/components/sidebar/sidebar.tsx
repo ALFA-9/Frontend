@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation} from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import styles from './sidebar.module.scss'
 import SidebarList from '../sidebar-list/sidebar-list'
 import { mainSidebarItems } from '../../utils/const-side-main-sidebar-items'
@@ -12,12 +12,13 @@ import { useAppSelector } from '../../redux/hooks'
 
 const Sidebar: FC = () => {
   const location = useLocation()
-  const activeUser = useAppSelector((state) => state.activeUser)
+  const activeUser = useAppSelector(state => state.activeUser)
   return (
     <nav
       className={`${styles.content} ${
         location.pathname === routes.main && styles.content_main_gallery
-      }`}>
+      }`}
+    >
       {location.pathname === routes.main && (
         <h2 className={styles.title}>Сервисы</h2>
       )}
