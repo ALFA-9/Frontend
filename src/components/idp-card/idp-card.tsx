@@ -163,8 +163,8 @@ const IdpCard: FC<IdpCardType> = ({ data, extraInfo, isHead }) => {
                 className={`${styles.text_wrapper} ${styles.text_wrapper_right}`}>
                 <p className={styles.text_gray}>Ближайший дедлайн</p>
                 <LablesBig
-                  color={deadlineColor}
-                  text={current_task?.date_end || '0'}
+                  color={current_task ? deadlineColor : LablesSmallEnum.green}
+                  text={current_task?.date_end || 'нет'}
                 />
               </div>
             </div>
